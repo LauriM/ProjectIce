@@ -1,0 +1,38 @@
+desc 'rake'
+task :default do
+    puts '|----------|'
+    puts '|> stats   |'
+    puts '|> update  |'
+    puts '|> analyse |'
+    puts '|----------|'
+end
+
+desc 'rake stats'
+task :stats do
+	system('cloc --quiet --no3 src/')
+	system('echo "Git commits: "; git shortlog | wc -l')
+end
+
+desc 'rake update'
+task :update do
+	while true do
+		system('premake4 gmake')
+		system('cscope -R -b ')
+		system('ctags -R --c-kinds=+p --fields=+iaS --extra=+q -R .')
+
+		sleep(60)
+	end
+end
+
+desc 'rake analyse'
+task :analyse do
+	system('make clean && scan-build -o /var/www/scan-build/ make')
+end
+
+desc 'rake diffcount'
+task :diffcount do
+	while true do
+		system('clear && echo "Lines of diff: " && git diff | wc -l')
+		sleep(1)
+	end
+end

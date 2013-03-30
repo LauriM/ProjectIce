@@ -1,0 +1,4 @@
+game.make
+game
+Makefile
+obj/
