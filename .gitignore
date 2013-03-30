@@ -1,4 +1,9 @@
 game.make
+ice.make
 game
+ice
 Makefile
 obj/
+
+cscope.out
+tags

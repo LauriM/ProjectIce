@@ -23,10 +23,11 @@ solution "ProjectIce"
         flags   { "Optimize" }
 
     -- Client project
-    project "game"
+    project "ice"
         kind "ConsoleApp"
         language "C++"
         files { "src/**.h", "src/**.cpp" }
+		includedirs { "src/" } --check if needed
 
         configuration "windows"
             -- TODO: Remove hard-coded paths
