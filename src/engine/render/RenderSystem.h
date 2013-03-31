@@ -3,6 +3,8 @@
 
 #include "engine/world/WorldSystem.h"
 
+#include "engine/math/vec2.h"
+
 namespace engine {
 namespace render {
 
@@ -16,6 +18,8 @@ namespace render {
 		virtual bool init();
 		virtual void uninit();
 		virtual void update();
+
+		void drawChar(vec2 pos,int character);
 	};
 
 }

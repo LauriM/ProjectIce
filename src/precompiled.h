@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <ncurses.h>
 
 #include "stdio.h"
 

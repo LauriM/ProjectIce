@@ -24,12 +24,10 @@ namespace world {
 	}
 
 	void WorldSystem::uninit(){
-		printf("uninitting\n");
 		return;
 	}
 
 	void WorldSystem::update(){
-		printf("World tick\n");
 		return;
 	}
 

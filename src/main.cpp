@@ -18,6 +18,7 @@ int main(){
 	/* loop*/
 	world->update();
 	render->update();
+	getch();
 	/* end loop*/
 
 	render->uninit();
