@@ -3,7 +3,7 @@
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
 
-#include "proto/tile.pb.h"
+#include "proto/worldstate.pb.h"
 
 int main(){
 	printf("Hello world!\n");
@@ -17,7 +17,7 @@ int main(){
 	/**
 	 * Protobuff testing
 	 */
-	tile test;
+	tileMsg test;
 	test.set_posx(15);
 	test.set_posy(10);
 	test.set_visual("#");
@@ -33,7 +33,7 @@ int main(){
 	std::fstream input;
 	input.open("gamesave",std::ios::in | std::ios::binary);
 
-	tile blob;
+	tileMsg blob;
 	blob.ParseFromIstream(&input);
 
 	input.close();

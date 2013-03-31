@@ -22,8 +22,13 @@ namespace world {
 					tiles[x][y] = tempTile;
 				}
 			}
+
+			//Set the default visual style
+			visual = '-';
 		}
 
+	private:
+		char visual;
 		Tile tiles[ROOM_WIDTH][ROOM_HEIGHT];
 	};
 }
