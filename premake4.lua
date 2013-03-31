@@ -26,7 +26,7 @@ solution "ProjectIce"
     project "ice"
         kind "ConsoleApp"
         language "C++"
-        files { "src/**.h", "src/**.cpp" }
+        files { "src/**.h", "src/**.cpp" ,"src/**.cc" }
 		includedirs { "src/" } --check if needed
 
         configuration "windows"
@@ -37,3 +37,4 @@ solution "ProjectIce"
 
         configuration "linux"
             links { "ncurses" }
+			includedirs { "/home/lauri/code/protobuff/protobuf-2.5.0/src" } --Fix this to something more generic

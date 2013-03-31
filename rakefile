@@ -1,10 +1,16 @@
 desc 'rake'
 task :default do
     puts '|----------|'
+	puts '|> proto   |'
     puts '|> stats   |'
     puts '|> update  |'
     puts '|> analyse |'
     puts '|----------|'
+end
+
+desc 'Build proto buffers'
+task :proto do
+	system('protoc --cpp_out=./src/proto ./src/proto/*')
 end
 
 desc 'rake stats'

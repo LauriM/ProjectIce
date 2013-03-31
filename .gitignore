@@ -7,3 +7,6 @@ obj/
 
 cscope.out
 tags
+
+src/proto/*.cc
+src/proto/*.h

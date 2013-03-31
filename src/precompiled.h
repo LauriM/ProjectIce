@@ -1,5 +1,7 @@
-#include "stdio.h"
+#include <iostream>
+#include <fstream>
 
+#include "stdio.h"
 
 /* Settings for world generation, size, etc */
 
