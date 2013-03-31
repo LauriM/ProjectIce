@@ -2,6 +2,7 @@
 
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
+#include "engine/render/RenderSystem.h"
 
 #include "proto/worldstate.pb.h"
 
@@ -9,14 +10,23 @@ int main(){
 	printf("Hello world!\n");
 
 	engine::world::WorldSystem *world = new engine::world::WorldSystem();
+	engine::render::RenderSystem *render = new engine::render::RenderSystem(world);
 
 	world->init();
+	render->init();
+
+	/* loop*/
 	world->update();
+	render->update();
+	/* end loop*/
+
+	render->uninit();
 	world->uninit();
 
 	/**
 	 * Protobuff testing
 	 */
+	/*
 	tileMsg test;
 	test.set_posx(15);
 	test.set_posy(10);
@@ -39,5 +49,6 @@ int main(){
 	input.close();
 
 	printf("Tile x: %i tile y: %i [%s]\n",blob.posx(),blob.posy(),blob.visual().c_str());
+	*/
 	return 0;
 }
