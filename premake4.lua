@@ -27,7 +27,7 @@ solution "ProjectIce"
         kind "ConsoleApp"
         language "C++"
         files { "src/**.h", "src/**.cpp" ,"src/**.cc" }
-		includedirs { "src/" } --check if needed
+		includedirs { "src/" }
 
         configuration "windows"
             -- TODO: Remove hard-coded paths
@@ -36,5 +36,5 @@ solution "ProjectIce"
             links       { "pdcurses" }
 
         configuration "linux"
-            links { "ncurses" }
-			includedirs { "/home/lauri/code/protobuff/protobuf-2.5.0/src" } --Fix this to something more generic
+            links { "ncurses" , "protobuf" }
+			libdirs { "/usr/local/lib" }
