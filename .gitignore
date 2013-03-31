@@ -10,3 +10,5 @@ tags
 
 src/proto/*.cc
 src/proto/*.h
+
+gamesave
