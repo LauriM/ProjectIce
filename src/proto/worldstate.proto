@@ -1,20 +1,26 @@
 // World contains generic data about the world, like size and age.
 message worldMsg {
 	required int32 age = 1;
+
+	//Room contains room specific information
+	message roomMsg {
+		required string visual = 2; //TODO: Check if it could be a char somehow?
+		required int32 roomId = 3;
+		required int32 posX = 4;
+		required int32 posY = 5;
+
+		//Tile gives information about single tile insde a room
+		message tileMsg {
+			required string visual = 6;
+			required int32 roomId = 7;
+			required int32 posX = 8;
+			required int32 posY = 9;
+		}
+
+		repeated tileMsg tiles = 10;
+	}
+
+	repeated roomMsg rooms = 11;
 }
 
-//Room contains room specific information
-message roomMsg {
-	required string visual = 2; //TODO: Check if it could be a char somehow?
-	required int32 roomId = 3;
-	required int32 posX = 4;
-	required int32 posY = 5;
-}
 
-//Tile gives information about single tile insde a room
-message tileMsg {
-	required string visual = 6;
-	required int32 roomId = 7;
-	required int32 posX = 8;
-	required int32 posY = 9;
-}
