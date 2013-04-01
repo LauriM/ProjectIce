@@ -12,8 +12,11 @@ int main(){
 	engine::world::WorldSystem *world = new engine::world::WorldSystem();
 	engine::render::RenderSystem *render = new engine::render::RenderSystem(world);
 
+	/* init */
 	world->init();
 	render->init();
+
+	world->generate(); //Generate a world
 
 	/* loop*/
 	world->update();

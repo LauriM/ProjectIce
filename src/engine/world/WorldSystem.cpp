@@ -31,5 +31,18 @@ namespace world {
 		return;
 	}
 
+	void WorldSystem::generate(){
+		//First lets generate the heightmap
+
+		int heightMap[WORLD_WIDTH][WORLD_HEIGHT];
+
+		for(int x = 0;x < WORLD_WIDTH;++x){
+			for(int y = 0;y < WORLD_HEIGHT;++y){
+				heightMap[x][y] = 0;
+			}
+		}
+
+	}
+
 }
 }

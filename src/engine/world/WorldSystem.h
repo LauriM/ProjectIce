@@ -18,6 +18,8 @@ namespace world {
 		virtual bool init();
 		virtual void uninit();
 		virtual void update();
+
+		void generate();
 	};
 
 }
