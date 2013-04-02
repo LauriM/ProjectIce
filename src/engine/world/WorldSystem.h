@@ -12,6 +12,7 @@ namespace world {
 	class WorldSystem : public engine::EngineSystem {
 	private:
 		Room rooms[WORLD_WIDTH][WORLD_HEIGHT][WORLD_DEPTH];
+		//TODO: create some ASSERTS to make sure the array is accessed correctly (2013-04-02)
 	public:
 		WorldSystem();
 

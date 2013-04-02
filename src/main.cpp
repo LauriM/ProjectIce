@@ -1,5 +1,6 @@
 #include "precompiled.h"
 
+#include "engine/math/random.h"
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
 #include "engine/render/RenderSystem.h"
@@ -7,6 +8,8 @@
 #include "proto/worldstate.pb.h"
 
 int main(){
+	randomInit();
+
 	printf("Hello world!\n");
 
 	engine::world::WorldSystem *world = new engine::world::WorldSystem();
@@ -14,9 +17,9 @@ int main(){
 
 	/* init */
 	world->init();
-	render->init();
-
 	world->generate(); //Generate a world
+
+	render->init();
 
 	/* loop*/
 	world->update();
