@@ -19,7 +19,7 @@ task :stats do
 	system('echo "Git commits: "; git shortlog | wc -l')
 end
 
-desc 'rake update'
+desc 'Updates tags and premakes on background'
 task :update do
 	while true do
 		system('premake4 gmake')
@@ -30,15 +30,7 @@ task :update do
 	end
 end
 
-desc 'rake analyse'
+desc 'Run static analysis'
 task :analyse do
 	system('make clean && scan-build -o /var/www/scan-build/ make')
-end
-
-desc 'rake diffcount'
-task :diffcount do
-	while true do
-		system('clear && echo "Lines of diff: " && git diff | wc -l')
-		sleep(1)
-	end
 end
