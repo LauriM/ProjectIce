@@ -34,12 +34,13 @@ namespace world {
 
 	void WorldSystem::generate(){
 		//First lets generate the heightmap
-
 		int heightMap[WORLD_WIDTH][WORLD_HEIGHT];
+
+		//FIXME: Randomly segfaulting inside this function!
 
 		for(int x = 0;x < WORLD_WIDTH;++x){
 			for(int y = 0;y < WORLD_HEIGHT;++y){
-				heightMap[x][y] = 1; //Default height
+				heightMap[x][y] = WORLD_WATER_LEVEL;
 			}
 		}
 
@@ -55,7 +56,7 @@ namespace world {
 			heightMap[x][y] = heightMap[x][y] + height;
 
 			if(heightMap[x][y] < 0){
-				heightMap[x][y] = 2;
+				heightMap[x][y] = 0;
 			}
 
 			//Okey, mountain point is set, lets now "flow" it down
@@ -97,6 +98,44 @@ namespace world {
 			printf("\n");
 		}
 
+
+		//Okey, we have the heightmap, now we need to generate contents for the rooms.
+
+		//TODO: Consider creating contents for rooms lazily.
+
+		//Go trough the heightmap and assign the types.
+
+		for(int x = 0;x < WORLD_WIDTH;++x){
+			for(int y = 0;y < WORLD_HEIGHT;++y){
+
+				//Loop from bottom to top, filling the correct values
+				for(int z = 0;z < WORLD_DEPTH;++z){
+
+					if(z < heightMap[x][y]){
+						//Current depth is under the highest point, add dungeon
+						rooms[x][y][z].roomType = ROOM_TYPE_DUNGEON; 
+						printf("#");
+					}
+
+					if(z == heightMap[x][y]){
+						//We are on the same level as the highest point, its ground
+						rooms[x][y][z].roomType = ROOM_TYPE_GROUND;
+						printf("|");
+					}
+
+					if(z == heightMap[x][y]){
+						if(z < WORLD_WATER_LEVEL){
+							rooms[x][y][z].roomType = ROOM_TYPE_WATER; 
+							printf("*");
+						}else{
+							rooms[x][y][z].roomType = ROOM_TYPE_AIR;
+							printf(".");
+						}
+					}
+				}
+				printf("\n");
+			}
+		}
 	}
 
 }

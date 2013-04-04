@@ -8,6 +8,14 @@
 namespace engine {
 namespace world {
 
+	enum ROOM_TYPES{
+		ROOM_TYPE_EMPTY   = 0, //Basically means the room is unitialized
+		ROOM_TYPE_AIR     = 1,
+		ROOM_TYPE_GROUND  = 2,
+		ROOM_TYPE_WATER   = 3,
+		ROOM_TYPE_DUNGEON = 4,
+	};
+
 	/**
 	* Room contains the layout of the room, with all the tile data.
 	*/
@@ -15,12 +23,12 @@ namespace world {
 	public:
 		Room(){
 			//Initialize empty room
+			roomType = ROOM_TYPE_EMPTY;
+
 			Tile tempTile;
 
-			for(int x = 0;x < ROOM_WIDTH;++x){
-				for(int y = 0;y < ROOM_HEIGHT;++y){
-					tiles[x][y] = tempTile;
-				}
+			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+				tiles[i] = tempTile;
 			}
 
 			//Set the default visual style
@@ -29,7 +37,12 @@ namespace world {
 
 	private:
 		char visual;
-		Tile tiles[ROOM_WIDTH][ROOM_HEIGHT];
+		Tile tiles[ROOM_WIDTH * ROOM_HEIGHT];
+
+	public:
+		ROOM_TYPES roomType;
+
+		Tile* getTile(int x,int y);
 	};
 }
 }
