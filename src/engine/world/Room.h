@@ -26,6 +26,7 @@ namespace world {
 			roomType = ROOM_TYPE_EMPTY;
 
 			Tile tempTile;
+			tempTile.setType(TILE_VOID);
 
 			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
 				tiles[i] = tempTile;
@@ -43,6 +44,8 @@ namespace world {
 		ROOM_TYPES roomType;
 
 		Tile* getTile(int x,int y);
+
+		void generate();
 	};
 }
 }

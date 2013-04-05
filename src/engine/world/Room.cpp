@@ -8,5 +8,16 @@ namespace world {
 		return &tiles[x * ROOM_WIDTH + y];
 	}
 
+	/**
+	 * Regenerate the room.
+	 *
+	 * Input: Reads roomType and builds on top of that.
+	 */
+	void Room::generate(){
+
+		//Lets get the simple types out from the way first... air,empty and water...
+		printf("lol");
+	}
+
 }
 }

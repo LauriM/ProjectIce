@@ -15,7 +15,7 @@ end
 
 desc 'rake stats'
 task :stats do
-	system('cloc --quiet --no3 --exclude-dir=./src/proto/ src/')
+	system('cloc --quiet --no3 --exclude-dir=src/proto/ src/')
 	system('echo "Git commits: "; git shortlog | wc -l')
 end
 
