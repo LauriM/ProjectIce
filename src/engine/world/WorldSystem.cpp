@@ -128,10 +128,13 @@ namespace world {
 							rooms[x][y][z].roomType = ROOM_TYPE_WATER; 
 							printf("*");
 						}else{
-							rooms[x][y][z].roomType = ROOM_TYPE_AIR;
+							rooms[x][y][z].roomType = ROOM_TYPE_EMPTY;
 							printf(".");
 						}
 					}
+
+					//Generate the room based on the roomType set.
+					rooms[x][y][z].generate();
 				}
 				printf("\n");
 			}

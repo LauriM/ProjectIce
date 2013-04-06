@@ -14,9 +14,43 @@ namespace world {
 	 * Input: Reads roomType and builds on top of that.
 	 */
 	void Room::generate(){
+		//Lets get the simple types out from the way first... air and water...
 
-		//Lets get the simple types out from the way first... air,empty and water...
-		printf("lol");
+		switch(roomType){
+		case ROOM_TYPE_EMPTY:
+			//Loop trough all tiles and set them to void
+			Tile tempTile;
+			tempTile.setType(TILE_VOID);
+
+			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+				tiles[i] = tempTile;
+			}
+
+			break;
+		case ROOM_TYPE_WATER:
+			Tile waterTile;
+			waterTile.setType(TILE_WATER);
+
+			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+				tiles[i] = waterTile;
+			}
+			break;
+		case ROOM_TYPE_GROUND:
+			Tile groundTile;
+			groundTile.setType(TILE_GRASS);
+
+			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+				tiles[i] = groundTile;
+			}
+
+		case ROOM_TYPE_DUNGEON:
+			Tile rockFloor;
+			rockFloor.setType(TILE_ROCK_FLOOR);
+
+			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+				tiles[i] = rockFloor;
+			}
+		}
 	}
 
 }

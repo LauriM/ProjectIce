@@ -57,5 +57,10 @@ int main(){
 
 	printf("Tile x: %i tile y: %i [%s]\n",blob.posx(),blob.posy(),blob.visual().c_str());
 	*/
+
+	//Clean up the systems
+	delete world;
+	delete render;
+
 	return 0;
 }

@@ -9,11 +9,10 @@ namespace engine {
 namespace world {
 
 	enum ROOM_TYPES{
-		ROOM_TYPE_EMPTY   = 0, //Basically means the room is unitialized
-		ROOM_TYPE_AIR     = 1,
-		ROOM_TYPE_GROUND  = 2,
-		ROOM_TYPE_WATER   = 3,
-		ROOM_TYPE_DUNGEON = 4,
+		ROOM_TYPE_EMPTY   = 0, //void, air or uninitialiazed tile
+		ROOM_TYPE_GROUND  = 1,
+		ROOM_TYPE_WATER   = 2,
+		ROOM_TYPE_DUNGEON = 3,
 	};
 
 	/**

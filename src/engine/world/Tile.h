@@ -10,6 +10,7 @@ namespace world {
 		TILE_ROCK_FLOOR,
 		TILE_SOLID_ROCK,
 		TILE_TREE,
+		TILE_WATER,
 	};
 
 	/**
@@ -25,6 +26,7 @@ namespace world {
 			blocks = false;
 			hp = 100;
 			//add -> color
+			//add -> tickFunction (Executed every time entity or actor is in the tile)
 		}
 
 		char visual; //Visual displayed on the gameview
