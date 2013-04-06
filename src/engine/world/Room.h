@@ -42,7 +42,9 @@ namespace world {
 	public:
 		ROOM_TYPES roomType;
 
+		//TODO: added get tile by vec2 (2013-04-06)
 		Tile* getTile(int x,int y);
+		Tile* getTileArray();
 
 		void generate();
 	};

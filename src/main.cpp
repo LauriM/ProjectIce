@@ -21,11 +21,35 @@ int main(){
 
 	render->init();
 
-	/* loop*/
-	world->update();
-	render->update();
-	getch();
-	/* end loop*/
+	bool quitStatus = false;
+	while(quitStatus == false){
+		world->update();
+		render->update();
+		int key = getch();
+
+		//This switch provides "world overview specating"
+		switch(key){
+			//hjkl
+			case 106:
+				render->cameraPos.y -= 1;
+				break;
+			case 107:
+				render->cameraPos.y += 1;
+				break;
+			case 104:
+				render->cameraPos.x -= 1;
+				break;
+			case 108:
+				render->cameraPos.x += 1;
+				break;
+			case 62:
+				render->cameraPos.z -= 1;
+				break;
+			case 60:
+				render->cameraPos.z += 1;
+				break;
+		}
+	}
 
 	render->uninit();
 	world->uninit();

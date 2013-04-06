@@ -53,5 +53,12 @@ namespace world {
 		}
 	}
 
+	/**
+	 * Returns direct access to the tile array, useful when raw access needed to the array.
+	 */
+	Tile* Room::getTileArray(){
+		return tiles;
+	}
+
 }
 }

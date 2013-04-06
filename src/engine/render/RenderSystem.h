@@ -4,6 +4,7 @@
 #include "engine/world/WorldSystem.h"
 
 #include "engine/math/vec2.h"
+#include "engine/math/vec3.h"
 
 namespace engine {
 namespace render {
@@ -13,6 +14,8 @@ namespace render {
 		engine::world::WorldSystem *worldSystem;
 
 	public:
+		vec3 cameraPos; //What section of map is currently visible and should be render.
+
 		RenderSystem(engine::world::WorldSystem *worldSystem);
 
 		virtual bool init();

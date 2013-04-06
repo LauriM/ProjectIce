@@ -5,6 +5,7 @@
 
 #include "engine/EngineSystem.h"
 #include "engine/world/Room.h"
+#include "engine/math/vec3.h"
 
 namespace engine {
 namespace world {
@@ -21,6 +22,9 @@ namespace world {
 		virtual void update();
 
 		void generate();
+
+		Room* getRoom(int x,int y,int z);
+		Room* getRoom(vec3 pos);
 	};
 
 }

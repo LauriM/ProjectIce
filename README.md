@@ -1,16 +1,8 @@
-# World system
-
-* World is created from "rooms".
-* Rooms are created from "tiles".
- 
-
-Store tiles in repeatable format. Room contains tiles. "Stream"!
-
-
 todo
 ====
 
-* Single room generation
+* Better room generators (some randomization!)
 * saving/loading of the world
-* simple movement on the terrain to get the system working
+* colors
+* ASSERTS and stabilization of the tile/room management.
 * UI system and backend stuff

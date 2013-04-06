@@ -2,6 +2,8 @@
 
 #include "engine/EngineSystem.h"
 #include "engine/render/RenderSystem.h"
+#include "engine/world/Room.h"
+#include "engine/world/Tile.h"
 
 namespace engine {
 namespace render {
@@ -20,6 +22,10 @@ namespace render {
 
 		start_color();
 
+		cameraPos.x = 0;
+		cameraPos.y = 0;
+		cameraPos.z = 0;
+
 		return true;
 	}
 
@@ -30,18 +36,23 @@ namespace render {
 	}
 
 	void RenderSystem::update(){
+		clear();
+
+		//Render world position info on top of the screen..
+		move(0,0);
+		printw("World x: %i y: %i z: %i",cameraPos.x,cameraPos.y,cameraPos.z);
 
 		//Render the map..
-		vec2 tempPos;
-		tempPos.x = 10;
-		tempPos.y = 10;
-		drawChar(tempPos,'#');
-		tempPos.x = 11;
-		tempPos.y = 11;
-		drawChar(tempPos,'#');
-		tempPos.x = 11;
-		tempPos.y = 10;
-		drawChar(tempPos,'#');
+		engine::world::Room *currentRoom = worldSystem->getRoom(cameraPos);
+
+		vec2 pos;
+		for(int x = 0;x < ROOM_WIDTH;++x){
+			for(int y = 0;y < ROOM_HEIGHT;++y){
+				pos.x = (x + 2);
+				pos.y = (y + 2);
+				drawChar(pos,currentRoom->getTile(x,y)->visual);
+			}
+		}
 
 		return;
 	}

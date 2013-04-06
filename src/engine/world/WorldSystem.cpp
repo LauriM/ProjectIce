@@ -114,31 +114,36 @@ namespace world {
 					if(z < heightMap[x][y]){
 						//Current depth is under the highest point, add dungeon
 						rooms[x][y][z].roomType = ROOM_TYPE_DUNGEON; 
-						printf("#");
 					}
 
 					if(z == heightMap[x][y]){
 						//We are on the same level as the highest point, its ground
 						rooms[x][y][z].roomType = ROOM_TYPE_GROUND;
-						printf("|");
 					}
 
 					if(z == heightMap[x][y]){
 						if(z < WORLD_WATER_LEVEL){
 							rooms[x][y][z].roomType = ROOM_TYPE_WATER; 
-							printf("*");
 						}else{
 							rooms[x][y][z].roomType = ROOM_TYPE_EMPTY;
-							printf(".");
 						}
 					}
 
 					//Generate the room based on the roomType set.
 					rooms[x][y][z].generate();
 				}
-				printf("\n");
 			}
 		}
+	}
+
+	Room* WorldSystem::getRoom(int x,int y,int z){
+		//TODO: Add ASSERT here (simple) (2013-04-06)
+		return &rooms[x][y][z];
+	}
+
+	Room* WorldSystem::getRoom(vec3 pos){
+		//TODO: Add ASSERT here (simple) (2013-04-06)
+		return &rooms[pos.x][pos.y][pos.z];
 	}
 
 }
