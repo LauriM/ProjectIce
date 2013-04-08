@@ -7,6 +7,11 @@
 
 #include "stdio.h"
 
+#define _TO_STRING(value) #value
+#define TO_STRING(value) _TO_STRING(value)
+
+#include "engine/log/LogSystem.h"
+
 /* Settings for world generation, size, etc */
 
 #define ROOM_WIDTH 10

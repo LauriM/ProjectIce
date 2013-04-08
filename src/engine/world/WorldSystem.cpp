@@ -8,7 +8,7 @@ namespace world {
 	WorldSystem::WorldSystem(){}
 
 	bool WorldSystem::init(){
-		printf("World init\n");
+		LOG_INFO("World init");
 
 		//Init empty world
 		Room emptyRoom;

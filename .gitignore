@@ -12,3 +12,4 @@ src/proto/*.cc
 src/proto/*.h
 
 gamesave
+log.txt

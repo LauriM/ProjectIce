@@ -10,7 +10,7 @@
 int main(){
 	randomInit();
 
-	printf("Hello world!\n");
+	LOG_INFO("engine starting");
 
 	engine::world::WorldSystem *world = new engine::world::WorldSystem();
 	engine::render::RenderSystem *render = new engine::render::RenderSystem(world);
