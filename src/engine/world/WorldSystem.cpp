@@ -146,5 +146,18 @@ namespace world {
 		return &rooms[pos.x][pos.y][pos.z];
 	}
 
+	/**
+	 * Load the whole world from the disk.
+	 */
+	void loadFromFile(String filename){
+
+	}
+
+	/**
+	 * Save the world with all the rooms and tile information to a file.
+	 */
+	void saveToFile(String filename){
+
+	}
 }
 }

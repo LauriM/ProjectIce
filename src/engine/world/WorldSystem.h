@@ -25,6 +25,9 @@ namespace world {
 
 		Room* getRoom(int x,int y,int z);
 		Room* getRoom(vec3 pos);
+
+		void loadFromFile(String filename);
+		void saveToFile(String filename);
 	};
 
 }

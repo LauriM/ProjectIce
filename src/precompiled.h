@@ -16,3 +16,5 @@
 #define WORLD_HEIGHT 10
 #define WORLD_DEPTH 10
 #define WORLD_WATER_LEVEL 2
+
+typedef std::string String;
