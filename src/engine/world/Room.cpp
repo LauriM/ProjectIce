@@ -5,7 +5,7 @@ namespace world {
 
 	Tile* Room::getTile(int x,int y){
 		//TODO: Add some assertions here! (2013-04-04)
-		return &tiles[x * ROOM_WIDTH + y];
+		return &tiles[x * ROOM_HEIGHT + y];
 	}
 
 	/**
@@ -22,7 +22,7 @@ namespace world {
 			Tile tempTile;
 			tempTile.setType(TILE_VOID);
 
-			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
 				tiles[i] = tempTile;
 			}
 
@@ -31,7 +31,7 @@ namespace world {
 			Tile waterTile;
 			waterTile.setType(TILE_WATER);
 
-			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
 				tiles[i] = waterTile;
 			}
 			break;
@@ -39,7 +39,7 @@ namespace world {
 			Tile groundTile;
 			groundTile.setType(TILE_GRASS);
 
-			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
 				tiles[i] = groundTile;
 			}
 
@@ -47,7 +47,7 @@ namespace world {
 			Tile rockFloor;
 			rockFloor.setType(TILE_ROCK_FLOOR);
 
-			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
+			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
 				tiles[i] = rockFloor;
 			}
 		}

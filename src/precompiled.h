@@ -15,7 +15,7 @@
 /* Settings for world generation, size, etc */
 
 #define ROOM_WIDTH 80
-#define ROOM_HEIGHT 20
+#define ROOM_HEIGHT 20 
 
 #define WORLD_WIDTH 15
 #define WORLD_HEIGHT 15
