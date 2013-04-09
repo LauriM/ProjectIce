@@ -2,6 +2,8 @@
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
 
+#include "proto/worldstate.pb.h"
+
 namespace engine {
 namespace world {
 
@@ -9,6 +11,8 @@ namespace world {
 
 	bool WorldSystem::init(){
 		LOG_INFO("World init");
+
+		age = 0; //The world is 0 turns old
 
 		//Init empty world
 		Room emptyRoom;
@@ -149,15 +153,54 @@ namespace world {
 	/**
 	 * Load the whole world from the disk.
 	 */
-	void loadFromFile(String filename){
+	void WorldSystem::loadFromFile(String filename){
 
 	}
 
 	/**
 	 * Save the world with all the rooms and tile information to a file.
 	 */
-	void saveToFile(String filename){
+	void WorldSystem::saveToFile(String filename){
+		LOG_INFO("Writing savefile...");
+		worldMsg worldSave;
 
-	}
+		worldSave.set_age(age);
+
+		//Go trough rooms and add them to the array..
+		for(int x = 0;x < WORLD_WIDTH;++x){
+			for(int y = 0;y < WORLD_HEIGHT;++y){
+				for(int z = 0;z < WORLD_DEPTH;++z){
+					roomMsg *room =worldSave.add_rooms();
+
+					room->set_posx(x);
+					room->set_posy(y);
+					room->set_posy(y);
+					room->set_roomtype(rooms[x][y][z].roomType);
+
+					//Lets then add all the tiles to the room!
+
+					Tile* tiles = rooms[x][y][z].getTileArray();
+
+					for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i ){
+						tileMsg *tile = room->add_tiles();
+						tile->set_blocks(tiles[i].blocks);
+						tile->set_visual(tiles[i].visual);
+						tile->set_hp(tiles[i].hp);
+					}
+				}
+			}
+		}
+
+		//WorldSave should now be ready... write it to file.
+		
+		std::fstream stream;
+		stream.open(filename.c_str(), std::ios::out | std::ios::binary);
+
+		worldSave.SerializeToOstream(&stream);
+
+		stream.close();
+		LOG_INFO("Save file written!");
+	} /* savetofile */
+
 }
 }

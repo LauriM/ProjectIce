@@ -18,6 +18,9 @@ int main(){
 	/* init */
 	world->init();
 	world->generate(); //Generate a world
+	world->saveToFile("gamesave");
+
+	//lets test saving it...
 
 	render->init();
 

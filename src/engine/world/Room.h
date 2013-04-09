@@ -30,16 +30,13 @@ namespace world {
 			for(int i = 0;i < ROOM_WIDTH * ROOM_HEIGHT;++i){
 				tiles[i] = tempTile;
 			}
-
-			//Set the default visual style
-			visual = '-';
 		}
 
 	private:
-		char visual;
 		Tile tiles[ROOM_WIDTH * ROOM_HEIGHT];
 
 	public:
+		//Roomtype also used as visual
 		ROOM_TYPES roomType;
 
 		//TODO: added get tile by vec2 (2013-04-06)
