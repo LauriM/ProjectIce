@@ -42,6 +42,22 @@ namespace render {
 		move(0,0);
 		printw("World x: %i y: %i z: %i",cameraPos.x,cameraPos.y,cameraPos.z);
 
+		//Check that the camera is not out of bounds...
+		if(cameraPos.x < 0 || cameraPos.x >= WORLD_WIDTH){
+			LOG_ERROR("Camera out of bounds! (x)");
+			return;
+		}
+
+		if(cameraPos.y < 0 || cameraPos.y >= WORLD_HEIGHT){
+			LOG_ERROR("Camera out of bounds! (y)");
+			return;
+		}
+
+		if(cameraPos.z < 0 || cameraPos.z >= WORLD_DEPTH){
+			LOG_ERROR("Camera out of bounds! (z)");
+			return;
+		}
+
 		//Render the map..
 		engine::world::Room *currentRoom = worldSystem->getRoom(cameraPos);
 
