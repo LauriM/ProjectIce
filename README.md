@@ -1,14 +1,15 @@
-todo
-====
+ProjectIce
+==========
 
-* Better room generators (some randomization!)
-* loading of the world
-* colors
-* ASSERTS and stabilization of the tile/room management.
-* UI system and backend stuff
- 
- 
-Random ideas
-============
+ProjectIce is my personal roguelike game/engine. Currently its in very early development.
 
-* keyvalue storage style configuration
+Build requirements:
+
+* protobufs
+* ncurses
+* premake4
+ 
+License
+=======
+
+See license.txt for the full license.
