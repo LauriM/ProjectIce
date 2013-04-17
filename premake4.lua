@@ -22,11 +22,10 @@ solution "ProjectIce"
         defines { "NDEBUG","RELEASE_BUILD" }
         flags   { "Optimize" }
 
-    -- Client project
     project "ice"
         kind "ConsoleApp"
         language "C++"
-        files { "src/**.h", "src/**.cpp" ,"src/**.cc" }
+        files { "src/main.cpp", "src/engine/**.h", "src/engine/**.cpp" ,"src/proto/**.cc" }
 		includedirs { "src/" }
 
         configuration "windows"
@@ -37,4 +36,14 @@ solution "ProjectIce"
 
         configuration "linux"
             links { "ncurses" , "protobuf" }
+			libdirs { "/usr/local/lib" }
+
+	project "test"
+		kind "ConsoleApp"
+		language "C++"
+		files { "src/test.cpp", "src/engine/**.h", "src/engine/**.cpp" ,"src/proto/**.cc" }
+		includedirs { "src/" }
+
+		configuration "linux"
+			links { "ncurses" , "protobuf" }
 			libdirs { "/usr/local/lib" }

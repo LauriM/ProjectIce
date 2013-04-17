@@ -21,7 +21,7 @@ namespace world {
 			DEFINE_TILE(TILE_GRASS      , '.'      , false    , 0);
 			DEFINE_TILE(TILE_ROCK_FLOOR , '.'      , false    , 0);
 			DEFINE_TILE(TILE_SOLID_ROCK , '#'      , true     , 500);
-			DEFINE_TILE(TILE_TREE       , 'O'      , false    , 25);
+			DEFINE_TILE(TILE_TREE       , 'O'      , true     , 25);
 			DEFINE_TILE(TILE_WATER      , '.'      , false    , 0);
 		}
 	}
