@@ -4,6 +4,7 @@
 namespace engine {
 namespace world {
 
+	//Tile types are only used when generating the tiles, tile state can change during runtime
 	enum TILE_TYPES{
 		TILE_VOID = 0,
 		TILE_GRASS,
