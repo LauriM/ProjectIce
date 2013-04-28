@@ -4,6 +4,7 @@
 
 #include "proto/worldstate.pb.h"
 
+
 namespace engine {
 namespace world {
 
@@ -141,12 +142,12 @@ namespace world {
 	}
 
 	Room* WorldSystem::getRoom(int x,int y,int z){
-		//TODO: Add ASSERT here (simple) (2013-04-06)
+		ASSERT_ROOM_XYZ(x,y,z);
 		return &rooms[x][y][z];
 	}
 
 	Room* WorldSystem::getRoom(vec3 pos){
-		//TODO: Add ASSERT here (simple) (2013-04-06)
+		ASSERT_ROOM_XYZ(pos.x,pos.y,pos.z);
 		return &rooms[pos.x][pos.y][pos.z];
 	}
 

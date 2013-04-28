@@ -5,6 +5,11 @@
 
 #include "engine/world/Tile.h"
 
+#define ASSERT_TILE_XY(p_x,p_y) ASSERT_TILE_X(p_x) ASSERT_TILE_Y(p_y)
+
+#define ASSERT_TILE_X(p_x) assert(p_x >= 0); assert(p_x < ROOM_WIDTH);
+#define ASSERT_TILE_Y(p_y) assert(p_y >= 0); assert(p_y < ROOM_HEIGHT);
+
 namespace engine {
 namespace world {
 

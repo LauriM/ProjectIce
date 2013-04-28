@@ -18,8 +18,8 @@ int main(){
 
 	/* init */
 	world->init();
-	world->loadFromFile("gamesave");
-//	world->generate(); //Generate a world
+//	world->loadFromFile("gamesave");
+	world->generate(); //Generate a world
 //	world->saveToFile("gamesave");
 
 	//lets test saving it...

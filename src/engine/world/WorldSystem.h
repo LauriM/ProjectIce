@@ -7,6 +7,12 @@
 #include "engine/world/Room.h"
 #include "engine/math/vec3.h"
 
+#define ASSERT_ROOM_XYZ(p_x,p_y,p_z) ASSERT_ROOM_X(p_x) ASSERT_ROOM_Y(p_y) ASSERT_ROOM_Z(p_z)
+
+#define ASSERT_ROOM_X(p_x) assert(p_x >= 0); assert(p_x < WORLD_WIDTH);
+#define ASSERT_ROOM_Y(p_y) assert(p_y >= 0); assert(p_y < WORLD_HEIGHT);
+#define ASSERT_ROOM_Z(p_z) assert(p_z >= 0); assert(p_z < WORLD_DEPTH);
+
 namespace engine {
 namespace world {
 
