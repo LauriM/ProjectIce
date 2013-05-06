@@ -31,7 +31,7 @@ int main(){
 
 	PRINTLN("-> World");
 	{
-		engine::world::WorldSystem *world = new engine::world::WorldSystem();
+		world::WorldSystem *world = new world::WorldSystem();
 
 		world->init();
 		world->generate();
@@ -50,7 +50,7 @@ int main(){
 
 		delete world;
 
-		world = new engine::world::WorldSystem();
+		world = new world::WorldSystem();
 
 		world->init();
 

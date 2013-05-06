@@ -7,6 +7,8 @@
 #define LOG_WARNING(p_msg) engine::log::insertLog("[WARNING] " p_msg);
 #define LOG_ERROR(p_msg) engine::log::insertLog("[ERROR] " p_msg);
 
+using namespace engine;
+
 namespace engine {
 namespace log {
 

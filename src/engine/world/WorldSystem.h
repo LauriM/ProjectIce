@@ -16,7 +16,7 @@
 namespace engine {
 namespace world {
 
-	class WorldSystem : public engine::EngineSystem {
+	class WorldSystem : public EngineSystem {
 	private:
 		Room rooms[WORLD_WIDTH][WORLD_HEIGHT][WORLD_DEPTH];
 		int age;

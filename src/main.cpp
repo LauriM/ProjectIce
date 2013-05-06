@@ -13,8 +13,8 @@ int main(){
 	LOG_INFO("----");
 	LOG_INFO("engine starting");
 
-	engine::world::WorldSystem *world = new engine::world::WorldSystem();
-	engine::render::RenderSystem *render = new engine::render::RenderSystem(world);
+	world::WorldSystem *world = new world::WorldSystem();
+	render::RenderSystem *render = new render::RenderSystem(world);
 
 	/* init */
 	world->init();

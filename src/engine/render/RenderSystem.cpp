@@ -8,7 +8,7 @@
 namespace engine {
 namespace render {
 
-	RenderSystem::RenderSystem(engine::world::WorldSystem *worldSystem)
+	RenderSystem::RenderSystem(world::WorldSystem *worldSystem)
 	: worldSystem(worldSystem)
 	{}
 
@@ -59,7 +59,7 @@ namespace render {
 		}
 
 		//Render the map..
-		engine::world::Room *currentRoom = worldSystem->getRoom(cameraPos);
+		world::Room *currentRoom = worldSystem->getRoom(cameraPos);
 
 		vec2 pos;
 		for(int x = 0;x < ROOM_WIDTH;++x){

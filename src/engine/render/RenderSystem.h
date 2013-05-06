@@ -9,14 +9,14 @@
 namespace engine {
 namespace render {
 
-	class RenderSystem : public engine::EngineSystem {
+	class RenderSystem : public EngineSystem {
 	private:
-		engine::world::WorldSystem *worldSystem;
+		world::WorldSystem *worldSystem;
 
 	public:
 		vec3 cameraPos; //What section of map is currently visible and should be render.
 
-		RenderSystem(engine::world::WorldSystem *worldSystem);
+		RenderSystem(world::WorldSystem *worldSystem);
 
 		virtual bool init();
 		virtual void uninit();
