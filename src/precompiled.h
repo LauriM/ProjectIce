@@ -26,12 +26,12 @@
 #define WORLD_DEPTH 10
 #define WORLD_WATER_LEVEL 2
 
+typedef std::string String;
+
 #ifndef PRECOMPILED_H
 #define PRECOMPILED_H
 
 #include "engine/EngineSystem.h"
-
-typedef std::string String;
 
 using namespace engine;
 

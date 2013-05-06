@@ -2,6 +2,7 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/world/Room.h"
 #include "engine/world/Tile.h"
+#include "engine/render/UI/Window.h"
 
 using namespace engine;
 
@@ -65,6 +66,16 @@ int main(){
 		SCPPT_COMPARE("Visual",tempTile->visual,==,visual);
 		SCPPT_COMPARE("hp",tempTile->hp,==,hp);
 		SCPPT_COMPARE("Blocks",tempTile->blocks,==,blocks);
+
+		PRINTLN("-> Window");
+		render::UI::Window window;
+		window.name = "test";
+		window.pos.x = 1;
+		window.pos.y = 1;
+		window.size.x = 10;
+		window.size.y = 10;
+
+		window.printDebugInfo();
 	}
 
 	PRINTLN("Tests complete");

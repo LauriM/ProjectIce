@@ -4,6 +4,7 @@
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
 #include "engine/render/RenderSystem.h"
+#include "engine/render/UI/UISystem.h"
 
 #include "proto/worldstate.pb.h"
 
@@ -15,6 +16,7 @@ int main(){
 
 	world::WorldSystem *world = new world::WorldSystem();
 	render::RenderSystem *render = new render::RenderSystem(world);
+	engine::render::UI::UISystem *ui = new render::UI::UISystem();
 
 	/* init */
 	world->init();
@@ -25,6 +27,7 @@ int main(){
 	//lets test saving it...
 
 	render->init();
+	ui->init();
 
 	bool quitStatus = false;
 	while(quitStatus == false){
