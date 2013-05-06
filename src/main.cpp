@@ -53,6 +53,9 @@ int main(){
 			case 60:
 				render->cameraPos.z += 1;
 				break;
+			case 27:
+				quitStatus = true;
+				break;
 		}
 	}
 

@@ -11,3 +11,4 @@ Secondary
 =========
 
 * loading of the world (or streaming parts of it(?)) (Possibly not needed at all)
+* figure out where the spamming comes when a save loading from disk
