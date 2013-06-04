@@ -118,18 +118,20 @@ namespace world {
 
 					if(z < heightMap[x][y]){
 						//Current depth is under the highest point, add dungeon
-						rooms[x][y][z].roomType = ROOM_TYPE_DUNGEON; 
+						rooms[x][y][z].roomType = ROOM_TYPE_DUNGEON;
 					}
 
 					if(z == heightMap[x][y]){
 						//We are on the same level as the highest point, its ground
 						rooms[x][y][z].roomType = ROOM_TYPE_GROUND;
+						LOG_INFO("[GEN] Ground");
 					}
 
 					if(z == heightMap[x][y]){
 						if(z < WORLD_WATER_LEVEL){
-							rooms[x][y][z].roomType = ROOM_TYPE_WATER; 
-						}else{
+							rooms[x][y][z].roomType = ROOM_TYPE_WATER;
+						}
+						if(z > heightMap[x][y]){
 							rooms[x][y][z].roomType = ROOM_TYPE_EMPTY;
 						}
 					}
@@ -230,7 +232,7 @@ namespace world {
 		}
 
 		//WorldSave should now be ready... write it to file.
-		
+
 		std::fstream stream;
 		stream.open(filename.c_str(), std::ios::out | std::ios::binary);
 

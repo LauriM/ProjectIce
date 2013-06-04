@@ -1,4 +1,5 @@
 #include "engine/world/Room.h"
+#include "engine/math/random.h"
 
 namespace engine {
 namespace world {
@@ -35,6 +36,7 @@ namespace world {
 			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
 				tiles[i] = tempTile;
 			}
+
 			break;
 		case ROOM_TYPE_GROUND:
 			tempTile.setType(TILE_GRASS);
@@ -43,12 +45,27 @@ namespace world {
 				tiles[i] = tempTile;
 			}
 
+			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
+				if(randomRange(0,10) > 8){
+					tiles[i] = Tile(TILE_TREE);
+				}
+			}
+
+			break;
 		case ROOM_TYPE_DUNGEON:
 			tempTile.setType(TILE_ROCK_FLOOR);
 
 			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
 				tiles[i] = tempTile;
 			}
+
+			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
+				if(randomRange(0,1)){
+					tiles[i] = Tile(TILE_SOLID_ROCK);
+				}
+			}
+
+			break;
 		}
 	}
 

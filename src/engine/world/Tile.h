@@ -30,6 +30,14 @@ namespace world {
 			//add -> tickFunction (Executed every time entity or actor is in the tile)
 		}
 
+		Tile(TILE_TYPES type){
+			visual = ' ';
+			blocks = false;
+			hp = 100;
+
+			setType(type);
+		}
+
 		char visual; //Visual displayed on the gameview
 		bool blocks; //Does it block movement/visuals
 		int hp;      //How many hits it can take before getting destroyed
