@@ -6,7 +6,7 @@ namespace log {
 
 	void insertLog(String logMsg){
 		FILE *logFile;
-		fopen_s(&logFile,"log.txt","a+");
+		logFile = fopen("log.txt","a+");
 		fprintf(logFile,"%s\n",logMsg.c_str());
 		fflush(logFile);
 		fclose(logFile);

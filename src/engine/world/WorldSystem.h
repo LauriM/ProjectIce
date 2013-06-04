@@ -25,6 +25,8 @@ namespace world {
 	public:
 		WorldSystem();
 
+		~WorldSystem() {}
+
 		virtual bool init();
 		virtual void uninit();
 		virtual void update();

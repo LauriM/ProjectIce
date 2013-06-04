@@ -94,8 +94,10 @@ int main(){
 	*/
 
 	//Clean up the systems
+	/*
 	delete world;
 	delete render;
+	*/
 
 	return 0;
 }

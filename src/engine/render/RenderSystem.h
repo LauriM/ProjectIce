@@ -17,6 +17,7 @@ namespace render {
 		vec3 cameraPos; //What section of map is currently visible and should be render.
 
 		RenderSystem(world::WorldSystem *worldSystem);
+		~RenderSystem() {};
 
 		virtual bool init();
 		virtual void uninit();

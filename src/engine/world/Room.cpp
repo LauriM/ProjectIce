@@ -17,10 +17,11 @@ namespace world {
 	void Room::generate(){
 		//Lets get the simple types out from the way first... air and water...
 
+		Tile tempTile;
+
 		switch(roomType){
 		case ROOM_TYPE_EMPTY:
 			//Loop trough all tiles and set them to void
-			Tile tempTile;
 			tempTile.setType(TILE_VOID);
 
 			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
@@ -29,27 +30,24 @@ namespace world {
 
 			break;
 		case ROOM_TYPE_WATER:
-			Tile waterTile;
-			waterTile.setType(TILE_WATER);
+			tempTile.setType(TILE_WATER);
 
 			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
-				tiles[i] = waterTile;
+				tiles[i] = tempTile;
 			}
 			break;
 		case ROOM_TYPE_GROUND:
-			Tile groundTile;
-			groundTile.setType(TILE_GRASS);
+			tempTile.setType(TILE_GRASS);
 
 			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
-				tiles[i] = groundTile;
+				tiles[i] = tempTile;
 			}
 
 		case ROOM_TYPE_DUNGEON:
-			Tile rockFloor;
-			rockFloor.setType(TILE_ROCK_FLOOR);
+			tempTile.setType(TILE_ROCK_FLOOR);
 
 			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
-				tiles[i] = rockFloor;
+				tiles[i] = tempTile;
 			}
 		}
 	}
