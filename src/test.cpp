@@ -31,7 +31,8 @@ int main(){
 	}
 
 	PRINTLN("-> World");
-	{
+	SCPPT_COMPARE("World is disabled (bugs)",0,==,1);
+	{ /*
 		world::WorldSystem *world = new world::WorldSystem();
 
 		world->init();
@@ -49,7 +50,7 @@ int main(){
 		world->saveToFile("testsave");
 		PRINTLN("Save done!");
 
-		delete world;
+		//delete world;
 
 		world = new world::WorldSystem();
 
@@ -66,8 +67,11 @@ int main(){
 		SCPPT_COMPARE("Visual",tempTile->visual,==,visual);
 		SCPPT_COMPARE("hp",tempTile->hp,==,hp);
 		SCPPT_COMPARE("Blocks",tempTile->blocks,==,blocks);
+		*/
+	}
 
-		PRINTLN("-> Window");
+	PRINTLN("-> Window");
+	{
 		render::UI::Window window;
 		window.name = "test";
 		window.pos.x = 1;
