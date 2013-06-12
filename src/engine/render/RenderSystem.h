@@ -2,6 +2,7 @@
 #define ENGINE_RENDER_RENDERSYSTEM_H
 
 #include "engine/world/WorldSystem.h"
+#include "engine/render/UI/UISystem.h"
 
 #include "engine/math/vec2.h"
 #include "engine/math/vec3.h"
@@ -12,11 +13,12 @@ namespace render {
 	class RenderSystem : public EngineSystem {
 	private:
 		world::WorldSystem *worldSystem;
+		UI::UISystem *uiSystem;
 
 	public:
 		vec3 cameraPos; //What section of map is currently visible and should be render.
 
-		RenderSystem(world::WorldSystem *worldSystem);
+		RenderSystem(world::WorldSystem *worldSystem,UI::UISystem *uiSystem);
 		~RenderSystem() {};
 
 		virtual bool init();

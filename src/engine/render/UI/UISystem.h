@@ -10,9 +10,9 @@ namespace render {
 namespace UI {
 
 	class UISystem : public EngineSystem {
-	private:
-		std::vector<Window> windows;
 	public:
+		std::vector<Window> windows;
+
 		UISystem();
 
 		virtual bool init();

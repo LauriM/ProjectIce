@@ -10,12 +10,13 @@ namespace render {
 namespace UI {
 
 	class Window {
-	public:
+	private:
 		bool visible;
 		String name;
 		vec2 pos;
 		vec2 size;
 
+	public:
 		Window();
 		//TODO: Overloaded window with parameters
 
@@ -23,9 +24,12 @@ namespace UI {
 		void setSize(vec2 newSize);
 		void setName(String newName);
 
-		void render();
-
 		void printDebugInfo();
+
+		bool isVisible();
+		String getName();
+		vec2 getPos();
+		vec2 getSize();
 	};
 
 }

@@ -8,8 +8,9 @@
 namespace engine {
 namespace render {
 
-	RenderSystem::RenderSystem(world::WorldSystem *worldSystem)
-	: worldSystem(worldSystem)
+	RenderSystem::RenderSystem(world::WorldSystem *worldSystem,UI::UISystem *uiSystem)
+	: worldSystem(worldSystem),
+	  uiSystem(uiSystem)
 	{}
 
 	bool RenderSystem::init(){
@@ -58,7 +59,7 @@ namespace render {
 			return;
 		}
 
-		//Render the map..
+		/* RENDER MAP */
 		world::Room *currentRoom = worldSystem->getRoom(cameraPos);
 
 		vec2 pos;
@@ -70,6 +71,48 @@ namespace render {
 			}
 		}
 
+		/* RENDER UI ON TOP OF EVERYTHING */
+
+		for(int i = 0;i < uiSystem->windows.size();++i){
+			vec2 pos  = uiSystem->windows[i].getPos();
+			vec2 size = uiSystem->windows[i].getSize();
+
+			for(int x = pos.x; x < pos.x + size.x + 1; ++x){
+				for(int y = pos.y; y < pos.y + size.y + 1; ++y){
+					drawChar(vec2(x,y), ' ');
+
+					if(x == pos.x){
+						drawChar(vec2(x,y), '|');
+					}
+
+					if(x == pos.x + size.x){
+						drawChar(vec2(x,y), '|');
+					}
+
+					if(y == pos.y){
+						drawChar(vec2(x,y), '-');
+					}
+
+					if(y == pos.y + size.y){
+						drawChar(vec2(x,y), '-');
+					}
+				}
+			}
+
+			//Corners
+			drawChar(pos,'/');
+			drawChar(vec2(pos.x + size.x , pos.y),'\\');
+			drawChar(vec2(pos.x , pos.y + size.y),'\\');
+			drawChar(vec2(pos.x + size.x , pos.y + size.y),'/');
+
+			//lets place window title nicely to the middle
+			if(uiSystem->windows[i].getName().size() > size.x){
+				LOG_WARNING("Window name too long!");
+			}else{
+				move(pos.y,pos.x + 2);
+				printw("[%s]",uiSystem->windows[i].getName().c_str());
+			}
+		}
 		return;
 	}
 

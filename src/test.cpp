@@ -74,11 +74,7 @@ int main(){
 	PRINTLN("-> Window");
 	{
 		render::UI::Window window;
-		window.name = "test";
-		window.pos.x = 1;
-		window.pos.y = 1;
-		window.size.x = 10;
-		window.size.y = 10;
+		window.setName("asdf");
 
 		window.printDebugInfo();
 	}

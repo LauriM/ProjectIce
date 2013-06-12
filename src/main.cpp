@@ -17,8 +17,8 @@ int main(){
 	LOG_INFO("engine starting");
 
 	world::WorldSystem *world        = new world::WorldSystem();
-	render::RenderSystem *render     = new render::RenderSystem(world);
 	engine::render::UI::UISystem *ui = new render::UI::UISystem();
+	render::RenderSystem *render     = new render::RenderSystem(world,ui);
 
 	engine::player::Player *player   = new engine::player::Player();
 
@@ -35,11 +35,17 @@ int main(){
 	player->init();
 
 	render::UI::Window welcomeWindow;
-	welcomeWindow.setPos(vec2(2,2));
-	welcomeWindow.setSize(vec2(10,10));
+	welcomeWindow.setPos(vec2(4,3));
+	welcomeWindow.setSize(vec2(35,15));
 	welcomeWindow.setName("Welcome to ProjectIce");
 
+	render::UI::Window blob;
+	blob.setPos(vec2(45,3));
+	blob.setSize(vec2(15,15));
+	blob.setName("blob");
+
 	ui->addWindow(welcomeWindow);
+	ui->addWindow(blob);
 
 	bool quitStatus = false;
 	while(quitStatus == false){

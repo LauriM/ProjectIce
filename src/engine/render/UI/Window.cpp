@@ -17,25 +17,34 @@ namespace UI {
 		printf("Window %s Pos [%i,%i] Size [%i,%i]\n", name.c_str(), pos.x, pos.y, size.x, size.y);
 	}
 
-	void Window::render(){
-		if(!visible){
-			LOG_INFO("window marked invisible");
-			return;
-		}
-
-		LOG_INFO("rendering window");
-	}
-
 	void Window::setPos(vec2 newPos){
+		//TODO: asserts
 		pos = newPos;
 	}
 
 	void Window::setSize(vec2 newSize){
+		//TODO: asserts
 		size = newSize;
 	}
 
 	void Window::setName(String newName){
 		name = newName;
+	}
+
+	bool Window::isVisible(){
+		return visible;
+	}
+
+	String Window::getName(){
+		return name;
+	}
+
+	vec2 Window::getPos(){
+		return pos;
+	}
+
+	vec2 Window::getSize(){
+		return size;
 	}
 
 }
