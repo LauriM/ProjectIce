@@ -5,6 +5,7 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/render/RenderSystem.h"
 #include "engine/render/UI/UISystem.h"
+#include "engine/player/Player.h"
 
 #include "proto/worldstate.pb.h"
 
@@ -14,9 +15,11 @@ int main(){
 	LOG_INFO("----");
 	LOG_INFO("engine starting");
 
-	world::WorldSystem *world = new world::WorldSystem();
-	render::RenderSystem *render = new render::RenderSystem(world);
+	world::WorldSystem *world        = new world::WorldSystem();
+	render::RenderSystem *render     = new render::RenderSystem(world);
 	engine::render::UI::UISystem *ui = new render::UI::UISystem();
+
+	engine::player::Player *player   = new engine::player::Player();
 
 	/* init */
 	world->init();
@@ -28,6 +31,7 @@ int main(){
 
 	render->init();
 	ui->init();
+	player->init();
 
 	bool quitStatus = false;
 	while(quitStatus == false){

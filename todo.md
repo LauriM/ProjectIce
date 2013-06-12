@@ -6,6 +6,7 @@ TODO
 * colors
 * settings system (!)
 * UI system and backend stuff
+* Consider removing the protobuf and building custom save system
 
 Secondary
 =========

@@ -4,7 +4,6 @@
 
 #include "proto/worldstate.pb.h"
 
-
 namespace engine {
 namespace world {
 
@@ -124,7 +123,6 @@ namespace world {
 					if(z == heightMap[x][y]){
 						//We are on the same level as the highest point, its ground
 						rooms[x][y][z].roomType = ROOM_TYPE_GROUND;
-						LOG_INFO("[GEN] Ground");
 					}
 
 					if(z == heightMap[x][y]){
