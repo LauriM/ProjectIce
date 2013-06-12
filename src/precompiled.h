@@ -2,6 +2,7 @@
 #include <fstream>
 #include <ncurses.h>
 #include <stdlib.h>
+#include <vector>
 #include <time.h>
 #include <math.h>
 #include <assert.h>

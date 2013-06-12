@@ -18,7 +18,13 @@ namespace UI {
 	}
 
 	void UISystem::update(){
-		return;
+		for(int i = 0; i < windows.size(); ++i){
+			windows[i].render();
+		}
+	}
+
+	void UISystem::addWindow(Window window){
+		windows.push_back(window);
 	}
 
 }

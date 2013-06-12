@@ -3,6 +3,7 @@
 #include "engine/world/Room.h"
 #include "engine/world/Tile.h"
 #include "engine/render/UI/Window.h"
+#include "engine/player/Player.h"
 
 using namespace engine;
 
@@ -81,6 +82,14 @@ int main(){
 
 		window.printDebugInfo();
 	}
+
+	PRINTLN("-> Player");
+	{
+		engine::player::Player player;
+
+		player.init();
+	}
+
 
 	PRINTLN("Tests complete");
 

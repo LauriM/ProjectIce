@@ -12,6 +12,7 @@ namespace log {
 		fclose(logFile);
 
 		//TODO: Add some kind of ingame log reader thing or just parse with tail (2013-04-08)
+		//TODO: globally open the file
 	}
 
 }

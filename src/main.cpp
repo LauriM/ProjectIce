@@ -5,6 +5,7 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/render/RenderSystem.h"
 #include "engine/render/UI/UISystem.h"
+#include "engine/render/UI/Window.h"
 #include "engine/player/Player.h"
 
 #include "proto/worldstate.pb.h"
@@ -33,10 +34,18 @@ int main(){
 	ui->init();
 	player->init();
 
+	render::UI::Window welcomeWindow;
+	welcomeWindow.setPos(vec2(2,2));
+	welcomeWindow.setSize(vec2(10,10));
+	welcomeWindow.setName("Welcome to ProjectIce");
+
+	ui->addWindow(welcomeWindow);
+
 	bool quitStatus = false;
 	while(quitStatus == false){
 		world->update();
 		render->update();
+		ui->update();
 		int key = getch();
 
 		//This switch provides "world overview specating"

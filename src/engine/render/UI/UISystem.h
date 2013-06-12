@@ -3,13 +3,15 @@
 
 #include "engine/EngineSystem.h"
 
+#include "engine/render/UI/Window.h"
+
 namespace engine {
 namespace render {
 namespace UI {
 
 	class UISystem : public EngineSystem {
 	private:
-		//All the windows..
+		std::vector<Window> windows;
 	public:
 		UISystem();
 
@@ -17,9 +19,7 @@ namespace UI {
 		virtual void uninit();
 		virtual void update();
 
-		//TODO: Add window
-		//TODO: render
-		//TODO: Get windows, etc
+		void addWindow(Window window);
 	};
 
 }
