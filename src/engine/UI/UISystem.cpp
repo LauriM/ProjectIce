@@ -1,9 +1,8 @@
 #include "precompiled.h"
 
-#include "engine/render/UI/UISystem.h"
+#include "engine/UI/UISystem.h"
 
 namespace engine {
-namespace render {
 namespace UI {
 
 	UISystem::UISystem() {}
@@ -24,6 +23,5 @@ namespace UI {
 		windows.push_back(window);
 	}
 
-}
 }
 }

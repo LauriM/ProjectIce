@@ -4,8 +4,8 @@
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
 #include "engine/render/RenderSystem.h"
-#include "engine/render/UI/UISystem.h"
-#include "engine/render/UI/Window.h"
+#include "engine/UI/UISystem.h"
+#include "engine/UI/Window.h"
 #include "engine/player/Player.h"
 
 #include "proto/worldstate.pb.h"
@@ -17,7 +17,7 @@ int main(){
 	LOG_INFO("engine starting");
 
 	world::WorldSystem *world        = new world::WorldSystem();
-	engine::render::UI::UISystem *ui = new render::UI::UISystem();
+	engine::UI::UISystem *ui         = new UI::UISystem();
 	render::RenderSystem *render     = new render::RenderSystem(world,ui);
 
 	engine::player::Player *player   = new engine::player::Player();
@@ -34,12 +34,12 @@ int main(){
 	ui->init();
 	player->init();
 
-	render::UI::Window welcomeWindow;
+	UI::Window welcomeWindow;
 	welcomeWindow.setPos(vec2(4,3));
 	welcomeWindow.setSize(vec2(35,15));
 	welcomeWindow.setName("Welcome to ProjectIce");
 
-	render::UI::Window blob;
+	UI::Window blob;
 	blob.setPos(vec2(45,3));
 	blob.setSize(vec2(15,15));
 	blob.setName("blob");

@@ -2,7 +2,7 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/world/Room.h"
 #include "engine/world/Tile.h"
-#include "engine/render/UI/Window.h"
+#include "engine/UI/Window.h"
 #include "engine/player/Player.h"
 
 using namespace engine;
@@ -73,7 +73,7 @@ int main(){
 
 	PRINTLN("-> Window");
 	{
-		render::UI::Window window;
+		UI::Window window;
 		window.setName("asdf");
 
 		window.printDebugInfo();

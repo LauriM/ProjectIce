@@ -1,12 +1,11 @@
-#ifndef ENGINE_RENDER_UI_UISYSTEM_H
-#define ENGINE_RENDER_UI_UISYSTEM_H
+#ifndef ENGINE_UI_UISYSTEM_H
+#define ENGINE_UI_UISYSTEM_H
 
 #include "engine/EngineSystem.h"
 
-#include "engine/render/UI/Window.h"
+#include "engine/UI/Window.h"
 
 namespace engine {
-namespace render {
 namespace UI {
 
 	class UISystem : public EngineSystem {
@@ -22,7 +21,6 @@ namespace UI {
 		void addWindow(Window window);
 	};
 
-}
 }
 }
 
