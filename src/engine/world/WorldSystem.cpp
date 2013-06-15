@@ -2,8 +2,6 @@
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
 
-#include "proto/worldstate.pb.h"
-
 namespace engine {
 namespace world {
 
@@ -155,90 +153,15 @@ namespace world {
 	 * Load the whole world from the disk.
 	 */
 	void WorldSystem::loadFromFile(String filename){
-		LOG_INFO("Loading from savefile...");
-
-		std::fstream input;
-		input.open(filename.c_str(),std::ios::in | std::ios::binary);
-
-		worldMsg worldSave;
-		worldSave.ParseFromIstream(&input);
-
-		//Go trough rooms and fill the array
-		for(int i = 0; i < worldSave.rooms_size(); ++i ){
-			roomMsg roomSave = worldSave.rooms(i);
-
-			//Lets get the pointer to the room
-			Room *room = &rooms[roomSave.posx()][roomSave.posy()][roomSave.posz()];
-
-			// ** Room Variables ** //
-			room->roomType = (ROOM_TYPES)roomSave.roomtype();
-
-			//Insert tiles to the room
-			Tile* tileArray = room->getTileArray();
-			for(int x = 0; x < roomSave.tiles_size(); ++x ){
-				tileMsg tileSave = roomSave.tiles(x);
-
-				// ** Tile variables ** //
-				tileArray[x].blocks = tileSave.blocks();
-				tileArray[x].hp     = tileSave.hp();
-				tileArray[x].visual = tileSave.visual();
-				//TODO: The visual is not correctly loaded (Or nothing in the world is correctly loaded?) (2013-04-16)
-				//std::snprintf(&tileArray[x].visual,sizeof(char),"%c",tileSave.visual());
-			}
-		}
-
-		input.close();
-		LOG_INFO("Save loaded!");
+		LOG_WARNING("Reading from file not implemented");
 	}
 
 	/**
 	 * Save the world with all the rooms and tile information to a file.
 	 */
 	void WorldSystem::saveToFile(String filename){
-		LOG_INFO("Writing savefile...");
-		worldMsg worldSave;
-
-		worldSave.set_age(age);
-
-		//Go trough rooms and add them to the array..
-		for(int x = 0;x < WORLD_WIDTH;++x){
-			for(int y = 0;y < WORLD_HEIGHT;++y){
-				for(int z = 0;z < WORLD_DEPTH;++z){
-					roomMsg *room =worldSave.add_rooms();
-
-					room->set_posx(x);
-					room->set_posy(y);
-					room->set_posy(y);
-
-					// ** Room variables **//
-					room->set_roomtype(rooms[x][y][z].roomType);
-
-					//Lets then add all the tiles to the room!
-
-					Tile* tiles = rooms[x][y][z].getTileArray();
-
-					for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i ){
-						tileMsg *tile = room->add_tiles();
-
-						// ** Tile variables **
-						tile->set_blocks(tiles[i].blocks);
-						tile->set_visual(tiles[i].visual);
-						tile->set_hp(tiles[i].hp);
-					}
-				}
-			}
-		}
-
-		//WorldSave should now be ready... write it to file.
-
-		std::fstream stream;
-		stream.open(filename.c_str(), std::ios::out | std::ios::binary);
-
-		worldSave.SerializeToOstream(&stream);
-
-		stream.close();
-		LOG_INFO("Save file written!");
-	} /* savetofile */
+		LOG_WARNING("Writing to save file not implemented");
+	}
 
 }
 }

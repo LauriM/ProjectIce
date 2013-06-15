@@ -25,7 +25,7 @@ solution "ProjectIce"
     project "ice"
         kind "ConsoleApp"
         language "C++"
-        files { "src/main.cpp", "src/engine/**.h", "src/engine/**.cpp" ,"src/proto/**.cc" }
+        files { "src/main.cpp", "src/engine/**.h", "src/engine/**.cpp" }
 		includedirs { "src/" }
 
         configuration "windows"
@@ -35,15 +35,15 @@ solution "ProjectIce"
             links       { "pdcurses" }
 
         configuration "linux"
-            links { "ncurses" , "protobuf" }
+            links { "ncurses" }
 			libdirs { "/usr/local/lib" }
 
 	project "test"
 		kind "ConsoleApp"
 		language "C++"
-		files { "src/test.cpp", "src/engine/**.h", "src/engine/**.cpp" ,"src/proto/**.cc" }
+		files { "src/test.cpp", "src/engine/**.h", "src/engine/**.cpp" }
 		includedirs { "src/" }
 
 		configuration "linux"
-			links { "ncurses" , "protobuf" }
+			links { "ncurses" , }
 			libdirs { "/usr/local/lib" }

@@ -8,8 +8,6 @@
 #include "engine/UI/Window.h"
 #include "engine/player/Player.h"
 
-#include "proto/worldstate.pb.h"
-
 int main(){
 	randomInit();
 
