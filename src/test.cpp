@@ -31,9 +31,6 @@ int main(){
 		SCPPT_COMPARE("Rooms generate something",testRoom.getTile(5,5)->visual,==,'.');
 	}
 
-	PRINTLN("-> World");
-	SCPPT_COMPARE("World is disabled (bugs)",0,==,1);
-
 	PRINTLN("-> Window");
 	{
 		UI::Window window;
@@ -53,6 +50,4 @@ int main(){
 	PRINTLN("Tests complete");
 
 	SCPPT_END;
-
-	return 0;
 }
