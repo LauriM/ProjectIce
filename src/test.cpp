@@ -33,43 +33,6 @@ int main(){
 
 	PRINTLN("-> World");
 	SCPPT_COMPARE("World is disabled (bugs)",0,==,1);
-	{ /*
-		world::WorldSystem *world = new world::WorldSystem();
-
-		world->init();
-		world->generate();
-
-		//Lets take random point
-		world::Room* tempRoom = world->getRoom(2,2,2);
-		world::Tile* tempTile = tempRoom->getTile(5,5);
-
-		char visual = tempTile->visual;
-		int  hp     = tempTile->hp;
-		bool blocks = tempTile->blocks;
-
-		PRINTLN("Saving world to disk..");
-		world->saveToFile("testsave");
-		PRINTLN("Save done!");
-
-		//delete world;
-
-		world = new world::WorldSystem();
-
-		world->init();
-
-		PRINTLN("Loading world from disk..");
-		world->loadFromFile("testsave");
-		PRINTLN("Load done!");
-
-		tempRoom = world->getRoom(2,2,2);
-		tempTile = tempRoom->getTile(5,5);
-
-		PRINTLN("Comparing save file");
-		SCPPT_COMPARE("Visual",tempTile->visual,==,visual);
-		SCPPT_COMPARE("hp",tempTile->hp,==,hp);
-		SCPPT_COMPARE("Blocks",tempTile->blocks,==,blocks);
-		*/
-	}
 
 	PRINTLN("-> Window");
 	{
