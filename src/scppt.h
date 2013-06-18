@@ -28,4 +28,5 @@
 #define SCPPT_END printf("Ok: %i Fail: %i\n",testOks,testFails); \
 	clock_t scppt_exectime = clock() - scppt_starttime;\
 	double scppt_time = ((double)scppt_exectime)/CLOCKS_PER_SEC;\
-	printf("Exec time: %f\n",scppt_time);
+	printf("Exec time: %f\n",scppt_time); \
+	if(testFails > 0){ return 1; }else{ return 0; }

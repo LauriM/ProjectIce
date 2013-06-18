@@ -5,9 +5,9 @@ ProjectIce is my personal roguelike game/engine. Currently its in very early dev
 
 Build requirements:
 
-* ncurses
+* ncurses (libncurses5-dev package on Debian)
 * premake4
- 
+
 License
 =======
 
