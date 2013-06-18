@@ -4,19 +4,14 @@
 #include "precompiled.h"
 
 #include "engine/math/vec2.h"
+#include "engine/UI/ContainerBase.h"
 
 namespace engine {
 namespace UI {
 
-	enum WINDOW_CONTENT_TYPE {
-		CONTENT_TYPE_TEXT, //Window contains text, will be wrapped (DEFAULT)
-		CONTENT_TYPE_LIST, //Window contains list of items, can be selected
-		CONTENT_TYPE_CUSTOM, //Window content is fully custom
-	};
-
 	class Window {
 	protected:
-		WINDOW_CONTENT_TYPE type;
+		ContainerBase *container;
 		bool visible;
 		String name;
 		vec2 pos;
@@ -28,8 +23,10 @@ namespace UI {
 
 		void printDebugInfo();
 
-		void setType(WINDOW_CONTENT_TYPE newType){
-			type = newType;
+		/* set */
+
+		void setContainer(ContainerBase *cont){
+			container = cont;
 		}
 
 		void setPos(vec2 newPos){
@@ -50,8 +47,10 @@ namespace UI {
 			visible = newValue;
 		}
 
-		WINDOW_CONTENT_TYPE getType(){
-			return type;
+		/* get */
+
+		ContainerBase* getContainer(){
+			return container;
 		}
 
 		bool isVisible(){

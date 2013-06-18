@@ -7,6 +7,7 @@
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
 #include "engine/player/Player.h"
+#include "engine/UI/containers/TextContainer.h"
 
 int main(){
 	randomInit();
@@ -36,6 +37,12 @@ int main(){
 	welcomeWindow.setPos(vec2(4,3));
 	welcomeWindow.setSize(vec2(35,15));
 	welcomeWindow.setName("Welcome to ProjectIce");
+
+	UI::containers::TextContainer *textCont = new UI::containers::TextContainer();
+	textCont->init();
+	textCont->setText("Blob blob");
+
+	welcomeWindow.setContainer(textCont);
 
 	UI::Window blob;
 	blob.setPos(vec2(45,3));

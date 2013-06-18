@@ -4,6 +4,7 @@
 #include "engine/render/RenderSystem.h"
 #include "engine/world/Room.h"
 #include "engine/world/Tile.h"
+#include "engine/UI/ContainerBase.h"
 
 namespace engine {
 namespace render {
@@ -73,7 +74,9 @@ namespace render {
 
 		/* RENDER UI ON TOP OF EVERYTHING */
 
+
 		for(int i = 0;i < uiSystem->windows.size();++i){
+			//Render window decorations
 			vec2 pos  = uiSystem->windows[i].getPos();
 			vec2 size = uiSystem->windows[i].getSize();
 
@@ -112,7 +115,17 @@ namespace render {
 				move(pos.y,pos.x + 2);
 				printw("[%s]",uiSystem->windows[i].getName().c_str());
 			}
+
+			//render contents to windows
+			UI::ContainerBase *container = uiSystem->windows[i].getContainer();
+
+			if(container != NULL){
+				container->render();
+			}else{
+				LOG_ERROR("Window doesn't have container!");
+			}
 		}
+
 		return;
 	}
 
