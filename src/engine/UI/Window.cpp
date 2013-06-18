@@ -4,7 +4,8 @@ namespace engine {
 namespace UI {
 
 	Window::Window(){
-		visible = true;
+		type = CONTENT_TYPE_TEXT;
+		visible = true;WINDOWS
 		pos = vec2(0,0);
 		size = vec2(10,10);
 		name = "null";
