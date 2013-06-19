@@ -5,6 +5,7 @@ namespace engine {
 namespace log {
 
 	void insertLog(String logMsg){
+
 		FILE *logFile;
 		logFile = fopen("log.txt","a+");
 		fprintf(logFile,"%s\n",logMsg.c_str());

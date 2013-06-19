@@ -25,6 +25,8 @@ namespace containers{
 
 			void render(AABB bounds){
 				LOG_WARNING("not implemented");
+
+				LOG_DEBUG_F("Window render bounds: %i,%i (%i,%i)",bounds.pos.x,bounds.pos.y,bounds.size.x,bounds.size.y);
 			}
 
 			String getText(){

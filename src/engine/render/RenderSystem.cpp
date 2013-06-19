@@ -128,6 +128,12 @@ namespace render {
 				bounds.pos = uiSystem->windows[i].getPos();
 				bounds.size = uiSystem->windows[i].getSize();
 
+				//The bounds are INSIDE the window, not the same size as the window
+				++bounds.pos.x;
+				++bounds.pos.y;
+				--bounds.size.x;
+				--bounds.size.y;
+
 				container->render(bounds);
 			}else{
 				LOG_ERROR("Window doesn't have container!");
