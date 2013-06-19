@@ -3,6 +3,7 @@
 
 #include "precompiled.h"
 #include "engine/UI/ContainerBase.h"
+#include "engine/math/AABB.h"
 
 namespace engine {
 namespace UI {
@@ -22,7 +23,7 @@ namespace containers{
 
 			void uninit(){}
 
-			void render(){
+			void render(AABB bounds){
 				LOG_WARNING("not implemented");
 			}
 

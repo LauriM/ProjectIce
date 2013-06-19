@@ -1,6 +1,8 @@
 #ifndef ENGINE_UI_CONTAINERBASE_H
 #define ENGINE_UI_CONTAINERBASE_H
 
+#include "engine/math/AABB.h"
+
 namespace engine {
 namespace UI {
 
@@ -13,7 +15,7 @@ namespace UI {
 
 			virtual void init()   = 0;
 			virtual void uninit() = 0;
-			virtual void render() = 0;
+			virtual void render(AABB bounds) = 0;
 	};
 
 }

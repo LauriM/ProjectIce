@@ -1,6 +1,7 @@
 #include "precompiled.h"
 
 #include "engine/EngineSystem.h"
+#include "engine/math/AABB.h"
 #include "engine/render/RenderSystem.h"
 #include "engine/world/Room.h"
 #include "engine/world/Tile.h"
@@ -120,7 +121,14 @@ namespace render {
 			UI::ContainerBase *container = uiSystem->windows[i].getContainer();
 
 			if(container != NULL){
-				container->render();
+				//AABB where the container is allowed to draw
+
+				AABB bounds;
+
+				bounds.pos = uiSystem->windows[i].getPos();
+				bounds.size = uiSystem->windows[i].getSize();
+
+				container->render(bounds);
 			}else{
 				LOG_ERROR("Window doesn't have container!");
 			}
