@@ -15,6 +15,7 @@ namespace render {
 		world::WorldSystem *worldSystem;
 		UI::UISystem *uiSystem;
 
+		void drawChar(vec2 pos,int character);
 	public:
 		vec3 cameraPos; //What section of map is currently visible and should be render.
 
@@ -25,7 +26,12 @@ namespace render {
 		virtual void uninit();
 		virtual void update();
 
-		void drawChar(vec2 pos,int character);
+		/**
+		 * Draw charachter to bounds. 0,0 is on aabb,s position.
+		 *
+		 * Checks in place so the draw wont go outside of the window.
+		 */
+		void drawCharTobounds(AABB bounds,vec2 pos,int character);
 	};
 
 }
