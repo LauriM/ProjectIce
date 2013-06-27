@@ -164,8 +164,8 @@ namespace render {
 		}
 
 		//move the pos to the window area
-		pos.x -= bounds.x;
-		pos.y -= bounds.y;
+		pos.x -= bounds.pos.x;
+		pos.y -= bounds.pos.y;
 	}
 }
 }
