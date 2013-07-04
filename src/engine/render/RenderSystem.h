@@ -26,13 +26,25 @@ namespace render {
 		virtual void uninit();
 		virtual void update();
 
-		/**
-		 * Draw charachter to bounds. 0,0 is on aabb,s position.
-		 *
-		 * Checks in place so the draw wont go outside of the window.
-		 */
-		void drawCharTobounds(AABB bounds,vec2 pos,int character);
 	};
+
+	//PUBLIC DRAW FUNCTIONS
+	//
+	// Used when drawing from other systems makes sense (?)
+
+	/**
+	 * Draw charachter to bounds. 0,0 is on aabb,s position.
+	 *
+	 * Checks that the drawing wont go outside of the bounds.
+	 */
+	void drawCharTobounds(AABB bounds,vec2 pos,int character);
+
+	/**
+	 * Same as previous, but draws a string
+	 *
+	 * Checks that the drawing wont go outside of the bounds.
+	 */
+	void drawStringTobounds(AABB bounds,vec2 pos,String str);
 
 }
 }
