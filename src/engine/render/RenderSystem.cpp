@@ -164,8 +164,34 @@ namespace render {
 		}
 
 		//move the pos to the window area
-		pos.x -= bounds.pos.x;
-		pos.y -= bounds.pos.y;
+		pos.x += bounds.pos.x;
+		pos.y += bounds.pos.y;
+
+		move(pos.y,pos.x);
+		printw("%c",character);
+	}
+
+	void drawStringTobounds(AABB bounds,vec2 pos,String str){
+		//Check if pos is too far...
+
+		if(pos.x < 0 || pos.y < 0){
+			//Position negative...
+			LOG_WARNING("Trying to draw outside of window (negative)");
+			return;
+		}
+
+		//check if its outside of the window area
+		if( ( pos.x + str.length() ) > bounds.size.x || pos.y > bounds.size.y){
+			LOG_WARNING("Trying to draw outside of the window (positive)");
+			return;
+		}
+
+		//move the pos to the window area
+		pos.x += bounds.pos.x;
+		pos.y += bounds.pos.y;
+
+		move(pos.y,pos.x);
+		printw("%s",str.c_str());
 	}
 }
 }

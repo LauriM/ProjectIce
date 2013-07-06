@@ -11,6 +11,10 @@ Build requirements:
 Roadmap
 =======
 
+## Bugs
+
+* Memory leak/overwrite issues in the generate() functions ?
+
 ## Alpha
 
 Alpha should be first version where somekind of gameplay is possible.

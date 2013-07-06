@@ -40,7 +40,7 @@ int main(){
 
 	UI::containers::TextContainer *textCont = new UI::containers::TextContainer();
 	textCont->init();
-	textCont->setText("Blob blob");
+	textCont->setText("ProjectIce is an experimental roguelike project developed in C++. This is a early development build. And this string is useless and long to test the word wrapping feature on the textContainer.");
 
 	welcomeWindow.setContainer(textCont);
 
