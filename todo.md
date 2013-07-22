@@ -15,6 +15,15 @@ TODO
 * Selection to actually work
 * How to handle the output?
 
+Have this kind of object with pointers to handle the output to correct functions.
+
+    struct SelectionState {
+        int value;
+        bool isComplete;
+    }
+
+Or capture the whole Main loop for UI... selection is overriding anyway.
+
 Secondary
 =========
 
