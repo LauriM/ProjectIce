@@ -8,6 +8,7 @@
 #include "engine/UI/Window.h"
 #include "engine/player/Player.h"
 #include "engine/UI/containers/TextContainer.h"
+#include "engine/UI/containers/SelectContainer.h"
 
 int main(){
 	randomInit();
@@ -48,6 +49,13 @@ int main(){
 	blob.setPos(vec2(45,3));
 	blob.setSize(vec2(15,15));
 	blob.setName("blob");
+
+	UI::containers::SelectContainer *selectCont = new UI::containers::SelectContainer();
+	selectCont->insertItem("0 zero");
+	selectCont->insertItem("& second");
+	selectCont->insertItem("# so on");
+
+	blob.setContainer(selectCont);
 
 	ui->addWindow(welcomeWindow);
 	ui->addWindow(blob);
