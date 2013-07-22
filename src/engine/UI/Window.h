@@ -23,8 +23,6 @@ namespace UI {
 
 		void printDebugInfo();
 
-		/* set */
-
 		void setContainer(ContainerBase *cont){
 			container = cont;
 		}
@@ -48,7 +46,6 @@ namespace UI {
 		}
 
 		/* get */
-
 		ContainerBase* getContainer(){
 			return container;
 		}

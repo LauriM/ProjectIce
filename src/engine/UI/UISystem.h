@@ -9,16 +9,19 @@ namespace engine {
 namespace UI {
 
 	class UISystem : public EngineSystem {
-	public:
-		std::vector<Window> windows;
+		public:
+			std::vector<UI::Window> windows;
 
-		UISystem();
+			UISystem();
 
-		virtual bool init();
-		virtual void uninit();
-		virtual void update();
+			virtual bool init();
+			virtual void uninit();
+			virtual void update();
 
-		void addWindow(Window window);
+			void addWindow(Window window);
+			void addWindow(Window window,bool setAsCurrentWindow);
+
+			bool handleInput(int key);
 	};
 
 }

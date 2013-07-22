@@ -67,6 +67,10 @@ int main(){
 		ui->update();
 		int key = getch();
 
+		if(ui->handleInput(key) == true){
+			continue; //input was captured by the UISystem
+		}
+
 		//This switch provides "world overview specating"
 		switch(key){
 			//hjkl

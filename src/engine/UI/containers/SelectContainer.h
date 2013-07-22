@@ -14,8 +14,12 @@ namespace containers {
 	class SelectContainer : public ContainerBase {
 		protected:
 			std::vector<String> items;
+			int currentItem;
+
 		public:
 			void init(){
+				interaction = true;
+				currentItem = 0;
 			}
 
 			void uninit() {}
@@ -33,6 +37,10 @@ namespace containers {
 
 			void insertItem(String item){
 				items.push_back(item);
+			}
+
+			void handleInput(int key){
+				LOG_INFO("SelectContainer got input");
 			}
 	};
 

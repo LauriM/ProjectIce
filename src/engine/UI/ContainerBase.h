@@ -10,6 +10,9 @@ namespace UI {
 	 * Base class for containers that are inside the window
 	 */
 	class ContainerBase {
+		protected:
+			bool interaction;
+
 		public:
 			virtual ~ContainerBase() {};
 
@@ -21,6 +24,18 @@ namespace UI {
 			 * Function drawToBounds(bounds,pos,char); is used
 			 */
 			virtual void render(AABB bounds) = 0;
+
+			/**
+			 * Passes the input controls to the container
+			 */
+			virtual void handleInput(int key) = 0;
+
+			/* getters / setters */
+
+			bool getInteraction(){
+				return interaction;
+			}
+
 	};
 
 }

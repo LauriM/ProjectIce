@@ -1,7 +1,6 @@
 #ifndef ENGINE_UI_CONTAINERS_TEXTCONTAINER_H
 #define ENGINE_UI_CONTAINERS_TEXTCONTAINER_H
 
-#include "precompiled.h"
 #include "engine/UI/ContainerBase.h"
 #include "engine/math/AABB.h"
 
@@ -22,6 +21,7 @@ namespace containers{
 		public:
 			void init(){
 				textContent = "hello world";
+				interaction = false;
 			}
 
 			void uninit(){}
@@ -61,6 +61,11 @@ namespace containers{
 
 			void setText(String text){
 				textContent = text;
+			}
+
+			void handleInput(int key){
+				/* stub */
+				return;
 			}
 	};
 
