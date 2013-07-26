@@ -1,7 +1,7 @@
 ProjectIce
 ==========
 
-ProjectIce is my personal roguelike game/engine. Currently its in very early development.
+ProjectIce is roguelike game/engine project. Currently its in very early development.
 
 Build requirements:
 
