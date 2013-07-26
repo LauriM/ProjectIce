@@ -1,10 +1,6 @@
-game.make
-ice.make
 test
-test.make
 game
 ice
-Makefile
 obj/
 
 cscope.out
