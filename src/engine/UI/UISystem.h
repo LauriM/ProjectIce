@@ -1,8 +1,9 @@
 #ifndef ENGINE_UI_UISYSTEM_H
 #define ENGINE_UI_UISYSTEM_H
 
-#include "engine/EngineSystem.h"
 
+#include "engine/EngineSystem.h"
+#include "engine/UI/UIResult.h"
 #include "engine/UI/Window.h"
 
 namespace engine {
@@ -21,7 +22,7 @@ namespace UI {
 			void addWindow(Window window);
 			void addWindow(Window window,bool setAsCurrentWindow);
 
-			bool handleInput(int key);
+			bool handleInput(int key, engine::UI::UIResult * result = NULL);
 	};
 
 }
