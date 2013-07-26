@@ -23,7 +23,7 @@ namespace UI {
 		windows.push_back(window);
 	}
 
-	bool UISystem::handleInput(int key){
+	bool UISystem::handleInput(int key, engine::UI::UIResult * result ){
 		for(int i = 0; i < windows.size();++i){
 			windows.at(i).getContainer()->handleInput(key);
 		}
