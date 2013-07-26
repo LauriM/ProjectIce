@@ -1,23 +1,21 @@
-/*
-	This object is meant to capture information from a given
-	UISystem. For example I guess by the interface if you do
-	something there you'd like to figure out what exactly it is
-	that you did.
-
-	To be easily reusable in other places the data is stored
-	in a simple map with a key => value.
-*/
 #ifndef __UI_RESULT_H__
 #define __UI_RESULT_H__
 
 #include <map>
 
-namespace engine 
-{
-	namespace UI
-	{
-		class UIResult
-		{
+namespace engine {
+namespace UI {
+
+	/*
+	   This object is meant to capture information from a given
+	   UISystem. For example I guess by the interface if you do
+	   something there you'd like to figure out what exactly it is
+	   that you did.
+
+	   To be easily reusable in other places the data is stored
+	   in a simple map with a key => value.
+	 */
+	class UIResult {
 		public:
 			UIResult();
 			String getValue(String key);
@@ -25,8 +23,9 @@ namespace engine
 			~UIResult();
 		protected:
 			std::map<String,String> _values;
-		};
-	}
+	};
+
+}
 }
 
 #endif
