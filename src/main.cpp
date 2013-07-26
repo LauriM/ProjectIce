@@ -47,7 +47,7 @@ int main(){
 	welcomeWindow.setContainer(textCont);
 
 	UI::Window blob;
-	blob.setPos(vec2(45,3));
+	blob.setPos(vec2(84,3));
 	blob.setSize(vec2(15,15));
 	blob.setName("blob");
 
