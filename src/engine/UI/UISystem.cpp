@@ -24,6 +24,15 @@ namespace UI {
 	}
 
 	bool UISystem::handleInput(int key, engine::UI::UIResult * result ){
+
+		//Remove windows with containers that are closed.
+		for(int i = 0; i < windows.size();++i){
+			if(windows.at(i).getContainer()->getClosed() == true){
+				windows.erase(windows.begin() + i);
+				i--; //This balances out the loop after deletion
+			}
+		}
+
 		for(int i = 0; i < windows.size();++i){
 			windows.at(i).getContainer()->handleInput(key);
 		}

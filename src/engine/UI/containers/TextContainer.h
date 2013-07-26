@@ -17,11 +17,15 @@ namespace containers{
 	class TextContainer : public ContainerBase {
 		protected:
 			String textContent;
+			/* true = any key to close, false = permanent status window */
+			bool pressToContinue;
 
 		public:
 			void init(){
-				textContent = "hello world";
-				interaction = false;
+				textContent     = "hello world";
+				interaction     = false;
+				closed          = false;
+				pressToContinue = false;
 			}
 
 			void uninit(){}
@@ -53,6 +57,11 @@ namespace containers{
 					++i;
 				}
 
+				if(pressToContinue == true){
+					//wait for the key, window handler will kill itself as it reads the isClosed status of the container
+					getch();
+				}
+
 			}
 
 			String getText(){
@@ -66,6 +75,13 @@ namespace containers{
 			void handleInput(int key){
 				/* stub */
 				return;
+			}
+
+			void setPressToContinue(bool value){
+				if(value == true){
+					pressToContinue = true;
+					closed          = true;
+				}
 			}
 	};
 

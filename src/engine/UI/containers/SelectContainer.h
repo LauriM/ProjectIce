@@ -20,6 +20,7 @@ namespace containers {
 			void init(){
 				interaction = true;
 				currentItem = 0;
+				closed      = false;
 			}
 
 			void uninit() {}

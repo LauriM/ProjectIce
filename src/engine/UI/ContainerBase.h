@@ -11,6 +11,7 @@ namespace UI {
 	 */
 	class ContainerBase {
 		protected:
+			bool closed; /* is the container stopped? if so, kill the window */
 			bool interaction;
 
 		public:
@@ -36,6 +37,9 @@ namespace UI {
 				return interaction;
 			}
 
+			bool getClosed(){
+				return closed;
+			}
 	};
 
 }
