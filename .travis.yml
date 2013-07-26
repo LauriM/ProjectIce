@@ -2,6 +2,9 @@ language: cpp
 
 compiler: clang++
 
+script: make
+after_success: ./test
+
 before_install:
  - sudo apt-get install -qq libncurses5-dev premake
  - premake4 gmake
