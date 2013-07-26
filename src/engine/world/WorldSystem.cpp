@@ -66,28 +66,21 @@ namespace world {
 			//int startX = x; //move the x/y points to different vars
 			//int startY = y;
 
-			for(x = 1;x < WORLD_WIDTH - 1;++x){
-				for(y = 1;y < WORLD_HEIGHT - 1;++y){
-					//Check if surrounding tiles are bigger
+			for( int xi = 0; xi < WORLD_WIDTH; xi++ ) {
+				for ( int yi = 0; yi < WORLD_HEIGHT; yi++ ) {
 
-					if(heightMap[x][y] < heightMap[x-1][y]){
-						heightMap[x][y] = heightMap[x-1][y] - 1;
-						//If current tile is lower than next tile set it same expect one lower
+					// Stay in the bounds!
+					if( xi > 0 ) {
+						_checkWest(heightMap,xi,yi);
 					}
-
-					if(heightMap[x][y] < heightMap[x+1][y]){
-						heightMap[x][y] = heightMap[x+1][y] - 1;
-						//If current tile is lower than next tile set it same expect one lower
+					if( xi < (WORLD_WIDTH - 1) ) {
+						_checkEast(heightMap,xi,yi);
 					}
-
-					if(heightMap[x][y] < heightMap[x][y-1]){
-						heightMap[x][y] = heightMap[x][y-1] - 1;
-						//If current tile is lower than next tile set it same expect one lower
+					if( yi > 0 ) {
+						_checkNorth(heightMap,xi,yi);
 					}
-
-					if(heightMap[x][y] < heightMap[x][y+1]){
-						heightMap[x][y] = heightMap[x][y+1] - 1;
-						//If current tile is lower than next tile set it same expect one lower
+					if( yi < (WORLD_HEIGHT - 1) ) {
+						_checkSouth(heightMap,xi,yi);
 					}
 				}
 			}
@@ -138,6 +131,42 @@ namespace world {
 			}
 		}
 	}
+
+
+	void WorldSystem::_checkWest(int heightMap[][WORLD_HEIGHT], int x, int y)
+	{
+		if ( heightMap[x][y] < heightMap[x-1][y] )
+		{
+			heightMap[x][y] = heightMap[x-1][y] - 1;
+		}
+	}
+
+	void WorldSystem::_checkEast(int heightMap[][WORLD_HEIGHT], int x, int y)
+	{
+
+		if ( heightMap[x][y] < heightMap[x+1][y] )
+		{
+			heightMap[x][y] = heightMap[x+1][y] - 1;
+		}
+	}
+
+	void WorldSystem::_checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y)
+	{
+		if( heightMap[x][y] < heightMap[x][y-1])
+		{
+			heightMap[x][y] = heightMap[x][y-1] - 1;
+		}
+	}
+
+	void WorldSystem::_checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y)
+	{
+		if( heightMap[x][y] < heightMap[x][y+1])
+		{
+			heightMap[x][y] = heightMap[x][y+1] - 1;
+		}
+	}
+
+
 
 	Room* WorldSystem::getRoom(int x,int y,int z){
 		ASSERT_ROOM_XYZ(x,y,z);

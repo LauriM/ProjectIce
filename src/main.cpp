@@ -22,17 +22,13 @@ int main(){
 
 	engine::player::Player *player   = new engine::player::Player();
 
-	/* init */
+	// I don't know why but I changed them to here, and now it doesn't dump?
 	world->init();
-//	world->loadFromFile("gamesave");
 	world->generate(); //Generate a world
-//	world->saveToFile("gamesave");
-
-	//lets test saving it...
-
 	render->init();
 	ui->init();
 	player->init();
+	// I honestly don't know what  happened
 
 	UI::Window welcomeWindow;
 	welcomeWindow.setPos(vec2(4,3));
