@@ -21,6 +21,11 @@ namespace world {
 		Room rooms[WORLD_WIDTH][WORLD_HEIGHT][WORLD_DEPTH];
 		int age;
 
+		void _checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y);
+		void _checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y);
+		void _checkEast(int heightMap[][WORLD_HEIGHT], int x, int y);
+		void _checkWest(int heightMap[][WORLD_HEIGHT], int x, int y);
+
 		//TODO: create some ASSERTS to make sure the array is accessed correctly (2013-04-02)
 	public:
 		WorldSystem();
