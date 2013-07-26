@@ -3,8 +3,8 @@
 
 #include <map>
 
-namespace engine {
-namespace UI {
+namespace engine{
+namespace UI{
 
 	/*
 	   This object is meant to capture information from a given

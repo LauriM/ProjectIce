@@ -1,13 +1,9 @@
-/*
-	Peter Sjors!
-*/
-
 #include "precompiled.h"
 
 #include "engine/UI/UIResult.h"
 
-namespace engine {
-namespace UI {
+namespace engine{
+namespace UI{
 
 		UIResult::UIResult() { /* I'm alive! */ }
 		UIResult::~UIResult()
