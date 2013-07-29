@@ -27,7 +27,7 @@ int main(){
 		world::Room testRoom;
 		testRoom.roomType = world::ROOM_TYPE_WATER;
 
-		for(int i = 0;int<25;++i){
+		for(int i = 0;i <25;++i){
 			testRoom.generate();
 		}
 
