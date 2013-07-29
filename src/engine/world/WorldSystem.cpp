@@ -52,8 +52,8 @@ namespace world {
 		for(int i = 0;i < mountainCount;i++){
 			int height = randomRange(-2,5);
 
-			int x = randomRange(0,WORLD_WIDTH);
-			int y = randomRange(0,WORLD_HEIGHT);
+			int x = randomRange(0,WORLD_WIDTH-1); //without -1 it will overwrite the memory..
+			int y = randomRange(0,WORLD_HEIGHT-1);
 
 			heightMap[x][y] = heightMap[x][y] + height;
 
@@ -132,15 +132,17 @@ namespace world {
 		}
 	}
 
-
+	/**
+	 * Flows the "mountains" down.
+	 */
 	void WorldSystem::_checkWest(int heightMap[][WORLD_HEIGHT], int x, int y){
-		if ( heightMap[x][y] < heightMap[x-1][y] ){
+		if( heightMap[x][y] < heightMap[x-1][y] ){
 			heightMap[x][y] = heightMap[x-1][y] - 1;
 		}
 	}
 
 	void WorldSystem::_checkEast(int heightMap[][WORLD_HEIGHT], int x, int y){
-		if ( heightMap[x][y] < heightMap[x+1][y] ){
+		if( heightMap[x][y] < heightMap[x+1][y] ){
 			heightMap[x][y] = heightMap[x+1][y] - 1;
 		}
 	}

@@ -26,7 +26,10 @@ int main(){
 	{
 		world::Room testRoom;
 		testRoom.roomType = world::ROOM_TYPE_WATER;
-		testRoom.generate();
+
+		for(int i = 0;int<25;++i){
+			testRoom.generate();
+		}
 
 		SCPPT_COMPARE("Rooms generate something",testRoom.getTile(5,5)->visual,==,'.');
 	}
