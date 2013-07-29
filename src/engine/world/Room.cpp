@@ -7,7 +7,7 @@ namespace world {
 	Tile* Room::getTile(int x,int y){
 		ASSERT_TILE_XY(x,y);
 
-		return &tiles[x * ROOM_HEIGHT + y];
+		return &tiles[(x * ROOM_HEIGHT) + y];
 	}
 
 	/**

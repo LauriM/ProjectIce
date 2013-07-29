@@ -133,40 +133,29 @@ namespace world {
 	}
 
 
-	void WorldSystem::_checkWest(int heightMap[][WORLD_HEIGHT], int x, int y)
-	{
-		if ( heightMap[x][y] < heightMap[x-1][y] )
-		{
+	void WorldSystem::_checkWest(int heightMap[][WORLD_HEIGHT], int x, int y){
+		if ( heightMap[x][y] < heightMap[x-1][y] ){
 			heightMap[x][y] = heightMap[x-1][y] - 1;
 		}
 	}
 
-	void WorldSystem::_checkEast(int heightMap[][WORLD_HEIGHT], int x, int y)
-	{
-
-		if ( heightMap[x][y] < heightMap[x+1][y] )
-		{
+	void WorldSystem::_checkEast(int heightMap[][WORLD_HEIGHT], int x, int y){
+		if ( heightMap[x][y] < heightMap[x+1][y] ){
 			heightMap[x][y] = heightMap[x+1][y] - 1;
 		}
 	}
 
-	void WorldSystem::_checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y)
-	{
-		if( heightMap[x][y] < heightMap[x][y-1])
-		{
+	void WorldSystem::_checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y){
+		if( heightMap[x][y] < heightMap[x][y-1]){
 			heightMap[x][y] = heightMap[x][y-1] - 1;
 		}
 	}
 
-	void WorldSystem::_checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y)
-	{
-		if( heightMap[x][y] < heightMap[x][y+1])
-		{
+	void WorldSystem::_checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y){
+		if( heightMap[x][y] < heightMap[x][y+1]){
 			heightMap[x][y] = heightMap[x][y+1] - 1;
 		}
 	}
-
-
 
 	Room* WorldSystem::getRoom(int x,int y,int z){
 		ASSERT_ROOM_XYZ(x,y,z);
