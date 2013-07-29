@@ -1,6 +1,8 @@
 ProjectIce
 ==========
 
+[![Build Status](https://travis-ci.org/LauriM/ProjectIce.png)](https://travis-ci.org/LauriM/ProjectIce)
+
 ProjectIce is roguelike game/engine project. Currently its in very early development.
 
 Build requirements:
