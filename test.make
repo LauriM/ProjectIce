@@ -22,14 +22,14 @@ endif
 ifeq ($(config),debug)
   OBJDIR     = obj/Debug/test
   TARGETDIR  = .
-  TARGET     = $(TARGETDIR)/test.exe
-  DEFINES   += -DWINDOWS -DDEBUG
+  TARGET     = $(TARGETDIR)/test
+  DEFINES   += -DLINUX -DDEBUG
   INCLUDES  += -Isrc
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -Wall -Werror
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += 
-  LIBS      += 
+  LDFLAGS   += -L/usr/local/lib
+  LIBS      += -lm -lrt -lncurses
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -44,14 +44,14 @@ endif
 ifeq ($(config),release)
   OBJDIR     = obj/Release/test
   TARGETDIR  = .
-  TARGET     = $(TARGETDIR)/test.exe
-  DEFINES   += -DWINDOWS -DNDEBUG -DRELEASE_BUILD
+  TARGET     = $(TARGETDIR)/test
+  DEFINES   += -DLINUX -DNDEBUG -DRELEASE_BUILD
   INCLUDES  += -Isrc
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -Wall -Werror
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -s
-  LIBS      += 
+  LDFLAGS   += -s -L/usr/local/lib
+  LIBS      += -lm -lrt -lncurses
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -65,16 +65,16 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/test.o \
-	$(OBJDIR)/LogSystem.o \
+	$(OBJDIR)/UIResult.o \
+	$(OBJDIR)/Window.o \
+	$(OBJDIR)/UISystem.o \
 	$(OBJDIR)/random.o \
 	$(OBJDIR)/Player.o \
-	$(OBJDIR)/RenderSystem.o \
-	$(OBJDIR)/UIResult.o \
-	$(OBJDIR)/UISystem.o \
-	$(OBJDIR)/Window.o \
-	$(OBJDIR)/Room.o \
-	$(OBJDIR)/Tile.o \
 	$(OBJDIR)/WorldSystem.o \
+	$(OBJDIR)/Tile.o \
+	$(OBJDIR)/Room.o \
+	$(OBJDIR)/LogSystem.o \
+	$(OBJDIR)/RenderSystem.o \
 
 RESOURCES := \
 
@@ -138,7 +138,13 @@ endif
 $(OBJDIR)/test.o: src/test.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/LogSystem.o: src/engine/log/LogSystem.cpp
+$(OBJDIR)/UIResult.o: src/engine/UI/UIResult.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Window.o: src/engine/UI/Window.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/UISystem.o: src/engine/UI/UISystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/random.o: src/engine/math/random.cpp
@@ -147,25 +153,19 @@ $(OBJDIR)/random.o: src/engine/math/random.cpp
 $(OBJDIR)/Player.o: src/engine/player/Player.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/RenderSystem.o: src/engine/render/RenderSystem.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/UIResult.o: src/engine/UI/UIResult.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/UISystem.o: src/engine/UI/UISystem.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Window.o: src/engine/UI/Window.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Room.o: src/engine/world/Room.cpp
+$(OBJDIR)/WorldSystem.o: src/engine/world/WorldSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/Tile.o: src/engine/world/Tile.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/WorldSystem.o: src/engine/world/WorldSystem.cpp
+$(OBJDIR)/Room.o: src/engine/world/Room.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/LogSystem.o: src/engine/log/LogSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/RenderSystem.o: src/engine/render/RenderSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 

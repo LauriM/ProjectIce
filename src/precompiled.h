@@ -1,11 +1,16 @@
 #include <iostream>
 #include <fstream>
-#include "ncurses.h"
 #include <stdlib.h>
 #include <vector>
 #include <time.h>
 #include <math.h>
 #include <assert.h>
+
+#ifdef WINDOWS
+#include "ncurses.h"
+#else
+#include <ncurses.h>
+#endif
 
 #include "stdio.h"
 
