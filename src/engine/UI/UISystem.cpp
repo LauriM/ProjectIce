@@ -23,7 +23,7 @@ namespace UI {
 		windows.push_back(window);
 	}
 
-	bool UISystem::handleInput(int key, engine::UI::UIResult * result ){
+	bool UISystem::handleInput(int key ){
 
 		//Remove windows with containers that are closed.
 		for(int i = 0; i < windows.size();++i){

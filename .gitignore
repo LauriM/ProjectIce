@@ -12,3 +12,11 @@ src/proto/*.h
 gamesave
 testsave
 log.txt
+
+pdcurses.dll
+premake4.exe
+ice.exe
+ice.ilk
+ice.pdb
+ProjectIce.opensdf
+ProjectIce.sdf

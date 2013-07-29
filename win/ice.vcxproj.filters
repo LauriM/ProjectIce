@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{9990C8F9-CE65-E744-BA05-FCAB6A6F0222}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\engine\log\LogSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\math\random.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\player\Player.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\render\RenderSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\UI\UISystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\UI\Window.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\world\Room.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\world\Tile.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\world\WorldSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\engine\EngineSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\log\LogSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\math\AABB.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\math\random.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\math\vec2.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\math\vec3.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\player\Player.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\render\RenderSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\UI\ContainerBase.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\UI\containers\SelectContainer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\UI\containers\TextContainer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\UI\UISystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\UI\Window.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\world\Room.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\world\Tile.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\world\WorldSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\precompiled.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

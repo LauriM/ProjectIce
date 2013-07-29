@@ -11,12 +11,17 @@
 #define LOG_INFO_F(p_msg,...) {char output[100]; snprintf(output,100,p_msg,__VA_ARGS__);LOG_INFO(output);}
 #define LOG_WARNING_F(p_msg,...) {char output[100]; snprintf(output,100,p_msg,__VA_ARGS__);LOG_WARNING(output);}
 
+#ifdef WINDOWS
+//Disable debug_f logging if windows, caused some issues
+#define DEBUG_NO_LOG_DEBUG
+#endif
+
 #ifndef DEBUG_NO_LOG_DEBUG
 #define LOG_DEBUG(msg) engine::log::insertLog(msg)
 #define LOG_DEBUG_F(p_msg,...) {char output[100]; snprintf(output,100,p_msg,__VA_ARGS__);LOG_DEBUG(output);}
 #else
 #define LOG_DEBUG(msg)
-#define LOG_DEBUG_F(p_msg,p_value)
+#define LOG_DEBUG_F(p_msg,...)
 #endif
 
 namespace engine {

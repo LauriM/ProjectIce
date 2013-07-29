@@ -1,6 +1,5 @@
 solution "ProjectIce"
     configurations { "Debug", "Release" }
-	flags { "ExtraWarnings", "FatalWarnings" }
 
     -- Platform-specific options
     configuration { "gmake" }
@@ -33,12 +32,15 @@ solution "ProjectIce"
             libdirs     { "C:/codelibs/pdcurses/lib/" }
             includedirs { "C:/codelibs/pdcurses/include/" }
             links       { "pdcurses" }
+			defines     { "WINDOWS" }
 
         configuration "linux"
             links { "ncurses" }
 			libdirs { "/usr/local/lib" }
+			flags { "ExtraWarnings", "FatalWarnings" }
 
 	project "test"
+		-- Test only for linux systems
 		kind "ConsoleApp"
 		language "C++"
 		files { "src/test.cpp", "src/engine/**.h", "src/engine/**.cpp" }
@@ -47,3 +49,4 @@ solution "ProjectIce"
 		configuration "linux"
 			links { "ncurses" , }
 			libdirs { "/usr/local/lib" }
+			flags { "ExtraWarnings", "FatalWarnings" }

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <ncurses.h>
+#include "ncurses.h"
 #include <stdlib.h>
 #include <vector>
 #include <time.h>

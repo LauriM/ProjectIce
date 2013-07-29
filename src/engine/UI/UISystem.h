@@ -3,7 +3,6 @@
 
 
 #include "engine/EngineSystem.h"
-#include "engine/UI/UIResult.h"
 #include "engine/UI/Window.h"
 
 namespace engine {
@@ -22,7 +21,7 @@ namespace UI {
 			void addWindow(Window window);
 			void addWindow(Window window,bool setAsCurrentWindow);
 
-			bool handleInput(int key, engine::UI::UIResult * result = NULL);
+			bool handleInput(int key);
 	};
 
 }
