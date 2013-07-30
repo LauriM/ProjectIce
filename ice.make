@@ -8,11 +8,11 @@ ifndef verbose
 endif
 
 ifndef CC
-  CC = gcc
+  CC = clang
 endif
 
 ifndef CXX
-  CXX = g++
+  CXX = clang++
 endif
 
 ifndef AR
@@ -26,8 +26,13 @@ ifeq ($(config),debug)
   DEFINES   += -DLINUX -DDEBUG
   INCLUDES  += -Isrc
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
+<<<<<<< Updated upstream
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -Wall -Werror
   CXXFLAGS  += $(CFLAGS) 
+=======
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -Wall -Werror -g
+  CXXFLAGS  += $(CFLAGS) -Wno-sign-compare
+>>>>>>> Stashed changes
   LDFLAGS   += -L/usr/local/lib
   LIBS      += -lm -lrt -lncurses
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
@@ -48,8 +53,13 @@ ifeq ($(config),release)
   DEFINES   += -DLINUX -DNDEBUG -DRELEASE_BUILD
   INCLUDES  += -Isrc
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
+<<<<<<< Updated upstream
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -Wall -Werror
   CXXFLAGS  += $(CFLAGS) 
+=======
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -Wall -Werror -O2
+  CXXFLAGS  += $(CFLAGS) -Wno-sign-compare
+>>>>>>> Stashed changes
   LDFLAGS   += -s -L/usr/local/lib
   LIBS      += -lm -lrt -lncurses
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
