@@ -19,10 +19,13 @@ class Player {
 		/* stats */
 		int hp;
 		int maxHp;
+		String name;
 
 	public:
 		void init();
 		void update();
+
+		String getName();
 };
 
 }
