@@ -3,11 +3,11 @@
 
 #include "engine/actor/ActorBase.h"
 
-namespace engine {
+namespace game {
 namespace actor {
 namespace player {
 
-	class PlayerActor : public ActorBase {
+	class PlayerActor : public engine::actor::ActorBase {
 		public:
 			PlayerActor(){
 				hp    = 10;

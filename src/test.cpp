@@ -4,7 +4,7 @@
 #include "engine/world/Tile.h"
 #include "engine/UI/Window.h"
 #include "engine/player/Player.h"
-#include "engine/actor/player/PlayerActor.h"
+#include "game/actor/player/PlayerActor.h"
 
 using namespace engine;
 
@@ -52,7 +52,7 @@ int main(){
 
 	PRINTLN("-> Player");
 	{
-		engine::actor::player::PlayerActor *playerActor = new engine::actor::player::PlayerActor();
+		game::actor::player::PlayerActor *playerActor = new game::actor::player::PlayerActor();
 
 		playerActor->update();
 	}

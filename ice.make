@@ -65,18 +65,18 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/main.o \
-	$(OBJDIR)/Player.o \
-	$(OBJDIR)/Room.o \
-	$(OBJDIR)/Tile.o \
-	$(OBJDIR)/WorldSystem.o \
-	$(OBJDIR)/LogSystem.o \
 	$(OBJDIR)/UIResult.o \
 	$(OBJDIR)/Window.o \
 	$(OBJDIR)/UISystem.o \
-	$(OBJDIR)/Inventory.o \
-	$(OBJDIR)/BaseItem.o \
-	$(OBJDIR)/RenderSystem.o \
 	$(OBJDIR)/random.o \
+	$(OBJDIR)/Player.o \
+	$(OBJDIR)/BaseItem.o \
+	$(OBJDIR)/Inventory.o \
+	$(OBJDIR)/WorldSystem.o \
+	$(OBJDIR)/Tile.o \
+	$(OBJDIR)/Room.o \
+	$(OBJDIR)/LogSystem.o \
+	$(OBJDIR)/RenderSystem.o \
 	$(OBJDIR)/IronItem.o \
 
 RESOURCES := \
@@ -141,21 +141,6 @@ endif
 $(OBJDIR)/main.o: src/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Player.o: src/engine/player/Player.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Room.o: src/engine/world/Room.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Tile.o: src/engine/world/Tile.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/WorldSystem.o: src/engine/world/WorldSystem.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/LogSystem.o: src/engine/log/LogSystem.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/UIResult.o: src/engine/UI/UIResult.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
@@ -165,16 +150,31 @@ $(OBJDIR)/Window.o: src/engine/UI/Window.cpp
 $(OBJDIR)/UISystem.o: src/engine/UI/UISystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Inventory.o: src/engine/items/Inventory.cpp
+$(OBJDIR)/random.o: src/engine/math/random.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Player.o: src/engine/player/Player.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/BaseItem.o: src/engine/items/BaseItem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/RenderSystem.o: src/engine/render/RenderSystem.cpp
+$(OBJDIR)/Inventory.o: src/engine/items/Inventory.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/random.o: src/engine/math/random.cpp
+$(OBJDIR)/WorldSystem.o: src/engine/world/WorldSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Tile.o: src/engine/world/Tile.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Room.o: src/engine/world/Room.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/LogSystem.o: src/engine/log/LogSystem.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/RenderSystem.o: src/engine/render/RenderSystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/IronItem.o: src/game/items/IronItem.cpp

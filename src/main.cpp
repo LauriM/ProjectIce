@@ -7,7 +7,7 @@
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
 #include "engine/player/Player.h"
-#include "engine/actor/player/PlayerActor.h"
+#include "game/actor/player/PlayerActor.h"
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 
@@ -25,7 +25,7 @@ int main(){
 
 	engine::player::Player *player   = new engine::player::Player(); //Player stuff should be removed, moving to actor
 
-	engine::actor::player::PlayerActor *playerActor = new engine::actor::player::PlayerActor();
+	game::actor::player::PlayerActor *playerActor = new game::actor::player::PlayerActor();
 
 	playerActor->update();
 
