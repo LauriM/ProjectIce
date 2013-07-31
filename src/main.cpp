@@ -25,7 +25,7 @@ int main(){
 
 	engine::player::Player *player   = new engine::player::Player();
 
-	engine::world::item::Inventory * inventory = new engine::world::item::Inventory();
+	engine::item::Inventory * inventory = new engine::item::Inventory();
 
 	world->init();
 	render->init();
@@ -34,7 +34,7 @@ int main(){
 	world->generate();
 	inventory->init(player);
 
-	engine::world::item::BaseItem * b = new engine::world::item::BaseItem();
+	engine::item::BaseItem * b = new engine::item::BaseItem();
 	b->setName("Health Potion");
 	b->setDescription("Restores HP");
 	b->setValue( 20.75 );
@@ -44,7 +44,7 @@ int main(){
 	inventory->insertItem( b );
 	inventory->insertItem( b );
 
-	b = new engine::world::item::BaseItem();
+	b = new engine::item::BaseItem();
 	b->setName("Swords");
 	b->setDescription("Kills Things");
 	b->setValue( 125.0 );

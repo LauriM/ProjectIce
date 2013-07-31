@@ -2,7 +2,6 @@
 #include "engine/items/BaseItem.h"
 
 namespace engine {
-namespace world {
 namespace item {
 
 	String BaseItem::getName() {
@@ -45,6 +44,5 @@ namespace item {
 		_quantity = quantity;
 	}
 
-}
 }
 }

@@ -1,7 +1,6 @@
 #include "engine/items/Inventory.h"
 
 namespace engine {
-namespace world {
 namespace item {
 
 	// initialize an inventory with a pointer that tells us
@@ -81,6 +80,5 @@ namespace item {
 		return inspected;
 	}
 
-}
 }
 }

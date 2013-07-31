@@ -6,7 +6,6 @@
 #include "engine/player/Player.h"
 
 namespace engine {
-namespace world {
 namespace item {
 
 	class BaseItem {
@@ -69,7 +68,6 @@ namespace item {
 
 	};
 
-}
 }
 }
 
