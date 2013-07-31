@@ -8,3 +8,6 @@ after_success: ./test
 before_install:
  - sudo apt-get install -qq libncurses5-dev premake
  - premake gmake
+
+notifications:
+  irc: "chat.freenode.net#ProjectIce"
