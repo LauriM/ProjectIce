@@ -1,5 +1,4 @@
-
-#include "engine/world/item/Inventory.h"
+#include "engine/items/Inventory.h"
 
 namespace engine {
 namespace world {

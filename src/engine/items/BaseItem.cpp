@@ -1,5 +1,5 @@
 
-#include "engine/world/item/BaseItem.h"
+#include "engine/items/BaseItem.h"
 
 namespace engine {
 namespace world {

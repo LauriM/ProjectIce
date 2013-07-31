@@ -10,8 +10,8 @@
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 
-#include "engine/world/item/BaseItem.h"
-#include "engine/world/item/Inventory.h"
+#include "engine/items/BaseItem.h"
+#include "engine/items/Inventory.h"
 
 int main(){
 	randomInit();

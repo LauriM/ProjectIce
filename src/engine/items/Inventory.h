@@ -1,11 +1,10 @@
-
 #ifndef __INVENTORY_H__
 #define __INVENTORY_H__
 
 #include "precompiled.h"
 #include <map>
 
-#include "engine/world/item/BaseItem.h"
+#include "engine/items/BaseItem.h"
 #include "engine/player/Player.h"
 
 namespace engine {
