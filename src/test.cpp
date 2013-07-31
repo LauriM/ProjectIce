@@ -4,6 +4,7 @@
 #include "engine/world/Tile.h"
 #include "engine/UI/Window.h"
 #include "engine/player/Player.h"
+#include "engine/actor/player/PlayerActor.h"
 
 using namespace engine;
 
@@ -49,6 +50,12 @@ int main(){
 		player.init();
 	}
 
+	PRINTLN("-> Player");
+	{
+		engine::actor::player::PlayerActor *playerActor = new engine::actor::player::PlayerActor();
+
+		playerActor->update();
+	}
 
 	PRINTLN("Tests complete");
 
