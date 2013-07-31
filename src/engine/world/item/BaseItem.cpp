@@ -5,22 +5,44 @@ namespace engine {
 namespace world {
 namespace item {
 
-	BaseItem::BaseItem() {}
-
 	String BaseItem::getName() {
 		return _name;
 	}
 
-	int BaseItem::getValue() {
+	String BaseItem::getDescription() {
+		return _description;
+	}
+
+	double BaseItem::getValue() {
 		return _value;
+	}
+
+	double BaseItem::getWeight() {
+		return _weight;
+	}
+
+	int BaseItem::getQuantity() {
+		return _quantity;
 	}
 
 	void BaseItem::setName(String name) {
 		_name = name;
 	}
 
-	void BaseItem::setValue(int value) {
+	void BaseItem::setDescription(String description) {
+		_description = description;
+	}
+
+	void BaseItem::setValue(double value) {
 		_value = value;
+	}
+
+	void BaseItem::setWeight(double weight) {
+		_weight = weight;
+	}
+
+	void BaseItem::setQuantity(int quantity) {
+		_quantity = quantity;
 	}
 
 }
