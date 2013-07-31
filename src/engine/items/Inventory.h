@@ -5,20 +5,20 @@
 #include <map>
 
 #include "engine/items/BaseItem.h"
-#include "engine/player/Player.h"
+#include "engine/actor/ActorBase.h"
 
 namespace engine {
-namespace item {
+namespace items {
 
 	class Inventory {
 	private:
 
 		std::map<String,BaseItem*> _inventoryMap;
-		player::Player * _playerOwner;
+		actor::ActorBase * _owner;
 
 	public:
 
-		void init(player::Player * owner);
+		void init(actor::ActorBase * owner);
 
 		bool destroyItem(String name);
 		BaseItem * dropItem(String name);

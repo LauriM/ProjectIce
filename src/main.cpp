@@ -11,8 +11,7 @@
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 
-#include "engine/items/BaseItem.h"
-#include "engine/items/Inventory.h"
+#include "game/items/IronItem.h"
 
 int main(){
 	randomInit();
@@ -30,41 +29,15 @@ int main(){
 
 	playerActor->update();
 
-	engine::item::Inventory * inventory = new engine::item::Inventory();
-
 	world->init();
 	render->init();
 	ui->init();
 	player->init();
 	world->generate();
-	inventory->init(player);
 
-	engine::item::BaseItem * b = new engine::item::BaseItem();
-	b->setName("Health Potion");
-	b->setDescription("Restores HP");
-	b->setValue( 20.75 );
-	b->setWeight( 1.5 );
-	b->setQuantity( 1 );
-	inventory->insertItem( b );
-	inventory->insertItem( b );
-	inventory->insertItem( b );
-
-	b = new engine::item::BaseItem();
-	b->setName("Swords");
-	b->setDescription("Kills Things");
-	b->setValue( 125.0 );
-	b->setWeight( 10.5 );
-	b->setQuantity( 1 );
-	inventory->insertItem( b );
-
-	inventory->useItem("Health Potion");
-	inventory->inspectItem("Health Potion");
-	inventory->destroyItem("Health Potion");
-
-	if ( !inventory->dropItem("health") )
-	{
-		printf( "No such item" );
-	}
+	/*\*/
+	game::items::IronItem * iron = new game::items::IronItem();
+	/*\*/
 
 	UI::Window welcomeWindow;
 	welcomeWindow.setPos(vec2(4,3));
@@ -87,6 +60,7 @@ int main(){
 	selectCont->insertItem("0 zero");
 	selectCont->insertItem("& second");
 	selectCont->insertItem("# so on");
+	selectCont->insertItem( iron->getName() );
 
 	blob.setContainer(selectCont);
 

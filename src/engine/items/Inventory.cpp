@@ -1,14 +1,14 @@
 #include "engine/items/Inventory.h"
 
 namespace engine {
-namespace item {
+namespace items {
 
 	// initialize an inventory with a pointer that tells us
 	// who the inventory belongs too so we can perform
 	// actions on the player
-	void Inventory::init( player::Player * owner )
+	void Inventory::init( actor::ActorBase * owner )
 	{
-		_playerOwner = owner;
+		_owner = owner;
 	}
 
 	// Deletes the item from existance completely, not accessible
@@ -18,7 +18,7 @@ namespace item {
 		bool destroyed = false;
 		if ( item )
 		{
-			item->onDestroy(_playerOwner);
+			item->onDestroy(_owner);
 			_inventoryMap.erase(name);
 			delete item;
 			destroyed = true;
@@ -32,7 +32,7 @@ namespace item {
 		BaseItem * item = _inventoryMap[name];
 		if ( item )
 		{
-			item->onDrop(_playerOwner);
+			item->onDrop(_owner);
 			_inventoryMap.erase(name);
 		}
 		return item;
@@ -42,9 +42,9 @@ namespace item {
 	bool Inventory::useItem(String name) {
 		BaseItem * item = _inventoryMap[name];
 		bool used = false;
-		if ( item && item->getQuantity() > 0 )
+		if ( item )
 		{
-			item->onUse(_playerOwner);
+			item->onUse(_owner);
 			used = true;
 		}
 		return used;
@@ -54,14 +54,8 @@ namespace item {
 	bool Inventory::insertItem(BaseItem * item) {
 		bool inserted = false;
 		if ( item ) {
-			BaseItem * myItem = _inventoryMap[item->getName()]; // Checking if an entry exists
-			if ( myItem ) {
-				myItem->setQuantity( myItem->getQuantity() + item->getQuantity() );
-			}
-			else {
-				_inventoryMap[item->getName()] = item;
-			}
-			item->onPickup(_playerOwner);
+			_inventoryMap[item->getName()] = item;
+			item->onPickup(_owner);
 			inserted = true;
 		}
 		return inserted;
@@ -74,7 +68,7 @@ namespace item {
 		bool inspected = false;
 		if ( item )
 		{
-			item->onInspect(_playerOwner);
+			item->onInspect(_owner);
 			inspected = true;
 		}
 		return inspected;

@@ -2,7 +2,7 @@
 #include "engine/items/BaseItem.h"
 
 namespace engine {
-namespace item {
+namespace items {
 
 	String BaseItem::getName() {
 		return _name;
@@ -16,13 +16,6 @@ namespace item {
 		return _value;
 	}
 
-	double BaseItem::getWeight() {
-		return _weight;
-	}
-
-	int BaseItem::getQuantity() {
-		return _quantity;
-	}
 
 	void BaseItem::setName(String name) {
 		_name = name;
@@ -34,14 +27,6 @@ namespace item {
 
 	void BaseItem::setValue(double value) {
 		_value = value;
-	}
-
-	void BaseItem::setWeight(double weight) {
-		_weight = weight;
-	}
-
-	void BaseItem::setQuantity(int quantity) {
-		_quantity = quantity;
 	}
 
 }

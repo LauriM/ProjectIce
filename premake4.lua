@@ -24,7 +24,7 @@ solution "ProjectIce"
     project "ice"
         kind "ConsoleApp"
         language "C++"
-        files { "src/main.cpp", "src/engine/**.h", "src/engine/**.cpp" }
+        files { "src/main.cpp", "src/engine/**.h", "src/engine/**.cpp", "src/game/**.h", "src/game/**.cpp" }
 		includedirs { "src/" }
 
         configuration "windows"
@@ -43,7 +43,7 @@ solution "ProjectIce"
 		-- Test only for linux systems
 		kind "ConsoleApp"
 		language "C++"
-		files { "src/test.cpp", "src/engine/**.h", "src/engine/**.cpp" }
+		files { "src/test.cpp", "src/engine/**.h", "src/engine/**.cpp", "src/game/**.h", "src/game/**.cpp" }
 		includedirs { "src/" }
 
 		configuration "linux"
