@@ -14,11 +14,17 @@ void Player::init(){
 	hp    = PLAYER_DEFAULT_MAXHP;
 	maxHp = PLAYER_DEFAULT_MAXHP;
 
+	name = "Benedict Arnold";
+
 	LOG_INFO("Player init done");
 }
 
 void Player::update(){
 	/* tick player */
+}
+
+String Player::getName() {
+	return name;
 }
 
 }

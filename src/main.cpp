@@ -10,8 +10,8 @@
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 
-#include "engine/world/item/ItemSystem.h"
 #include "engine/world/item/BaseItem.h"
+#include "engine/world/item/Inventory.h"
 
 int main(){
 	randomInit();
@@ -25,15 +25,41 @@ int main(){
 
 	engine::player::Player *player   = new engine::player::Player();
 
-	// Is the namespace name maybe a bit too long?
-	engine::world::item::ItemSystem * itemsys = new engine::world::item::ItemSystem();
+	engine::world::item::Inventory * inventory = new engine::world::item::Inventory();
 
-	itemsys->init();
 	world->init();
 	render->init();
 	ui->init();
 	player->init();
 	world->generate();
+	inventory->init(player);
+
+	engine::world::item::BaseItem * b = new engine::world::item::BaseItem();
+	b->setName("Health Potion");
+	b->setDescription("Restores HP");
+	b->setValue( 20.75 );
+	b->setWeight( 1.5 );
+	b->setQuantity( 1 );
+	inventory->insertItem( b );
+	inventory->insertItem( b );
+	inventory->insertItem( b );
+
+	b = new engine::world::item::BaseItem();
+	b->setName("Swords");
+	b->setDescription("Kills Things");
+	b->setValue( 125.0 );
+	b->setWeight( 10.5 );
+	b->setQuantity( 1 );
+	inventory->insertItem( b );
+
+	inventory->useItem("Health Potion");
+	inventory->inspectItem("Health Potion");
+	inventory->destroyItem("Health Potion");
+
+	if ( !inventory->dropItem("health") )
+	{
+		printf( "No such item" );
+	}
 
 	UI::Window welcomeWindow;
 	welcomeWindow.setPos(vec2(4,3));
@@ -56,7 +82,6 @@ int main(){
 	selectCont->insertItem("0 zero");
 	selectCont->insertItem("& second");
 	selectCont->insertItem("# so on");
-	selectCont->insertItem( "I " + itemsys->getItem("sword")->getName() );
 
 	blob.setContainer(selectCont);
 
