@@ -15,7 +15,7 @@ namespace item {
 	public:
 		void init();
 		BaseItem * getItem(String name);
-		
+
 	};
 
 }
