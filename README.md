@@ -7,8 +7,8 @@ ProjectIce is roguelike game/engine project. Currently its in very early develop
 
 Build requirements:
 
-* ncurses (libncurses5-dev package on Debian)
-* premake4
+* ncurses (libncurses5-dev package on Debian, pdcurses on windows)
+* premake4 (only needed when developing, you can build ProjectIce without it)
 
 Coders needed!
 ==============
