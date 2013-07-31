@@ -1,3 +1,0 @@
-#/bin/sh
-valgrind --leak-check=full --show-reachable=yes ./ice
-clear
