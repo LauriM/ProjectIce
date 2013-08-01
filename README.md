@@ -10,6 +10,12 @@ Build requirements:
 * ncurses (libncurses5-dev package on Debian, pdcurses on windows)
 * premake4 (only needed when developing, you can build ProjectIce without it)
 
+Resources
+=========
+
+* [Wiki](https://github.com/LauriM/ProjectIce/wiki)
+* IRC: Freenode: #ProjectIce
+
 Coders needed!
 ==============
 
@@ -18,4 +24,4 @@ Do you know c++ ? This project is open for new developers. Try to compile the pr
 License
 =======
 
-See license.txt for the full license.
+See license.txt for the full license. (BSD license)
