@@ -23,6 +23,11 @@ namespace world {
 			}
 		}
 
+		//create player
+		playerActor = new game::actor::player::PlayerActor();
+
+		playerActor->setName("Player");
+
 		return true;
 	}
 
@@ -31,6 +36,7 @@ namespace world {
 	}
 
 	void WorldSystem::update(){
+		playerActor->update();
 		return;
 	}
 

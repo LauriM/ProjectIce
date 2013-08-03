@@ -22,6 +22,24 @@ namespace actor {
 		public:
 			virtual void update() = 0;
 
+			/**
+			 * Move actor to certain direction, check collisions and enemies.
+			 *
+			 * Vec2 contains x/y movement changes that should be done.
+			 *
+			 * Returns if the move was valid.
+			 */
+			bool MoveActor(vec2 movement){
+				//TODO: implement collision checks.
+				//TODO: implement room change.
+
+				position.x += movement.x;
+				position.y += movement.y;
+
+				return true;
+			}
+
+			/* getters / setters */
 			void setName(String newName){
 				name = newName;
 			}

@@ -6,8 +6,7 @@
 #include "engine/render/RenderSystem.h"
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
-#include "engine/player/Player.h"
-#include "game/actor/player/PlayerActor.h"
+#include "engine/player/Player.h" //TODO remove the whole player stuff from code
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 
@@ -24,10 +23,6 @@ int main(){
 	render::RenderSystem *render     = new render::RenderSystem(world,ui);
 
 	engine::player::Player *player   = new engine::player::Player(); //Player stuff should be removed, moving to actor
-
-	game::actor::player::PlayerActor *playerActor = new game::actor::player::PlayerActor();
-
-	playerActor->update();
 
 	world->init();
 	render->init();
@@ -73,9 +68,6 @@ int main(){
 		render->update();
 		ui->update();
 		//int key = getch();
-
-		//TODO: this should happen inside some internal funny loop thing.
-		playerActor->update();
 	}
 
 	render->uninit();
