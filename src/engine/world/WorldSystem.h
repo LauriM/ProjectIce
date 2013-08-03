@@ -46,6 +46,12 @@ namespace world {
 
 		void loadFromFile(String filename);
 		void saveToFile(String filename);
+
+		/* getters & setters */
+
+		game::actor::player::PlayerActor* getPlayerActor(){
+			return playerActor;
+		}
 	};
 
 }

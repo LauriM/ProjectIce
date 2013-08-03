@@ -16,8 +16,6 @@ namespace player {
 			}
 
 			void update(){
-				LOG_INFO("Player update")
-
 				//handle players input
 				int key = getch();
 				//This switch provides "world overview specating"

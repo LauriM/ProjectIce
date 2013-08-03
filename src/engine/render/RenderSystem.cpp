@@ -73,6 +73,12 @@ namespace render {
 			}
 		}
 
+		/* RENDER ACTORS TO MAP */
+
+		pos.x = worldSystem->getPlayerActor()->getPos()->x;
+		pos.y = worldSystem->getPlayerActor()->getPos()->y;
+		drawChar(pos,'@');
+
 		/* RENDER UI ON TOP OF EVERYTHING */
 
 

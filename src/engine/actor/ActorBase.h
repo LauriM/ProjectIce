@@ -47,6 +47,10 @@ namespace actor {
 			String getName(){
 				return name;
 			}
+
+			vec2* getPos(){
+				return &position;
+			}
 	};
 
 }
