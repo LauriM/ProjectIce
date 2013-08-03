@@ -17,6 +17,38 @@ namespace player {
 
 			void update(){
 				LOG_INFO("Player update")
+
+				//handle players input
+				int key = getch();
+				//This switch provides "world overview specating"
+				switch(key){
+					//hjkl
+					/*
+					case 106:
+						render->cameraPos.y -= 1;
+						break;
+					case 107:
+						render->cameraPos.y += 1;
+						break;
+					case 104:
+						render->cameraPos.x -= 1;
+						break;
+					case 108:
+						render->cameraPos.x += 1;
+						break;
+					case 62:
+						render->cameraPos.z -= 1;
+						break;
+						*/
+					case 60:
+						LOG_INFO("player movement!");
+						break;
+					case 27:
+						//quitStatus = true;
+						LOG_INFO("quit triggered!");
+						break;
+				}
+
 			}
 	};
 

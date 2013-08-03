@@ -23,7 +23,9 @@ namespace UI {
 		windows.push_back(window);
 	}
 
+	//@Deprecrated
 	bool UISystem::handleInput(int key ){
+		LOG_ERROR("This function is deprecrated!");
 
 		//Remove windows with containers that are closed.
 		for(int i = 0; i < windows.size();++i){

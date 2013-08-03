@@ -21,6 +21,7 @@ namespace UI {
 			void addWindow(Window window);
 			void addWindow(Window window,bool setAsCurrentWindow);
 
+			//@Deprecrated
 			bool handleInput(int key);
 	};
 
