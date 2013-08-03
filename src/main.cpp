@@ -6,7 +6,6 @@
 #include "engine/render/RenderSystem.h"
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
-#include "engine/player/Player.h" //TODO remove the whole player stuff from code
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 
@@ -22,12 +21,9 @@ int main(){
 	engine::UI::UISystem *ui         = new UI::UISystem();
 	render::RenderSystem *render     = new render::RenderSystem(world,ui);
 
-	engine::player::Player *player   = new engine::player::Player(); //Player stuff should be removed, moving to actor
-
 	world->init();
 	render->init();
 	ui->init();
-	player->init();
 	world->generate();
 
 	/*\*/

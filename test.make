@@ -69,7 +69,6 @@ OBJECTS := \
 	$(OBJDIR)/Window.o \
 	$(OBJDIR)/UISystem.o \
 	$(OBJDIR)/random.o \
-	$(OBJDIR)/Player.o \
 	$(OBJDIR)/BaseItem.o \
 	$(OBJDIR)/Inventory.o \
 	$(OBJDIR)/WorldSystem.o \
@@ -151,9 +150,6 @@ $(OBJDIR)/UISystem.o: src/engine/UI/UISystem.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/random.o: src/engine/math/random.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/Player.o: src/engine/player/Player.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/BaseItem.o: src/engine/items/BaseItem.cpp

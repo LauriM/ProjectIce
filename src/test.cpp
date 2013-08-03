@@ -3,7 +3,6 @@
 #include "engine/world/Room.h"
 #include "engine/world/Tile.h"
 #include "engine/UI/Window.h"
-#include "engine/player/Player.h"
 #include "game/actor/player/PlayerActor.h"
 
 using namespace engine;
@@ -41,13 +40,6 @@ int main(){
 		window.setName("asdf");
 
 		window.printDebugInfo();
-	}
-
-	PRINTLN("-> Player");
-	{
-		engine::player::Player player;
-
-		player.init();
 	}
 
 	PRINTLN("-> Player");
