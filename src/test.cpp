@@ -5,6 +5,15 @@
 #include "engine/UI/Window.h"
 #include "game/actor/player/PlayerActor.h"
 
+#include "precompiled.h"
+#include "engine/math/vec2.h"
+#include "engine/items/BaseInventory.h"
+#include "game/items/IronItem.h"
+#include "game/items/ArrowItem.h"
+#include "game/items/containers/QuiverItem.h"
+
+#include <map>
+
 using namespace engine;
 
 int testFails = 0;

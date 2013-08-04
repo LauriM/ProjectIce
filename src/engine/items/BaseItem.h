@@ -14,25 +14,25 @@ namespace items {
 		String _name;
 		String _description;
 		double _value;
+		bool _stackable;
 
 	public:
 
 		String getName();
 		String getDescription();
 		double getValue();
+		bool getStackable();
 
 		void setName(String name);
 		void setDescription(String description);
 		void setValue(double value);
+		void setStackable(bool stackable);
 
-		virtual void onDestroy( actor::ActorBase * aOwner ) = 0;
 		virtual void onPickup( actor::ActorBase * aOwner ) = 0;
-		virtual void onDrop( actor::ActorBase * aOwner ) = 0;
 		virtual void onInspect( actor::ActorBase * aOwner ) = 0;
-		virtual void onUse( actor::ActorBase * aOwner ) = 0;
+		virtual void onDrop( actor::ActorBase * aOwner ) = 0;
 
-		virtual ~BaseItem() {}
-
+		virtual ~BaseItem() {};
 	};
 
 }

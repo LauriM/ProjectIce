@@ -15,6 +15,7 @@ class vec2 {
 			x = newX;
 			y = newY;
 		}
+
 };
 
 #endif

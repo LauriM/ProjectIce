@@ -51,6 +51,14 @@ namespace actor {
 			vec2* getPos(){
 				return &position;
 			}
+
+			int getHp() {
+				return hp;
+			}
+
+			void setHp(int ihp) {
+				hp = ihp;
+			}
 	};
 
 }

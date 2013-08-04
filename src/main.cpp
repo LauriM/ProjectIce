@@ -10,6 +10,8 @@
 #include "engine/UI/containers/SelectContainer.h"
 
 #include "game/items/IronItem.h"
+#include "game/items/ArrowItem.h"
+#include "game/items/containers/QuiverItem.h"
 
 int main(){
 	randomInit();
@@ -28,6 +30,11 @@ int main(){
 
 	/*\*/
 	game::items::IronItem * iron = new game::items::IronItem();
+	game::items::ArrowItem * arrow = new game::items::ArrowItem();
+	game::items::containers::QuiverItem * quiver = new game::items::containers::QuiverItem();
+	quiver->setQuantity( 1 );
+	quiver->setQuantity( quiver->getQuantity() + 2 );
+	quiver->setQuantity( 100 );
 	/*\*/
 
 	UI::Window welcomeWindow;
@@ -52,6 +59,8 @@ int main(){
 	selectCont->insertItem("& second");
 	selectCont->insertItem("# so on");
 	selectCont->insertItem( iron->getName() );
+	selectCont->insertItem( arrow->getName() );
+	selectCont->insertItem( quiver->getName() );
 
 	blob.setContainer(selectCont);
 

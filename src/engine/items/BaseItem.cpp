@@ -16,6 +16,9 @@ namespace items {
 		return _value;
 	}
 
+	bool BaseItem::getStackable() {
+		return _stackable;
+	}
 
 	void BaseItem::setName(String name) {
 		_name = name;
@@ -27,6 +30,10 @@ namespace items {
 
 	void BaseItem::setValue(double value) {
 		_value = value;
+	}
+
+	void BaseItem::setStackable(bool stackable) {
+		_stackable = stackable;
 	}
 
 }
