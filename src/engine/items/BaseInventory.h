@@ -12,7 +12,6 @@ namespace engine {
 namespace items {
 
 	/* I dunno, is this an ok idea? */
-	template <typename K>
 	class BaseInventory {
 	private:
 		std::vector<BaseItem*> _itemList;
