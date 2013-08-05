@@ -65,6 +65,7 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/main.o \
+	$(OBJDIR)/InputMapping.o \
 	$(OBJDIR)/BaseItem.o \
 	$(OBJDIR)/BaseContainerItem.o \
 	$(OBJDIR)/Room.o \
@@ -140,6 +141,9 @@ $(GCH): $(PCH)
 endif
 
 $(OBJDIR)/main.o: src/main.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/InputMapping.o: src/engine/input/InputMapping.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/BaseItem.o: src/engine/items/BaseItem.cpp
