@@ -6,7 +6,6 @@
 #include "engine/EngineSystem.h"
 #include "engine/world/Room.h"
 #include "engine/math/vec3.h"
-#include "game/actor/player/PlayerActor.h"
 
 #define ASSERT_ROOM_XYZ(p_x,p_y,p_z) ASSERT_ROOM_X(p_x) ASSERT_ROOM_Y(p_y) ASSERT_ROOM_Z(p_z)
 
@@ -27,8 +26,6 @@ namespace world {
 		void _checkEast(int heightMap[][WORLD_HEIGHT], int x, int y);
 		void _checkWest(int heightMap[][WORLD_HEIGHT], int x, int y);
 
-		game::actor::player::PlayerActor *playerActor;
-
 		//TODO: create some ASSERTS to make sure the array is accessed correctly (2013-04-02)
 	public:
 		WorldSystem();
@@ -46,12 +43,6 @@ namespace world {
 
 		void loadFromFile(String filename);
 		void saveToFile(String filename);
-
-		/* getters & setters */
-
-		game::actor::player::PlayerActor* getPlayerActor(){
-			return playerActor;
-		}
 	};
 
 }

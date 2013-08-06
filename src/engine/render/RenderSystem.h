@@ -1,7 +1,7 @@
 #ifndef ENGINE_RENDER_RENDERSYSTEM_H
 #define ENGINE_RENDER_RENDERSYSTEM_H
 
-#include "engine/world/WorldSystem.h"
+#include "engine/scene/SceneSystem.h"
 #include "engine/UI/UISystem.h"
 
 #include "engine/math/vec2.h"
@@ -12,14 +12,14 @@ namespace render {
 
 	class RenderSystem : public EngineSystem {
 	private:
-		world::WorldSystem *worldSystem;
+		scene::SceneSystem *sceneSystem;
 		UI::UISystem *uiSystem;
 
 		void drawChar(vec2 pos,int character);
 	public:
 		vec3 cameraPos; //What section of map is currently visible and should be render.
 
-		RenderSystem(world::WorldSystem *worldSystem,UI::UISystem *uiSystem);
+		RenderSystem(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem);
 		~RenderSystem() {};
 
 		virtual bool init();

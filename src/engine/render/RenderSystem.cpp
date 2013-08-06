@@ -10,8 +10,8 @@
 namespace engine {
 namespace render {
 
-	RenderSystem::RenderSystem(world::WorldSystem *worldSystem,UI::UISystem *uiSystem)
-	: worldSystem(worldSystem),
+	RenderSystem::RenderSystem(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem)
+	: sceneSystem(sceneSystem),
 	  uiSystem(uiSystem)
 	{}
 
@@ -62,7 +62,7 @@ namespace render {
 		}
 
 		/* RENDER MAP */
-		world::Room *currentRoom = worldSystem->getRoom(cameraPos);
+		world::Room *currentRoom = sceneSystem->getWorld()->getRoom(cameraPos);
 
 		vec2 pos;
 		for(int x = 0;x < ROOM_WIDTH;++x){
@@ -75,8 +75,8 @@ namespace render {
 
 		/* RENDER ACTORS TO MAP */
 
-		pos.x = worldSystem->getPlayerActor()->getPos()->x;
-		pos.y = worldSystem->getPlayerActor()->getPos()->y;
+		pos.x = sceneSystem->getPlayerActor()->getPos()->x;
+		pos.y = sceneSystem->getPlayerActor()->getPos()->y;
 		drawChar(pos,'@');
 
 		/* RENDER UI ON TOP OF EVERYTHING */

@@ -2,12 +2,12 @@
 
 #include "engine/math/random.h"
 #include "engine/EngineSystem.h"
-#include "engine/world/WorldSystem.h"
 #include "engine/render/RenderSystem.h"
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
+#include "engine/scene/SceneSystem.h"
 
 #include "game/items/IronItem.h"
 #include "game/items/ArrowItem.h"
@@ -19,14 +19,14 @@ int main(){
 	LOG_INFO("----");
 	LOG_INFO("engine starting");
 
-	world::WorldSystem *world        = new world::WorldSystem();
-	engine::UI::UISystem *ui         = new UI::UISystem();
-	render::RenderSystem *render     = new render::RenderSystem(world,ui);
+	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem();
+	scene->init();
 
-	world->init();
+	engine::UI::UISystem *ui          = new UI::UISystem();
+	render::RenderSystem *render      = new render::RenderSystem(scene,ui);
+
 	render->init();
 	ui->init();
-	world->generate();
 
 	/*\*/
 	game::items::IronItem * iron = new game::items::IronItem();
@@ -69,48 +69,14 @@ int main(){
 
 	bool quitStatus = false;
 	while(quitStatus == false){
-		world->update();
+		scene->update();
 		render->update();
 		ui->update();
 		//int key = getch();
 	}
 
 	render->uninit();
-	world->uninit();
-
-	/**
-	 * Protobuff testing
-	 */
-	/*
-	tileMsg test;
-	test.set_posx(15);
-	test.set_posy(10);
-	test.set_visual("#");
-	test.set_roomid(0);
-
-	std::fstream stream;
-	stream.open("gamesave", std::ios::out | std::ios::binary);
-
-	test.SerializeToOstream(&stream);
-
-	stream.close();
-
-	std::fstream input;
-	input.open("gamesave",std::ios::in | std::ios::binary);
-
-	tileMsg blob;
-	blob.ParseFromIstream(&input);
-
-	input.close();
-
-	printf("Tile x: %i tile y: %i [%s]\n",blob.posx(),blob.posy(),blob.visual().c_str());
-	*/
-
-	//Clean up the systems
-	/*
-	delete world;
-	delete render;
-	*/
+	scene->uninit();
 
 	return 0;
 }

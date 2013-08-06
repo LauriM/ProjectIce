@@ -23,13 +23,6 @@ namespace world {
 			}
 		}
 
-		//create player
-		playerActor = new game::actor::player::PlayerActor();
-
-		playerActor->setName("Player");
-		playerActor->getPos()->x = 20;
-		playerActor->getPos()->y = 20;
-
 		return true;
 	}
 
@@ -38,7 +31,6 @@ namespace world {
 	}
 
 	void WorldSystem::update(){
-		playerActor->update();
 		return;
 	}
 
