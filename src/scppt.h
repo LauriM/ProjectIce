@@ -17,7 +17,7 @@
 
 #define PRINTLN(p_msg) printf(p_msg"\n");
 
-#define SCPPT_COMPARE(p_name,p_var1,p_check,p_var2) LINEINFO START_TIMER PRINT("< "p_name" > ") \
+#define SCPPT_COMPARE(p_name,p_var1,p_check,p_var2) LINEINFO START_TIMER PRINT("< "p_name" > \n") \
 	if(p_var1 p_check p_var2){ \
 	SCPPT_OK\
 	}else{\

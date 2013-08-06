@@ -4,6 +4,7 @@
 #include "engine/world/Tile.h"
 #include "engine/UI/Window.h"
 #include "game/actor/player/PlayerActor.h"
+#include "engine/scene/SceneSystem.h"
 
 #include "precompiled.h"
 #include "engine/math/vec2.h"
@@ -56,6 +57,12 @@ int main(){
 		game::actor::player::PlayerActor *playerActor = new game::actor::player::PlayerActor();
 
 		playerActor->update();
+	}
+
+	PRINTLN("-> Scene ");
+	{
+		engine::scene::SceneSystem *sceneSystem = new engine::scene::SceneSystem();
+		SCPPT_COMPARE("Initializing scene", sceneSystem->init(),==,true);
 	}
 
 	PRINTLN("Tests complete");

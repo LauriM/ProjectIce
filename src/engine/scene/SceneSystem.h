@@ -25,13 +25,14 @@ namespace scene {
 			game::actor::player::PlayerActor *playerActor;
 
 		public:
-			SceneSystem(){
-				worldSystem = new world::WorldSystem();
-				worldSystem->init();
-				worldSystem->generate();
-			}
-
 			bool init(){
+				worldSystem = new world::WorldSystem();
+				if(!worldSystem->init()){
+					return false;//world could not be initialized
+				}
+
+				worldSystem->generate();
+
 				//create player
 				playerActor = new game::actor::player::PlayerActor();
 
