@@ -10,20 +10,20 @@ solution "ProjectIce"
 
     configuration { "linux" }
 		defines { "LINUX" }
-        links { "m", "rt" }
+		links { "m", "rt" }
 
     -- Configuration-specific options
     configuration "Debug"
-        defines { "DEBUG" }
-        flags   { "Symbols" }
+		defines { "DEBUG" }
+		flags   { "Symbols" }
 
     configuration "Release"
-        defines { "NDEBUG","RELEASE_BUILD" }
-        flags   { "Optimize" }
+		defines { "NDEBUG","RELEASE_BUILD" }
+		flags   { "Optimize" }
 
     project "ice"
-        kind "ConsoleApp"
-        language "C++"
+		kind "ConsoleApp"
+		language "C++"
         files { "src/main.cpp", "src/engine/**.h", "src/engine/**.cpp", "src/game/**.h", "src/game/**.cpp" }
 		includedirs { "src/" }
 
