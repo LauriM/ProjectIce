@@ -57,6 +57,9 @@ int main(){
 		game::actor::player::PlayerActor *playerActor = new game::actor::player::PlayerActor();
 
 		playerActor->update();
+
+		SCPPT_COMPARE("Player has positive HP",playerActor->getHp(),>,0);
+		SCPPT_COMPARE("Player has a name",playerActor->getName(),!=,"");
 	}
 
 	PRINTLN("-> Scene ");
