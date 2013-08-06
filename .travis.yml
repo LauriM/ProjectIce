@@ -8,7 +8,7 @@ after_success: ./test
 before_install:
  - sudo bash -c "echo 'deb http://lgp203.free.fr/ubuntu quantal universe' >> /etc/apt/sources.list.d/lgp203.free.fr.source.list"
  - sudo apt-get update
- - sudo apt-get install -qq libncurses5-dev premake4
+ - sudo apt-get install --force-yes -qq libncurses5-dev premake4
  - premake4 gmake
 
 notifications:
