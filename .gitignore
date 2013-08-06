@@ -2,6 +2,10 @@ test
 ice
 obj/
 
+Makefile
+ice.make
+test.make
+
 cscope.out
 tags
 
