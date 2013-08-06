@@ -6,8 +6,10 @@ script: make
 after_success: ./test
 
 before_install:
- - sudo apt-get install -qq libncurses5-dev premake
- - premake gmake
+ - sudo bash -c "echo 'deb http://lgp203.free.fr/ubuntu quantal universe' >> /etc/apt/sources.list.d/lgp203.free.fr.source.list"
+ - sudo apt-get update
+ - sudo apt-get install -qq libncurses5-dev premake4
+ - premake4 gmake
 
 notifications:
   irc: "chat.freenode.net#ProjectIce"
