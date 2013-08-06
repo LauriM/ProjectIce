@@ -62,7 +62,7 @@ int main(){
 	PRINTLN("-> Scene ");
 	{
 		engine::scene::SceneSystem *sceneSystem = new engine::scene::SceneSystem();
-		SCPPT_COMPARE("Initializing scene", sceneSystem->init(),==,true);
+		SCPPT_COMPARE("Initializing scene", sceneSystem->init(),!=,true);
 	}
 
 	PRINTLN("Tests complete");
