@@ -10,7 +10,7 @@ namespace actor {
 namespace player {
 
 	class PlayerActor : public engine::actor::ActorBase {
-	private:
+		private:
 
 		engine::input::InputMapping * _inputMapping; // so you don't hae to retreive it each update
 
