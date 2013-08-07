@@ -8,7 +8,7 @@
 
 #include "precompiled.h"
 #include "engine/math/vec2.h"
-#include "engine/items/BaseInventory.h"
+#include "engine/inventory/BaseInventory.h"
 #include "game/items/IronItem.h"
 #include "game/items/ArrowItem.h"
 #include "game/items/containers/QuiverItem.h"
