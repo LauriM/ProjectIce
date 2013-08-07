@@ -39,6 +39,4 @@ typedef std::string String;
 
 #include "engine/EngineSystem.h"
 
-using namespace engine;
-
 #endif

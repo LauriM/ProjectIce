@@ -25,6 +25,8 @@ namespace actor {
 			virtual void update() = 0;
 
 			//Should be called for all the actors
+			//
+			//NOTE: IF THIS IS NOT SET, THE GAME WILL CRASH
 			void setWorld(engine::world::WorldSystem *newWorld){
 				world = newWorld;
 			}

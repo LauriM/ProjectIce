@@ -22,8 +22,8 @@ int main(){
 	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem();
 	scene->init();
 
-	engine::UI::UISystem *ui          = new UI::UISystem();
-	render::RenderSystem *render      = new render::RenderSystem(scene,ui);
+	engine::UI::UISystem *ui          = new engine::UI::UISystem();
+	engine::render::RenderSystem *render      = new engine::render::RenderSystem(scene,ui);
 
 	render->init();
 	ui->init();
@@ -37,24 +37,24 @@ int main(){
 	quiver->setQuantity( 100 );
 	/*\*/
 
-	UI::Window welcomeWindow;
+	engine::UI::Window welcomeWindow;
 	welcomeWindow.setPos(vec2(4,3));
 	welcomeWindow.setSize(vec2(35,15));
 	welcomeWindow.setName("Welcome to ProjectIce");
 
-	UI::containers::TextContainer *textCont = new UI::containers::TextContainer();
+	engine::UI::containers::TextContainer *textCont = new engine::UI::containers::TextContainer();
 	textCont->init();
 	textCont->setText("ProjectIce is an experimental roguelike project developed in C++. This is a early development build. And this string is useless and long to test the word wrapping feature on the textContainer. -- press anykey to continue --");
 	textCont->setPressToContinue(true);
 
 	welcomeWindow.setContainer(textCont);
 
-	UI::Window blob;
+	engine::UI::Window blob;
 	blob.setPos(vec2(84,3));
 	blob.setSize(vec2(15,15));
 	blob.setName("blob");
 
-	UI::containers::SelectContainer *selectCont = new UI::containers::SelectContainer();
+	engine::UI::containers::SelectContainer *selectCont = new engine::UI::containers::SelectContainer();
 	selectCont->insertItem("0 zero");
 	selectCont->insertItem("& second");
 	selectCont->insertItem("# so on");
