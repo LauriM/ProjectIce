@@ -62,6 +62,14 @@ int main(){
 		SCPPT_COMPARE("Player has a name",playerActor->getName(),!=,"");
 	}
 
+	PRINTLN("-> item quiver");
+	{
+		game::items::containers::QuiverItem * quiver = new game::items::containers::QuiverItem();
+		quiver->setQuantity( 1 );
+		quiver->setQuantity( quiver->getQuantity() + 2 );
+		SCPPT_COMPARE("quiver quantity is correct",quiver->getQuantity(),==,3);
+	}
+
 	PRINTLN("-> Scene ");
 	{
 		engine::scene::SceneSystem *sceneSystem = new engine::scene::SceneSystem();
