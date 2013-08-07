@@ -1,9 +1,10 @@
 #ifndef ENGINE_WORLD_ROOM_H
-#define ENGINE_WORLD_ROOM_H 
+#define ENGINE_WORLD_ROOM_H
 
 #include "precompiled.h"
 
 #include "engine/world/Tile.h"
+#include "engine/math/vec2.h"
 
 #define ASSERT_TILE_XY(p_x,p_y) ASSERT_TILE_X(p_x) ASSERT_TILE_Y(p_y)
 
@@ -44,7 +45,7 @@ namespace world {
 		//Roomtype also used as visual
 		ROOM_TYPES roomType;
 
-		//TODO: added get tile by vec2 (2013-04-06)
+		Tile* getTile(vec2 pos);
 		Tile* getTile(int x,int y);
 		Tile* getTileArray();
 

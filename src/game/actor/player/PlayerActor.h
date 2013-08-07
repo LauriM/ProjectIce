@@ -24,6 +24,9 @@ namespace player {
 
 			void update(){
 				int key = getch();
+				LOG_INFO("ASFASFASF");
+
+				LOG_DEBUG_F("key %i",key);
 
 				//TODO: This looks UGLY
 				if ( key == _inputMapping->getMoveNorth() ) {
