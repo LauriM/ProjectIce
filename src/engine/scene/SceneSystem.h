@@ -37,8 +37,9 @@ namespace scene {
 				playerActor = new game::actor::player::PlayerActor();
 
 				playerActor->setName("Player");
-				playerActor->getPos()->x = 2;
-				playerActor->getPos()->y = 2;
+				playerActor->getPos()->x = 10;
+				playerActor->getPos()->y = 10;
+				playerActor->setWorld(worldSystem);
 
 				return true;
 			}

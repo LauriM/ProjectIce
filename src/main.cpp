@@ -64,7 +64,7 @@ int main(){
 
 	blob.setContainer(selectCont);
 
-	ui->addWindow(welcomeWindow);
+//	ui->addWindow(welcomeWindow);
 	ui->addWindow(blob);
 
 	bool quitStatus = false;

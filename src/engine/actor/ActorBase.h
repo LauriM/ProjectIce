@@ -37,23 +37,19 @@ namespace actor {
 			 * Returns if the move was valid.
 			 */
 			bool MoveActor(vec2 movement){
-				//TODO: implement collision checks.
-				//TODO: implement room change.
+				//TODO: implement check that the "world" is not invalid
 
 				vec2 newPos;
 				newPos.x = position.x + movement.x;
 				newPos.y = position.y + movement.y;
 
-				world->getRoom(location)->getTile(position);
+				if(!world->getRoom(location)->getTile(newPos.x,newPos.y)->blocks){
+					position = newPos;
+					return true;
+				}
 
-				LOG_DEBUG_F("pos: %i %i",position.x,position.y);
-				LOG_DEBUG_F("newpos: %i %i",newPos.x,newPos.y);
-
-				position = newPos;
-
-				//TODO: col check
-
-				return true;
+				LOG_DEBUG("actor collides with tile");
+				return false; //collided
 			}
 
 			/* getters / setters */
