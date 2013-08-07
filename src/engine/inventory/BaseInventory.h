@@ -6,6 +6,7 @@
 
 #include "engine/math/vec2.h"
 #include "engine/items/BaseItem.h"
+#include "engine/inventory/InvOwnerUnion.h"
 #include "engine/actor/ActorBase.h"
 
 namespace engine {
@@ -15,6 +16,7 @@ namespace inventory {
 	class BaseInventory {
 	private:
 		std::vector<items::BaseItem*> _itemList;
+		inventory::UInventoryType _owner;
 	public:
 		void addItem(items::BaseItem * item) {
 			if ( item )
