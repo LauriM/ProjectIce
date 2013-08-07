@@ -7,6 +7,7 @@
 #include "engine/world/WorldSystem.h"
 #include "game/actor/player/PlayerActor.h"
 #include "engine/inventory/InvOwnerUnion.h"
+#include "engine/inventory/BaseInventory.h"
 
 namespace engine {
 namespace scene {
@@ -26,10 +27,6 @@ namespace scene {
 
 			actor::ActorBase * playerActor;
 			//game::actor::player::PlayerActor *playerActor;
-
-			// Union'd for multiple different types of inventory owners
-			// as so far Room's an Actors can have inventories.
-			inventory::UInventoryType inventory;
 
 		public:
 
@@ -52,8 +49,15 @@ namespace scene {
 				playerActor->getPos()->x = 10;
 				playerActor->getPos()->y = 10;
 				playerActor->setWorld(worldSystem);
-				inventory.ownerType = inventory::ACTOR;
-				inventory.actorOwner = playerActor;
+
+				// Test Bryan
+				inventory::UInventoryType ut;
+				ut.ownerType = inventory::ACTOR;
+				ut.actorOwner = playerActor;
+				inventory::BaseInventory * playerInv = new inventory::BaseInventory();
+				playerInv->setOwner( ut );
+				// Bryan
+
 
 				return true;
 			}
