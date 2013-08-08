@@ -1,17 +1,17 @@
 
-#include "game/items/containers/QuiverItem.h"
+#include "game/item/container/QuiverItem.h"
 
 namespace game {
-namespace items {
-namespace containers {
+namespace item {
+namespace container {
 
 	QuiverItem::QuiverItem() {
-		_name = "Quiver";
-		_description = "It holds arrows";
-		_value = 10.0;
-		_quantity = 0;
-		_maxQuantity = 20;
-		_containedItem = new ArrowItem();
+		name = "Quiver";
+		description = "It holds arrows";
+		value = 10.0;
+		quantity = 0;
+		maxQuantity = 20;
+		containedItem = new ArrowItem();
 	}
 
 	QuiverItem::~QuiverItem() {	}

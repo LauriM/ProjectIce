@@ -6,8 +6,6 @@
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
 #include "game/actor/player/PlayerActor.h"
-#include "engine/inventory/InvOwnerUnion.h"
-#include "engine/inventory/BaseInventory.h"
 
 namespace engine {
 namespace scene {
@@ -49,15 +47,6 @@ namespace scene {
 				playerActor->getPos()->x = 10;
 				playerActor->getPos()->y = 10;
 				playerActor->setWorld(worldSystem);
-
-				// Test Bryan
-				inventory::UInventoryType ut;
-				ut.ownerType = inventory::ACTOR;
-				ut.actorOwner = playerActor;
-				inventory::BaseInventory * playerInv = new inventory::BaseInventory();
-				playerInv->setOwner( ut );
-				// Bryan
-
 
 				return true;
 			}

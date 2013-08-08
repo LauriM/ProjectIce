@@ -8,10 +8,6 @@
 
 #include "precompiled.h"
 #include "engine/math/vec2.h"
-#include "engine/inventory/BaseInventory.h"
-#include "game/items/IronItem.h"
-#include "game/items/ArrowItem.h"
-#include "game/items/containers/QuiverItem.h"
 
 #include <map>
 
@@ -60,14 +56,6 @@ int main(){
 
 		SCPPT_COMPARE("Player has positive HP",playerActor->getHp(),>,0);
 		SCPPT_COMPARE("Player has a name",playerActor->getName(),!=,"");
-	}
-
-	PRINTLN("-> item quiver");
-	{
-		game::items::containers::QuiverItem * quiver = new game::items::containers::QuiverItem();
-		quiver->setQuantity( 1 );
-		quiver->setQuantity( quiver->getQuantity() + 2 );
-		SCPPT_COMPARE("quiver quantity is correct",quiver->getQuantity(),==,3);
 	}
 
 	PRINTLN("-> Scene ");

@@ -1,18 +1,18 @@
 
-#ifndef __IRON_ITEM_H__
-#define __IRON_ITEM_H__
+#ifndef __ARROW_ITEM_H__
+#define __ARROW_ITEM_H__
 
 #include "engine/actor/ActorBase.h"
-#include "engine/items/BaseItem.h"
+#include "engine/item/ItemBase.h"
 
 namespace game {
-namespace items {
+namespace item {
 	
-	class IronItem : public engine::items::BaseItem {
+	class ArrowItem : public engine::item::ItemBase {
 	private:
 	public:
-		IronItem();
-		~IronItem();
+		ArrowItem();
+		~ArrowItem();
 
 		void onPickup( engine::actor::ActorBase * aOwner );
 		void onDrop( engine::actor::ActorBase * aOwner );

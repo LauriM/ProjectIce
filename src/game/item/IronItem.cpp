@@ -1,15 +1,15 @@
 
-#include "game/items/IronItem.h"
+#include "game/item/IronItem.h"
 
 namespace game {
-namespace items {
+namespace item {
 	
 	IronItem::IronItem() {
 
-		_name = "Iron";
-		_description = "A normal piece of iron.";
-		_value = 10.0;
-		_stackable = false;
+		name = "Iron";
+		description = "A normal piece of iron.";
+		value = 10.0;
+		stackable = false;
 	}
 
 	IronItem::~IronItem() {}
