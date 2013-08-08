@@ -2,16 +2,16 @@
 #ifndef __QUIVER_ITEM_H__
 #define __QUIVER_ITEM_H__
 
-#include "game/items/ArrowItem.h"
+#include "game/item/ArrowItem.h"
 #include "engine/actor/ActorBase.h"
-#include "engine/items/BaseItem.h"
-#include "engine/items/containers/BaseContainerItem.h"
+#include "engine/item/ItemBase.h"
+#include "engine/item/container/ItemContainerBase.h"
 
 namespace game {
-namespace items {
-namespace containers {
+namespace item {
+namespace container {
 	
-	class QuiverItem : public engine::items::containers::BaseContainerItem {
+	class QuiverItem : public engine::item::container::ItemContainerBase {
 	private:
 	public:
 		QuiverItem();
