@@ -11,21 +11,41 @@ namespace container {
 	
 	class ItemContainerBase : public ItemBase {
 	protected:
-		ItemBase * _containedItem;
-		int _quantity;
-		int _maxQuantity;
+		ItemBase * containedItem;
+		int quantity;
+		int maxQuantity;
 	public:
 
-		void setContainedItem(ItemBase * item);
-		ItemBase * getContainedItem();
+		void setContainedItem(ItemBase * item) {
+			containedItem = item;
+		}		
 
-		void setQuantity(int quantity);
-		int getQuantity();
+		ItemBase * getContainedItem() {
+			return this->containedItem;
+		}
 
-		void setMaxQuantity(int max);
-		int getMaxQuantity();
+		void setQuantity(int quantity) {
+			if ( quantity > maxQuantity )
+				return;
+			
+			this->quantity = quantity;
+		}
 
-		int getTotalValue();
+		int getQuantity() {
+			return quantity;
+		}
+
+		void setMaxQuantity(int max) {
+			this->maxQuantity = max;
+		}
+
+		int getMaxQuantity() {
+			return maxQuantity;
+		}
+
+		double getTotalValue() {
+			return (value * quantity);
+		}
 
 		virtual void onPickup( actor::ActorBase * aOwner ) = 0;
 		virtual void onInspect( actor::ActorBase * aOwner ) = 0;

@@ -5,10 +5,10 @@ namespace game {
 namespace item {
 
 	ArrowItem::ArrowItem() {
-		_name = "Arrow";
-		_description = "A simple arrow.";
-		_value = 1.0;
-		_stackable = true;
+		name = "Arrow";
+		description = "A simple arrow.";
+		value = 1.0;
+		stackable = true;
 	}
 
 	ArrowItem::~ArrowItem() {}

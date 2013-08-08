@@ -11,22 +11,44 @@ namespace item {
 	class ItemBase {
 	protected:
 
-		String _name;
-		String _description;
-		double _value;
-		bool _stackable;
+		String name;
+		String description;
+		double value;
+		bool stackable;
 
 	public:
 
-		String getName();
-		String getDescription();
-		double getValue();
-		bool getStackable();
+		String getName() {
+			return name;
+		}
 
-		void setName(String name);
-		void setDescription(String description);
-		void setValue(double value);
-		void setStackable(bool stackable);
+		String getDescription() {
+			return description;
+		}
+
+		double getValue() {
+			return value;
+		}
+
+		bool getStackable() {
+			return stackable;
+		}
+
+		void setName(String name) {
+			this->name = name;
+		}
+
+		void setDescription(String description) {
+			this->description = description;
+		}
+
+		void setValue(double value) {
+			this->value = value;
+		}
+
+		void setStackable(bool stackable) {
+			this->stackable = stackable;
+		}
 
 		virtual void onPickup( actor::ActorBase * aOwner ) = 0;
 		virtual void onInspect( actor::ActorBase * aOwner ) = 0;
