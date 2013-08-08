@@ -4,14 +4,14 @@
 
 #include "game/items/ArrowItem.h"
 #include "engine/actor/ActorBase.h"
-#include "engine/items/BaseItem.h"
-#include "engine/items/containers/BaseContainerItem.h"
+#include "engine/items/ItemBase.h"
+#include "engine/items/containers/ItemContainerBase.h"
 
 namespace game {
 namespace items {
 namespace containers {
 	
-	class QuiverItem : public engine::items::containers::BaseContainerItem {
+	class QuiverItem : public engine::items::containers::ItemContainerBase {
 	private:
 	public:
 		QuiverItem();

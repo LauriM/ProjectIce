@@ -3,12 +3,12 @@
 #define __ARROW_ITEM_H__
 
 #include "engine/actor/ActorBase.h"
-#include "engine/items/BaseItem.h"
+#include "engine/items/ItemBase.h"
 
 namespace game {
 namespace items {
 	
-	class ArrowItem : public engine::items::BaseItem {
+	class ArrowItem : public engine::items::ItemBase {
 	private:
 	public:
 		ArrowItem();

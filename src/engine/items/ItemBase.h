@@ -1,6 +1,6 @@
 
-#ifndef __BASE_ITEM_H__
-#define __BASE_ITEM_H__
+#ifndef __ITEM_BASE_H__
+#define __ITEM_BASE_H__
 
 #include "precompiled.h"
 #include "engine/actor/ActorBase.h"
@@ -8,7 +8,7 @@
 namespace engine {
 namespace items {
 
-	class BaseItem {
+	class ItemBase {
 	protected:
 
 		String _name;
@@ -32,7 +32,7 @@ namespace items {
 		virtual void onInspect( actor::ActorBase * aOwner ) = 0;
 		virtual void onDrop( actor::ActorBase * aOwner ) = 0;
 
-		virtual ~BaseItem() {};
+		virtual ~ItemBase() {};
 	};
 
 }

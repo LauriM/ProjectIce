@@ -3,12 +3,12 @@
 #define __IRON_ITEM_H__
 
 #include "engine/actor/ActorBase.h"
-#include "engine/items/BaseItem.h"
+#include "engine/items/ItemBase.h"
 
 namespace game {
 namespace items {
 	
-	class IronItem : public engine::items::BaseItem {
+	class IronItem : public engine::items::ItemBase {
 	private:
 	public:
 		IronItem();
