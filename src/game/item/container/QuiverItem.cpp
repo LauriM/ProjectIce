@@ -16,15 +16,15 @@ namespace container {
 
 	QuiverItem::~QuiverItem() {	}
 
-	void QuiverItem::onPickup( ) {
+	void QuiverItem::onPickup( engine::actor::ActorBase * actor ) {
 		return;
 	}
 
-	void QuiverItem::onInspect( ) {
+	void QuiverItem::onInspect( engine::actor::ActorBase * actor ) {
 		return;
 	}
 
-	void QuiverItem::onDrop( ) {
+	void QuiverItem::onDrop( engine::actor::ActorBase * actor ) {
 		return;
 	}
 

@@ -8,20 +8,19 @@ namespace item {
 		name = "Arrow";
 		description = "A simple arrow.";
 		value = 1.0;
-		stackable = true;
 	}
 
 	ArrowItem::~ArrowItem() {}
 
-	void ArrowItem::onPickup( ) {
+	void ArrowItem::onPickup( engine::actor::ActorBase * actor ) {
 		return;
 	}
 
-	void ArrowItem::onInspect( ) {
-
+	void ArrowItem::onInspect( engine::actor::ActorBase * actor ) {
+		return;
 	}
 
-	void ArrowItem::onDrop( ) {
+	void ArrowItem::onDrop( engine::actor::ActorBase * actor ) {
 		return;
 	}
 

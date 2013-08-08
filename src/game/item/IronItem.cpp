@@ -9,20 +9,19 @@ namespace item {
 		name = "Iron";
 		description = "A normal piece of iron.";
 		value = 10.0;
-		stackable = false;
 	}
 
 	IronItem::~IronItem() {}
 
-	void IronItem::onPickup(  ) {
+	void IronItem::onPickup( engine::actor::ActorBase * actor  ) {
 		return;
 	}
 
-	void IronItem::onDrop(  ) {
+	void IronItem::onDrop( engine::actor::ActorBase * actor  ) {
 		return;
 	}
 
-	void IronItem::onInspect(  ) {
+	void IronItem::onInspect( engine::actor::ActorBase * actor  ) {
 		return;
 	}
 

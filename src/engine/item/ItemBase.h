@@ -15,7 +15,6 @@ namespace item {
 		String name;
 		String description;
 		double value;
-		bool stackable;
 
 	public:
 
@@ -31,10 +30,6 @@ namespace item {
 			return value;
 		}
 
-		bool getStackable() {
-			return stackable;
-		}
-
 		void setName(String name) {
 			this->name = name;
 		}
@@ -47,13 +42,9 @@ namespace item {
 			this->value = value;
 		}
 
-		void setStackable(bool stackable) {
-			this->stackable = stackable;
-		}
-
-		virtual void onPickup(  ) = 0;
-		virtual void onInspect( ) = 0;
-		virtual void onDrop(  ) = 0;
+		virtual void onPickup( actor::ActorBase * actor ) = 0;
+		virtual void onInspect( actor::ActorBase * actor ) = 0;
+		virtual void onDrop( actor::ActorBase * actor ) = 0;
 
 		virtual ~ItemBase() {};
 	};

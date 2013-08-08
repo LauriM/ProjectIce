@@ -14,9 +14,9 @@ namespace item {
 		IronItem();
 		~IronItem();
 
-		void onPickup(  );
-		void onDrop(  );
-		void onInspect(  );
+		void onPickup( engine::actor::ActorBase * actor  );
+		void onDrop( engine::actor::ActorBase * actor  );
+		void onInspect( engine::actor::ActorBase * actor  );
 	};
 
 }
