@@ -25,6 +25,7 @@ namespace item {
 		void onDrop( actor::ActorBase * actor ) {
 
 		}
+		
 	};
 
 }

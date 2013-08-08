@@ -45,6 +45,10 @@ namespace scene {
 			void update(){
 				worldSystem->update();
 				playerActor->update();
+				std::vector<actor::ActorBase*>::iterator it;
+				for( it = actorList.begin(); it != actorList.end(); ++it ) {
+					(*it)->update();
+				}
 			}
 
 			/*getters & setters */
