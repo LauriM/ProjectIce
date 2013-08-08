@@ -3,6 +3,7 @@
 #define __ITEM_BASE_H__
 
 #include "precompiled.h"
+
 #include "engine/actor/ActorBase.h"
 
 namespace engine {
@@ -50,9 +51,9 @@ namespace item {
 			this->stackable = stackable;
 		}
 
-		virtual void onPickup( actor::ActorBase * aOwner ) = 0;
-		virtual void onInspect( actor::ActorBase * aOwner ) = 0;
-		virtual void onDrop( actor::ActorBase * aOwner ) = 0;
+		virtual void onPickup(  ) = 0;
+		virtual void onInspect( ) = 0;
+		virtual void onDrop(  ) = 0;
 
 		virtual ~ItemBase() {};
 	};

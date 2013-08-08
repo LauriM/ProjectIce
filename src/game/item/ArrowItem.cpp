@@ -13,17 +13,15 @@ namespace item {
 
 	ArrowItem::~ArrowItem() {}
 
-	void ArrowItem::onPickup( engine::actor::ActorBase * aOwner ) {
+	void ArrowItem::onPickup( ) {
 		return;
 	}
 
-	void ArrowItem::onInspect( engine::actor::ActorBase * aOwner ) {
-		// oh no, it stabs you in the face!
-		aOwner->setHp( aOwner->getHp() - 1 );
-		return;
+	void ArrowItem::onInspect( ) {
+
 	}
 
-	void ArrowItem::onDrop( engine::actor::ActorBase * aOwner ) {
+	void ArrowItem::onDrop( ) {
 		return;
 	}
 

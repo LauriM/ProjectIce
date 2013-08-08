@@ -17,9 +17,9 @@ namespace container {
 		QuiverItem();
 		~QuiverItem();
 
-		void onPickup( engine::actor::ActorBase * aOwner );
-		void onInspect( engine::actor::ActorBase * aOwner );
-		void onDrop( engine::actor::ActorBase * aOwner );
+		void onPickup( );
+		void onInspect( );
+		void onDrop( );
 	};
 
 }

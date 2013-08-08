@@ -58,12 +58,6 @@ int main(){
 		SCPPT_COMPARE("Player has a name",playerActor->getName(),!=,"");
 	}
 
-	PRINTLN("-> Scene ");
-	{
-		engine::scene::SceneSystem *sceneSystem = new engine::scene::SceneSystem();
-		SCPPT_COMPARE("Initializing scene", sceneSystem->init(),==,true);
-	}
-
 	PRINTLN("Tests complete");
 
 	SCPPT_END;

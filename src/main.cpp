@@ -9,14 +9,26 @@
 #include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
 
+#include "game/actor/player/PlayerActor.h"
+
 int main(){
 	randomInit();
 
 	LOG_INFO("----");
 	LOG_INFO("engine starting");
 
-	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem();
-	scene->init();
+	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
+	playerActor->setName("oo");
+	playerActor->getPos()->x = 10;
+	playerActor->getPos()->y = 10;
+
+	engine::world::WorldSystem * worldSystem = new engine::world::WorldSystem();
+	worldSystem->init();
+	worldSystem->generate();
+	playerActor->setWorld(worldSystem);
+
+	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,playerActor);
+
 
 	engine::UI::UISystem *ui          = new engine::UI::UISystem();
 	engine::render::RenderSystem *render      = new engine::render::RenderSystem(scene,ui);

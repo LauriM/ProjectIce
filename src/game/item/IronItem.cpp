@@ -14,15 +14,15 @@ namespace item {
 
 	IronItem::~IronItem() {}
 
-	void IronItem::onPickup( engine::actor::ActorBase * aOwner ) {
+	void IronItem::onPickup(  ) {
 		return;
 	}
 
-	void IronItem::onDrop( engine::actor::ActorBase * aOwner ) {
+	void IronItem::onDrop(  ) {
 		return;
 	}
 
-	void IronItem::onInspect( engine::actor::ActorBase * aOwner ) {
+	void IronItem::onInspect(  ) {
 		return;
 	}
 

@@ -47,9 +47,9 @@ namespace container {
 			return (value * quantity);
 		}
 
-		virtual void onPickup( actor::ActorBase * aOwner ) = 0;
-		virtual void onInspect( actor::ActorBase * aOwner ) = 0;
-		virtual void onDrop( actor::ActorBase * aOwner ) = 0;
+		virtual void onPickup( ) = 0;
+		virtual void onInspect( ) = 0;
+		virtual void onDrop( ) = 0;
 	};
 
 }

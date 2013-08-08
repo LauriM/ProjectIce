@@ -5,7 +5,7 @@
 
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
-#include "game/actor/player/PlayerActor.h"
+#include "engine/inventory/ActorInventory.h"
 
 namespace engine {
 namespace scene {
@@ -19,35 +19,22 @@ namespace scene {
 		private:
 			world::WorldSystem *worldSystem;
 
-			//TODO: add arrays of inventories and actors here
+			// the rest of the world
+			std::vector<actor::ActorBase*> actorList;
 
-			//Always keep the pointer to playeractor close
-
+			// player objects
 			actor::ActorBase * playerActor;
-			//game::actor::player::PlayerActor *playerActor;
-
+			inventory::ActorInventory * playerInventory;
 		public:
 
-			// I would think that worldSystem and player should be created outside of the SceneSystem instead
-			// of being initialized here. #1 splitting the creation up if something goes wrong it's easier
-			// to pull it apart and also you'll extend the engine via the game namespace which isn't
-			// very nice to do.
+			SceneSystem( world::WorldSystem * world, actor::ActorBase * player ) {
+				worldSystem = world;
+				playerActor = player;
+				playerInventory = new inventory::ActorInventory();
+				playerInventory->setOwner(playerActor);
+			}
+
 			bool init( ){
-				worldSystem = new world::WorldSystem();
-				if(!worldSystem->init()){
-					return false;//world could not be initialized
-				}
-
-				worldSystem->generate();
-
-				//create player
-				playerActor = new game::actor::player::PlayerActor();
-
-				playerActor->setName("Player");
-				playerActor->getPos()->x = 10;
-				playerActor->getPos()->y = 10;
-				playerActor->setWorld(worldSystem);
-
 				return true;
 			}
 
@@ -69,6 +56,15 @@ namespace scene {
 			world::WorldSystem* getWorld(){
 				return worldSystem;
 			}
+
+			std::vector<actor::ActorBase*> getActorList() {
+				return actorList;
+			}
+
+			void addActor(actor::ActorBase * actor) {
+				actorList.push_back(actor);
+			}
+
 	};
 
 }
