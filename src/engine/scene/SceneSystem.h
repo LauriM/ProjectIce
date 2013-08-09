@@ -6,6 +6,7 @@
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
 #include "engine/inventory/ActorInventory.h"
+#include "engine/inventory/RoomInventory.h"
 
 namespace engine {
 namespace scene {
@@ -17,7 +18,11 @@ namespace scene {
 	 */
 	class SceneSystem : public EngineSystem {
 		private:
+			// Bryan: Maybe we should have room Systems?
 			world::WorldSystem *worldSystem;
+
+			// Bryan: for now this will have the room inventory
+			inventory::RoomInventory * roomInventory;
 
 			// the rest of the world
 			std::vector<actor::ActorBase*> actorList;
@@ -32,6 +37,10 @@ namespace scene {
 				playerActor = player;
 				playerInventory = new inventory::ActorInventory();
 				playerInventory->setOwner(playerActor);
+
+				roomInventory = new inventory::RoomInventory();
+				roomInventory->setRoomOwner( worldSystem->getRoom(0,0,0) );
+
 			}
 
 			bool init( ){
@@ -67,6 +76,10 @@ namespace scene {
 
 			void addActor(actor::ActorBase * actor) {
 				actorList.push_back(actor);
+			}
+
+			void addItem(item::ItemBase * item) {
+				roomInventory->addItem( vec2(0,0), item );
 			}
 
 	};

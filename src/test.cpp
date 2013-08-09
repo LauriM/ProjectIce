@@ -8,6 +8,8 @@
 
 #include "precompiled.h"
 #include "engine/math/vec2.h"
+#include "engine/item/ItemBase.h"
+#include "engine/inventory/RoomInventory.h"
 
 #include <map>
 

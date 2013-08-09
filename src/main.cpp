@@ -10,6 +10,7 @@
 #include "engine/scene/SceneSystem.h"
 
 #include "game/actor/player/PlayerActor.h"
+#include "game/item/PotionItem.h"
 
 int main(){
 	randomInit();
@@ -29,6 +30,8 @@ int main(){
 
 	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,playerActor);
 
+	game::item::PotionItem * pi = new game::item::PotionItem();
+	scene->addItem(pi);
 
 	engine::UI::UISystem *ui          = new engine::UI::UISystem();
 	engine::render::RenderSystem *render      = new engine::render::RenderSystem(scene,ui);
