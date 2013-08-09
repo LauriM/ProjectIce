@@ -124,8 +124,10 @@ namespace inventory {
 			for( tyItemIterator ii = itemList->begin(); ii != itemList->end(); ++ii ) {
 				item::ItemBase * item = (*ii); // current item being checked
 				if ( item->getName() == name ) {
-					vec2 tempvec = convertPairToVec2( (*mi).first );
 					if ( position ) {
+						// no reason to convert unless the requestor wants the position
+						// maybe just the instance
+						vec2 tempvec = convertPairToVec2( (*mi).first );
 						position->x = tempvec.x;
 						position->y = tempvec.y;
 					}
