@@ -58,11 +58,59 @@ namespace inventory {
 	}
 
 	/*
+		Counts the number of items at a position
+	*/
+	int RoomInventory::getItemCountAtPosition( vec2 position, String name ) {
+		int count = 0;
+		tyV2Pair pair = convertVec2ToPair(position);
+		tyItemVector * itemList = itemMap[pair];
+		if ( itemList ) {
+			for( tyItemIterator ii = itemList->begin(); ii != itemList->end(); ++ii ) {
+				item::ItemBase * item = (*ii); // current item being checked
+				if ( item->getName() == name ) {
+					count++;
+				}
+			}			
+		}
+		return count;
+	}
+
+	/*
+		Counts the total number of items at a position
+	*/
+	int RoomInventory::getTotalItemCountAtPosition( vec2 position ) {
+		int count = 0;
+		tyV2Pair pair = convertVec2ToPair(position);
+		tyItemVector * itemList = itemMap[pair];
+		if ( itemList ) {
+			count = itemList->size();
+		}
+		return count;
+	}
+
+	/*
 		Returns the item at the given position
 	*/
-	tyItemVector * RoomInventory::getItemListByPostition( vec2 position ) {
+	tyItemVector * RoomInventory::getItemListByPosition( vec2 position ) {
 		tyV2Pair pair = convertVec2ToPair(position);
 		return itemMap[pair];
+	}
+
+	/*
+		Returns an item at a given position
+	*/
+	item::ItemBase * RoomInventory::getItemByPosition( vec2 position, String name ) {
+		tyV2Pair pair = convertVec2ToPair(position);
+		tyItemVector * itemList = itemMap[pair];
+		if ( itemList ) {
+			for( tyItemIterator ii = itemList->begin(); ii != itemList->end(); ++ii ) {
+				item::ItemBase * item = (*ii); // current item being checked
+				if ( item->getName() == name ) {
+					return item;
+				}
+			}			
+		}
+		return NULL;
 	}
 
 	/*
@@ -70,13 +118,17 @@ namespace inventory {
 		the definition. The by reference position will return the key
 		of where this item is located in the room
 	*/
-	item::ItemBase * RoomInventory::searchForItem( String name, vec2 & position ) {
+	item::ItemBase * RoomInventory::searchForItem( String name, vec2 * position ) {
 		for( tyMapIterator mi = itemMap.begin(); mi != itemMap.end(); ++mi ) {
 			tyItemVector * itemList = (*mi).second;
 			for( tyItemIterator ii = itemList->begin(); ii != itemList->end(); ++ii ) {
 				item::ItemBase * item = (*ii); // current item being checked
 				if ( item->getName() == name ) {
-					position = convertPairToVec2( (*mi).first );
+					vec2 tempvec = convertPairToVec2( (*mi).first );
+					if ( position ) {
+						position->x = tempvec.x;
+						position->y = tempvec.y;
+					}
 					return item;
 				}
 			}

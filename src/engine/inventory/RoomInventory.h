@@ -54,16 +54,31 @@ namespace inventory {
 		bool removeItem( String name, vec2 position );
 
 		/*
+			Counts the number of a type of item at a position
+		*/
+		int getItemCountAtPosition( vec2 position, String );
+
+		/*
+			Counts the total number of items at a position
+		*/
+		int getTotalItemCountAtPosition( vec2 position );
+
+		/*
 			Returns the item at the given position
 		*/
-		tyItemVector * getItemListByPostition( vec2 position );
+		tyItemVector * getItemListByPosition( vec2 position );
+
+		/*
+			Returns an item at a given position
+		*/
+		item::ItemBase * getItemByPosition( vec2 position, String name );
 
 		/*
 			Searches if an item by the name exists in the rooms, returns
 			the definition. The by reference position will return the key
 			used in the map
 		*/
-		item::ItemBase * searchForItem( String name, vec2 & position );
+		item::ItemBase * searchForItem( String name, vec2 * position = 0);
 
 
 	};

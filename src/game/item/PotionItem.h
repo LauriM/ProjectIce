@@ -11,6 +11,12 @@ namespace item {
 
 	class PotionItem : public engine::item::UseableItemBase {
 	public:
+		PotionItem() {
+			name = "Potion";
+			description = "Heal me! Please!";
+			value = 1.0;
+		}
+
 		void onUse( engine::actor::ActorBase * user, engine::actor::ActorBase * target = 0 ) {
 			engine::actor::PlayableActorBase * playableUser = dynamic_cast<engine::actor::PlayableActorBase*>(user);
 			// If the cast didn't work to the object that can use the item, than they obviously can't use it.
