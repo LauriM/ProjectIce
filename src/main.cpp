@@ -33,7 +33,7 @@ int main(){
 	game::item::PotionItem * pi = new game::item::PotionItem();
 	scene->addItem(pi);
 
-	engine::UI::UISystem *ui          = new engine::UI::UISystem();
+	engine::UI::UISystem *ui                  = new engine::UI::UISystem();
 	engine::render::RenderSystem *render      = new engine::render::RenderSystem(scene,ui);
 
 	render->init();

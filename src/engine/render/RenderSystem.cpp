@@ -73,6 +73,20 @@ namespace render {
 			}
 		}
 
+		/* RENDER ITEMS INTO THE MAP */
+		inventory::tyItemVector items = sceneSystem->getRoomInventoryByPos(cameraPos)->getAllItems();
+		LOG_DEBUG_F("Items to render: %i",items.size());
+
+		/*
+		 * idea for looping the items:
+		 *
+
+		for( tyItemIterator ii = items->begin(); ii != items->end(); ++ii ) {
+			item::ItemBase * item = (*ii);
+			LOG_WARNING("//TODO: get position of the item here!");
+		}
+		*/
+
 		/* RENDER ACTORS TO MAP */
 
 		pos.x = sceneSystem->getPlayerActor()->getPos()->x+2;

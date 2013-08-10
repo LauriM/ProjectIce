@@ -62,6 +62,11 @@ namespace scene {
 
 			/*getters & setters */
 
+			inventory::RoomInventory * getRoomInventoryByPos(vec3 pos){
+				//TODO: ONLY RETURNS THE TEST ROOM.
+				return roomInventory;
+			}
+
 			actor::ActorBase * getPlayerActor(){
 				return playerActor;
 			}

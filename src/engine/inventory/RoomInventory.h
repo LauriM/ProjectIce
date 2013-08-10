@@ -1,4 +1,3 @@
-
 #ifndef __ROOM_INVENTORY_H__
 #define __ROOM_INVENTORY_H__
 
@@ -38,7 +37,7 @@ namespace inventory {
 		*/
 		world::Room * getRoomOwner();
 
-		/* 
+		/*
 			Sets the room which owns this inventory
 		*/
 		void setRoomOwner(world::Room * room);
@@ -80,6 +79,10 @@ namespace inventory {
 		*/
 		item::ItemBase * searchForItem( String name, vec2 * position = 0);
 
+		/*
+		    Just give the full list of items
+		*/
+		tyItemVector getAllItems();
 
 	};
 

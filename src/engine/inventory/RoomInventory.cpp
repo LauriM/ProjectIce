@@ -11,7 +11,7 @@ namespace inventory {
 		return roomOwner;
 	}
 
-	/* 
+	/*
 		Sets the room which owns this inventory
 	*/
 	void RoomInventory::setRoomOwner(world::Room * room) {
@@ -70,7 +70,7 @@ namespace inventory {
 				if ( item->getName() == name ) {
 					count++;
 				}
-			}			
+			}
 		}
 		return count;
 	}
@@ -108,7 +108,7 @@ namespace inventory {
 				if ( item->getName() == name ) {
 					return item;
 				}
-			}			
+			}
 		}
 		return NULL;
 	}
@@ -167,6 +167,25 @@ namespace inventory {
 		newVec.y = pair.second;
 		return newVec;
 	}
+
+	/*
+	 * Returns full list of the items in the inventory in a nice array.
+	 */
+	tyItemVector RoomInventory::getAllItems(){
+		tyItemVector outputVec;
+
+		for( tyMapIterator mi = itemMap.begin(); mi != itemMap.end(); ++mi ) {
+			tyItemVector * itemList = (*mi).second;
+			for( tyItemIterator ii = itemList->begin(); ii != itemList->end(); ++ii ) {
+				item::ItemBase * item = (*ii); // current item being checked
+
+				outputVec.push_back(item);
+			}
+		}
+
+		return outputVec;
+	}
+
 
 }
 }
