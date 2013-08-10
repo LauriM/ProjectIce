@@ -3,12 +3,12 @@
 
 namespace game {
 namespace item {
-	
-	IronItem::IronItem() {
 
-		name = "Iron";
+	IronItem::IronItem() {
+		name        = "Iron";
 		description = "A normal piece of iron.";
-		value = 10.0;
+		value       = 10.0;
+		symbol      = '*';
 	}
 
 	IronItem::~IronItem() {}

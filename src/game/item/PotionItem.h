@@ -12,9 +12,10 @@ namespace item {
 	class PotionItem : public engine::item::UseableItemBase {
 	public:
 		PotionItem() {
-			name = "Potion";
+			name        = "Potion";
 			description = "Heal me! Please!";
-			value = 1.0;
+			value       = 1.0;
+			symbol      = '!';
 		}
 
 		void onUse( engine::actor::ActorBase * user, engine::actor::ActorBase * target = 0 ) {
@@ -35,7 +36,7 @@ namespace item {
 		void onDrop( engine::actor::ActorBase * actor ) {
 
 		}
-		
+
 	};
 
 }

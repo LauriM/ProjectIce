@@ -5,9 +5,10 @@ namespace game {
 namespace item {
 
 	ArrowItem::ArrowItem() {
-		name = "Arrow";
+		name        = "Arrow";
 		description = "A simple arrow.";
-		value = 1.0;
+		value       = 1.0;
+		symbol      = '/';
 	}
 
 	ArrowItem::~ArrowItem() {}

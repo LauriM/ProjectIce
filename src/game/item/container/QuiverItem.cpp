@@ -6,11 +6,12 @@ namespace item {
 namespace container {
 
 	QuiverItem::QuiverItem() {
-		name = "Quiver";
-		description = "It holds arrows";
-		value = 10.0;
-		quantity = 0;
-		maxQuantity = 20;
+		name          = "Quiver";
+		description   = "It holds arrows";
+		value         = 10.0;
+		symbol        = '/';
+		quantity      = 0;
+		maxQuantity   = 20;
 		containedItem = new ArrowItem();
 	}
 

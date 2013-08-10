@@ -16,6 +16,7 @@ namespace item {
 		String description;
 		double value;
 
+		char symbol;
 	public:
 
 		String getName() {
@@ -24,6 +25,10 @@ namespace item {
 
 		String getDescription() {
 			return description;
+		}
+
+		char getSymbol() {
+			return symbol;
 		}
 
 		double getValue() {
