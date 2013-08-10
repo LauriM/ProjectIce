@@ -6,6 +6,7 @@
 #include "game/actor/player/PlayerActor.h"
 #include "game/actor/npc/DummyActor.h"
 #include "engine/scene/SceneSystem.h"
+#include "engine/AI/AISystem.h"
 
 #include "precompiled.h"
 #include "engine/math/vec2.h"
@@ -118,6 +119,22 @@ int main(){
 		SCPPT_COMPARE("The x value is 0",foundPosition.x,==,0);
 		SCPPT_COMPARE("The y value is 0",foundPosition.y,==,0);
 	}
+
+	/*
+	  Idea for unit tests about initting the systems
+
+	{
+		PRINTLN("-> Scene");
+		engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,NULL);
+
+		SCPPT_COMPARE("Scene init ok",scene->init(),==,true);
+
+		PRINTLN("-> AIsystem")
+		engine::AI::AISystem *ai = new engine::AI::AISystem(scene);
+
+		SCPPT_COMPARE("Aisystem init ok",ai->init(),==,true);
+	}
+	*/
 
 	PRINTLN("Tests complete");
 

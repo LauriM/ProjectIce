@@ -34,7 +34,7 @@ namespace scene {
 
 			SceneSystem( world::WorldSystem * world, actor::ActorBase * player ) {
 				worldSystem = world;
-				playerActor = player;
+				playerActor = player; //TODO: WTF is player charachter handled this way !?!?
 				playerInventory = new inventory::ActorInventory();
 				playerInventory->setOwner(playerActor);
 

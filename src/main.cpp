@@ -8,6 +8,7 @@
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
+#include "engine/AI/AISystem.h"
 
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
@@ -32,11 +33,13 @@ int main(){
 	game::item::PotionItem * pi = new game::item::PotionItem();
 	scene->addItem(pi);
 
-	engine::UI::UISystem *ui                  = new engine::UI::UISystem();
-	engine::render::RenderSystem *render      = new engine::render::RenderSystem(scene,ui);
+	engine::UI::UISystem *ui             = new engine::UI::UISystem();
+	engine::render::RenderSystem *render = new engine::render::RenderSystem(scene,ui);
+	engine::AI::AISystem *ai             = new engine::AI::AISystem(scene);
 
 	render->init();
 	ui->init();
+	ai->init();
 
 	engine::UI::Window welcomeWindow;
 	welcomeWindow.setPos(vec2(4,3));
@@ -68,11 +71,13 @@ int main(){
 	bool quitStatus = false;
 	while(quitStatus == false){
 		scene->update();
+		ai->update();
 		render->update();
 		ui->update();
 		//int key = getch();
 	}
 
+	ai->uninit();
 	render->uninit();
 	scene->uninit();
 

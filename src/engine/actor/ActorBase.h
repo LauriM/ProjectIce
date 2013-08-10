@@ -20,6 +20,10 @@ namespace actor {
 			String name;
 
 		public:
+			/**
+			 *  This is used to handle stuff that should happen every tick. Like timers or stuff.
+			 *  AI is handled in the AIsystem, not in this function
+			 */
 			virtual void update() = 0;
 
 			//Should be called for all the actors
@@ -64,7 +68,7 @@ namespace actor {
 			vec2* getPos(){
 				return &position;
 			}
-			
+
 	};
 
 }
