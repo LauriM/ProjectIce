@@ -4,6 +4,7 @@
 #include "engine/world/Tile.h"
 #include "engine/UI/Window.h"
 #include "game/actor/player/PlayerActor.h"
+#include "game/actor/npc/DummyActor.h"
 #include "engine/scene/SceneSystem.h"
 
 #include "precompiled.h"
@@ -60,6 +61,17 @@ int main(){
 
 		SCPPT_COMPARE("Player has positive HP",playerActor->getHp(),>,0);
 		SCPPT_COMPARE("Player has a name",playerActor->getName(),!=,"");
+	}
+
+	PRINTLN("-> DummyActor");
+	{
+		game::actor::npc::DummyActor* dummy = new game::actor::npc::DummyActor();
+
+		SCPPT_COMPARE("Dummy is alive",dummy->getHp(),>,0);
+		SCPPT_COMPARE("Dummy is named dummy",dummy->getName(),==,"Dummy");
+
+		dummy->update();
+		PRINTLN("Dummy update done");
 	}
 
 	PRINTLN("-> Room Inventory");

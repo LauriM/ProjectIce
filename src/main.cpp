@@ -15,8 +15,7 @@
 int main(){
 	randomInit();
 
-	LOG_INFO("----");
-	LOG_INFO("engine starting");
+	LOG_INFO("Engine starting");
 
 	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
 	playerActor->setName("oo");
