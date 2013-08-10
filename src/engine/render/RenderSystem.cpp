@@ -75,7 +75,7 @@ namespace render {
 
 		/* RENDER ITEMS INTO THE MAP */
 		inventory::tyItemVector items = sceneSystem->getRoomInventoryByPos(cameraPos)->getAllItems();
-		LOG_DEBUG_F("Items to render: %i",items.size());
+		//LOG_DEBUG_F("Items to render: %i",items.size());
 
 		/*
 		 * idea for looping the items:
