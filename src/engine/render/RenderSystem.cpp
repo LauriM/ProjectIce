@@ -89,9 +89,19 @@ namespace render {
 
 		/* RENDER ACTORS TO MAP */
 
+/*
 		pos.x = sceneSystem->getPlayerActor()->getPos()->x+2;
 		pos.y = sceneSystem->getPlayerActor()->getPos()->y+2;
 		drawChar(pos,'@');
+*/
+
+		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorsInRoom(cameraPos);
+
+		for(int i = 0; i < actors.size();++i){
+			pos.x = actors.at(i)->getPosition().x + 2; //Padding because of the map positioning
+			pos.y = actors.at(i)->getPosition().y + 2;
+			drawChar(pos,'@');
+		}
 
 		/* RENDER UI ON TOP OF EVERYTHING */
 

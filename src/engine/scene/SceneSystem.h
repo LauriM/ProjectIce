@@ -7,6 +7,7 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/inventory/ActorInventory.h"
 #include "engine/inventory/RoomInventory.h"
+#include "engine/actor/ActorManager.h"
 
 namespace engine {
 namespace scene {
@@ -18,10 +19,11 @@ namespace scene {
 	 */
 	class SceneSystem : public EngineSystem {
 		private:
-			// Bryan: Maybe we should have room Systems?
 			world::WorldSystem *worldSystem;
 
-			// Bryan: for now this will have the room inventory
+			actor::ActorManager *actorManager;
+
+			//TODO: Create RoomIventoryManager
 			inventory::RoomInventory * roomInventory;
 
 			// the rest of the world
@@ -32,15 +34,17 @@ namespace scene {
 			inventory::ActorInventory * playerInventory;
 		public:
 
-			SceneSystem( world::WorldSystem * world, actor::ActorBase * player ) {
+			SceneSystem( world::WorldSystem * world, actor::ActorManager * actorMan, actor::ActorBase * player ) {
 				worldSystem = world;
-				playerActor = player; //TODO: WTF is player charachter handled this way !?!?
+				actorManager = actorMan;
+				playerActor = player; //TODO: WTF is player charachter handled this way !?!? FIX IT
 				playerInventory = new inventory::ActorInventory();
 				playerInventory->setOwner(playerActor);
 
 				roomInventory = new inventory::RoomInventory();
 				roomInventory->setRoomOwner( worldSystem->getRoom(0,0,0) );
 
+				actorManager->insertActorToRoom(playerActor);
 			}
 
 			bool init( ){
@@ -54,10 +58,16 @@ namespace scene {
 			void update(){
 				worldSystem->update();
 				playerActor->update();
+
+				/*
+					Process the actors on current room here
+
+
 				std::vector<actor::ActorBase*>::iterator it;
 				for( it = actorList.begin(); it != actorList.end(); ++it ) {
 					(*it)->update();
 				}
+				*/
 			}
 
 			/*getters & setters */
@@ -65,6 +75,10 @@ namespace scene {
 			inventory::RoomInventory * getRoomInventoryByPos(vec3 pos){
 				//TODO: ONLY RETURNS THE TEST ROOM.
 				return roomInventory;
+			}
+
+			actor::ActorManager * getActorManager(){
+				return actorManager;
 			}
 
 			actor::ActorBase * getPlayerActor(){

@@ -9,6 +9,7 @@
 #include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
 #include "engine/AI/AISystem.h"
+#include "engine/actor/ActorManager.h"
 
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
@@ -19,16 +20,18 @@ int main(){
 	LOG_INFO("Engine starting");
 
 	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
-	playerActor->setName("oo");
-	playerActor->getPos()->x = 10;
-	playerActor->getPos()->y = 10;
+	playerActor->setName("Player");
+	playerActor->setPosition(vec2(10,10));
+	playerActor->setLocation(vec3(0,0,0));
 
 	engine::world::WorldSystem * worldSystem = new engine::world::WorldSystem();
 	worldSystem->init();
 	worldSystem->generate();
 	playerActor->setWorld(worldSystem);
 
-	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,playerActor);
+	engine::actor::ActorManager * actorManager = new engine::actor::ActorManager();
+
+	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,actorManager,playerActor);
 
 	game::item::PotionItem * pi = new game::item::PotionItem();
 	scene->addItem(pi);

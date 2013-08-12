@@ -20,8 +20,6 @@ namespace AI {
 	}
 
 	void AISystem::update(){
-		LOG_INFO("AISystem update");
-
 		//TODO: This is still just a skeleton
 		sceneSystem->getActorList();
 	}

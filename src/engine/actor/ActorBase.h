@@ -65,8 +65,25 @@ namespace actor {
 				return name;
 			}
 
+			vec2 getPosition(){
+				return position;
+			}
+
 			vec2* getPos(){
+				//TODO: this should be deprecrated, it allows modifying the position the "wrong" way.
 				return &position;
+			}
+
+			vec3 getLocation(){
+				return location;
+			}
+
+			void setPosition(vec2 pos){
+				position = pos;
+			}
+
+			void setLocation(vec3 loc){
+				location = loc;
 			}
 
 	};
