@@ -17,32 +17,32 @@ namespace engine {
 namespace world {
 
 	class WorldSystem : public EngineSystem {
-	private:
-		Room rooms[WORLD_WIDTH][WORLD_HEIGHT][WORLD_DEPTH];
-		int age;
+		private:
+			Room rooms[WORLD_WIDTH][WORLD_HEIGHT][WORLD_DEPTH];
+			int age;
 
-		void _checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y);
-		void _checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y);
-		void _checkEast(int heightMap[][WORLD_HEIGHT], int x, int y);
-		void _checkWest(int heightMap[][WORLD_HEIGHT], int x, int y);
+			void _checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y);
+			void _checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y);
+			void _checkEast(int heightMap[][WORLD_HEIGHT], int x, int y);
+			void _checkWest(int heightMap[][WORLD_HEIGHT], int x, int y);
 
-		//TODO: create some ASSERTS to make sure the array is accessed correctly (2013-04-02)
-	public:
-		WorldSystem();
+			//TODO: create some ASSERTS to make sure the array is accessed correctly (2013-04-02)
+		public:
+			WorldSystem();
 
-		~WorldSystem() {}
+			~WorldSystem() {}
 
-		virtual bool init();
-		virtual void uninit();
-		virtual void update();
+			virtual bool init();
+			virtual void uninit();
+			virtual void update();
 
-		void generate();
+			void generate();
 
-		Room* getRoom(int x,int y,int z);
-		Room* getRoom(vec3 pos);
+			Room* getRoom(int x,int y,int z);
+			Room* getRoom(vec3 pos);
 
-		void loadFromFile(String filename);
-		void saveToFile(String filename);
+			void loadFromFile(String filename);
+			void saveToFile(String filename);
 	};
 
 }
