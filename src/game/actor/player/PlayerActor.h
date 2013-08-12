@@ -20,15 +20,17 @@ namespace player {
 
 		public:
 			PlayerActor(){
-				name  = "Player";
+				name          = "Player";
 				_inputMapping = engine::input::InputMapping::getInstance();
 
-				hp = 100;
-				maxHp = 100;
+				hp            = 100;
+				maxHp         = 100;
 
-				strength = 10;
-				dexterity = 10;
-				constitution = 10;
+				strength      = 10;
+				dexterity     = 10;
+				constitution  = 10;
+
+				symbol        = '@';
 			}
 
 			void update(){

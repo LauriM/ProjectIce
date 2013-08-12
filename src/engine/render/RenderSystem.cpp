@@ -100,7 +100,7 @@ namespace render {
 		for(int i = 0; i < actors.size();++i){
 			pos.x = actors.at(i)->getPosition().x + 2; //Padding because of the map positioning
 			pos.y = actors.at(i)->getPosition().y + 2;
-			drawChar(pos,'@');
+			drawChar( pos,actors.at(i)->getSymbol() );
 		}
 
 		/* RENDER UI ON TOP OF EVERYTHING */

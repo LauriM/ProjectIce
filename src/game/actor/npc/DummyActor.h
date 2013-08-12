@@ -20,6 +20,7 @@ namespace npc {
 				strength     = 5;
 				dexterity    = 5;
 				constitution = 1;
+				symbol       = 'D';
 			}
 
 			void update(){

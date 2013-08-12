@@ -19,6 +19,8 @@ namespace actor {
 			/* stats */
 			String name;
 
+			char symbol;
+
 		public:
 			/**
 			 *  This is used to handle stuff that should happen every tick. Like timers or stuff.
@@ -84,6 +86,10 @@ namespace actor {
 
 			void setLocation(vec3 loc){
 				location = loc;
+			}
+
+			char getSymbol(){
+				return symbol;
 			}
 
 	};
