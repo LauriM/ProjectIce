@@ -21,7 +21,7 @@ namespace AI {
 
 	void AISystem::update(){
 		//TODO: This is still just a skeleton
-		sceneSystem->getActorList();
+		sceneSystem->getActorManager();
 	}
 
 }

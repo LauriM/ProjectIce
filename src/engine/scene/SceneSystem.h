@@ -26,9 +26,6 @@ namespace scene {
 			//TODO: Create RoomIventoryManager
 			inventory::RoomInventory * roomInventory;
 
-			// the rest of the world
-			std::vector<actor::ActorBase*> actorList;
-
 			// player objects
 			actor::ActorBase * playerActor;
 			inventory::ActorInventory * playerInventory;
@@ -87,14 +84,6 @@ namespace scene {
 
 			world::WorldSystem* getWorld(){
 				return worldSystem;
-			}
-
-			std::vector<actor::ActorBase*> getActorList() {
-				return actorList;
-			}
-
-			void addActor(actor::ActorBase * actor) {
-				actorList.push_back(actor);
 			}
 
 			void addItem(item::ItemBase * item) {

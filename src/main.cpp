@@ -13,6 +13,7 @@
 
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
+#include "game/actor/npc/DummyActor.h"
 
 int main(){
 	randomInit();
@@ -70,6 +71,14 @@ int main(){
 
 //	ui->addWindow(welcomeWindow);
 	ui->addWindow(blob);
+
+	//Add some Dummy Ai for testing.
+
+	game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();
+	dummy->setPosition( vec2(15,15) );
+	dummy->setLocation( vec3(0,0,0) );
+
+	scene->getActorManager()->insertActorToRoom(dummy);
 
 	bool quitStatus = false;
 	while(quitStatus == false){
