@@ -54,17 +54,13 @@ namespace scene {
 
 			void update(){
 				worldSystem->update();
-				playerActor->update();
 
-				/*
-					Process the actors on current room here
-
+				std::vector<actor::ActorBase*> actorList = actorManager->getActorsInRoom(vec3(0,0,0));
 
 				std::vector<actor::ActorBase*>::iterator it;
 				for( it = actorList.begin(); it != actorList.end(); ++it ) {
 					(*it)->update();
 				}
-				*/
 			}
 
 			/*getters & setters */

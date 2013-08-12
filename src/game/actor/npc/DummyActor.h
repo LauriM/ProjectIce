@@ -5,6 +5,7 @@
 
 #include "engine/actor/ActorBase.h"
 #include "engine/actor/PlayableActorBase.h"
+#include "engine/math/random.h"
 
 namespace game {
 namespace actor {
@@ -25,6 +26,7 @@ namespace npc {
 
 			void update(){
 				LOG_DEBUG("Dummy AI tick");
+				MoveActor(vec2(randomRange(-1,1), randomRange(-1,1)));
 			}
 
 			void onAttack( engine::actor::ActorBase * target ) {

@@ -75,6 +75,7 @@ int main(){
 	//Add some Dummy Ai for testing.
 
 	game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();
+	dummy->setWorld( worldSystem );
 	dummy->setPosition( vec2(15,15) );
 	dummy->setLocation( vec3(0,0,0) );
 
@@ -83,7 +84,7 @@ int main(){
 	bool quitStatus = false;
 	while(quitStatus == false){
 		scene->update();
-		ai->update();
+		//ai->update(); //This is most likely done differently soon... Possibly deprecrating.
 		render->update();
 		ui->update();
 		//int key = getch();

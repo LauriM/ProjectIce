@@ -1,6 +1,7 @@
 #include "precompiled.h"
 
 #include "engine/AI/AISystem.h"
+#include <vector>
 
 namespace engine {
 namespace AI {
@@ -20,7 +21,7 @@ namespace AI {
 	}
 
 	void AISystem::update(){
-		//TODO: This is still just a skeleton
+		//This is going to be deprecrated most likely, AI system under heavy development.
 		sceneSystem->getActorManager();
 	}
 
