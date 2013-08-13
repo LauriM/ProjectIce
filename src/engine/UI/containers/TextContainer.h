@@ -6,7 +6,7 @@
 
 namespace engine {
 namespace UI {
-namespace containers{
+namespace containers {
 
 	//TODO: Add wrapping by words, not just by characthers.
 

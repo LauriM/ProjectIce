@@ -14,6 +14,7 @@
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
 #include "game/actor/npc/DummyActor.h"
+#include "game/UI/containers/StatsContainer.h"
 
 int main(){
 	randomInit();
@@ -56,7 +57,9 @@ int main(){
 	textCont->setPressToContinue(true);
 
 	welcomeWindow.setContainer(textCont);
+	//	ui->addWindow(welcomeWindow);
 
+	/*
 	engine::UI::Window blob;
 	blob.setPos(vec2(84,3));
 	blob.setSize(vec2(15,15));
@@ -68,9 +71,20 @@ int main(){
 	selectCont->insertItem("# so on");
 
 	blob.setContainer(selectCont);
-
-//	ui->addWindow(welcomeWindow);
 	ui->addWindow(blob);
+	*/
+
+	engine::UI::Window statsWindow;
+	statsWindow.setPos(vec2(84,3));
+	statsWindow.setSize(vec2(15,15));
+	statsWindow.setName("Stats");
+
+	game::UI::containers::StatsContainer *statsUI = new game::UI::containers::StatsContainer();
+	statsUI->setPlayerActor(playerActor);
+
+	statsWindow.setContainer(statsUI);
+
+	ui->addWindow(statsWindow);
 
 	//Add some Dummy Ai for testing.
 
