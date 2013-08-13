@@ -25,6 +25,30 @@ int testOks   = 0;
 int main(){
 	SCPPT_START;
 
+	PRINTLN("-> Vec2");
+	{
+		vec2 v1 = vec2(2, 3);
+		vec2 v2 = vec2(5, 10);
+
+		SCPPT_COMPARE("Vec2 equality #1",v1 == v2,==,false);
+		SCPPT_COMPARE("Vec2 equality #2",v2 == v1,==,false);
+		SCPPT_COMPARE("Vec2 equality #3",v1 == v1,==,true);
+
+		SCPPT_COMPARE("Vec2 addition #1",v1 + v2,==,vec2(7, 13));
+		SCPPT_COMPARE("Vec2 addition #2",v2 + v1,==,vec2(7, 13));
+
+		SCPPT_COMPARE("Vec2 subtraction #1",v1 - v2,==,vec2(-3, -7));
+		SCPPT_COMPARE("Vec2 subtraction #2",v2 - v1,==,vec2(3, 7));
+
+		SCPPT_COMPARE("Vec2 dot product #1",v1 * v2,==,40);
+		SCPPT_COMPARE("Vec2 dot product #2",v2 * v1,==,40);
+
+		SCPPT_COMPARE("Vec2 scalar multiplication",v1 * 5,==,vec2(10, 15));
+		SCPPT_COMPARE("Vec2 scalar division",v2 / 2,==,vec2(2, 5));
+
+		SCPPT_COMPARE("Vec2 scalar division",vec2(v1),==,v1);
+	}
+
 	PRINTLN("-> Tile");
 	{
 		world::Tile testTile;
