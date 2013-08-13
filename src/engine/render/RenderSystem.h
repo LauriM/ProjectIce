@@ -11,20 +11,20 @@ namespace engine {
 namespace render {
 
 	class RenderSystem : public EngineSystem {
-	private:
-		scene::SceneSystem *sceneSystem;
-		UI::UISystem *uiSystem;
+		private:
+			scene::SceneSystem *sceneSystem;
+			UI::UISystem *uiSystem;
 
-		void drawChar(vec2 pos,int character);
-	public:
-		vec3 cameraPos; //What section of map is currently visible and should be render.
+			void drawChar(vec2 pos,int character);
+		public:
+			vec3 cameraPos; //What section of map is currently visible and should be render.
 
-		RenderSystem(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem);
-		~RenderSystem() {};
+			RenderSystem(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem);
+			~RenderSystem() {};
 
-		virtual bool init();
-		virtual void uninit();
-		virtual void update();
+			virtual bool init();
+			virtual void uninit();
+			virtual void update();
 
 	};
 

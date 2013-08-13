@@ -1,6 +1,7 @@
 #include "precompiled.h"
 
 #include "engine/math/random.h"
+#include "engine/AI/AISystem.h"
 #include "engine/EngineSystem.h"
 #include "engine/render/RenderSystem.h"
 #include "engine/UI/UISystem.h"
@@ -8,7 +9,6 @@
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
-#include "engine/AI/AISystem.h"
 #include "engine/actor/ActorManager.h"
 
 #include "game/actor/player/PlayerActor.h"
@@ -40,7 +40,7 @@ int main(){
 
 	engine::UI::UISystem *ui             = new engine::UI::UISystem();
 	engine::render::RenderSystem *render = new engine::render::RenderSystem(scene,ui);
-	engine::AI::AISystem *ai             = new engine::AI::AISystem(scene);
+	engine::AI::AISystem *ai             = new engine::AI::AISystem(actorManager,worldSystem);
 
 	render->init();
 	ui->init();
@@ -98,10 +98,10 @@ int main(){
 	bool quitStatus = false;
 	while(quitStatus == false){
 		scene->update();
-		//ai->update(); //This is most likely done differently soon... Possibly deprecrating.
+		ai->update();
 		render->update();
 		ui->update();
-		//int key = getch();
+		getch();
 	}
 
 	ai->uninit();

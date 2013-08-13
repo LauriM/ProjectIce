@@ -1,7 +1,8 @@
 #ifndef ENGINE_AI_AISYSTEM
 #define ENGINE_AI_AISYSTEM
 
-#include "engine/scene/SceneSystem.h"
+#include "engine/world/WorldSystem.h"
+#include "engine/actor/ActorManager.h"
 
 namespace engine {
 namespace AI {
@@ -17,9 +18,13 @@ namespace AI {
 	 */
 	class AISystem : public EngineSystem {
 		private:
-			scene::SceneSystem *sceneSystem;
+			engine::actor::ActorManager *actorManager;
+			engine::world::WorldSystem *worldSystem;
+
+			void handleActor(actor::ActorBase * actor);
+
 		public:
-			AISystem(scene::SceneSystem *sceneSystem);
+			AISystem(actor::ActorManager *actorManager, world::WorldSystem *worldSystem);
 			~AISystem() {};
 
 			virtual bool init();
