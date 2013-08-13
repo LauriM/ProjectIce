@@ -34,6 +34,9 @@ int main(){
 		SCPPT_COMPARE("Vec2 equality #2",v2 == v1,==,false);
 		SCPPT_COMPARE("Vec2 equality #3",v1 == v1,==,true);
 
+		SCPPT_COMPARE("Vec2 dequality #1",v1 != v1,==,false);
+		SCPPT_COMPARE("Vec2 dequality #1",v1 != v2,==,true);
+
 		SCPPT_COMPARE("Vec2 addition #1",v1 + v2,==,vec2(7, 13));
 		SCPPT_COMPARE("Vec2 addition #2",v2 + v1,==,vec2(7, 13));
 
