@@ -70,9 +70,6 @@ int main(){
 
 		SCPPT_COMPARE("Dummy is alive",dummy->getHp(),>,0);
 		SCPPT_COMPARE("Dummy is named dummy",dummy->getName(),==,"Dummy");
-
-		dummy->update();
-		PRINTLN("Dummy update done");
 	}
 
 	PRINTLN("-> Room Inventory");
