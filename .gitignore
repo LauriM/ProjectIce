@@ -3,6 +3,7 @@ ice
 obj/
 html/
 latex/
+tools/
 
 Doxyfile
 Makefile
