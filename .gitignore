@@ -1,7 +1,10 @@
 test
 ice
 obj/
+html/
+latex/
 
+Doxyfile
 Makefile
 ice.make
 test.make
