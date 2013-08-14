@@ -1,0 +1,6 @@
+PROJECT_NAME   = ProjectIce
+PROJECT_NUMBER = 0
+SOURCE_BROWSER = YES
+INPUT          = ./src/
+FILE_PATTERNS  = *.cpp *.h
+RECURSIVE      = YES
