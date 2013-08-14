@@ -11,13 +11,25 @@ namespace item {
 
 	class ItemBase {
 	protected:
+		int id;
 
 		String name;
 		String description;
 		double value;
 
 		char symbol;
+
+		ItemBase() {
+			id = -1;
+		}
+
 	public:
+
+		friend class ItemManager;
+
+		int getId() {
+			return id;
+		}
 
 		String getName() {
 			return name;

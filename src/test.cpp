@@ -14,8 +14,10 @@
 #include "game/item/PotionItem.h"
 #include "game/item/container/QuiverItem.h"
 #include "engine/inventory/RoomInventory.h"
+#include "engine/item/ItemManager.h"
 
 #include <map>
+#include <vector>
 
 using namespace engine;
 
@@ -115,6 +117,42 @@ int main(){
 		SCPPT_COMPARE("The quiver was found",foundItem->getName(),==,quiverName);
 		SCPPT_COMPARE("The x value is 0",foundPosition.x,==,0);
 		SCPPT_COMPARE("The y value is 0",foundPosition.y,==,0);
+	}
+
+	PRINTLN("-> Inventory Manager");
+	{
+		item::ItemManager * itemManager = item::ItemManager::getInstance();
+		SCPPT_COMPARE( "Brand new item manager", itemManager->getActiveItemCount(), ==, 0 );
+
+		std::vector<game::item::PotionItem*> potions;
+		for( int x = 0; x < 5; x++ ) {
+			game::item::PotionItem * pot = new game::item::PotionItem();
+			itemManager->trackItem( pot );
+			potions.push_back( pot );
+		}
+		SCPPT_COMPARE( "5 Potions registered with the engine", itemManager->getActiveItemCount(), ==, 5 );
+		SCPPT_COMPARE( "1st Potions id is 0", potions.at(0)->getId(), ==, 0 );
+		SCPPT_COMPARE( "2nd Potions id is 1", potions.at(1)->getId(), ==, 1 );
+		SCPPT_COMPARE( "3rd Potions id is 2", potions.at(2)->getId(), ==, 2 );
+		SCPPT_COMPARE( "4th Potions id is 3", potions.at(3)->getId(), ==, 3 );
+		SCPPT_COMPARE( "5th Potions id is 4", potions.at(4)->getId(), ==, 4 );
+		SCPPT_COMPARE( "Potion #2 removed", itemManager->untrackItem( potions.at(1) ), ==, true )
+		SCPPT_COMPARE( "Potion #2 id is now -1", potions.at(1)->getId(), ==, -1 );
+		game::item::PotionItem * newPotion1 = new game::item::PotionItem();
+		itemManager->trackItem(newPotion1);
+		SCPPT_COMPARE( "New Potion #1 id should now be 1", newPotion1->getId(), ==, 1 );
+		game::item::PotionItem * newPotion2 = new game::item::PotionItem();
+		itemManager->trackItem(newPotion2);
+		SCPPT_COMPARE( "New Potion #2 id should now be 5", newPotion2->getId(), ==, 5 );
+		SCPPT_COMPARE( "6 (7 - 1) Potions registered with the engine", itemManager->getActiveItemCount(), ==, 6 );
+		itemManager->untrackItem( potions.at(3) );
+		itemManager->untrackItem( potions.at(4) );
+		SCPPT_COMPARE( "4 (6 - 2) Potions registered with the engine", itemManager->getActiveItemCount(), ==, 4 );
+		SCPPT_COMPARE( "ID 3 is not in use", itemManager->isIDTracked(3), ==, false );
+		SCPPT_COMPARE( "ID 4 is not in use", itemManager->isIDTracked(4), ==, false );
+		SCPPT_COMPARE( "ID 5 is in use", itemManager->isIDTracked(5), ==, true );
+		SCPPT_COMPARE( "ID -1 is crap", itemManager->isIDTracked(-1), ==, false );
+		SCPPT_COMPARE( "ID 100 is too large", itemManager->isIDTracked(100), ==, false );
 	}
 
 	/*
