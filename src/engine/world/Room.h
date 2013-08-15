@@ -49,6 +49,9 @@ namespace world {
 		Tile* getTile(int x,int y);
 		Tile* getTileArray();
 
+		void setTile(vec2 pos,Tile tile);
+		void setTile(int x,int y,Tile tile);
+
 		void generate();
 	};
 }

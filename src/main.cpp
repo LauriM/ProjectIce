@@ -86,6 +86,25 @@ int main(){
 
 	ui->addWindow(statsWindow);
 
+	/*
+	 * Testing area for the NPC
+	 */
+	engine::world::Tile voidTile;
+
+	voidTile.setType(engine::world::TILE_TREE);
+	for(int x = 7;x < 20;++x){
+		for(int y = 7;y < 20;++y){
+			worldSystem->getRoom( vec3(0,0,0) )->setTile(x,y,voidTile);
+		}
+	}
+
+	voidTile.setType(engine::world::TILE_VOID);
+	for(int x = 8;x < 19;++x){
+		for(int y = 8;y < 19;++y){
+			worldSystem->getRoom( vec3(0,0,0) )->setTile(x,y,voidTile);
+		}
+	}
+
 	//Add some Dummy Ai for testing.
 
 	game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();

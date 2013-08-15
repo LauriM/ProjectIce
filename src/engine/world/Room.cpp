@@ -5,15 +5,22 @@ namespace engine {
 namespace world {
 
 	Tile* Room::getTile(vec2 pos){
-		ASSERT_TILE_XY(pos.x,pos.y);
-
-		return &tiles[(pos.x * ROOM_HEIGHT) + pos.y];
+		return getTile(pos.x,pos.y);
 	}
 
 	Tile* Room::getTile(int x,int y){
 		ASSERT_TILE_XY(x,y);
 
 		return &tiles[(x * ROOM_HEIGHT) + y];
+	}
+
+	void Room::setTile(vec2 pos,Tile tile){
+		setTile(pos.x,pos.y,tile);
+	}
+
+	void Room::setTile(int x,int y,Tile tile){
+		ASSERT_TILE_XY(x,y);
+		tiles[(x * ROOM_HEIGHT) + y] = tile;
 	}
 
 	/**
