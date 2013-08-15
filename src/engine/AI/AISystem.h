@@ -22,6 +22,7 @@ namespace AI {
 			engine::world::WorldSystem *worldSystem;
 
 			void handleActor(actor::ActorBase * actor);
+			void moveActor(actor::ActorBase * actor,vec2 dir);
 
 		public:
 			AISystem(actor::ActorManager *actorManager, world::WorldSystem *worldSystem);

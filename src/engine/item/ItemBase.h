@@ -1,4 +1,3 @@
-
 #ifndef __ITEM_BASE_H__
 #define __ITEM_BASE_H__
 
@@ -12,7 +11,7 @@ namespace item {
 	/**
 	 *	An abstract object which represents essentially every item in the engine
 	 *  Item's can be a base item, however they'll just be an item with little properties.
-	 */	
+	 */
 	class ItemBase {
 	protected:
 		int id;

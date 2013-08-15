@@ -41,16 +41,12 @@ namespace AI {
 			case AISTATE_SLEEP:
 				return;
 			case AISTATE_PATROL:
-				//just something random for testing
+				//Patrolling enemies goes to random direction
 				newPos.x = actor->getPos()->x + randomRange(-1,1);
 				newPos.y = actor->getPos()->y + randomRange(-1,1);
 
-				if(!worldSystem->getRoom(actor->getLocation())->getTile(newPos.x,newPos.y)->blocks){
-					actor->setPosition(newPos);
-					return;
-				}
+				moveActor(actor,newPos);
 
-				LOG_DEBUG("actor collides with tile");
 				return;
 			case AISTATE_PLAYER:
 				int key = getch();
@@ -71,14 +67,32 @@ namespace AI {
 					newPos.x += 1;
 				}
 
-				if(!worldSystem->getRoom(actor->getLocation())->getTile(newPos.x,newPos.y)->blocks){
-					actor->setPosition(newPos);
-					return;
-				}
+				moveActor(actor,newPos);
 
-				LOG_DEBUG("Player collides with tile");
 				return;
 		}
+	}
+
+	/**
+	 * Moves actor to certain position. Checks if there is wall/other actors on the way.
+	 *
+	 * @param pos Position is absolute to the position where the actor should be moved.
+	 */
+	void AISystem::moveActor(actor::ActorBase * actor,vec2 pos){
+		if(worldSystem->getRoom( actor->getLocation() )->getTile(pos.x,pos.y)->blocks){
+			return; //hits a wall
+		}
+
+		std::vector<actor::ActorBase *> actors = actorManager->getActorsInRoom( actor->getLocation() );
+		for(int i = 0; i < actors.size();++i){
+			if(actors.at(i)->getPosition() == pos){
+				//TODO: implement attacking here.
+				return; //hits other actor
+			}
+		}
+
+		//nothing on the way, move the actor
+		actor->setPosition(pos);
 	}
 
 }
