@@ -11,6 +11,12 @@
 
 namespace engine {
 namespace inventory {
+
+	/**
+	* typedef'd the vector so I don't have to look at ::<><>:::><><>
+	*/
+	typedef std::vector<item::ItemBase*>           tyItemVector;
+	typedef std::vector<item::ItemBase*>::iterator tyItemIterator;
 	
 	class ActorInventory {
 	private:
@@ -18,49 +24,96 @@ namespace inventory {
 		engine::actor::ActorBase * owner;
 	public:
 
-		/*
-			Kinda explains itself
-		*/
+		/** Sets the owner of this inventory
+		 * @params actor the actor who owns this inventory
+		 */
 		void setOwner(actor::ActorBase * actor) {
 			owner = actor;
 		}
 
-		/*
-			To see which actor this instance belongs too
-		*/
-		engine::actor::ActorBase * getOwner() {
+		/** Returns the actor who owns this inventory
+		 * @returns the actor who owns this inventory
+		 */
+		actor::ActorBase * getOwner() {
 			return owner;
 		}
 
-		/* 
-			Well if you must you can look but you can't touch.
-		*/
-		const std::vector<item::ItemBase*> getItemList() {
+		/** Returns an unchangable list of the items contained with this inventory object
+		 * @returns a list of items of std::vector<item::ItemBase*>
+		 */
+		const tyItemVector getItemList() {
 			return itemList;
 		}
 
-		/*
-			It'll loop across the inventory and count how many of the item
-			by whatever name you have. That will be in the by reference parameeter
-			quantity. The method itself will give you a pointer to the object itself.
-		*/
-		item::ItemBase * getItem(String name, int & quantity) {
-			quantity = 0;
-			std::vector<item::ItemBase*>::iterator it;
+		/** Find all of the instances of a object by the supplied name and return a vector of those items
+		 * @param name the name of the item to look for
+		 * @returns a vector of ItemBase* to the instances of the found object
+		 */
+		tyItemVector getItemsByName(String name) {
+			tyItemIterator iter;
+			tyItemVector foundItems;
+			for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+				if ( (*iter)->getName() == name ) {
+					foundItems.push_back( (*iter) );
+				}
+			}
+			return foundItems;
+		}
+
+		/** Find all of the instances of a object by the supplied name and return a vector of those items
+		 * @param name the name of the item to look for
+		 * @returns a vector of ItemBase* to the instances of the found object
+		 */
+		item::ItemBase * getItemByID( int id ) {
 			item::ItemBase * returnItem = NULL;
-			for( it = itemList.begin(); it != itemList.end(); ++it ) {
-				if ( (*it)->getName() == name ) {
-					quantity += 1;
-					returnItem = (*it);
+			tyItemIterator iter;
+			for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+				if ( (*iter)->getId() == id ) {
+					returnItem = (*iter);
+					break;
 				}
 			}
 			return returnItem;
 		}
 
-		/*
-			Removes a single instance
-		*/
-		bool removeItem(String name) {
+		/** Adds a tracked item to the inventory
+         * @param item the ItemBase in which to add
+         * @returns boolean indication whether the item was added or not
+		 */
+		bool addItem(item::ItemBase * item) {
+			// untracked items cannot be added
+			if ( item->getId() == -1 ) {
+				return false;
+			}
+
+			itemList.push_back( item );
+			return true;
+		}
+
+		/** Removes all of the items in this inventory that match a certain name
+		 * @param name the name of the item to look for
+		 * @returns a vector of ItemBase* which was removed from this inventory
+		 */
+		tyItemVector removeItemsByName(String name) {
+			return tyItemVector();
+		}
+
+		/** Removes a specific instance of an item based on it's ID number
+		 * @param name the name of the item to look for
+		 * @returns a boolean indication whether it was removed or not
+		 */
+		bool removeItemByID(int id) {
+			if ( id < 0 ) { // ids less than 0 (-1) indicate untracked item, it can't be here anyway
+				return false;
+			}
+
+			tyItemIterator iter;
+			for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+				if ( (*iter)->getId() == id ) {
+					iter = itemList.erase(iter);
+					return true;
+				}
+			}
 			return false;
 		}
 
