@@ -107,10 +107,20 @@ int main(){
 
 	//Add some Dummy Ai for testing.
 
+	for(int i = 0;i < 5;++i){
+		game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();
+		dummy->setWorld( worldSystem );
+		dummy->setPosition( vec2(10+i,15) );
+		dummy->setLocation( vec3(0,0,0) );
+
+		scene->getActorManager()->insertActorToRoom(dummy);
+	}
+
 	game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();
 	dummy->setWorld( worldSystem );
-	dummy->setPosition( vec2(15,15) );
+	dummy->setPosition( vec2(11,11) );
 	dummy->setLocation( vec3(0,0,0) );
+	dummy->setAIState(engine::AI::AISTATE_SLEEP);
 
 	scene->getActorManager()->insertActorToRoom(dummy);
 
@@ -120,7 +130,6 @@ int main(){
 		ai->update();
 		render->update();
 		ui->update();
-		getch();
 	}
 
 	ai->uninit();

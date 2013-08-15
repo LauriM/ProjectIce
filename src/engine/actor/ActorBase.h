@@ -6,6 +6,7 @@
 #include "engine/math/vec2.h"
 #include "engine/math/vec3.h"
 #include "engine/world/WorldSystem.h"
+#include "engine/AI/AIState.h"
 
 namespace engine {
 namespace actor {
@@ -20,6 +21,8 @@ namespace actor {
 			String name;
 
 			char symbol;
+
+			AI::AIState aiState;
 
 		public:
 			/**
@@ -79,6 +82,14 @@ namespace actor {
 
 			char getSymbol(){
 				return symbol;
+			}
+
+			AI::AIState getAIState(){
+				return aiState;
+			}
+
+			void setAIState(AI::AIState state){
+				aiState = state;
 			}
 
 	};

@@ -22,6 +22,7 @@ namespace npc {
 				dexterity    = 5;
 				constitution = 1;
 				symbol       = 'D';
+				aiState      = engine::AI::AISTATE_PATROL;
 			}
 
 			void update(){

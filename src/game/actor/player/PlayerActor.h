@@ -5,7 +5,6 @@
 
 #include "engine/actor/ActorBase.h"
 #include "engine/actor/PlayableActorBase.h"
-#include "engine/input/InputMapping.h"
 
 #include <typeinfo>
 
@@ -14,14 +13,9 @@ namespace actor {
 namespace player {
 
 	class PlayerActor : public engine::actor::PlayableActorBase {
-		private:
-
-			engine::input::InputMapping * _inputMapping; // so you don't hae to retreive it each update
-
 		public:
 			PlayerActor(){
 				name          = "Player";
-				_inputMapping = engine::input::InputMapping::getInstance();
 
 				hp            = 100;
 				maxHp         = 100;
@@ -31,24 +25,12 @@ namespace player {
 				constitution  = 10;
 
 				symbol        = '@';
+				aiState       = engine::AI::AISTATE_PLAYER;
 			}
 
-			void update(){
-				int key = getch();
-				LOG_DEBUG_F("key %i",key);
+			void update() {}
 
-				//TODO: This looks UGLY
-				if ( key == _inputMapping->getMoveNorth() ) {
-					MoveActor(vec2(0,1));
-				} else if ( key == _inputMapping->getMoveSouth() ) {
-					MoveActor(vec2(0,-1));
-				} else if ( key == _inputMapping->getMoveEast() ) {
-					MoveActor(vec2(-1,0));
-				} else if ( key == _inputMapping->getMoveWest() ) {
-					MoveActor(vec2(1,0));
-				} else if ( key == _inputMapping->getSuicide() ) {
-					LOG_INFO("This actor quit life.");
-				}
+			void playerInput(int key){
 			}
 
 			void onAttack( engine::actor::ActorBase * target ) {

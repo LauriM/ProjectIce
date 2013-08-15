@@ -5,7 +5,7 @@
 
 namespace engine {
 namespace actor {
-	
+
 	/*
 		PlayableActorBase is meant to be extended by actors that represent something playable, this includes
 		NPC's and controller characters like the player
@@ -22,7 +22,7 @@ namespace actor {
 
 	public:
 
-		int getHp() { 
+		int getHp() {
 			return hp;
 		}
 
