@@ -86,7 +86,8 @@ namespace AI {
 		std::vector<actor::ActorBase *> actors = actorManager->getActorsInRoom( actor->getLocation() );
 		for(int i = 0; i < actors.size();++i){
 			if(actors.at(i)->getPosition() == pos){
-				attackActor(actor,actors.at(i));
+				actor::ActorBase * target = actors.at(i);
+				attackActor(actor, target);
 				return; //hits other actor
 			}
 		}

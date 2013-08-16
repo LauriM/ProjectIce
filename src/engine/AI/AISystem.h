@@ -23,6 +23,7 @@ namespace AI {
 
 			void handleActor(actor::ActorBase * actor);
 			void moveActor(actor::ActorBase * actor,vec2 dir);
+			bool attackActor(actor::ActorBase * actor, actor::ActorBase * target);
 
 		public:
 			AISystem(actor::ActorManager *actorManager, world::WorldSystem *worldSystem);
