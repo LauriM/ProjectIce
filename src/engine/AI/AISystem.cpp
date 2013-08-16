@@ -86,13 +86,28 @@ namespace AI {
 		std::vector<actor::ActorBase *> actors = actorManager->getActorsInRoom( actor->getLocation() );
 		for(int i = 0; i < actors.size();++i){
 			if(actors.at(i)->getPosition() == pos){
-				//TODO: implement attacking here.
+				attackActor(actor,actors.at(i));
 				return; //hits other actor
 			}
 		}
 
 		//nothing on the way, move the actor
 		actor->setPosition(pos);
+	}
+
+	/**
+	 * Checks for melee attack from actor to different actor. Counts damage.
+	 *
+	 * If the target is friendly and attack has been cancelled, returns false.
+	 *
+	 * @param actor The actor that is attacking.
+	 * @param target The target that is under attack.
+	 *
+	 * @return If the attack was done or not.
+	 */
+	bool AISystem::attackActor(actor::ActorBase * actor,actor::ActorBase * target){
+		/*stub*/
+		return false;
 	}
 
 }
