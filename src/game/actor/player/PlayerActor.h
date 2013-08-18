@@ -4,7 +4,6 @@
 #include "precompiled.h"
 
 #include "engine/actor/ActorBase.h"
-#include "engine/actor/PlayableActorBase.h"
 
 #include <typeinfo>
 
@@ -12,7 +11,7 @@ namespace game {
 namespace actor {
 namespace player {
 
-	class PlayerActor : public engine::actor::PlayableActorBase {
+	class PlayerActor : public engine::actor::ActorBase {
 		public:
 			PlayerActor(){
 				name          = "Player";
@@ -34,13 +33,7 @@ namespace player {
 			}
 
 			void onAttack( engine::actor::ActorBase * target ) {
-				// ta = target actor
-				engine::actor::PlayableActorBase * ta = dynamic_cast<PlayableActorBase*>(target);
-				if ( ta ) {
-					int targetHp = ta->getHp();
-					targetHp -= strength;
-					ta->setHp(targetHp);
-				}
+				//TODO: implement actor related attack stuff here.
 			}
 	};
 

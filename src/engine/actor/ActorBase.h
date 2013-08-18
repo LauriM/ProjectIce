@@ -11,6 +11,11 @@
 namespace engine {
 namespace actor {
 
+	/**
+	 * Base class for all actors.
+	 *
+	 * This class contains some stats and variables that every Actor should have.
+	 */
 	class ActorBase {
 		protected:
 			engine::world::WorldSystem *world;
@@ -24,12 +29,21 @@ namespace actor {
 
 			AI::AIState aiState;
 
+			int hp;
+			int maxHp;
+
+			int strength;
+			int dexterity;
+			int constitution;
+
 		public:
 			/**
 			 *  This is used to handle stuff that should happen every tick. Like timers or stuff.
 			 *  AI is handled in the AIsystem, not in this function
 			 */
 			virtual void update() = 0;
+
+			virtual void onAttack( ActorBase * target ) = 0;
 
 			//Should be called for all the actors
 			//
@@ -92,6 +106,45 @@ namespace actor {
 				aiState = state;
 			}
 
+			int getHp() {
+				return hp;
+			}
+
+			void setHp(int hp) {
+				this->hp = hp;
+			}
+
+			int getMaxHp() {
+				return maxHp;
+			}
+
+			void setMaxHp(int maxHp) {
+				this->maxHp = maxHp;
+			}
+
+			int getStrength() {
+				return strength;
+			}
+
+			void setStrength(int strength) {
+				this->strength = strength;
+			}
+
+			int getDexterity() {
+				return dexterity;
+			}
+
+			void setDexterity(int dexterity) {
+				this->dexterity = dexterity;
+			}
+
+			int getConstitution() {
+				return constitution;
+			}
+
+			void setConstitution(int constitution) {
+				this->constitution = constitution;
+			}
 	};
 
 }

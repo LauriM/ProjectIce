@@ -4,7 +4,6 @@
 
 #include "engine/actor/ActorBase.h"
 #include "engine/item/UseableItemBase.h"
-#include "engine/actor/PlayableActorBase.h"
 
 namespace game {
 namespace item {
@@ -19,10 +18,7 @@ namespace item {
 		}
 
 		void onUse( engine::actor::ActorBase * user, engine::actor::ActorBase * target = 0 ) {
-			engine::actor::PlayableActorBase * playableUser = dynamic_cast<engine::actor::PlayableActorBase*>(user);
-			// If the cast didn't work to the object that can use the item, than they obviously can't use it.
-			if ( playableUser )
-				playableUser->setHp( playableUser->getHp() + 10 );
+			user->setHp( user->getHp() + 10 );
 		}
 
 		void onPickup( engine::actor::ActorBase * actor ) {

@@ -4,14 +4,13 @@
 #include "precompiled.h"
 
 #include "engine/actor/ActorBase.h"
-#include "engine/actor/PlayableActorBase.h"
 #include "engine/math/random.h"
 
 namespace game {
 namespace actor {
 namespace npc {
 
-	class DummyActor : public engine::actor::PlayableActorBase {
+	class DummyActor : public engine::actor::ActorBase {
 		private:
 		public:
 			DummyActor(){
