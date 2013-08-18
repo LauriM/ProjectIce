@@ -4,6 +4,7 @@
 #include "engine/math/random.h"
 #include "engine/AI/AIState.h"
 #include "engine/input/InputMapping.h"
+#include "engine/combat/Combat.h"
 #include <vector>
 
 namespace engine {
@@ -87,28 +88,13 @@ namespace AI {
 		for(int i = 0; i < actors.size();++i){
 			if(actors.at(i)->getPosition() == pos){
 				actor::ActorBase * target = actors.at(i);
-				attackActor(actor, target);
+				engine::combat::attackActor(actor, target);
 				return; //hits other actor
 			}
 		}
 
 		//nothing on the way, move the actor
 		actor->setPosition(pos);
-	}
-
-	/**
-	 * Checks for melee attack from actor to different actor. Counts damage.
-	 *
-	 * If the target is friendly and attack has been cancelled, returns false.
-	 *
-	 * @param actor The actor that is attacking.
-	 * @param target The target that is under attack.
-	 *
-	 * @return If the attack was done or not.
-	 */
-	bool AISystem::attackActor(actor::ActorBase * actor,actor::ActorBase * target){
-		/*stub*/
-		return false;
 	}
 
 }
