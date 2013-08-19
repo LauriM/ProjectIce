@@ -74,7 +74,8 @@ namespace render {
 		}
 
 		/* RENDER ITEMS INTO THE MAP */
-		inventory::tyItemVector items = sceneSystem->getRoomInventoryByPos(cameraPos)->getAllItems();
+		inventory::typeItemList * items = sceneSystem->getRoomInventoryByPos(cameraPos)->getItemMapAsList();
+		if ( items ) {}
 		//LOG_DEBUG_F("Items to render: %i",items.size());
 
 		/*

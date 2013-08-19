@@ -16,6 +16,8 @@
 #include "engine/inventory/RoomInventory.h"
 #include "engine/item/ItemManager.h"
 
+#include "engine/inventory/RoomInventory.h"
+
 #include <map>
 #include <vector>
 
@@ -102,51 +104,6 @@ int main(){
 
 		SCPPT_COMPARE("Dummy is alive",dummy->getHp(),>,0);
 		SCPPT_COMPARE("Dummy is named dummy",dummy->getName(),==,"Dummy");
-	}
-
-	PRINTLN("-> Room Inventory");
-	{
-		world::Room room;
-		room.roomType = world::ROOM_TYPE_DUNGEON;
-		for(int i = 0;i <25;++i){
-			room.generate();
-		}
-
-		inventory::RoomInventory * roomInventory = new inventory::RoomInventory();
-		game::item::container::QuiverItem * quiver = new game::item::container::QuiverItem();
-		game::item::PotionItem * potion1 = new game::item::PotionItem();
-		game::item::PotionItem * potion2 = new game::item::PotionItem();
-		game::item::PotionItem * potion3 = new game::item::PotionItem();
-
-		String potionName = potion1->getName();
-		String quiverName = quiver->getName();
-
-		roomInventory->setRoomOwner(&room);
-		roomInventory->addItem( vec2(0,0), potion1 );
-		roomInventory->addItem( vec2(0,0), potion2 );
-		roomInventory->addItem( vec2(1,0), potion3 );
-		roomInventory->addItem( vec2(0,0), quiver );
-
-		inventory::tyItemVector * itemList1 = roomInventory->getItemListByPosition( vec2(0,0) );
-		inventory::tyItemVector * itemList2 = roomInventory->getItemListByPosition( vec2(1,0) );
-		SCPPT_COMPARE("Item list is not null",itemList1,!=,NULL);
-		SCPPT_COMPARE("Item list size is 3 at(0,0)",itemList1->size(),==,3);
-		SCPPT_COMPARE("Item list size is 1 at(1,0)",itemList2->size(),==,1);
-
-		item::ItemBase * item = roomInventory->getItemByPosition( vec2(0,0), potionName );
-		SCPPT_COMPARE("Item is not null",item,!=,NULL);
-		SCPPT_COMPARE("Item name is Potion",item->getName(),==,potionName);
-
-		bool removed = roomInventory->removeItem( potionName, vec2(0,0) );
-		inventory::tyItemVector * itemList3 = roomInventory->getItemListByPosition( vec2(0,0) );
-		SCPPT_COMPARE("Was the item removed",removed,==,true);
-		SCPPT_COMPARE("Item list size at (0,0) is now 2",itemList3->size(),==,2);
-
-		vec2 foundPosition = vec2(-1,-1);
-		item::ItemBase * foundItem = roomInventory->searchForItem(quiverName,&foundPosition);
-		SCPPT_COMPARE("The quiver was found",foundItem->getName(),==,quiverName);
-		SCPPT_COMPARE("The x value is 0",foundPosition.x,==,0);
-		SCPPT_COMPARE("The y value is 0",foundPosition.y,==,0);
 	}
 
 	PRINTLN("-> Inventory Manager");

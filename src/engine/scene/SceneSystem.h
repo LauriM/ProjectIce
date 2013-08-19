@@ -38,8 +38,7 @@ namespace scene {
 				playerInventory = new inventory::ActorInventory();
 				playerInventory->setOwner(playerActor);
 
-				roomInventory = new inventory::RoomInventory();
-				roomInventory->setRoomOwner( worldSystem->getRoom(0,0,0) );
+				roomInventory = new inventory::RoomInventory( worldSystem->getRoom(0,0,0) );
 
 				actorManager->insertActorToRoom(playerActor);
 			}
@@ -85,7 +84,7 @@ namespace scene {
 			}
 
 			void addItem(item::ItemBase * item) {
-				roomInventory->addItem( vec2(0,0), item );
+				roomInventory->addItemToPosition( vec2(0,0), item );
 			}
 
 	};

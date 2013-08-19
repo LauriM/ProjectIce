@@ -1,88 +1,89 @@
+
 #ifndef __ROOM_INVENTORY_H__
 #define __ROOM_INVENTORY_H__
 
 #include "precompiled.h"
 
-#include "engine/item/ItemBase.h"
 #include "engine/math/vec2.h"
 #include "engine/world/Room.h"
+#include "engine/item/ItemBase.h"
 
 #include <map>
 #include <vector>
-#include <iterator>
 
 namespace engine {
 namespace inventory {
 
-	typedef std::pair<int,int> tyV2Pair;
-	typedef std::vector<item::ItemBase*> tyItemVector;
-	typedef std::vector<item::ItemBase*>::iterator tyItemIterator;
-	typedef std::map< tyV2Pair, tyItemVector* > tyItemMap;
-	typedef std::map< tyV2Pair, tyItemVector* >::iterator tyMapIterator;
+	typedef std::pair<int,int> pairVec2;
+	typedef std::vector<item::ItemBase*> typeItemList;
+	typedef std::map< pairVec2, typeItemList* > typeItemMap;
+	typedef std::vector<item::ItemBase*>::iterator typeItemIterator;
+	typedef std::map< pairVec2, typeItemList* >::iterator typeMapIterator;
 
+	/**
+	 *	This object is responsible for the room's inventory
+	 */
 	class RoomInventory {
 	private:
-		tyItemMap itemMap; // a map of vectors of ItemBase*
-		world::Room * roomOwner;
-
-		tyItemVector * findItemVector(vec2 key);
-		tyItemVector * createEmptyVector(tyV2Pair key);
-		tyV2Pair convertVec2ToPair(vec2 value);
-		vec2 convertPairToVec2(tyV2Pair pair);
-
+		vec2 pairToVec2( pairVec2 pair );
+		pairVec2 vec2ToPair( vec2 vec );
+	private:
+		world::Room * owner;
+		typeItemMap itemMap;
 	public:
+		RoomInventory( world::Room * owner );
 
-		/*
-			Get the owner room of this inventory
-		*/
-		world::Room * getRoomOwner();
+		/** Returns the entire contents of the inventory
+		 * @returns a map containing lists of items
+		 */
+		typeItemMap getItemMap();
 
-		/*
-			Sets the room which owns this inventory
-		*/
-		void setRoomOwner(world::Room * room);
+		/** Returns all of the items this room containins in the form of a vector
+		 * @returns a list containing all the items in the world
+		 */
+		typeItemList * getItemMapAsList();
 
-		/*
-			Adds a new item to a position inside the room
-		*/
-		void addItem( vec2 position, item::ItemBase * item );
+		/** Returns a list of items from a given position in the room
+		 * @param position the position to search for
+		 * @returns the list of items
+		 */
+		typeItemList * getItemListByPosition( vec2 position );
 
-		/*
-			Removes a single item from the world at a given position
-		*/
-		bool removeItem( String name, vec2 position );
+		/** Searches the room for the item instance with the supplied ID number
+		 * @param id the identification number
+		 * @returns the instance of the item (if found, NULL if not)
+		 */
+		item::ItemBase * getItemByID(int id);
 
-		/*
-			Counts the number of a type of item at a position
-		*/
-		int getItemCountAtPosition( vec2 position, String );
+		/** Returns a list of instances which have the same name
+		 * @param name the name to search for
+		 * @returns the list of found items
+		 */		
+		typeItemList * getItemListByName( String name );
 
-		/*
-			Counts the total number of items at a position
-		*/
-		int getTotalItemCountAtPosition( vec2 position );
+		/** Returns a count of all the items on the map
+		 * @returns the item count
+		 */	
+		int getItemCount();
 
-		/*
-			Returns the item at the given position
-		*/
-		tyItemVector * getItemListByPosition( vec2 position );
+		/** Returns a count of items at a given position on the map
+		 * @returns the item count
+		 */	
+		int getItemCountAtPosition( vec2 position );
 
-		/*
-			Returns an item at a given position
-		*/
-		item::ItemBase * getItemByPosition( vec2 position, String name );
+		/** Adds an instance of an item to a given position on the map
+		 * @param position the position to add the item too
+		 * @param item the instance of the item (if registered with the engine)
+		 * @returns a flag indicating if it was added or not
+		 */	
+		bool addItemToPosition( vec2 position, item::ItemBase * item );
 
-		/*
-			Searches if an item by the name exists in the rooms, returns
-			the definition. The by reference position will return the key
-			used in the map
-		*/
-		item::ItemBase * searchForItem( String name, vec2 * position = 0);
-
-		/*
-		    Just give the full list of items
-		*/
-		tyItemVector getAllItems();
+		/** Removes 
+		 * @param position the position to add the item too
+		 * @param id the identification number of the item
+		 * @returns a flag indicating if it was removed or not (false if not found)
+		 */			
+		bool deleteItemByPosition( vec2 position, int id );
 
 	};
 

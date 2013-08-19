@@ -25,7 +25,7 @@ namespace inventory {
 	public:
 
 		/** Sets the owner of this inventory
-		 * @params actor the actor who owns this inventory
+		 * @param actor the actor who owns this inventory
 		 */
 		void setOwner(actor::ActorBase * actor) {
 			owner = actor;
