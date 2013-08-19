@@ -77,7 +77,7 @@ namespace inventory {
 	}
 
 	int RoomInventory::getItemCount() {
-		int itemCount;
+		int itemCount = 0;
 		typeMapIterator mapIter;
 		for( mapIter = itemMap.begin(); mapIter != itemMap.end(); ++mapIter ) {
 			typeItemList * itemList = (*mapIter).second;
