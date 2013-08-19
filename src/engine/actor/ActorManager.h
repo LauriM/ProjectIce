@@ -28,8 +28,25 @@ namespace actor {
 
 			//TODO: implement moving from container to another
 
+			/**
+			 * Insert actor to the manager.
+			 * @param actor actor to be inserted
+			 */
 			void insertActorToRoom(ActorBase* actor){
 				actors.push_back(actor);
+			}
+
+			/**
+			 * remove actor from the whole game.
+			 *
+			 * @param actor pointer to the actor to be removed.
+			 */
+			void removeActor(ActorBase* actor){
+				for(int i = 0;i < actors.size();++i){
+					if(actors.at(i) == actor){
+						actors.erase( actors.begin() + i);
+					}
+				}
 			}
 
 			std::vector<ActorBase *> getActorsInRoom(vec3 location){

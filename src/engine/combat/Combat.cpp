@@ -20,7 +20,7 @@ namespace combat {
 		target->setHp(target->getHp() - dmg);
 
 		if(target->getHp() < 0){
-			LOG_INFO("KILL!");
+			LOG_INFO("KILL! TODO: apply some exp here to the attacker");
 		}
 
 		//TODO: actually use the boolean to return something else

@@ -36,6 +36,13 @@ namespace AI {
 	void AISystem::handleActor(actor::ActorBase * actor){
 		//TODO: This whole function looks like shit, fix it
 
+		//check if the actor is dead
+		if(actor->getHp() < 0){
+			LOG_INFO("KILL!");
+			actorManager->removeActor(actor);
+			return;
+		}
+
 		vec2 newPos;
 
 		switch( actor->getAIState() ){
@@ -73,6 +80,9 @@ namespace AI {
 				return;
 		}
 	}
+
+
+	//TODO: consider moving this to separated source file, this is not AI, this is movement !
 
 	/**
 	 * Moves actor to certain position. Checks if there is wall/other actors on the way.
