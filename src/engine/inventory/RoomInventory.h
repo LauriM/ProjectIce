@@ -27,6 +27,8 @@ namespace inventory {
 	private:
 		vec2 pairToVec2( pairVec2 pair );
 		pairVec2 vec2ToPair( vec2 vec );
+		typeItemList * initEmptyList( pairVec2 vp );
+		void clean(); // removes untracked items on get
 	private:
 		world::Room * owner;
 		typeItemMap itemMap;

@@ -87,6 +87,7 @@ namespace inventory {
 			}
 
 			itemList.push_back( item );
+			item->setInInventory(true);
 			return true;
 		}
 
@@ -111,6 +112,7 @@ namespace inventory {
 			for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 				if ( (*iter)->getId() == id ) {
 					iter = itemList.erase(iter);
+					(*iter)->setInInventory(false);
 					return true;
 				}
 			}

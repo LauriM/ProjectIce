@@ -142,6 +142,61 @@ int main(){
 		SCPPT_COMPARE( "ID 100 is too large", itemManager->isIDTracked(100), ==, false );
 	}
 
+	PRINTLN("-> Room Inventory")
+	{
+		// --- START --- Test INIT
+		item::ItemManager * itemManager = item::ItemManager::getInstance();
+		std::vector<game::item::PotionItem*> potions;
+		for( int x = 0; x < 4; x++ ) {
+			game::item::PotionItem * pot = new game::item::PotionItem();
+			itemManager->trackItem( pot );
+			potions.push_back( pot );	
+		}
+		game::item::ArrowItem * arrow = new game::item::ArrowItem();
+		//itemManager->trackItem( arrow );
+		world::Room testRoom;
+		testRoom.roomType = world::ROOM_TYPE_WATER;
+		for(int i = 0;i <25;++i){
+			testRoom.generate();
+		}
+		inventory::RoomInventory * roomInventory = new inventory::RoomInventory(&testRoom);
+		if (roomInventory) {} // stop complaining about unused variables
+
+		roomInventory->addItemToPosition( vec2(0,0), potions.at(0) );
+		roomInventory->addItemToPosition( vec2(0,0), potions.at(1) );
+		roomInventory->addItemToPosition( vec2(0,0), potions.at(2) );
+		// --- END --- Test INIT
+
+		SCPPT_COMPARE( "(0,0) has 3 items.", roomInventory->getItemCountAtPosition( vec2(0,0) ), ==, 3 );
+		SCPPT_COMPARE( "(0,1) has 0 items.", roomInventory->getItemCountAtPosition( vec2(0,1) ), ==, 0 );
+		SCPPT_COMPARE( "Cannot add untracked items.", roomInventory->addItemToPosition( vec2(0,0), arrow ), ==, false );
+		SCPPT_COMPARE( "(0,0) has 3 items.", roomInventory->getItemCountAtPosition( vec2(0,0) ), ==, 3 );
+
+		itemManager->trackItem( arrow );
+		roomInventory->addItemToPosition( vec2(0,0), arrow );
+		SCPPT_COMPARE( "(0,0) has 4 items.", roomInventory->getItemCountAtPosition( vec2(0,0) ), ==, 4 );
+
+		itemManager->untrackItem( potions.at(0) );
+		roomInventory->deleteItemByPosition( vec2(0,0), potions.at(0)->getId() );
+		SCPPT_COMPARE( "(0,0) has 3 items.", roomInventory->getItemCountAtPosition( vec2(0,0) ), ==, 3 );
+
+		engine::inventory::typeItemList * potRM = roomInventory->getItemListByName( potions.at(1)->getName() );
+		SCPPT_COMPARE( "There are 2 potions in the room", potRM->size(), ==, 2 );
+
+		roomInventory->addItemToPosition( vec2(1,0), potions.at(0) );
+		SCPPT_COMPARE( "(1,0) has 1 items.", roomInventory->getItemCountAtPosition( vec2(1,0) ), ==, 1 );
+		potRM = roomInventory->getItemListByName( potions.at(1)->getName() );
+		SCPPT_COMPARE( "There are 3 potions in the room", potRM->size(), ==, 3 );
+
+		SCPPT_COMPARE( "There are 4 items in the room", roomInventory->getItemCount(), ==, 4 );
+		SCPPT_COMPARE( "Remove a tracked item from the inventory", roomInventory->getItemCount(), ==, 4 );
+
+		itemManager->trackItem( potions.at(0) );
+		bool deleted = roomInventory->deleteItemByPosition( vec2(0,0), potions.at(0)->getId() );
+		SCPPT_COMPARE( "Cannot remove tracked items from inventory", deleted, ==, false );
+
+	}
+
 	/*
 	  Idea for unit tests about initting the systems
 

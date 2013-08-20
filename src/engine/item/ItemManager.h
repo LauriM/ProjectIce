@@ -94,7 +94,7 @@ namespace item {
 		 *	@returns true if the item is no longer tracked, false if not able to untrack item
 		*/
 		bool untrackItem(ItemBase * b) {
-			if ( b->id == -1 || b->id > lastUsedID ) {
+			if ( b->id == -1 || b->id > lastUsedID || b->getInInventory() ) {
 				return false;
 			}
 

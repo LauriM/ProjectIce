@@ -15,6 +15,7 @@ namespace item {
 	class ItemBase {
 	protected:
 		int id;
+		bool inInventory;
 
 		String name;
 		String description;
@@ -24,6 +25,7 @@ namespace item {
 
 		ItemBase() {
 			id = -1;
+			inInventory = false;
 		}
 
 	public:
@@ -65,6 +67,13 @@ namespace item {
 			return value;
 		}
 
+		/** Returns a flag indicating if the item is contained inside an inventory
+		 * @return the inInventory status
+		 */
+		bool getInInventory() {
+			return inInventory;
+		}
+
 		/** Sets this instance's name
 		 * @param name the name of the item
 		 */
@@ -84,6 +93,10 @@ namespace item {
 		 */
 		void setValue(double value) {
 			this->value = value;
+		}
+
+		void setInInventory(bool in) {
+			inInventory = in;
 		}
 
 		/** The action that is called from the engine when this item is "Picked Up" off the ground.

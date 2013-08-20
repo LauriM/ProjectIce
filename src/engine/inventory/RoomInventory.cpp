@@ -18,6 +18,12 @@ namespace inventory {
 		return newPair;
 	}
 
+	typeItemList * RoomInventory::initEmptyList( pairVec2 key ) {
+		typeItemList * newList = new typeItemList();
+		itemMap[key] = newList;
+		return newList;
+	}
+
 	// --- PUBLIC --- //
 
 	RoomInventory::RoomInventory( world::Room * owner ) {
@@ -43,8 +49,11 @@ namespace inventory {
 
 	typeItemList * RoomInventory::getItemListByPosition( vec2 position ) {
 		pairVec2 pv = vec2ToPair(position);
-		typeItemList * list = itemMap[pv];
-		return list;
+		typeMapIterator it = itemMap.find( vec2ToPair(position) );
+		if ( it != itemMap.end() ) {
+			return (*it).second;
+		}
+		return NULL;
 	}
 
 	item::ItemBase * RoomInventory::getItemByID(int id) {
@@ -86,10 +95,10 @@ namespace inventory {
 		return itemCount;
 	}
 
-	int RoomInventory::getItemCountAtPosition( vec2 position ) {
-		pairVec2 pv = vec2ToPair(position);		
-		typeItemList * itemList = itemMap[pv];
-		if ( itemList ) {
+	int RoomInventory::getItemCountAtPosition( vec2 position ) {	
+		typeItemList * itemList = getItemListByPosition(position);
+		typeMapIterator it = itemMap.find( vec2ToPair(position) );
+		if ( it != itemMap.end() ) {
 			return itemList->size();
 		}
 		else {
@@ -98,21 +107,39 @@ namespace inventory {
 	}
 
 	bool RoomInventory::addItemToPosition( vec2 position, item::ItemBase * item ) {
+		// check first to make sure item is bound and it's tracked by the engine
 		if ( !item || item->getId() < 0 ) {
 			return false;
 		}
 
+		// check also to make sure this item instance isn't avaliable in the room already
+		if ( getItemByID( item->getId() ) ) {
+			return false;
+		}
+
 		pairVec2 pv = vec2ToPair(position);
-		typeItemList * itemList = itemMap[pv];
-		if ( itemList ) {
-			itemList->push_back(item);
+		typeMapIterator it = itemMap.find(pv);
+		typeItemList * itemList = NULL;
+		if ( it == itemMap.end() ) {
+			itemList = new typeItemList();
+			itemMap[pv] = itemList;
 		}
 		else {
-			itemList = new typeItemList();
-			itemList->push_back(item);
-			itemMap.insert( typeItemMap::value_type(pv,itemList) );
+			itemList = (*it).second;
 		}
+		itemList->push_back( item );
+		item->setInInventory(true);
 		return true;
+		//if ( itemIter->second ) {
+		//typeItemList * itemList = ( itemMap.find(pv) ? itemMap.find(pv)->second, NULL );
+		//if ( itemIter->second ) {
+		//	itemIter->second->push_back(item);
+		//}
+		//else {
+		//	typeItemList * itemList = initEmptyList(pv);
+		//	itemList->push_back(item);
+		//}
+		//return true;
 	}
 
 	bool RoomInventory::deleteItemByPosition( vec2 position, int id ) {
@@ -121,7 +148,7 @@ namespace inventory {
 		}
 		bool deleted = false;
 		pairVec2 pv = vec2ToPair(position);
-		typeItemList * itemList = itemMap[pv];
+		typeItemList * itemList = itemMap.find(pv)->second;
 		if ( itemList ) {
 			typeItemIterator itemIter = itemList->begin();
 			for( itemIter = itemList->begin(); itemIter != itemList->end(); ++itemIter ) {
@@ -130,6 +157,7 @@ namespace inventory {
 					if ( itemList->size() == 0 ) {
 						itemMap.erase(pv);
 					}
+					(*itemIter)->setInInventory(false);
 					deleted = true;
 				}
 			}
