@@ -48,7 +48,6 @@ namespace inventory {
 	}	
 
 	typeItemList * RoomInventory::getItemListByPosition( vec2 position ) {
-		pairVec2 pv = vec2ToPair(position);
 		typeMapIterator it = itemMap.find( vec2ToPair(position) );
 		if ( it != itemMap.end() ) {
 			return (*it).second;
