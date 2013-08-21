@@ -19,7 +19,7 @@ namespace render {
 		initscr();
 		if(has_colors() == false){
 			endwin();
-			printf("Your terminal doesn't support colors...\nFind more modern system/terminal.");
+			LOG_ERROR("Your terminal doesn't support colors...\nFind more modern system/terminal.");
 			return false;
 		}
 
@@ -69,7 +69,14 @@ namespace render {
 			for(int y = 0;y < ROOM_HEIGHT;++y){
 				pos.x = (x + 2);
 				pos.y = (y + 2);
+				//Changing the color
+				world::Tile *tile = currentRoom->getTile(x,y);
+
+				init_pair(1, tile->fgColor, tile->bgColor);
+
+				attron(COLOR_PAIR(1));
 				drawChar(pos,currentRoom->getTile(x,y)->visual);
+				attroff(COLOR_PAIR(1));
 			}
 		}
 

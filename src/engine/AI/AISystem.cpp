@@ -98,7 +98,11 @@ namespace AI {
 		for(int i = 0; i < actors.size();++i){
 			if(actors.at(i)->getPosition() == pos){
 				actor::ActorBase * target = actors.at(i);
-				engine::combat::attackActor(actor, target);
+				if(engine::combat::attackActor(actor, target)){
+					//Attack was issued! Lets spawn some blood!
+					worldSystem->getRoom( actor->getLocation() )->getTile( target->getPosition() )->setBgColor(COLOR_RED);
+				}
+
 				return; //hits other actor
 			}
 		}
