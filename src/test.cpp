@@ -18,8 +18,6 @@
 
 #include "engine/inventory/RoomInventory.h"
 
-#include <termbox.h>
-
 #include <map>
 #include <vector>
 

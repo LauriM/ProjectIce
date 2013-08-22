@@ -12,7 +12,7 @@ solution "ProjectIce"
 		defines { "LINUX" }
 		links   { "m", "rt" , "ncurses", "termbox" }
 		flags   { "ExtraWarnings", "FatalWarnings" }
-		libdirs { "/usr/local/lib" }
+		libdirs { "/usr/local/lib" } -- is this correct ?
 
 	configuration "Debug"
 		defines { "DEBUG" }

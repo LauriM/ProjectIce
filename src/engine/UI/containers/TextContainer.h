@@ -31,7 +31,7 @@ namespace containers {
 
 				if(textContent.length() < bounds.size.x){
 					//String is shorter than the width, lets just print it.
-					engine::render::drawStringTobounds(bounds,vec2(0,0),textContent);
+					//engine::render::drawStringTobounds(bounds,vec2(0,0),textContent);
 					return;
 				}
 
@@ -44,10 +44,10 @@ namespace containers {
 
 					if(currentCharsLeft < bounds.size.x ){
 						//Its the last line, and its not full lenght... so lets just print the last chars.
-						engine::render::drawStringTobounds(bounds,vec2(0,i),textContent.substr(0 + (i * bounds.size.x),currentCharsLeft));
+//						engine::render::drawStringTobounds(bounds,vec2(0,i),textContent.substr(0 + (i * bounds.size.x),currentCharsLeft));
 						return;
 					}else{
-						engine::render::drawStringTobounds(bounds,vec2(0,i),textContent.substr(0 + (i * bounds.size.x),bounds.size.x));
+//						engine::render::drawStringTobounds(bounds,vec2(0,i),textContent.substr(0 + (i * bounds.size.x),bounds.size.x));
 					}
 
 					++i;
