@@ -42,7 +42,18 @@ namespace term {
 		}
 
 		void update(){
-			LOG_INFO("termbox update");
+			tb_cell test;
+			test.ch = '@';
+			test.fg = TB_RED;
+			test.bg = TB_BLACK;
+
+			tb_put_cell(10,10,&test);
+
+			tb_present();
+
+			tb_event event;
+
+			tb_poll_event(&event);
 		}
 
 
