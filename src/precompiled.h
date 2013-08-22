@@ -6,6 +6,8 @@
 #include <math.h>
 #include <assert.h>
 
+#include <termbox.h>
+
 #ifdef WINDOWS
 #include "ncurses.h"
 #else

@@ -10,7 +10,7 @@ solution "ProjectIce"
 
 	configuration { "linux" }
 		defines { "LINUX" }
-		links   { "m", "rt" , "ncurses" }
+		links   { "m", "rt" , "ncurses", "termbox" }
 		flags   { "ExtraWarnings", "FatalWarnings" }
 		libdirs { "/usr/local/lib" }
 

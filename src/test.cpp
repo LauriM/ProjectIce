@@ -18,6 +18,8 @@
 
 #include "engine/inventory/RoomInventory.h"
 
+#include <termbox.h>
+
 #include <map>
 #include <vector>
 
@@ -28,6 +30,12 @@ int testOks   = 0;
 
 int main(){
 	SCPPT_START;
+
+	PRINTLN("-> termbox")
+	{
+		SCPPT_COMPARE("tb init ok",tb_init(), == , 0);
+		tb_shutdown();
+	}
 
 	PRINTLN("-> Vec2");
 	{
@@ -150,7 +158,7 @@ int main(){
 		for( int x = 0; x < 4; x++ ) {
 			game::item::PotionItem * pot = new game::item::PotionItem();
 			itemManager->trackItem( pot );
-			potions.push_back( pot );	
+			potions.push_back( pot );
 		}
 		game::item::ArrowItem * arrow = new game::item::ArrowItem();
 		//itemManager->trackItem( arrow );
