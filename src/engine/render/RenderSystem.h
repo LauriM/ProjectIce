@@ -15,11 +15,18 @@ namespace render {
 	 * RenderSystem gets pointers to the sceneSystem and uiSystem and will build the visuals from that.
 	 */
 	class RenderSystem : public EngineSystem {
-	public:
+	protected:
 		vec3 cameraPos;
-
+	public:
 		~RenderSystem() {};
 
+		vec3 getCameraPos(){
+			return cameraPos;
+		}
+
+		void setCameraPos(vec3 pos){
+			cameraPos = pos;
+		}
 	};
 
 }

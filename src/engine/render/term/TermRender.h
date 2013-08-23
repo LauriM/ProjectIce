@@ -1,6 +1,8 @@
 #ifndef ENGINE_RENDER_TERM_TERMRENDER_H
 #define ENGINE_RENDER_TERM_TERMRENDER_H
 
+#include "engine/render/RenderSystem.h"
+
 #include "engine/scene/SceneSystem.h"
 #include "engine/UI/UISystem.h"
 
@@ -34,6 +36,9 @@ namespace term {
 			}
 
 			LOG_ERROR("couldn't init termbox");
+
+			setCameraPos(vec3(0,0,0));
+
 			return false;
 		}
 
@@ -41,21 +46,22 @@ namespace term {
 			tb_shutdown();
 		}
 
-		void update(){
-			tb_cell test;
-			test.ch = '@';
-			test.fg = TB_RED;
-			test.bg = TB_BLACK;
+		void update();
 
-			tb_put_cell(10,10,&test);
+		/*
+		tb_cell test;
+		test.ch = '@';
+		test.fg = TB_RED;
+		test.bg = TB_BLACK;
 
-			tb_present();
+		tb_put_cell(10,10,&test);
 
-			tb_event event;
+		tb_present();
 
-			tb_poll_event(&event);
-		}
+		tb_event event;
 
+		tb_poll_event(&event);
+		*/
 
 	};
 

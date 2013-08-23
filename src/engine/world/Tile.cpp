@@ -19,13 +19,13 @@ namespace world {
 		//Maybe in future it will be some awesome piece of lua code that reads xml or some shit :D
 
 		switch(type){
-			//p_type                    , p_visual , p_blocks , p_hp , fg color           , bg color
-			DEFINE_TILE(TILE_VOID       , ' '      , false    , 0    , COLOR_WHITE , COLOR_BLACK);
-			DEFINE_TILE(TILE_GRASS      , '.'      , false    , 0    , COLOR_WHITE , COLOR_BLACK);
-			DEFINE_TILE(TILE_ROCK_FLOOR , '.'      , false    , 0    , COLOR_WHITE , COLOR_BLACK);
-			DEFINE_TILE(TILE_SOLID_ROCK , '#'      , true     , 500  , COLOR_WHITE , COLOR_BLACK);
-			DEFINE_TILE(TILE_TREE       , 'O'      , true     , 25   , COLOR_GREEN , COLOR_BLACK);
-			DEFINE_TILE(TILE_WATER      , '.'      , false    , 0    , COLOR_WHITE , COLOR_BLACK);
+			//p_type                    , p_visual , p_blocks , p_hp , fg color , bg color
+			DEFINE_TILE(TILE_VOID       , ' '      , false    , 0    , TB_WHITE , TB_BLACK);
+			DEFINE_TILE(TILE_GRASS      , '.'      , false    , 0    , TB_WHITE , TB_BLACK);
+			DEFINE_TILE(TILE_ROCK_FLOOR , '.'      , false    , 0    , TB_WHITE , TB_BLACK);
+			DEFINE_TILE(TILE_SOLID_ROCK , '#'      , true     , 500  , TB_WHITE , TB_BLACK);
+			DEFINE_TILE(TILE_TREE       , 'O'      , true     , 25   , TB_GREEN , TB_BLACK);
+			DEFINE_TILE(TILE_WATER      , '.'      , false    , 0    , TB_WHITE , TB_BLACK);
 		}
 	}
 

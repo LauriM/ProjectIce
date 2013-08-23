@@ -131,6 +131,7 @@ int main(){
 		ai->update();
 		render->update();
 		ui->update();
+		getch();
 	}
 
 	ai->uninit();
