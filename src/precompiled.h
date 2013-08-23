@@ -6,13 +6,8 @@
 #include <math.h>
 #include <assert.h>
 
+//This is only used for colors outside the TermRender.h
 #include <termbox.h>
-
-#ifdef WINDOWS
-#include "ncurses.h"
-#else
-#include <ncurses.h>
-#endif
 
 #include "stdio.h"
 
