@@ -19,7 +19,7 @@ before_install:
  - sudo cp build/src/*so* /usr/lib/
  - sudo cp src/termbox.h /usr/include/
  - ls -lah
- - cd
+ - cd ~/build/LauriM/ProjectIce
  - ls -lah
 
 notifications:
