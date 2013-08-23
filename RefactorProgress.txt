@@ -1,0 +1,9 @@
+Ncurses sucks
+=============
+
+This is the progress of the major refactor caused by ncurses.
+
+* replace rendering with termbox              [done]
+* get travis building
+* replace input with termbox and refactor it
+* refactor UI system

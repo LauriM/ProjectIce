@@ -10,9 +10,9 @@ solution "ProjectIce"
 
 	configuration { "linux" }
 		defines { "LINUX" }
-		links   { "m", "rt" , "ncurses" }
+		links   { "m", "rt" , "termbox" }
 		flags   { "ExtraWarnings", "FatalWarnings" }
-		libdirs { "/usr/local/lib" }
+		libdirs { "/usr/local/lib" } -- is this correct ?
 
 	configuration "Debug"
 		defines { "DEBUG" }

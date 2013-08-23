@@ -28,8 +28,8 @@ namespace world {
 				visual                 = ' ';
 				blocks                 = false;
 				hp                     = 100;
-				fgColor                = COLOR_WHITE;
-				bgColor                = COLOR_BLACK;
+				fgColor                = TB_WHITE;
+				bgColor                = TB_BLACK;
 				//add -> tickFunction (Executed every time entity or actor is in the tile) (?)
 			}
 

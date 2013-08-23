@@ -27,7 +27,7 @@ namespace containers {
 
 			void render(AABB bounds){
 				if(playerActor == NULL){
-					engine::render::drawStringTobounds(bounds,vec2(0,0),"ERROR");
+//					engine::render::drawStringTobounds(bounds,vec2(0,0),"ERROR");
 					LOG_WARNING("StatsContainer can't find PlayerActor!");
 					return;
 				}
@@ -35,7 +35,7 @@ namespace containers {
 				//TODO: change the color depending on the HP %
 				char buffer[25];
 				snprintf(buffer,25,"HP: %i/%i",playerActor->getHp(),playerActor->getMaxHp() );
-				engine::render::drawStringTobounds(bounds,vec2(0,0),buffer);
+//				engine::render::drawStringTobounds(bounds,vec2(0,0),buffer);
 			}
 
 			void setPlayerActor(actor::player::PlayerActor *actor){
