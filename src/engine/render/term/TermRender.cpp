@@ -53,6 +53,10 @@ namespace term {
 			tb_put_cell(actors.at(i)->getPos()->x, actors.at(i)->getPos()->y, &cell);
 		}
 
+		/* "RENDER" UI */
+
+		uiSystem->windows.size();
+
 		/* RENDER THE ACTUAL STUFF */
 
 		tb_present();
