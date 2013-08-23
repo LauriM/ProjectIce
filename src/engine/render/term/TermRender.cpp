@@ -5,6 +5,8 @@ namespace render {
 namespace term {
 
 	void TermRender::update(){
+		tb_cell cell; //temp cell used in rendering
+
 		//Check that the camera is not out of bounds...
 		if(cameraPos.x < 0 || cameraPos.x >= WORLD_WIDTH){
 			LOG_ERROR("Camera out of bounds! (x)");
@@ -32,13 +34,23 @@ namespace term {
 				//Changing the color
 				world::Tile *tile = currentRoom->getTile(x,y);
 
-				tb_cell cell;
 				cell.ch = tile->visual;
 				cell.fg = tile->fgColor;
 				cell.bg = tile->bgColor;
 
 				tb_put_cell(x,y,&cell);
 			}
+		}
+
+		/* RENDER ACTORS */
+
+		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorsInRoom(cameraPos);
+
+		cell.fg = TB_WHITE;
+		cell.bg = TB_BLACK;
+		for(int i = 0; i < actors.size();++i){
+			cell.ch = actors.at(i)->getSymbol();
+			tb_put_cell(actors.at(i)->getPos()->x, actors.at(i)->getPos()->y, &cell);
 		}
 
 		/* RENDER THE ACTUAL STUFF */
@@ -50,23 +62,6 @@ namespace term {
 		tb_poll_event(&event);
 		return;
 	}
-
-	//	/* RENDER ACTORS TO MAP */
-	//
-	//	/*
-	//	   pos.x = sceneSystem->getPlayerActor()->getPos()->x+2;
-	//	   pos.y = sceneSystem->getPlayerActor()->getPos()->y+2;
-	//	   drawChar(pos,'@');
-	//	   */
-	//
-	//	std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorsInRoom(cameraPos);
-	//
-	//	for(int i = 0; i < actors.size();++i){
-	//		pos.x = actors.at(i)->getPosition().x + 2; //Padding because of the map positioning
-	//		pos.y = actors.at(i)->getPosition().y + 2;
-	//		drawChar( pos,actors.at(i)->getSymbol() );
-	//	}
-	//
 
 }
 }
