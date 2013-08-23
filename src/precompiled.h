@@ -6,11 +6,8 @@
 #include <math.h>
 #include <assert.h>
 
-#ifdef WINDOWS
-#include "ncurses.h"
-#else
-#include <ncurses.h>
-#endif
+//This is only used for colors outside the TermRender.h
+#include <termbox.h>
 
 #include "stdio.h"
 
@@ -37,6 +34,7 @@ typedef std::string String;
 #ifndef PRECOMPILED_H
 #define PRECOMPILED_H
 
+//TODO: wtf is this (2013-08-22)
 #include "engine/EngineSystem.h"
 
 #endif

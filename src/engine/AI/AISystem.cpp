@@ -57,14 +57,12 @@ namespace AI {
 
 				return;
 			case AISTATE_PLAYER:
-				int key = getch();
-				LOG_DEBUG_F("key %i",key);
-
-				engine::input::InputMapping* _inputMapping = engine::input::InputMapping::getInstance();
+				//engine::input::InputMapping* _inputMapping = engine::input::InputMapping::getInstance();
 				newPos.x = actor->getPos()->x;
 				newPos.y = actor->getPos()->y;
 
 				//TODO: This looks UGLY
+				/*
 				if ( key == _inputMapping->getMoveNorth() ) {
 					newPos.y += 1;
 				} else if ( key == _inputMapping->getMoveSouth() ) {
@@ -74,6 +72,7 @@ namespace AI {
 				} else if ( key == _inputMapping->getMoveWest() ) {
 					newPos.x += 1;
 				}
+				*/
 
 				moveActor(actor,newPos);
 
@@ -100,7 +99,7 @@ namespace AI {
 				actor::ActorBase * target = actors.at(i);
 				if(engine::combat::attackActor(actor, target)){
 					//Attack was issued! Lets spawn some blood!
-					worldSystem->getRoom( actor->getLocation() )->getTile( target->getPosition() )->setBgColor(COLOR_RED);
+					worldSystem->getRoom( actor->getLocation() )->getTile( target->getPosition() )->setBgColor(TB_RED);
 				}
 
 				return; //hits other actor

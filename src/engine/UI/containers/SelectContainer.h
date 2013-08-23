@@ -32,7 +32,7 @@ namespace containers {
 						return;
 					}
 
-					engine::render::drawStringTobounds(bounds,vec2(0,i), items.at(i).substr(0,bounds.size.x));
+					//engine::render::drawStringTobounds(bounds,vec2(0,i), items.at(i).substr(0,bounds.size.x));
 				}
 			}
 

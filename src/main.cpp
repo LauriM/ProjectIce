@@ -4,6 +4,7 @@
 #include "engine/AI/AISystem.h"
 #include "engine/EngineSystem.h"
 #include "engine/render/RenderSystem.h"
+#include "engine/render/term/TermRender.h"
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
 #include "engine/UI/containers/TextContainer.h"
@@ -39,7 +40,7 @@ int main(){
 	scene->addItem(pi);
 
 	engine::UI::UISystem *ui             = new engine::UI::UISystem();
-	engine::render::RenderSystem *render = new engine::render::RenderSystem(scene,ui);
+	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
 	engine::AI::AISystem *ai             = new engine::AI::AISystem(actorManager,worldSystem);
 
 	render->init();

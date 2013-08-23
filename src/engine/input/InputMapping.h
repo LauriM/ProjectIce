@@ -4,7 +4,7 @@
 
 namespace engine {
 namespace input {
-	
+
 	class InputMapping {
 	private:
 		int _moveNorth;
