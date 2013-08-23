@@ -6,6 +6,7 @@ script: make
 after_success: ./test
 
 before_install:
+ - pwd
  - ls -lah
  - sudo bash -c "echo 'deb http://lgp203.free.fr/ubuntu quantal universe' >> /etc/apt/sources.list.d/lgp203.free.fr.source.list"
  - sudo apt-get update
@@ -15,8 +16,10 @@ before_install:
  - git clone https://github.com/nsf/termbox.git .
  - ./waf configure
  - ./waf
+ - sudo cp build/src/*so* /usr/lib/
+ - sudo cp src/termbox.h /usr/include/
  - ls -lah
- - cd LauriM/ProjectIce
+ - cd
  - ls -lah
 
 notifications:
