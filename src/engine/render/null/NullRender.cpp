@@ -2,6 +2,9 @@
 
 #include "engine/render/null/NullRender.h"
 
+//Only compile nullrender if its in use
+#ifdef NULLRENDER
+
 namespace engine {
 namespace render {
 namespace null {
@@ -24,3 +27,5 @@ namespace null {
 }
 }
 }
+
+#endif

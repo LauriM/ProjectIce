@@ -16,9 +16,11 @@
 #include "game/actor/npc/DummyActor.h"
 #include "game/UI/containers/StatsContainer.h"
 
-#ifndef WINDOWS
+#ifdef TERMRENDER
 #include "engine/render/term/TermRender.h"
-#else
+#endif
+
+#ifdef NULLRENDER
 #include "engine/render/null/NullRender.h"
 #endif
 
@@ -47,9 +49,10 @@ int main(){
 	engine::UI::UISystem *ui             = new engine::UI::UISystem();
 	engine::AI::AISystem *ai             = new engine::AI::AISystem(actorManager,worldSystem);
 
-#ifndef WINDOWS
+#ifdef TERMRENDER
 	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
-#else
+#endif
+#ifdef NULLRENDER
 	engine::render::RenderSystem *render = new engine::render::null::NullRender(scene,ui);
 #endif
 

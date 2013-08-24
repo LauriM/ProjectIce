@@ -31,6 +31,17 @@
 
 typedef std::string String;
 
+/* CHOOSE THE RENDER SYSTEM */
+
+//Null render for windows, termrender for others
+#ifdef WINDOWS
+#define NULLRENDER
+#else
+#define TERMRENDER
+#endif
+
+/* --- */
+
 #ifndef PRECOMPILED_H
 #define PRECOMPILED_H
 

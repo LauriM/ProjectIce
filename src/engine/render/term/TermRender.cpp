@@ -1,7 +1,8 @@
+#include "precompiled.h"
 #include "engine/render/term/TermRender.h"
 
-//TermRender is disabled on windows
-#ifndef WINDOWS
+//Only compile if its in use
+#ifdef TERMRENDER
 
 namespace engine {
 namespace render {
