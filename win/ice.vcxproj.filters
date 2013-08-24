@@ -89,5 +89,8 @@
     <ClInclude Include="..\src\precompiled.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\scppt.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

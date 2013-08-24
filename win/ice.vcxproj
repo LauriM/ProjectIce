@@ -40,6 +40,7 @@
     <ClInclude Include="..\src\engine\world\Tile.h" />
     <ClInclude Include="..\src\engine\world\WorldSystem.h" />
     <ClInclude Include="..\src\precompiled.h" />
+    <ClInclude Include="..\src\scppt.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D3A0F031-AF83-BC4C-8008-D84004787A91}</ProjectGuid>

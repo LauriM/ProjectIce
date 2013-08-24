@@ -33,8 +33,8 @@ namespace containers {
 				}
 
 				//TODO: change the color depending on the HP %
-				char buffer[25];
-				snprintf(buffer,25,"HP: %i/%i",playerActor->getHp(),playerActor->getMaxHp() );
+			//	char buffer[25];
+				//snprintf(buffer,25,"HP: %i/%i",playerActor->getHp(),playerActor->getMaxHp() );
 //				engine::render::drawStringTobounds(bounds,vec2(0,0),buffer);
 			}
 
