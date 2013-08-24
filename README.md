@@ -9,8 +9,10 @@ ProjectIce is roguelike game/engine project. Currently its in very early develop
 
 Build requirements:
 
-* termbox [Github repo](https://github.com/nsf/termbox)
-* premake4 (only needed when developing, you can build ProjectIce without it)
+* [Termbox](https://github.com/nsf/termbox) (This is used for Linux builds)
+* premake4
+
+Notes: Windows version compiles, but it doesn't have a real rendering system working.
 
 Resources
 =========
