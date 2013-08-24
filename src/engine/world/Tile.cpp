@@ -21,11 +21,11 @@ namespace world {
 		switch(type){
 			//p_type                    , p_visual , p_blocks , p_hp , fg color , bg color
 			DEFINE_TILE(TILE_VOID       , ' '      , false    , 0    , TB_WHITE , TB_BLACK);
-			DEFINE_TILE(TILE_GRASS      , '.'      , false    , 0    , TB_WHITE , TB_BLACK);
+			DEFINE_TILE(TILE_GRASS      , '.'      , false    , 0    , TB_GREEN , TB_BLACK);
 			DEFINE_TILE(TILE_ROCK_FLOOR , '.'      , false    , 0    , TB_WHITE , TB_BLACK);
 			DEFINE_TILE(TILE_SOLID_ROCK , '#'      , true     , 500  , TB_WHITE , TB_BLACK);
 			DEFINE_TILE(TILE_TREE       , 'O'      , true     , 25   , TB_GREEN , TB_BLACK);
-			DEFINE_TILE(TILE_WATER      , '.'      , false    , 0    , TB_WHITE , TB_BLACK);
+			DEFINE_TILE(TILE_WATER      , '.'      , false    , 0    , TB_BLUE  , TB_BLACK);
 		}
 	}
 
