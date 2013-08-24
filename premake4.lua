@@ -12,7 +12,6 @@ solution "ProjectIce"
 		defines { "LINUX" }
 		links   { "m", "rt" , "termbox" }
 		flags   { "ExtraWarnings", "FatalWarnings" }
-		libdirs { "/usr/local/lib" } -- is this correct ?
 
 	configuration "Debug"
 		defines { "DEBUG" }
@@ -33,4 +32,3 @@ solution "ProjectIce"
 		language "C++"
 		files { "src/test.cpp", "src/engine/**.h", "src/engine/**.cpp", "src/game/**.h", "src/game/**.cpp" }
 		includedirs { "src/" }
-
