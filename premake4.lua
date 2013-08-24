@@ -2,11 +2,10 @@ solution "ProjectIce"
 	configurations { "Debug", "Release" }
 
 	configuration { "windows" }
-		defines   { "WINDOWS" }
-		libdirs     { "C:/codelibs/pdcurses/lib/" }
-		includedirs { "C:/codelibs/pdcurses/include/" }
-		links       { "pdcurses" }
 		defines     { "WINDOWS" }
+		libdirs     { "C:/codelibs/termbox/build/src/" }
+		includedirs { "C:/codelibs/termbox/src/" }
+		links       { "termbox" }
 
 	configuration { "linux" }
 		defines { "LINUX" }

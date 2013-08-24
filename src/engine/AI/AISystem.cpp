@@ -28,7 +28,7 @@ namespace AI {
 	void AISystem::update(){
 		std::vector<actor::ActorBase *> actors = actorManager->getActorsInRoom(vec3(0,0,0));
 
-		for(int i = 0; i < actors.size();++i){
+		for(unsigned int i = 0; i < actors.size();++i){
 			handleActor(actors.at(i));
 		}
 	}
@@ -94,7 +94,7 @@ namespace AI {
 		}
 
 		std::vector<actor::ActorBase *> actors = actorManager->getActorsInRoom( actor->getLocation() );
-		for(int i = 0; i < actors.size();++i){
+		for(unsigned int i = 0; i < actors.size();++i){
 			if(actors.at(i)->getPosition() == pos){
 				actor::ActorBase * target = actors.at(i);
 				if(engine::combat::attackActor(actor, target)){

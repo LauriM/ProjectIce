@@ -26,7 +26,7 @@ namespace containers {
 			void uninit() {}
 
 			void render(AABB bounds){
-				for(int i = 0;i < items.size();++i){
+				for(unsigned int i = 0;i < items.size();++i){
 					if(i > items.size() ){
 						LOG_WARNING("Scrolling has not been implemented for SelectContainer!");
 						return;

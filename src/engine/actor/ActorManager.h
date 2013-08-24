@@ -42,7 +42,7 @@ namespace actor {
 			 * @param actor pointer to the actor to be removed.
 			 */
 			void removeActor(ActorBase* actor){
-				for(int i = 0;i < actors.size();++i){
+				for(unsigned int i = 0;i < actors.size();++i){
 					if(actors.at(i) == actor){
 						actors.erase( actors.begin() + i);
 					}
@@ -52,7 +52,7 @@ namespace actor {
 			std::vector<ActorBase *> getActorsInRoom(vec3 location){
 				std::vector<ActorBase *> output;
 
-				for(int i = 0;i < actors.size();++i){
+				for(unsigned int i = 0;i < actors.size();++i){
 					if(actors.at(i)->getLocation() == location){
 						output.push_back(actors.at(i));
 					}
