@@ -1,3 +1,8 @@
+//Disable termrender compiling on windows
+#ifdef WINDOWS
+#define ENGINE_RENDER_TERM_TERMRENDER_H
+#endif
+
 #ifndef ENGINE_RENDER_TERM_TERMRENDER_H
 #define ENGINE_RENDER_TERM_TERMRENDER_H
 

@@ -1,5 +1,8 @@
 #include "engine/render/term/TermRender.h"
 
+//TermRender is disabled on windows
+#ifndef WINDOWS
+
 namespace engine {
 namespace render {
 namespace term {
@@ -70,3 +73,5 @@ namespace term {
 }
 }
 }
+
+#endif

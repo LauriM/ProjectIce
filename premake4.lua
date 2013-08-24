@@ -5,7 +5,7 @@ solution "ProjectIce"
 		defines     { "WINDOWS" }
 		libdirs     { "C:/codelibs/termbox/build/src/" }
 		includedirs { "C:/codelibs/termbox/src/" }
-		links       { "termbox" }
+		--links       { "termbox" }
 
 	configuration { "linux" }
 		defines { "LINUX" }

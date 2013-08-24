@@ -4,7 +4,6 @@
 #include "engine/AI/AISystem.h"
 #include "engine/EngineSystem.h"
 #include "engine/render/RenderSystem.h"
-#include "engine/render/term/TermRender.h"
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
 #include "engine/UI/containers/TextContainer.h"
@@ -16,6 +15,12 @@
 #include "game/item/PotionItem.h"
 #include "game/actor/npc/DummyActor.h"
 #include "game/UI/containers/StatsContainer.h"
+
+#ifndef WINDOWS
+#include "engine/render/term/TermRender.h"
+#else
+#include "engine/render/null/NullRender.h"
+#endif
 
 int main(){
 	randomInit();
@@ -40,8 +45,13 @@ int main(){
 	scene->addItem(pi);
 
 	engine::UI::UISystem *ui             = new engine::UI::UISystem();
-	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
 	engine::AI::AISystem *ai             = new engine::AI::AISystem(actorManager,worldSystem);
+
+#ifndef WINDOWS
+	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
+#else
+	engine::render::RenderSystem *render = new engine::render::null::NullRender(scene,ui);
+#endif
 
 	render->init();
 	ui->init();
