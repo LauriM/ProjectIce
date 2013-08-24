@@ -6,6 +6,14 @@
 #include "engine/scene/SceneSystem.h"
 #include "engine/UI/UISystem.h"
 
+/* HEADLESS TESTING SETTINGS */
+
+//How many steps are processed until a rendering is triggered
+#define NULLRENDER_STEP 100
+
+//Should simulation wait for input before continuing after render
+#define NULLRENDER_PAUSE false
+
 namespace engine {
 namespace render {
 namespace null {
@@ -19,10 +27,13 @@ namespace null {
 	private:
 		scene::SceneSystem *sceneSystem;
 		UI::UISystem *uiSystem;
+
+		int stepsLeft;
 	public:
 		NullRender(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem)
 			: sceneSystem(sceneSystem),
-			uiSystem(uiSystem)
+			uiSystem(uiSystem),
+			stepsLeft(0)
 		{}
 
 		bool init(){
