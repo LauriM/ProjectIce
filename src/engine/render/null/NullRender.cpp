@@ -5,7 +5,7 @@ namespace render {
 namespace null {
 
 	void NullRender::update(){
-		printf("Windows visible %i \n", uiSystem->windows.size() );
+		printf("Windows visible %lu \n", uiSystem->windows.size() );
 		printf("Actors in room 0,0,0: %i \n", sceneSystem->getActorManager()->getActorsInRoom(vec3(0,0,0)).size() );
 		printf("---\n");
 
