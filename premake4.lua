@@ -11,7 +11,6 @@ solution "ProjectIce"
 		defines { "LINUX" }
 		links   { "m", "rt" , "termbox" }
 		flags   { "ExtraWarnings", "FatalWarnings" }
-		libdirs { "/usr/local/lib" } -- is this correct ?
 
 	configuration "Debug"
 		defines { "DEBUG" }
