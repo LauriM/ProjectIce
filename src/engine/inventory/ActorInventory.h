@@ -53,9 +53,11 @@ namespace inventory {
 			tyItemIterator iter;
 			tyItemVector foundItems;
 			for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+				/*
 				if ( (*iter)->getName() == name ) {
 					foundItems.push_back( (*iter) );
 				}
+				*/
 			}
 			return foundItems;
 		}

@@ -48,7 +48,7 @@ namespace term {
 
 		cell.fg = TB_WHITE;
 		cell.bg = TB_BLACK;
-		for(int i = 0; i < actors.size();++i){
+		for(unsigned int i = 0; i < actors.size();++i){
 			cell.ch = actors.at(i)->getSymbol();
 			tb_put_cell(actors.at(i)->getPos()->x, actors.at(i)->getPos()->y, &cell);
 		}

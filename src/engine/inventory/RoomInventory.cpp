@@ -1,5 +1,7 @@
-
+#include "precompiled.h"
 #include "engine/inventory/RoomInventory.h"
+
+#include <string>
 
 namespace engine {
 namespace inventory {

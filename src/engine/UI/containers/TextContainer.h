@@ -1,6 +1,7 @@
 #ifndef ENGINE_UI_CONTAINERS_TEXTCONTAINER_H
 #define ENGINE_UI_CONTAINERS_TEXTCONTAINER_H
 
+#include "precompiled.h"
 #include "engine/UI/ContainerBase.h"
 #include "engine/math/AABB.h"
 
@@ -27,7 +28,7 @@ namespace containers {
 			void uninit(){}
 
 			void render(AABB bounds){
-				LOG_DEBUG_F("Window render bounds: %i,%i (%i,%i)",bounds.pos.x,bounds.pos.y,bounds.size.x,bounds.size.y);
+				//LOG_DEBUG_F("Window render bounds: %i,%i (%i,%i)",bounds.pos.x,bounds.pos.y,bounds.size.x,bounds.size.y);
 
 				if(textContent.length() < bounds.size.x){
 					//String is shorter than the width, lets just print it.

@@ -25,4 +25,10 @@ ice.ilk
 ice.pdb
 ProjectIce.opensdf
 ProjectIce.sdf
+ProjectIce.sln
 *.suo
+
+*.vcxproj.*
+
+ice.vcxproj
+test.vcxproj
