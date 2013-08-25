@@ -2,13 +2,13 @@ solution "ProjectIce"
 	configurations { "Debug", "Release" }
 
 	configuration { "windows" }
-		defines     { "WINDOWS" }
+		defines     { "WINDOWS" , "NULLRENDER" }
 		libdirs     { "C:/codelibs/termbox/build/src/" }
 		includedirs { "C:/codelibs/termbox/src/" }
 		--links       { "termbox" }
 
 	configuration { "linux" }
-		defines { "LINUX" }
+		defines { "LINUX", "TERMRENDER" }
 		links   { "m", "rt" , "termbox" }
 		flags   { "ExtraWarnings", "FatalWarnings" }
 

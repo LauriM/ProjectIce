@@ -31,13 +31,18 @@
 
 typedef std::string String;
 
-/* CHOOSE THE RENDER SYSTEM */
+/* If no render engine has defined, lets define the default one */
 
-//Null render for windows, termrender for others
+#ifndef TERMRENDER
+#ifndef NULLRENDER
+
 #ifdef WINDOWS
 #define NULLRENDER
 #else
 #define TERMRENDER
+#endif
+
+#endif
 #endif
 
 /* --- */
