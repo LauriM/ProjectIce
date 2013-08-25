@@ -39,8 +39,8 @@ namespace term {
 				world::Tile *tile = currentRoom->getTile(x,y);
 
 				cell.ch = tile->visual;
-				cell.fg = tile->fgColor;
-				cell.bg = tile->bgColor;
+				cell.fg = convertColor(tile->fgColor);
+				cell.bg = convertColor(tile->bgColor);
 
 				tb_put_cell(x,y,&cell);
 			}
@@ -69,6 +69,24 @@ namespace term {
 
 		tb_poll_event(&event);
 		return;
+	}
+
+	/**
+	 * Convert engine color to termbox color
+	 */
+	uint16_t TermRender::convertColor(render::Color color){
+		switch(color){
+			case C_WHITE:
+				return TB_WHITE;
+			case C_BLACK:
+				return TB_BLACK;
+			case C_RED:
+				return TB_RED;
+			case C_GREEN:
+				return TB_GREEN;
+			case C_BLUE:
+				return TB_BLUE;
+		}
 	}
 
 }

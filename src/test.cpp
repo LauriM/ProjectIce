@@ -21,6 +21,8 @@
 #include <map>
 #include <vector>
 
+#include <termbox.h>
+
 using namespace engine;
 
 int testFails = 0;

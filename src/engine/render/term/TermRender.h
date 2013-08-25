@@ -7,6 +7,7 @@
 #define ENGINE_RENDER_TERM_TERMRENDER_H
 
 #include "engine/render/RenderSystem.h"
+#include "engine/render/Color.h"
 
 #include "engine/scene/SceneSystem.h"
 #include "engine/UI/UISystem.h"
@@ -26,6 +27,8 @@ namespace term {
 	private:
 		scene::SceneSystem *sceneSystem;
 		UI::UISystem *uiSystem;
+
+		uint16_t convertColor(render::Color color);
 	public:
 		TermRender(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem)
 			: sceneSystem(sceneSystem),
