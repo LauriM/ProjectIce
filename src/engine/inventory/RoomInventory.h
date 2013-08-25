@@ -14,20 +14,20 @@
 namespace engine {
 namespace inventory {
 
-	typedef std::pair<int,int> pairVec2;
+	//typedef std::pair<int,int> pairVec2;
 	typedef std::vector<item::ItemBase*> typeItemList;
-	typedef std::map< pairVec2, typeItemList* > typeItemMap;
+	typedef std::map< vec2, typeItemList* > typeItemMap;
 	typedef std::vector<item::ItemBase*>::iterator typeItemIterator;
-	typedef std::map< pairVec2, typeItemList* >::iterator typeMapIterator;
+	typedef std::map< vec2, typeItemList* >::iterator typeMapIterator;
 
 	/**
 	 *	This object is responsible for the room's inventory
 	 */
 	class RoomInventory {
 	private:
-		vec2 pairToVec2( pairVec2 pair );
-		pairVec2 vec2ToPair( vec2 vec );
-		typeItemList * initEmptyList( pairVec2 vp );
+		//vec2 pairToVec2( pairVec2 pair );
+		//pairVec2 vec2ToPair( vec2 vec );
+		typeItemList * initEmptyList( vec2 vp );
 		void clean(); // removes untracked items on get
 	private:
 		world::Room * owner;
