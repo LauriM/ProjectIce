@@ -7,7 +7,7 @@ namespace engine {
 namespace console {
 
 #define CVAR(p_type, p_name, p_def_value) \
-		engine::console::CVar<p_type> p_name##(#p_name, p_def_value)
+		engine::console::CVar<p_type> p_name( #p_name , p_def_value)
 
 #define EXTERN_CVAR(p_type,p_name) \
 		extern engine::console::CVar<p_type> p_name
