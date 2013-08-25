@@ -34,6 +34,11 @@ int main(){
 
 	LOG_INFO("Engine starting");
 
+#ifdef DEBUG
+	//If this is debug build, enable developer by default
+	*cvar::developer = 1;
+#endif
+
 	if(*cvar::developer){
 		LOG_INFO("Developer mode enabled!");
 		printf("Developer mode is enabled!\n");
