@@ -27,6 +27,10 @@ namespace render {
 		void setCameraPos(vec3 pos){
 			cameraPos = pos;
 		}
+
+		virtual void uninit() = 0;
+		virtual void update() = 0;
+
 	};
 
 }
