@@ -10,6 +10,7 @@
 #include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
 #include "engine/actor/ActorManager.h"
+#include "engine/console/Cvar.h"
 
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
@@ -24,10 +25,19 @@
 #include "engine/render/null/NullRender.h"
 #endif
 
+namespace cvar {
+	CVAR(int,developer,0);
+}
+
 int main(){
 	randomInit();
 
 	LOG_INFO("Engine starting");
+
+	if(*cvar::developer){
+		LOG_INFO("Developer mode enabled!");
+		printf("Developer mode is enabled!\n");
+	}
 
 	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
 	playerActor->setName("Player");

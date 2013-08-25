@@ -10,7 +10,7 @@ before_install:
  - ls -lah
  - sudo bash -c "echo 'deb http://lgp203.free.fr/ubuntu quantal universe' >> /etc/apt/sources.list.d/lgp203.free.fr.source.list"
  - sudo apt-get update
- - sudo apt-get install --force-yes -qq premake4
+ - sudo apt-get install --force-yes -qq premake4 libboost-chrono1.48-dev
  - premake4 gmake
  - mkdir ~/termbox && cd ~/termbox
  - git clone https://github.com/nsf/termbox.git .

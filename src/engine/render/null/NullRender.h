@@ -13,10 +13,10 @@
 /* HEADLESS TESTING SETTINGS */
 
 //How many steps are processed until a rendering is triggered
-#define NULLRENDER_STEP 100
+#define NULLRENDER_STEP 1
 
 //Should simulation wait for input before continuing after render
-#define NULLRENDER_PAUSE false
+#define NULLRENDER_PAUSE true
 
 namespace engine {
 namespace render {

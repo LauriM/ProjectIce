@@ -7,6 +7,7 @@
 #include <assert.h>
 
 //This is only used for colors outside the TermRender.h
+//TODO: There should be colors specific for the engine, not for rendering system
 #include <termbox.h>
 
 #include "stdio.h"

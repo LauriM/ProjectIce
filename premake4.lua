@@ -1,11 +1,12 @@
 solution "ProjectIce"
 	configurations { "Debug", "Release" }
+	--startproject "ice" --enable this when we switch the new version of premake
 
 	configuration { "windows" }
 		defines     { "WINDOWS" , "NULLRENDER" }
-		libdirs     { "C:/codelibs/termbox/build/src/" }
-		includedirs { "C:/codelibs/termbox/src/" }
+		includedirs { "C:/codelibs/termbox/src/", "C:/codelibs/boost_1_53_0/" }
 		--links       { "termbox" }
+		--libdirs     { "C:/codelibs/termbox/build/src/" }
 
 	configuration { "linux" }
 		defines { "LINUX", "TERMRENDER" }
