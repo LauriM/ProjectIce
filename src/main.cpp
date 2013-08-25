@@ -9,6 +9,7 @@
 #include "engine/UI/containers/TextContainer.h"
 #include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
+#include "engine/console/ConsoleSystem.h"
 #include "engine/actor/ActorManager.h"
 #include "engine/console/Cvar.h"
 
@@ -44,6 +45,8 @@ int main(){
 		printf("Developer mode is enabled!\n");
 	}
 
+	engine::console::ConsoleSystem *consoleSystem = new engine::console::ConsoleSystem();
+
 	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
 	playerActor->setName("Player");
 	playerActor->setPosition(vec2(10,10));
@@ -71,6 +74,7 @@ int main(){
 	engine::render::RenderSystem *render = new engine::render::null::NullRender(scene,ui);
 #endif
 
+	consoleSystem->init();
 	render->init();
 	ui->init();
 	ai->init();
@@ -164,6 +168,7 @@ int main(){
 	ai->uninit();
 	render->uninit();
 	scene->uninit();
+	consoleSystem->uninit();
 
 	return 0;
 }
