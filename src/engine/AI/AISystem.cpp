@@ -99,7 +99,7 @@ namespace AI {
 				actor::ActorBase * target = actors.at(i);
 				if(engine::combat::attackActor(actor, target)){
 					//Attack was issued! Lets spawn some blood!
-					worldSystem->getRoom( actor->getLocation() )->getTile( target->getPosition() )->setBgColor(TB_RED);
+					worldSystem->getRoom( actor->getLocation() )->getTile( target->getPosition() )->setBgColor(render::C_RED);
 				}
 
 				return; //hits other actor

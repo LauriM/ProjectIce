@@ -1,6 +1,8 @@
 #ifndef ENGINE_WORLD_TILE
 #define ENGINE_WORLD_TILE
 
+#include "engine/render/Color.h"
+
 namespace engine {
 namespace world {
 
@@ -28,8 +30,8 @@ namespace world {
 				visual                 = ' ';
 				blocks                 = false;
 				hp                     = 100;
-				fgColor                = TB_WHITE;
-				bgColor                = TB_BLACK;
+				fgColor                = render::C_WHITE;
+				bgColor                = render::C_BLACK;
 				//add -> tickFunction (Executed every time entity or actor is in the tile) (?)
 			}
 
@@ -41,18 +43,18 @@ namespace world {
 			char visual;    //Visual displayed on the gameview
 			bool blocks;    //Does it block movement/visuals
 			int hp;         //How many hits it can take before getting destroyed
-			int fgColor; //Colors
-			int bgColor;
+			render::Color fgColor; //Colors
+			render::Color bgColor;
 
 			void setType(TILE_TYPES type);
 
 			/* getters & setters */
 
-			void setFgColor(int color){
+			void setFgColor(render::Color color){
 				fgColor = color;
 			}
 
-			void setBgColor(int color){
+			void setBgColor(render::Color color){
 				bgColor = color;
 			}
 	};

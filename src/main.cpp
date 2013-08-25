@@ -120,7 +120,7 @@ int main(){
 	ui->addWindow(statsWindow);
 
 	/*
-	 * Testing area for the NPC
+	 * Testing area for the NPCs
 	 */
 	engine::world::Tile voidTile;
 
