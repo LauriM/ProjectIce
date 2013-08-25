@@ -65,6 +65,28 @@ int main(){
 		SCPPT_COMPARE("Vec2 copy constructor",vec2(v1),==,v1);
 	}
 
+	PRINTLN("-> Vec2 (Bryan)");
+	{
+		vec2 v1 = vec2(0,0);
+		vec2 v2 = vec2(1,1);
+		vec2 v3 = vec2(2,2);
+
+		std::map<vec2,String> testMap;
+		testMap.insert( std::pair<vec2,String>(v1, "Vector1") );
+		testMap.insert( std::pair<vec2,String>(v2, "Vector2") );
+		testMap.insert( std::pair<vec2,String>(v3, "Vector3") );
+
+		SCPPT_COMPARE("V1 < V2", v1 < v2, ==, true);
+		SCPPT_COMPARE("V2 > V1", v2 > v1, ==, true);
+		SCPPT_COMPARE("V2 < V3", v2 < v3, ==, true);
+		SCPPT_COMPARE("V3 > V2", v3 > v2, ==, true);
+		SCPPT_COMPARE("V1 < V3", v1 < v3, ==, true);
+
+		SCPPT_COMPARE("Vector1 is V1 (from map)", testMap[v1], ==, "Vector1" );
+		SCPPT_COMPARE("Vector2 is V2 (from map)", testMap[v2], ==, "Vector2" );
+		SCPPT_COMPARE("Vector3 is V3 (from map)", testMap[v3], ==, "Vector3" );
+	}
+
 	PRINTLN("-> Tile");
 	{
 		world::Tile testTile;

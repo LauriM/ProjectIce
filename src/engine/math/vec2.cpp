@@ -68,3 +68,32 @@ vec2 vec2::operator/(int rhs) {
 int vec2::operator*(const vec2 &rhs) {
     return this->x * rhs.x + this->y * rhs.y;
 }
+
+double vec2::distance() const {
+    double xSqrd = pow( x, 2.0 );
+    double ySqrd = pow( y, 2.0 );
+    double distance = sqrt( xSqrd + ySqrd );
+    return distance;    
+}
+
+bool vec2::operator < (const vec2 & rhs) const {
+    double leftDistance = distance();
+    double rightDistance = rhs.distance();
+    if ( leftDistance < rightDistance ) {
+        return true;
+    }    
+    else {
+        return false;
+    }
+}
+
+bool vec2::operator > (const vec2 & rhs) const {
+    double leftDistance = distance();
+    double rightDistance = rhs.distance();
+    if ( leftDistance > rightDistance ) {
+        return true;
+    }    
+    else {
+        return false;
+    }
+}

@@ -1,6 +1,8 @@
 #ifndef ENGINE_MATH_VEC2_H
 #define ENGINE_MATH_VEC2_H
 
+#include <math.h>
+
 class vec2 {
 	public:
 		int x;
@@ -22,6 +24,10 @@ class vec2 {
 		vec2& operator-=(const vec2 &rhs);
 		vec2& operator*=(int rhs);
 		vec2& operator/=(int rhs);
+
+		double distance() const;
+		bool operator < (const vec2 & rhs) const;
+		bool operator > (const vec2 & rhs) const;
 };
 
 #endif
