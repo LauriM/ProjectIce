@@ -24,8 +24,18 @@ namespace console {
 	 * @return bool was the operation succesfull
 	 */
 	bool loadConfig(String filename){
-		LOG_WARNING("not implemented");
-		return false;
+		std::ifstream file;
+		file.open( filename.c_str() );
+
+		if(!file.is_open()){
+			LOG_ERROR("Can't open file to load configs!");
+			return false;
+		}
+
+		LOG_WARNING("not yet implemented!");
+
+		file.close();
+		return true;
 	}
 
 	/**
@@ -35,7 +45,7 @@ namespace console {
 	 */
 	bool ConsoleSystem::saveConfig(String filename){
 		std::ofstream file;
-		file.open(filename.c_str() );
+		file.open( filename.c_str() );
 
 		if(!file.is_open()){
 			LOG_ERROR("Can't open config file for saving");
