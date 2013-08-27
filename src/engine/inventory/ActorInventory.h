@@ -1,4 +1,3 @@
-
 #ifndef __ACTOR_INVENTORY_H__
 #define __ACTOR_INVENTORY_H__
 
@@ -77,8 +76,8 @@ namespace inventory {
 		}
 
 		/** Adds a tracked item to the inventory
-         * @param item the ItemBase in which to add
-         * @returns boolean indication whether the item was added or not
+		 * @param item the ItemBase in which to add
+		 * @returns boolean indication whether the item was added or not
 		 */
 		bool addItem(item::ItemBase * item) {
 			// untracked items cannot be added
