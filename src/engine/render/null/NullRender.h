@@ -41,13 +41,13 @@ namespace null {
 		{}
 
 		bool init(){
-			printf("NullRendering init!");
+			printf("NullRendering init!\n");
 
 			return true;
 		}
 
 		void uninit(){
-			printf("NullRendering closing!");
+			printf("NullRendering closing!\n");
 		}
 
 		void update();
