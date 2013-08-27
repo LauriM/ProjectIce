@@ -80,8 +80,7 @@ double vec2::lenght() const {
 bool vec2::operator < (const vec2 & rhs) const {
 	if ( lenghtSquared() < rhs.lenghtSquared() ) {
 		return true;
-	}
-	else {
+	} else {
 		return false;
 	}
 }
@@ -89,8 +88,7 @@ bool vec2::operator < (const vec2 & rhs) const {
 bool vec2::operator > (const vec2 & rhs) const {
 	if ( lenghtSquared() > rhs.lenghtSquared() ) {
 		return true;
-	}
-	else {
+	} else {
 		return false;
 	}
 }
