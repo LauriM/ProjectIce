@@ -87,6 +87,8 @@ namespace term {
 			case C_BLUE:
 				return TB_BLUE;
 		}
+
+		return TB_WHITE;
 	}
 
 }
