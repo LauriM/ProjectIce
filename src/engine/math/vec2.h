@@ -25,8 +25,8 @@ class vec2 {
 		vec2& operator*=(int rhs);
 		vec2& operator/=(int rhs);
 
-		int lenghtSquared() const;
-		double lenght() const;
+		int lengthSquared() const;
+		double length() const;
 		bool operator < (const vec2 & rhs) const;
 		bool operator > (const vec2 & rhs) const;
 };

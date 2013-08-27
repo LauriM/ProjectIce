@@ -69,16 +69,16 @@ int vec2::operator*(const vec2 &rhs) {
 	return this->x * rhs.x + this->y * rhs.y;
 }
 
-int vec2::lenghtSquared() const {
+int vec2::lengthSquared() const {
 	return x * x + y * y;
 }
 
-double vec2::lenght() const {
-	return sqrt((double) lenghtSquared());
+double vec2::length() const {
+	return sqrt((double) lengthSquared());
 }
 
 bool vec2::operator < (const vec2 & rhs) const {
-	if ( lenghtSquared() < rhs.lenghtSquared() ) {
+	if ( lengthSquared() < rhs.lengthSquared() ) {
 		return true;
 	} else {
 		return false;
@@ -86,7 +86,7 @@ bool vec2::operator < (const vec2 & rhs) const {
 }
 
 bool vec2::operator > (const vec2 & rhs) const {
-	if ( lenghtSquared() > rhs.lenghtSquared() ) {
+	if ( lengthSquared() > rhs.lengthSquared() ) {
 		return true;
 	} else {
 		return false;

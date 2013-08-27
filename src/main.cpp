@@ -75,6 +75,7 @@ int main(){
 #endif
 
 	consoleSystem->init();
+	consoleSystem->loadConfig("config.cfg");
 	render->init();
 	ui->init();
 	ai->init();
@@ -159,7 +160,7 @@ int main(){
 
 	//printf("CvarCount: %lu\n",engine::console::ConsoleSystem::getCVarList().size());
 
-	consoleSystem->saveConfig("config.cfg");
+//	consoleSystem->saveConfig("config.cfg");
 
 	bool quitStatus = false;
 	while(quitStatus == false){

@@ -2,6 +2,7 @@
 
 #include "engine/console/ConsoleSystem.h"
 #include "engine/console/Cvar.h"
+#include "engine/util/StringUtil.h"
 
 namespace engine {
 namespace console {
@@ -23,7 +24,7 @@ namespace console {
 	 *
 	 * @return bool was the operation succesfull
 	 */
-	bool loadConfig(String filename){
+	bool ConsoleSystem::loadConfig(String filename){
 		std::ifstream file;
 		file.open( filename.c_str() );
 
@@ -32,7 +33,25 @@ namespace console {
 			return false;
 		}
 
-		LOG_WARNING("not yet implemented!");
+		String line;
+		while (std::getline(file, line)){
+			//variable=value
+			std::vector<String> args = engine::util::explode(line,'=');
+
+			ConsoleSystem::CVarList::iterator it = getCVarList().find(args[0]);
+
+			if(it == getCVarList().end()){
+				LOG_ERROR("[ConfigLoader] Incorrect variable name");
+			}
+
+			if(args.size() > 1){
+				//incorrect count of arguments
+				it->second->set(args[1]);
+				LOG_INFO("[ConfigLoader] Variable loaded.");
+				//TODO: Print the variable
+			}
+
+		}
 
 		file.close();
 		return true;
