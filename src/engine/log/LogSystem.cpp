@@ -12,6 +12,11 @@ namespace log {
 		fflush(logFile);
 		fclose(logFile);
 
+//if nullrender is enabled, just add stuff there
+#ifdef NULLRENDER
+	printf("%s\n", logMsg.c_str() );
+#endif
+
 		//TODO: Add some kind of ingame log reader thing or just parse with tail (2013-04-08)
 		//TODO: globally open the file
 	}

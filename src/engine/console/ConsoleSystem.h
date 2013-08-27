@@ -32,6 +32,9 @@ namespace console {
 			return staticCVarMap;
 		}
 
+		bool loadConfig(String filename);
+		bool saveConfig(String filename);
+
 	};
 
 }

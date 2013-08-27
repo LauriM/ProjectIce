@@ -1,6 +1,7 @@
 #include "precompiled.h"
 
 #include "engine/console/ConsoleSystem.h"
+#include "engine/console/Cvar.h"
 
 namespace engine {
 namespace console {
@@ -16,6 +17,46 @@ namespace console {
 	void ConsoleSystem::uninit() {}
 
 	void ConsoleSystem::update() {}
+	
+	/**
+	 * Loads config file from disk with a specific filename.
+	 *
+	 * @return bool was the operation succesfull
+	 */
+	bool loadConfig(String filename){
+		LOG_WARNING("not implemented");
+		return false;
+	}
+
+	/**
+	 * Saves current configs to disk with a specific filename.
+	 *
+	 * @return bool was the operation succesfull
+	 */
+	bool ConsoleSystem::saveConfig(String filename){
+		std::ofstream file;
+		file.open(filename.c_str() );
+
+		if(!file.is_open()){
+			LOG_ERROR("Can't open config file for saving");
+			return false;
+		}
+
+		for(ConsoleSystem::CVarList::iterator it = getCVarList().begin(); it != getCVarList().end(); it++){
+			String output = "";
+
+			output += it->second->getName();
+			output += "=";
+			output += it->second->get();
+
+			file << output << "\n";
+		}
+
+		file.close();
+
+		LOG_INFO("Configs written to disk");
+		return true;
+	}
 
 }
 }

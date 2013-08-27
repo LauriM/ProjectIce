@@ -17,6 +17,7 @@ src/proto/*.h
 gamesave
 testsave
 log.txt
+config.cfg
 
 pdcurses.dll
 premake4.exe
