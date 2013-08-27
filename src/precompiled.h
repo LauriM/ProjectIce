@@ -6,6 +6,8 @@
 #include <math.h>
 #include <assert.h>
 
+#include <boost/unordered_map.hpp>
+
 #include "stdio.h"
 
 #define _TO_STRING(value) #value

@@ -30,11 +30,13 @@ namespace containers {
 			void render(AABB bounds){
 				//LOG_DEBUG_F("Window render bounds: %i,%i (%i,%i)",bounds.pos.x,bounds.pos.y,bounds.size.x,bounds.size.y);
 
+				/*
 				if(textContent.length() < bounds.size.x){
 					//String is shorter than the width, lets just print it.
 					//engine::render::drawStringTobounds(bounds,vec2(0,0),textContent);
 					return;
 				}
+				*/
 
 				//String is longer, we need to split it.
 				int i                = 0;

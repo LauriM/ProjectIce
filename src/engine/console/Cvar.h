@@ -1,7 +1,10 @@
 #ifndef ENGINE_CONSOLE_CVAR_H
 #define ENGINE_CONSOLE_CVAR_H
 
+#include "precompiled.h"
+
 #include <boost/lexical_cast.hpp>
+#include "engine/console/ConsoleSystem.h"
 
 namespace engine {
 namespace console {
@@ -34,7 +37,7 @@ namespace console {
 				: name(name)
 				, data(data)
 			{
-				//TODO: Insert the cvar into the cvarmap here
+				ConsoleSystem::getCVarList().insert(ConsoleSystem::CVarList::value_type(name,this));
 			}
 
 			virtual bool set(String value){
