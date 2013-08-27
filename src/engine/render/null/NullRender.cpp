@@ -13,8 +13,12 @@ namespace null {
 		stepsLeft--;
 
 		if(stepsLeft < 0){
-			printf("Windows visible %ui \n", uiSystem->windows.size() );
-			printf("Actors in room 0,0,0: %ui \n", sceneSystem->getActorManager()->getActorsInRoom(vec3(0,0,0)).size() );
+
+			uiSystem->windows.size(); //these are not unused
+			sceneSystem->getActorManager();
+
+			//printf("Windows visible %ui \n", uiSystem->windows.size() );
+			//printf("Actors in room 0,0,0: %ui \n", sceneSystem->getActorManager()->getActorsInRoom(vec3(0,0,0)).size() );
 			printf("---\n");
 
 			stepsLeft = NULLRENDER_STEP;

@@ -157,7 +157,7 @@ int main(){
 
 	scene->getActorManager()->insertActorToRoom(dummy);
 
-	printf("CvarCount: %lu\n",engine::console::ConsoleSystem::getCVarList().size());
+	//printf("CvarCount: %lu\n",engine::console::ConsoleSystem::getCVarList().size());
 
 	bool quitStatus = false;
 	while(quitStatus == false){
