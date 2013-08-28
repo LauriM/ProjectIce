@@ -1,11 +1,11 @@
-#ifndef ENGINE_AI_AISYSTEM
-#define ENGINE_AI_AISYSTEM
+#ifndef ENGINE_ACTOR_AISYSTEM
+#define ENGINE_ACTOR_AISYSTEM
 
 #include "engine/world/WorldSystem.h"
 #include "engine/actor/ActorManager.h"
 
 namespace engine {
-namespace AI {
+namespace actor {
 
 	/**
 	 * AISystem handles are AI stuff that the NPC's have

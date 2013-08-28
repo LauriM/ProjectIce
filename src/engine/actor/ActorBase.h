@@ -6,7 +6,7 @@
 #include "engine/math/vec2.h"
 #include "engine/math/vec3.h"
 #include "engine/world/WorldSystem.h"
-#include "engine/AI/AIState.h"
+#include "engine/actor/AIState.h"
 
 namespace engine {
 namespace actor {
@@ -27,7 +27,7 @@ namespace actor {
 
 			char symbol;
 
-			AI::AIState aiState;
+			AIState aiState;
 
 			int hp;
 			int maxHp;
@@ -98,11 +98,11 @@ namespace actor {
 				return symbol;
 			}
 
-			AI::AIState getAIState(){
+			AIState getAIState(){
 				return aiState;
 			}
 
-			void setAIState(AI::AIState state){
+			void setAIState(AIState state){
 				aiState = state;
 			}
 

@@ -24,7 +24,7 @@ namespace player {
 				constitution  = 10;
 
 				symbol        = '@';
-				aiState       = engine::AI::AISTATE_PLAYER;
+				aiState       = engine::actor::AISTATE_PLAYER;
 			}
 
 			void update() {}

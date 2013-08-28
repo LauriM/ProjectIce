@@ -1,14 +1,14 @@
 #include "precompiled.h"
 
-#include "engine/AI/AISystem.h"
+#include "engine/actor/AISystem.h"
 #include "engine/math/random.h"
-#include "engine/AI/AIState.h"
+#include "engine/actor/AIState.h"
 #include "engine/input/InputMapping.h"
 #include "engine/combat/Combat.h"
 #include <vector>
 
 namespace engine {
-namespace AI {
+namespace actor {
 
 	AISystem::AISystem(actor::ActorManager *actorManager, world::WorldSystem *worldSystem)
 		: actorManager(actorManager),

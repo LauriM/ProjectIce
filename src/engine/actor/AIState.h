@@ -1,8 +1,8 @@
-#ifndef ENGINE_AI_AISTATE_H
-#define ENGINE_AI_AISTATE_H
+#ifndef ENGINE_ACTOR_AISTATE_H
+#define ENGINE_ACTOR_AISTATE_H
 
 namespace engine {
-namespace AI {
+namespace actor {
 
 	/**
 	 * State that the AI is currently in.

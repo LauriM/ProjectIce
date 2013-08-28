@@ -1,7 +1,7 @@
 #include "precompiled.h"
 
 #include "engine/math/random.h"
-#include "engine/AI/AISystem.h"
+#include "engine/actor/AISystem.h"
 #include "engine/EngineSystem.h"
 #include "engine/render/RenderSystem.h"
 #include "engine/UI/UISystem.h"
@@ -64,8 +64,8 @@ int main(){
 	game::item::PotionItem * pi = new game::item::PotionItem();
 	scene->addItem(pi);
 
-	engine::UI::UISystem *ui             = new engine::UI::UISystem();
-	engine::AI::AISystem *ai             = new engine::AI::AISystem(actorManager,worldSystem);
+	engine::UI::UISystem *ui    = new engine::UI::UISystem();
+	engine::actor::AISystem *ai = new engine::actor::AISystem(actorManager,worldSystem);
 
 #ifdef TERMRENDER
 	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
@@ -154,7 +154,7 @@ int main(){
 	dummy->setWorld( worldSystem );
 	dummy->setPosition( vec2(11,11) );
 	dummy->setLocation( vec3(0,0,0) );
-	dummy->setAIState(engine::AI::AISTATE_SLEEP);
+	dummy->setAIState(engine::actor::AISTATE_SLEEP);
 
 	scene->getActorManager()->insertActorToRoom(dummy);
 
