@@ -1,5 +1,5 @@
-#ifndef __ACTOR_INVENTORY_H__
-#define __ACTOR_INVENTORY_H__
+#ifndef ENGINE_INVENTORY_INVENTORY_H
+#define ENGINE_INVENTORY_INVENTORY_H
 
 #include "precompiled.h"
 

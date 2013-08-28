@@ -1,6 +1,5 @@
-
-#ifndef __USEABLE_ITEM_H__
-#define __USEABLE_ITEM_H__
+#ifndef ENGINE_ITEM_USEABLEITEM_H
+#define ENGINE_ITEM_USEABLEITEM_H
 
 #include "precompiled.h"
 

@@ -1,6 +1,5 @@
-
-#ifndef __ROOM_INVENTORY_H__
-#define __ROOM_INVENTORY_H__
+#ifndef ENGINE_INVENTORY_ROOMINVENTORY_H
+#define ENGINE_INVENTORY_ROOMINVENTORY_H
 
 #include "precompiled.h"
 

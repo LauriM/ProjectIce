@@ -1,6 +1,5 @@
-
-#ifndef __ITEM_MANAGER_H__
-#define __ITEM_MANAGER_H__
+#ifndef ENGINE_ITEM_ITEMMANAGER_H
+#define ENGINE_ITEM_ITEMMANAGER_H
 
 #include "engine/item/ItemBase.h"
 

@@ -1,6 +1,5 @@
-
-#ifndef __ITEM_CONTAINER_BASE_H__
-#define __ITEM_CONTAINER_BASE_H__
+#ifndef ENGINE_ITEM_ITEMCONTAINERBASE_H
+#define ENGINE_ITEM_ITEMCONTAINERBASE_H
 
 #include "engine/actor/ActorBase.h"
 #include "engine/item/ItemBase.h"

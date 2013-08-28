@@ -1,5 +1,5 @@
-#ifndef __ITEM_BASE_H__
-#define __ITEM_BASE_H__
+#ifndef ENGINE_ITEM_ITEMBASE_H
+#define ENGINE_ITEM_ITEMBASE_H
 
 #include "precompiled.h"
 
