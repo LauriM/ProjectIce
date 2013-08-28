@@ -6,7 +6,7 @@
 #include "game/actor/player/PlayerActor.h"
 #include "game/actor/npc/DummyActor.h"
 #include "engine/scene/SceneSystem.h"
-#include "engine/AI/AISystem.h"
+#include "engine/actor/AISystem.h"
 
 #include "precompiled.h"
 #include "engine/math/vec2.h"
