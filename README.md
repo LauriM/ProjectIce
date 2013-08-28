@@ -18,6 +18,7 @@ Resources
 =========
 
 * [Wiki](https://github.com/LauriM/ProjectIce/wiki)
+* [Doxygen](http://protoman.net/PROJECTICE/index.html)
 * IRC: Freenode: #ProjectIce
 
 Contributing
