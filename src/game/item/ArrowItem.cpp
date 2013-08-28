@@ -1,4 +1,3 @@
-
 #include "game/item/ArrowItem.h"
 
 namespace game {

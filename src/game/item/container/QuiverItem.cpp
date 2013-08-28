@@ -1,4 +1,3 @@
-
 #include "game/item/container/QuiverItem.h"
 
 namespace game {

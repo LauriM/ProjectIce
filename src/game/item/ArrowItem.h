@@ -1,6 +1,5 @@
-
-#ifndef __ARROW_ITEM_H__
-#define __ARROW_ITEM_H__
+#ifndef GAME_ITEM_ARROWITEM_H
+#define GAME_ITEM_ARROWITEM_H
 
 #include "engine/actor/ActorBase.h"
 #include "engine/item/ItemBase.h"

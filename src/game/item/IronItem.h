@@ -1,6 +1,5 @@
-
-#ifndef __IRON_ITEM_H__
-#define __IRON_ITEM_H__
+#ifndef GAME_ITEM_IRONITEM_H
+#define GAME_ITEM_IRONITEM_H
 
 #include "engine/actor/ActorBase.h"
 #include "engine/item/ItemBase.h"

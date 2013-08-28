@@ -1,6 +1,5 @@
-
-#ifndef __QUIVER_ITEM_H__
-#define __QUIVER_ITEM_H__
+#ifndef GAME_ITEM_CONTAINER_QUIVERITEM_H
+#define GAME_ITEM_CONTAINER_QUIVERITEM_H
 
 #include "game/item/ArrowItem.h"
 #include "engine/actor/ActorBase.h"
