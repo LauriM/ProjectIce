@@ -145,6 +145,18 @@ namespace actor {
 			void setConstitution(int constitution) {
 				this->constitution = constitution;
 			}
+
+			/**
+			 * Checks for melee attack from actor to different actor. Counts damage.
+			 *
+			 * If the target is friendly and attack has been cancelled, returns false.
+			 *
+			 * @param actor The actor that is attacking.
+			 * @param target The target that is under attack.
+			 *
+			 * @return If the attack was done or not.
+			 */
+			bool attack(actor::ActorBase * const target);
 	};
 
 }

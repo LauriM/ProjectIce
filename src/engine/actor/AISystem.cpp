@@ -4,7 +4,6 @@
 #include "engine/math/random.h"
 #include "engine/actor/AIState.h"
 #include "engine/input/InputMapping.h"
-#include "engine/combat/Combat.h"
 #include <vector>
 
 namespace engine {
@@ -97,7 +96,7 @@ namespace actor {
 		for(unsigned int i = 0; i < actors.size();++i){
 			if(actors.at(i)->getPosition() == pos){
 				actor::ActorBase * target = actors.at(i);
-				if(engine::combat::attackActor(actor, target)){
+				if(actor->attack(target)){
 					//Attack was issued! Lets spawn some blood!
 					worldSystem->getRoom( actor->getLocation() )->getTile( target->getPosition() )->setBgColor(render::C_RED);
 				}
