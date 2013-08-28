@@ -12,7 +12,7 @@ namespace util {
 
 		for(String token; std::getline(iss,token,delim);){
 			if(!token.empty()){
-				result.push_back(std::move(token));
+				result.push_back(boost::move(token));
 			}
 		}
 		return result;
