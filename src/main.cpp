@@ -30,8 +30,14 @@ namespace cvar {
 	CVAR(int,developer,0);
 }
 
-int main(){
+void handleArgs(int argc,char *argv[]);
+
+int main(int argc, char *argv[]){
 	randomInit();
+
+	if(argc == 2){
+		handleArgs(argc,argv);
+	}
 
 	LOG_INFO("Engine starting");
 
@@ -176,4 +182,27 @@ int main(){
 	consoleSystem->uninit();
 
 	return 0;
+}
+
+void handleArgs(int argc, char *argv[]){
+	if(std::strcmp(argv[1],"-createconfig") == 0){
+		//Create console system just to save default cvar settings
+		engine::console::ConsoleSystem *consoleSystem = new engine::console::ConsoleSystem();
+
+		consoleSystem->saveConfig("./config.cfg");
+		printf("Default config created into ./config.cfg\n");
+		printf("Exitting...\n");
+		exit(0);
+	}
+
+	if(std::strcmp(argv[1],"-help") == 0){
+		printf("ProjectIce special commands\n");
+		printf("-configcreate | create default configs\n");
+		printf("-help         | show this help\n");
+		printf("-version      | shows version information\n");
+		exit(0);
+	}
+
+	printf("Invalid command.\n");
+	exit(1);
 }
