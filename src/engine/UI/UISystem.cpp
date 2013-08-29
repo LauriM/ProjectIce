@@ -35,11 +35,6 @@ namespace UI {
 			}
 		}
 
-		for(unsigned int i = 0; i < windows.size();++i){
-			windows.at(i).getContainer()->handleInput(key);
-		}
-
-		//TODO: check if some of the windows actually capture some input
 		return false;
 	}
 }

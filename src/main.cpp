@@ -94,7 +94,6 @@ int main(int argc, char *argv[]){
 	engine::UI::containers::TextContainer *textCont = new engine::UI::containers::TextContainer();
 	textCont->init();
 	textCont->setText("ProjectIce is an experimental roguelike project developed in C++. This is a early development build. And this string is useless and long to test the word wrapping feature on the textContainer. -- press anykey to continue --");
-	textCont->setPressToContinue(true);
 
 	welcomeWindow.setContainer(textCont);
 	//	ui->addWindow(welcomeWindow);

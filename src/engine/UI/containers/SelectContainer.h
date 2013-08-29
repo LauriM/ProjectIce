@@ -18,23 +18,10 @@ namespace containers {
 
 		public:
 			void init(){
-				interaction = true;
 				currentItem = 0;
-				closed      = false;
 			}
 
 			void uninit() {}
-
-			void render(AABB bounds){
-				for(unsigned int i = 0;i < items.size();++i){
-					if(i > items.size() ){
-						LOG_WARNING("Scrolling has not been implemented for SelectContainer!");
-						return;
-					}
-
-					//engine::render::drawStringTobounds(bounds,vec2(0,i), items.at(i).substr(0,bounds.size.x));
-				}
-			}
 
 			void insertItem(String item){
 				items.push_back(item);
