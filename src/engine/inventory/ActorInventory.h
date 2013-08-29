@@ -11,60 +11,69 @@
 namespace engine {
 namespace inventory {
 
-	/**
-	* typedef'd the vector so I don't have to look at ::<><>:::><><>
-	*/
+	// Typedefs because long types :(
 	typedef std::vector<item::ItemBase*>           itemVector;
 	typedef std::vector<item::ItemBase*>::iterator itemIterator;
 	
+	/**
+	 * Actor inventory class. Each inventory contains a list of items (and thus maybe also containers), together a reference to the owner of the inventory.
+	 */
 	class ActorInventory {
 	private:
 		std::vector<item::ItemBase*> itemList;	
-		engine::actor::ActorBase * owner;
+		engine::actor::ActorBase* owner;
 	public:
 
-		/** Sets the owner of this inventory
-		 * @param actor the actor who owns this inventory
+		/** Sets the owner of the inventory.
+		 *
+		 * @param actor The new actor who will own the inventory.
 		 */
-		void setOwner(actor::ActorBase * actor);
+		void setOwner(actor::ActorBase* actor);
 
-		/** Returns the actor who owns this inventory
-		 * @returns the actor who owns this inventory
+		/** Returns the actor who owns the inventory.
+		 *
+		 * @returns The actor who owns the inventory.
 		 */
-		actor::ActorBase * getOwner();
+		actor::ActorBase* getOwner();
 
-		/** Returns an unchangable list of the items contained with this inventory object
-		 * @returns a list of items of std::vector<item::ItemBase*>
+		/** Returns a list of items contained within the inventory.
+		 *
+		 * @returns A list of items of type std::vector<item::ItemBase*>.
 		 */
 		const itemVector getItemList();
 
-		/** Find all of the instances of a object by the supplied name and return a vector of those items
-		 * @param name the name of the item to look for
-		 * @returns a vector of ItemBase* to the instances of the found object
+		/** Find all of the instances of a object by the supplied name and return a vector of those items.
+		 *
+		 * @param name The name of the item to look for.
+		 * @returns A list of items of type std::vector<item::ItemBase*> of the found objects.
 		 */
 		itemVector getItemsByName(const String name);
 
-		/** Find all of the instances of a object by the supplied name and return a vector of those items
-		 * @param name the name of the item to look for
-		 * @returns a vector of ItemBase* to the instances of the found object
+		/** Find an item in the inventory by its ID.
+		 *
+		 * @param id The ID of the item.
+		 * @returns A pointer to the item if found, null otherwise.
 		 */
-		item::ItemBase * getItemByID(const int id);
+		item::ItemBase* getItemByID(const int id);
 
-		/** Adds a tracked item to the inventory
-		 * @param item the ItemBase in which to add
-		 * @returns boolean indication whether the item was added or not
+		/** Adds an item to the inventory.
+		 *
+		 * @param item The item to add to the inventory.
+		 * @returns Whether the item has been added to the invnetory or not.
 		 */
-		bool addItem(item::ItemBase * item);
+		bool addItem(item::ItemBase* item);
 
-		/** Removes all of the items in this inventory that match a certain name
-		 * @param name the name of the item to look for
-		 * @returns a vector of ItemBase* which was removed from this inventory
+		/** Removes all of the items in this inventory that matches a certain name.
+		 *
+		 * @param name The name of the items to remove.
+		 * @returns A vector of ItemBase* which was removed from this inventory.
 		 */
 		itemVector removeItemsByName(const String name);
 
-		/** Removes a specific instance of an item based on it's ID number
-		 * @param name the name of the item to look for
-		 * @returns a boolean indication whether it was removed or not
+		/** Removes a specific instance of an item based on it's ID number.
+		 *
+		 * @param id The ID of the item to remove.
+		 * @returns The item that has been removed, or null if none has been removed at all.
 		 */
 		bool removeItemByID(const int id);
 
