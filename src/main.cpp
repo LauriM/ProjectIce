@@ -196,10 +196,22 @@ void handleArgs(int argc, char *argv[]){
 	}
 
 	if(std::strcmp(argv[1],"-help") == 0){
-		printf("ProjectIce special commands\n");
-		printf("-configcreate | create default configs\n");
-		printf("-help         | show this help\n");
-		printf("-version      | shows version information\n");
+		printf("/-(ProjectIce special commands)--------------\\\n");
+		printf("| -configcreate | create default configs     |\n");
+		printf("| -help         | show this help             |\n");
+		printf("| -version      | shows version information  |\n");
+		printf("\\--------------------------------------------/");
+		exit(0);
+	}
+
+	if(std::strcmp(argv[1],"-version") == 0){
+
+#ifdef DEBUG
+	printf("Development build");
+#else
+	printf("Release build");
+#endif
+
 		exit(0);
 	}
 
