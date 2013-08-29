@@ -14,8 +14,8 @@ namespace inventory {
 	/**
 	* typedef'd the vector so I don't have to look at ::<><>:::><><>
 	*/
-	typedef std::vector<item::ItemBase*>           tyItemVector;
-	typedef std::vector<item::ItemBase*>::iterator tyItemIterator;
+	typedef std::vector<item::ItemBase*>           itemVector;
+	typedef std::vector<item::ItemBase*>::iterator itemIterator;
 	
 	class ActorInventory {
 	private:
@@ -36,13 +36,13 @@ namespace inventory {
 		/** Returns an unchangable list of the items contained with this inventory object
 		 * @returns a list of items of std::vector<item::ItemBase*>
 		 */
-		const tyItemVector getItemList();
+		const itemVector getItemList();
 
 		/** Find all of the instances of a object by the supplied name and return a vector of those items
 		 * @param name the name of the item to look for
 		 * @returns a vector of ItemBase* to the instances of the found object
 		 */
-		tyItemVector getItemsByName(const String name);
+		itemVector getItemsByName(const String name);
 
 		/** Find all of the instances of a object by the supplied name and return a vector of those items
 		 * @param name the name of the item to look for
@@ -60,7 +60,7 @@ namespace inventory {
 		 * @param name the name of the item to look for
 		 * @returns a vector of ItemBase* which was removed from this inventory
 		 */
-		tyItemVector removeItemsByName(const String name);
+		itemVector removeItemsByName(const String name);
 
 		/** Removes a specific instance of an item based on it's ID number
 		 * @param name the name of the item to look for

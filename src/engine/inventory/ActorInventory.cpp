@@ -13,13 +13,13 @@ namespace inventory {
 		return owner;
 	}
 
-	const tyItemVector ActorInventory::getItemList() {
+	const itemVector ActorInventory::getItemList() {
 		return itemList;
 	}
 
-	tyItemVector ActorInventory::getItemsByName(const String name) {
-		tyItemIterator iter;
-		tyItemVector foundItems;
+	itemVector ActorInventory::getItemsByName(const String name) {
+		itemIterator iter;
+		itemVector foundItems;
 		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getName().compare(name) == 0 ) {
 				foundItems.push_back( (*iter) );
@@ -30,7 +30,7 @@ namespace inventory {
 
 	item::ItemBase * ActorInventory::getItemByID(const int id) {
 		item::ItemBase * returnItem = NULL;
-		tyItemIterator iter;
+		itemIterator iter;
 		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				returnItem = (*iter);
@@ -51,8 +51,8 @@ namespace inventory {
 		return true;
 	}
 
-	tyItemVector ActorInventory::removeItemsByName(const String name) {
-		return tyItemVector();
+	itemVector ActorInventory::removeItemsByName(const String name) {
+		return itemVector();
 	}
 
 	bool ActorInventory::removeItemByID(const int id) {
@@ -60,7 +60,7 @@ namespace inventory {
 			return false;
 		}
 
-		tyItemIterator iter;
+		itemIterator iter;
 		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				iter = itemList.erase(iter);
