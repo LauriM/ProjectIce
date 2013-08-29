@@ -6,16 +6,16 @@ namespace engine {
 namespace inventory {
 
 	void ActorInventory::setOwner(actor::ActorBase * actor) {
-			owner = actor;
-		}
+		owner = actor;
+	}
 
 	actor::ActorBase * ActorInventory::getOwner() {
-			return owner;
-		}
+		return owner;
+	}
 
 	const tyItemVector ActorInventory::getItemList() {
-			return itemList;
-		}
+		return itemList;
+	}
 
 	tyItemVector ActorInventory::getItemsByName(const String name) {
 		tyItemIterator iter;
