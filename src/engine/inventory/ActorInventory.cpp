@@ -5,11 +5,11 @@
 namespace engine {
 namespace inventory {
 
-	void ActorInventory::setOwner(actor::ActorBase * actor) {
+	void ActorInventory::setOwner(actor::ActorBase* actor) {
 		owner = actor;
 	}
 
-	actor::ActorBase * ActorInventory::getOwner() {
+	actor::ActorBase* ActorInventory::getOwner() {
 		return owner;
 	}
 
@@ -20,27 +20,31 @@ namespace inventory {
 	itemVector ActorInventory::getItemsByName(const String name) {
 		itemIterator iter;
 		itemVector foundItems;
+
 		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getName().compare(name) == 0 ) {
 				foundItems.push_back( (*iter) );
 			}
 		}
+
 		return foundItems;
 	}
 
-	item::ItemBase * ActorInventory::getItemByID(const int id) {
-		item::ItemBase * returnItem = NULL;
+	item::ItemBase* ActorInventory::getItemByID(const int id) {
+		item::ItemBase* returnItem = NULL;
 		itemIterator iter;
+
 		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				returnItem = (*iter);
 				break;
 			}
 		}
+
 		return returnItem;
 	}
 
-	bool ActorInventory::addItem(item::ItemBase * item) {
+	bool ActorInventory::addItem(item::ItemBase* item) {
 		// untracked items cannot be added
 		if ( item->getId() == -1 ) {
 			return false;
@@ -55,20 +59,25 @@ namespace inventory {
 		return itemVector();
 	}
 
-	bool ActorInventory::removeItemByID(const int id) {
+	item::ItemBase* ActorInventory::removeItemByID(const int id) {
 		if ( id < 0 ) { // ids less than 0 (-1) indicate untracked item, it can't be here anyway
-			return false;
+			return NULL;
 		}
 
 		itemIterator iter;
+
 		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
+				item::ItemBase* item = (*iter);
+
+				item->setInInventory(false);
 				iter = itemList.erase(iter);
-				(*iter)->setInInventory(false);
-				return true;
+
+				return item;
 			}
 		}
-		return false;
+
+		return NULL;
 	}
 
 }

@@ -75,7 +75,7 @@ namespace inventory {
 		 * @param id The ID of the item to remove.
 		 * @returns The item that has been removed, or null if none has been removed at all.
 		 */
-		bool removeItemByID(const int id);
+		item::ItemBase* removeItemByID(const int id);
 
 	};
 
