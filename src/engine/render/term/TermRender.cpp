@@ -4,6 +4,12 @@
 //Only compile if its in use
 #ifdef TERMRENDER
 
+#include "engine/console/Cvar.h"
+
+namespace cvar {
+	CVAR(int,fastexit,0);
+}
+
 namespace engine {
 namespace render {
 namespace term {
@@ -68,6 +74,19 @@ namespace term {
 		tb_event event;
 
 		tb_poll_event(&event);
+
+		if(*cvar::fastexit == 1){
+			if(event.type == TB_EVENT_KEY){
+				if(event.key == TB_KEY_ESC){
+					LOG_INFO("User wants to quit the game");
+
+					//Dont fuck up the console while closing the game.
+					tb_shutdown();
+					exit(0);
+				}
+			}
+		}
+
 		return;
 	}
 
