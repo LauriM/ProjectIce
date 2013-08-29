@@ -5,7 +5,7 @@
 
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
-#include "engine/inventory/Inventory.h"
+#include "engine/actor/Inventory.h"
 #include "engine/inventory/RoomInventory.h"
 #include "engine/actor/ActorManager.h"
 
@@ -28,14 +28,14 @@ namespace scene {
 
 			// player objects
 			actor::ActorBase * playerActor;
-			inventory::Inventory * playerInventory;
+			actor::Inventory * playerInventory;
 		public:
 
 			SceneSystem( world::WorldSystem * world, actor::ActorManager * actorMan, actor::ActorBase * player ) {
 				worldSystem = world;
 				actorManager = actorMan;
 				playerActor = player; //TODO: WTF is player charachter handled this way !?!? FIX IT
-				playerInventory = new inventory::Inventory();
+				playerInventory = new actor::Inventory();
 				playerInventory->setOwner(playerActor);
 
 				roomInventory = new inventory::RoomInventory( worldSystem->getRoom(0,0,0) );

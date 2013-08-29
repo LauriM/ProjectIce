@@ -9,7 +9,7 @@
 #include <vector>
 
 namespace engine {
-namespace inventory {
+namespace actor {
 
 	// Typedefs because long types :(
 	typedef std::vector<item::ItemBase*>           itemVector;

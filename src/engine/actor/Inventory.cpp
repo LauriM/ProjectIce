@@ -1,9 +1,9 @@
 #include "precompiled.h"
 
-#include "engine/inventory/Inventory.h"
+#include "engine/actor/Inventory.h"
 
 namespace engine {
-namespace inventory {
+namespace actor {
 
 	void Inventory::setOwner(actor::ActorBase* actor) {
 		owner = actor;
