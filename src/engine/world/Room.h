@@ -26,17 +26,7 @@ namespace world {
 	*/
 	class Room {
 	public:
-		Room(){
-			//Initialize empty room
-			roomType = ROOM_TYPE_EMPTY;
-
-			Tile tempTile;
-			tempTile.setType(TILE_VOID);
-
-			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
-				tiles[i] = tempTile;
-			}
-		}
+		Room();
 
 	private:
 		Tile tiles[ROOM_WIDTH * ROOM_HEIGHT];

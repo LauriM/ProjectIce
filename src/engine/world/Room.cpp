@@ -4,6 +4,18 @@
 namespace engine {
 namespace world {
 
+	Room::Room(){
+		//Initialize empty room
+		roomType = ROOM_TYPE_EMPTY;
+
+		Tile tempTile;
+		tempTile.setType(TILE_VOID);
+
+		for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
+			tiles[i] = tempTile;
+		}
+	}
+
 	Tile* Room::getTile(vec2 pos){
 		return getTile(pos.x,pos.y);
 	}
