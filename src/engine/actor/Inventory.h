@@ -2,13 +2,15 @@
 #define ENGINE_INVENTORY_INVENTORY_H
 
 #include "precompiled.h"
-
-#include "engine/actor/ActorBase.h"
-#include "engine/item/ItemBase.h"
-
 #include <vector>
 
 namespace engine {
+namespace item {
+
+	class ItemBase;
+
+}
+
 namespace actor {
 	
 	/**
@@ -16,7 +18,8 @@ namespace actor {
 	 */
 	class Inventory {
 	private:
-		std::vector<item::ItemBase*> itemList;	
+		std::vector<engine::item::ItemBase*> itemList;
+
 	public:
 		/** Returns a list of items contained within the inventory.
 		 *

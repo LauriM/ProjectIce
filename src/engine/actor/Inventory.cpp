@@ -1,6 +1,7 @@
 #include "precompiled.h"
 
 #include "engine/actor/Inventory.h"
+#include "engine/item/ItemBase.h"
 
 namespace engine {
 namespace actor {
