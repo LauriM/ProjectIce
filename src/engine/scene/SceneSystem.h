@@ -36,7 +36,6 @@ namespace scene {
 				actorManager = actorMan;
 				playerActor = player; //TODO: WTF is player charachter handled this way !?!? FIX IT
 				playerInventory = new actor::Inventory();
-				playerInventory->setOwner(playerActor);
 
 				roomInventory = new inventory::RoomInventory( worldSystem->getRoom(0,0,0) );
 

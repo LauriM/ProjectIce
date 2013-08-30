@@ -5,14 +5,6 @@
 namespace engine {
 namespace actor {
 
-	void Inventory::setOwner(actor::ActorBase* actor) {
-		owner = actor;
-	}
-
-	actor::ActorBase* Inventory::getOwner() {
-		return owner;
-	}
-
 	const itemVector Inventory::getItemList() {
 		return itemList;
 	}

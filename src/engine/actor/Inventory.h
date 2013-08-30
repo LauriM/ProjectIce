@@ -21,21 +21,7 @@ namespace actor {
 	class Inventory {
 	private:
 		std::vector<item::ItemBase*> itemList;	
-		engine::actor::ActorBase* owner;
 	public:
-
-		/** Sets the owner of the inventory.
-		 *
-		 * @param actor The new actor who will own the inventory.
-		 */
-		void setOwner(actor::ActorBase* actor);
-
-		/** Returns the actor who owns the inventory.
-		 *
-		 * @returns The actor who owns the inventory.
-		 */
-		actor::ActorBase* getOwner();
-
 		/** Returns a list of items contained within the inventory.
 		 *
 		 * @returns A list of items of type std::vector<item::ItemBase*>.
