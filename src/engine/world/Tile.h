@@ -26,19 +26,8 @@ namespace world {
 			/**
 			* Create the default void tile
 			*/
-			Tile(){
-				visual                 = ' ';
-				blocks                 = false;
-				hp                     = 100;
-				fgColor                = render::C_WHITE;
-				bgColor                = render::C_BLACK;
-				//add -> tickFunction (Executed every time entity or actor is in the tile) (?)
-			}
-
-			Tile(TILE_TYPES type){
-				Tile();
-				setType(type);
-			}
+			Tile();
+			Tile(TILE_TYPES type);
 
 			char visual;    //Visual displayed on the gameview
 			bool blocks;    //Does it block movement/visuals
@@ -50,13 +39,8 @@ namespace world {
 
 			/* getters & setters */
 
-			void setFgColor(render::Color color){
-				fgColor = color;
-			}
-
-			void setBgColor(render::Color color){
-				bgColor = color;
-			}
+			void setFgColor(render::Color color);
+			void setBgColor(render::Color color);
 	};
 
 }
