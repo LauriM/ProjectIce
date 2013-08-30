@@ -24,6 +24,7 @@ namespace null {
 			stepsLeft = NULLRENDER_STEP;
 
 			if(NULLRENDER_PAUSE == true){
+#pragma warning(suppress: 6031) //this is only to pause the render, works as expected
 				getchar();
 			}
 		}

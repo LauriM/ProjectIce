@@ -11,7 +11,8 @@ namespace actor {
         target->setHp(target->getHp() - dmg);
 
         if(target->getHp() < 0){
-            LOG_INFO("KILL! TODO: apply some exp here to the attacker");
+			//Give exp the amount of the targets HP
+			giveExp(target->getMaxHp());
         }
 
         return true;

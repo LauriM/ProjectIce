@@ -32,11 +32,24 @@ namespace actor {
 			int hp;
 			int maxHp;
 
+			int lvl;
+			int exp;
+
 			int strength;
 			int dexterity;
 			int constitution;
 
 		public:
+			ActorBase()
+				: lvl(1)
+				, exp(0)
+				, strength(0)
+				, dexterity(0)
+				, constitution(0)
+				, hp(10)
+				, maxHp(10)
+			{}
+
 			/**
 			 *  This is used to handle stuff that should happen every tick. Like timers or stuff.
 			 *  AI is handled in the AIsystem, not in this function
@@ -50,6 +63,20 @@ namespace actor {
 			//NOTE: IF THIS IS NOT SET, THE GAME WILL CRASH
 			void setWorld(engine::world::WorldSystem *newWorld){
 				world = newWorld;
+			}
+
+			/**
+			 * Give certain amount of EXP, calculate possible level ups.
+			 */
+			void giveExp(int amount){
+				exp += amount;
+
+				//TODO: This is really shitty way to calculate level ups
+				if(exp > (lvl * 10)){
+					exp = 0;
+					++lvl;
+					LOG_INFO("LVL up for actor!");
+				}
 			}
 
 			/**
