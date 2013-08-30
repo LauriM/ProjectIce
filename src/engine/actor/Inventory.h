@@ -10,10 +10,6 @@
 
 namespace engine {
 namespace actor {
-
-	// Typedefs because long types :(
-	typedef std::vector<item::ItemBase*>           itemVector;
-	typedef std::vector<item::ItemBase*>::iterator itemIterator;
 	
 	/**
 	 * Actor inventory class. Each inventory contains a list of items (and thus maybe also containers), together a reference to the owner of the inventory.
@@ -26,14 +22,14 @@ namespace actor {
 		 *
 		 * @returns A list of items of type std::vector<item::ItemBase*>.
 		 */
-		const itemVector getItemList();
+		const std::vector<item::ItemBase*> getItemList();
 
 		/** Find all of the instances of a object by the supplied name and return a vector of those items.
 		 *
 		 * @param name The name of the item to look for.
 		 * @returns A list of items of type std::vector<item::ItemBase*> of the found objects.
 		 */
-		itemVector getItemsByName(const String name);
+		std::vector<item::ItemBase*> getItemsByName(const String name);
 
 		/** Find an item in the inventory by its ID.
 		 *
@@ -54,7 +50,7 @@ namespace actor {
 		 * @param name The name of the items to remove.
 		 * @returns A vector of ItemBase* which was removed from this inventory.
 		 */
-		itemVector removeItemsByName(const String name);
+		std::vector<item::ItemBase*> removeItemsByName(const String name);
 
 		/** Removes a specific instance of an item based on it's ID number.
 		 *

@@ -5,15 +5,14 @@
 namespace engine {
 namespace actor {
 
-	const itemVector Inventory::getItemList() {
+	const std::vector<item::ItemBase*> Inventory::getItemList() {
 		return itemList;
 	}
 
-	itemVector Inventory::getItemsByName(const String name) {
-		itemIterator iter;
-		itemVector foundItems;
+	std::vector<item::ItemBase*> Inventory::getItemsByName(const String name) {
+		std::vector<item::ItemBase*> foundItems;
 
-		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getName().compare(name) == 0 ) {
 				foundItems.push_back( (*iter) );
 			}
@@ -24,9 +23,8 @@ namespace actor {
 
 	item::ItemBase* Inventory::getItemByID(const int id) {
 		item::ItemBase* returnItem = NULL;
-		itemIterator iter;
 
-		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				returnItem = (*iter);
 				break;
@@ -47,8 +45,10 @@ namespace actor {
 		return true;
 	}
 
-	itemVector Inventory::removeItemsByName(const String name) {
-		return itemVector();
+	// TODO
+	std::vector<item::ItemBase*> Inventory::removeItemsByName(const String name) {
+		//return itemVector();
+		return std::vector<item::ItemBase*>();
 	}
 
 	item::ItemBase* Inventory::removeItemByID(const int id) {
@@ -56,9 +56,7 @@ namespace actor {
 			return NULL;
 		}
 
-		itemIterator iter;
-
-		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				item::ItemBase* item = (*iter);
 
