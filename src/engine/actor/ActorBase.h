@@ -41,13 +41,13 @@ namespace actor {
 
 		public:
 			ActorBase()
-				: lvl(1)
+				: hp(10)
+				, maxHp(10)
+				, lvl(1)
 				, exp(0)
 				, strength(0)
 				, dexterity(0)
 				, constitution(0)
-				, hp(10)
-				, maxHp(10)
 			{}
 
 			/**
