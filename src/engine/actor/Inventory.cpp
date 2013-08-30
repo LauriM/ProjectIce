@@ -45,10 +45,21 @@ namespace actor {
 		return true;
 	}
 
-	// TODO
 	std::vector<item::ItemBase*> Inventory::removeItemsByName(const String name) {
-		//return itemVector();
-		return std::vector<item::ItemBase*>();
+		std::vector<item::ItemBase*> foundItems;
+
+		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+			if ( (*iter)->getName().compare(name) == 0 ) {
+				item::ItemBase* item = (*iter);
+
+				item->setInInventory(false);
+				iter = itemList.erase(iter);
+
+				foundItems.push_back( item );
+			}
+		}
+
+		return foundItems;
 	}
 
 	item::ItemBase* Inventory::removeItemByID(const int id) {
