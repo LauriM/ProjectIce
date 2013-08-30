@@ -3,7 +3,6 @@
 #include "engine/actor/AISystem.h"
 #include "engine/math/random.h"
 #include "engine/actor/AIState.h"
-#include "engine/input/InputMapping.h"
 #include <vector>
 
 namespace engine {
