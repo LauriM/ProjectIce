@@ -114,8 +114,6 @@ int main(){
 	{
 		UI::Window window;
 		window.setName("asdf");
-
-		window.printDebugInfo();
 	}
 
 	PRINTLN("-> Player");
