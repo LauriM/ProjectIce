@@ -9,6 +9,7 @@
 #include "engine/actor/AIState.h"
 #include "engine/actor/Inventory.h"
 #include "engine/console/ConsoleSystem.h"
+#include "engine/actor/Inventory.h"
 
 namespace engine {
 namespace actor {
