@@ -9,7 +9,7 @@
 #include <vector>
 
 namespace engine {
-namespace inventory {
+namespace actor {
 
 	// Typedefs because long types :(
 	typedef std::vector<item::ItemBase*>           itemVector;
@@ -18,7 +18,7 @@ namespace inventory {
 	/**
 	 * Actor inventory class. Each inventory contains a list of items (and thus maybe also containers), together a reference to the owner of the inventory.
 	 */
-	class ActorInventory {
+	class Inventory {
 	private:
 		std::vector<item::ItemBase*> itemList;	
 		engine::actor::ActorBase* owner;

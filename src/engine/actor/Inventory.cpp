@@ -1,23 +1,23 @@
 #include "precompiled.h"
 
-#include "engine/inventory/ActorInventory.h"
+#include "engine/actor/Inventory.h"
 
 namespace engine {
-namespace inventory {
+namespace actor {
 
-	void ActorInventory::setOwner(actor::ActorBase* actor) {
+	void Inventory::setOwner(actor::ActorBase* actor) {
 		owner = actor;
 	}
 
-	actor::ActorBase* ActorInventory::getOwner() {
+	actor::ActorBase* Inventory::getOwner() {
 		return owner;
 	}
 
-	const itemVector ActorInventory::getItemList() {
+	const itemVector Inventory::getItemList() {
 		return itemList;
 	}
 
-	itemVector ActorInventory::getItemsByName(const String name) {
+	itemVector Inventory::getItemsByName(const String name) {
 		itemIterator iter;
 		itemVector foundItems;
 
@@ -30,7 +30,7 @@ namespace inventory {
 		return foundItems;
 	}
 
-	item::ItemBase* ActorInventory::getItemByID(const int id) {
+	item::ItemBase* Inventory::getItemByID(const int id) {
 		item::ItemBase* returnItem = NULL;
 		itemIterator iter;
 
@@ -44,7 +44,7 @@ namespace inventory {
 		return returnItem;
 	}
 
-	bool ActorInventory::addItem(item::ItemBase* item) {
+	bool Inventory::addItem(item::ItemBase* item) {
 		// untracked items cannot be added
 		if ( item->getId() == -1 ) {
 			return false;
@@ -55,11 +55,11 @@ namespace inventory {
 		return true;
 	}
 
-	itemVector ActorInventory::removeItemsByName(const String name) {
+	itemVector Inventory::removeItemsByName(const String name) {
 		return itemVector();
 	}
 
-	item::ItemBase* ActorInventory::removeItemByID(const int id) {
+	item::ItemBase* Inventory::removeItemByID(const int id) {
 		if ( id < 0 ) { // ids less than 0 (-1) indicate untracked item, it can't be here anyway
 			return NULL;
 		}
