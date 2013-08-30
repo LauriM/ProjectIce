@@ -21,8 +21,6 @@ namespace UI {
 		Window();
 		//TODO: Overloaded window with parameters
 
-		void printDebugInfo();
-
 		void setContainer(ContainerBase *cont){
 			container = cont;
 		}
