@@ -18,6 +18,8 @@
 #include "game/actor/npc/DummyActor.h"
 #include "game/UI/containers/StatsContainer.h"
 
+#include <cstring>
+
 #ifdef TERMRENDER
 #include "engine/render/term/TermRender.h"
 #endif
