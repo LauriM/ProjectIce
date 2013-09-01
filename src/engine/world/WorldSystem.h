@@ -17,33 +17,39 @@ namespace engine {
 namespace world {
 
 	class WorldSystem : public EngineSystem {
-		private:
-			Room rooms[WORLD_WIDTH][WORLD_HEIGHT][WORLD_DEPTH];
-			int age;
+	public:
+		typedef boost::unordered_map<String,Room*> RoomList;
 
-			void _checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y);
-			void _checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y);
-			void _checkEast(int heightMap[][WORLD_HEIGHT], int x, int y);
-			void _checkWest(int heightMap[][WORLD_HEIGHT], int x, int y);
+	private:
+		RoomList roomList;
 
-			//TODO: create some ASSERTS to make sure the array is accessed correctly (2013-04-02)
-		public:
-			WorldSystem();
+		//worlds age
+		int age;
 
-			~WorldSystem() {}
+		void checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y);
+		void checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y);
+		void checkEast(int heightMap[][WORLD_HEIGHT], int x, int y);
+		void checkWest(int heightMap[][WORLD_HEIGHT], int x, int y);
 
-			virtual bool init();
-			virtual void uninit();
-			virtual void update();
+		//TODO: create some ASSERTS to make sure the array is accessed correctly (2013-04-02)
+	public:
+		WorldSystem();
 
-			void generate();
+		~WorldSystem() {}
 
-			Room* getRoom(int x,int y,int z);
-			Room* getRoom(vec3 pos);
+		virtual bool init();
+		virtual void uninit();
+		virtual void update();
 
-			void loadFromFile(String filename);
-			void saveToFile(String filename);
+		void generate();
+
+		Room* getRoom(int x,int y,int z);
+		Room* getRoom(vec3 pos);
+
+		void loadFromFile(String filename);
+		void saveToFile(String filename);
 	};
+
 
 }
 }
