@@ -208,7 +208,7 @@ int main(){
 		roomInventory->deleteItemByPosition( vec2(0,0), potions.at(0)->getId() );
 		SCPPT_COMPARE( "(0,0) has 3 items.", roomInventory->getItemCountAtPosition( vec2(0,0) ), ==, 3 );
 
-		engine::inventory::typeItemList * potRM = roomInventory->getItemListByName( potions.at(1)->getName() );
+		engine::inventory::ItemList * potRM = roomInventory->getItemListByName( potions.at(1)->getName() );
 		SCPPT_COMPARE( "There are 2 potions in the room", potRM->size(), ==, 2 );
 
 		roomInventory->addItemToPosition( vec2(1,0), potions.at(0) );
