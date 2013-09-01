@@ -18,7 +18,7 @@ namespace world {
 		for(int x = 0;x < WORLD_WIDTH;++x){
 			for(int y = 0;y < WORLD_HEIGHT;++y){
 				for(int z = 0;z < WORLD_DEPTH;++z){
-					rooms[x][y][z] = emptyRoom;
+					//getRoom(x,y,z) = emptyRoom;
 				}
 			}
 		}
@@ -31,6 +31,7 @@ namespace world {
 	}
 
 	void WorldSystem::update(){
+		++age;
 		return;
 	}
 
@@ -71,16 +72,16 @@ namespace world {
 
 					// Stay in the bounds!
 					if( xi > 0 ) {
-						_checkWest(heightMap,xi,yi);
+						checkWest(heightMap,xi,yi);
 					}
 					if( xi < (WORLD_WIDTH - 1) ) {
-						_checkEast(heightMap,xi,yi);
+						checkEast(heightMap,xi,yi);
 					}
 					if( yi > 0 ) {
-						_checkNorth(heightMap,xi,yi);
+						checkNorth(heightMap,xi,yi);
 					}
 					if( yi < (WORLD_HEIGHT - 1) ) {
-						_checkSouth(heightMap,xi,yi);
+						checkSouth(heightMap,xi,yi);
 					}
 				}
 			}
@@ -108,25 +109,25 @@ namespace world {
 
 					if(z < heightMap[x][y]){
 						//Current depth is under the highest point, add dungeon
-						rooms[x][y][z].roomType = ROOM_TYPE_DUNGEON;
+						getRoom(x,y,z)->roomType = ROOM_TYPE_DUNGEON;
 					}
 
 					if(z == heightMap[x][y]){
 						//We are on the same level as the highest point, its ground
-						rooms[x][y][z].roomType = ROOM_TYPE_GROUND;
+						getRoom(x,y,z)->roomType = ROOM_TYPE_GROUND;
 					}
 
 					if(z == heightMap[x][y]){
 						if(z < WORLD_WATER_LEVEL){
-							rooms[x][y][z].roomType = ROOM_TYPE_WATER;
+							getRoom(x,y,z)->roomType = ROOM_TYPE_WATER;
 						}
 						if(z > heightMap[x][y]){
-							rooms[x][y][z].roomType = ROOM_TYPE_EMPTY;
+							getRoom(x,y,z)->roomType = ROOM_TYPE_EMPTY;
 						}
 					}
 
 					//Generate the room based on the roomType set.
-					rooms[x][y][z].generate();
+					getRoom(x,y,z)->generate();
 				}
 			}
 		}
@@ -135,25 +136,25 @@ namespace world {
 	/**
 	 * Flows the "mountains" down.
 	 */
-	void WorldSystem::_checkWest(int heightMap[][WORLD_HEIGHT], int x, int y){
+	void WorldSystem::checkWest(int heightMap[][WORLD_HEIGHT], int x, int y){
 		if( heightMap[x][y] < heightMap[x-1][y] ){
 			heightMap[x][y] = heightMap[x-1][y] - 1;
 		}
 	}
 
-	void WorldSystem::_checkEast(int heightMap[][WORLD_HEIGHT], int x, int y){
+	void WorldSystem::checkEast(int heightMap[][WORLD_HEIGHT], int x, int y){
 		if( heightMap[x][y] < heightMap[x+1][y] ){
 			heightMap[x][y] = heightMap[x+1][y] - 1;
 		}
 	}
 
-	void WorldSystem::_checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y){
+	void WorldSystem::checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y){
 		if( heightMap[x][y] < heightMap[x][y-1]){
 			heightMap[x][y] = heightMap[x][y-1] - 1;
 		}
 	}
 
-	void WorldSystem::_checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y){
+	void WorldSystem::checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y){
 		if( heightMap[x][y] < heightMap[x][y+1]){
 			heightMap[x][y] = heightMap[x][y+1] - 1;
 		}
@@ -161,12 +162,36 @@ namespace world {
 
 	Room* WorldSystem::getRoom(int x,int y,int z){
 		ASSERT_ROOM_XYZ(x,y,z);
-		return &rooms[x][y][z];
+		return getRoom(vec3(x,y,z));
 	}
 
 	Room* WorldSystem::getRoom(vec3 pos){
 		ASSERT_ROOM_XYZ(pos.x,pos.y,pos.z);
-		return &rooms[pos.x][pos.y][pos.z];
+
+		Room *room;
+
+		//TODO: datastorage method for rooms should be optimized!
+
+		//Build the hash thing:
+		String posString = std::to_string(pos.x);
+		posString += std::to_string(pos.y);
+		posString += std::to_string(pos.z);
+
+		//Find the room from the hashmap
+		RoomList::iterator iter = roomList.find(posString);
+
+		if(iter == roomList.end()){
+			//Could not find the room, lets create it!
+			room = new Room();
+
+			roomList.insert(RoomList::value_type(posString,room));
+
+			LOG_INFO("room inserted!");
+		}else{
+			room = iter->second;
+		}
+
+		return room;
 	}
 
 	/**
