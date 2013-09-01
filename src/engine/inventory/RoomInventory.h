@@ -14,10 +14,10 @@ namespace engine {
 namespace inventory {
 
 	//typedef std::pair<int,int> pairVec2;
-	typedef std::vector<item::ItemBase*> typeItemList;
-	typedef std::map< vec2, typeItemList* > typeItemMap;
-	typedef std::vector<item::ItemBase*>::iterator typeItemIterator;
-	typedef std::map< vec2, typeItemList* >::iterator typeMapIterator;
+	typedef std::vector<item::ItemBase*> ItemList;
+	typedef std::map< vec2, ItemList* > ItemMap;
+	typedef std::vector<item::ItemBase*>::iterator ItemIterator;
+	typedef std::map< vec2, ItemList* >::iterator MapIterator;
 
 	/**
 	 *	This object is responsible for the room's inventory
@@ -26,29 +26,29 @@ namespace inventory {
 	private:
 		//vec2 pairToVec2( pairVec2 pair );
 		//pairVec2 vec2ToPair( vec2 vec );
-		typeItemList * initEmptyList( vec2 vp );
+		ItemList * initEmptyList( vec2 vp );
 		void clean(); // removes untracked items on get
-	private:
+
 		world::Room * owner;
-		typeItemMap itemMap;
+		ItemMap itemMap;
 	public:
 		RoomInventory( world::Room * owner );
 
 		/** Returns the entire contents of the inventory
 		 * @returns a map containing lists of items
 		 */
-		typeItemMap getItemMap();
+		ItemMap getItemMap();
 
 		/** Returns all of the items this room containins in the form of a vector
 		 * @returns a list containing all the items in the world
 		 */
-		typeItemList * getItemMapAsList();
+		ItemList * getItemMapAsList();
 
 		/** Returns a list of items from a given position in the room
 		 * @param position the position to search for
 		 * @returns the list of items
 		 */
-		typeItemList * getItemListByPosition( vec2 position );
+		ItemList * getItemListByPosition( vec2 position );
 
 		/** Searches the room for the item instance with the supplied ID number
 		 * @param id the identification number
@@ -60,7 +60,7 @@ namespace inventory {
 		 * @param name the name to search for
 		 * @returns the list of found items
 		 */		
-		typeItemList * getItemListByName( String name );
+		ItemList * getItemListByName( String name );
 
 		/** Returns a count of all the items on the map
 		 * @returns the item count

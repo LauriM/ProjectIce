@@ -6,8 +6,8 @@
 namespace engine {
 namespace inventory {
 
-	typeItemList * RoomInventory::initEmptyList( vec2 key ) {
-		typeItemList * newList = new typeItemList();
+	ItemList * RoomInventory::initEmptyList( vec2 key ) {
+		ItemList * newList = new ItemList();
 		itemMap[key] = newList;
 		return newList;
 	}
@@ -18,25 +18,25 @@ namespace inventory {
 		this->owner = owner;
 	}
 
-	typeItemMap RoomInventory::getItemMap() {
+	ItemMap RoomInventory::getItemMap() {
 		return itemMap;
 	}
 
-	typeItemList * RoomInventory::getItemMapAsList() {
-		typeMapIterator mapIter;
-		typeItemList * list = new typeItemList();
+	ItemList * RoomInventory::getItemMapAsList() {
+		MapIterator mapIter;
+		ItemList * list = new ItemList();
 		for( mapIter = itemMap.begin(); mapIter != itemMap.end(); ++mapIter ) {
-			typeItemList * itemList = (*mapIter).second;
-			typeItemIterator itemIter;
+			ItemList * itemList = (*mapIter).second;
+			ItemIterator itemIter;
 			for( itemIter = itemList->begin(); itemIter != itemList->end(); ++itemIter ) {
 				list->push_back( (*itemIter) );
 			}
 		}
 		return list;
-	}	
+	}
 
-	typeItemList * RoomInventory::getItemListByPosition( vec2 position ) {
-		typeMapIterator it = itemMap.find( position );
+	ItemList * RoomInventory::getItemListByPosition( vec2 position ) {
+		MapIterator it = itemMap.find( position );
 		if ( it != itemMap.end() ) {
 			return (*it).second;
 		}
@@ -44,10 +44,10 @@ namespace inventory {
 	}
 
 	item::ItemBase * RoomInventory::getItemByID(int id) {
-		typeMapIterator mapIter;
+		MapIterator mapIter;
 		for( mapIter = itemMap.begin(); mapIter != itemMap.end(); ++mapIter ) {
-			typeItemList * itemList = (*mapIter).second;
-			typeItemIterator itemIter;
+			ItemList * itemList = (*mapIter).second;
+			ItemIterator itemIter;
 			for( itemIter = itemList->begin(); itemIter != itemList->end(); ++itemIter ) {
 				if ( (*itemIter)->getId() == id ) {
 					return (*itemIter);
@@ -57,12 +57,12 @@ namespace inventory {
 		return NULL;
 	}
 
-	typeItemList * RoomInventory::getItemListByName( String name ) {
-		typeMapIterator mapIter;
-		typeItemList * foundList = new typeItemList();
+	ItemList * RoomInventory::getItemListByName( String name ) {
+		MapIterator mapIter;
+		ItemList * foundList = new ItemList();
 		for( mapIter = itemMap.begin(); mapIter != itemMap.end(); ++mapIter ) {
-			typeItemList * itemList = (*mapIter).second;
-			typeItemIterator itemIter;
+			ItemList * itemList = (*mapIter).second;
+			ItemIterator itemIter;
 			for( itemIter = itemList->begin(); itemIter != itemList->end(); ++itemIter ) {
 				if ( (*itemIter)->getName() == name ) {
 					foundList->push_back( (*itemIter) );
@@ -74,17 +74,17 @@ namespace inventory {
 
 	int RoomInventory::getItemCount() {
 		int itemCount = 0;
-		typeMapIterator mapIter;
+		MapIterator mapIter;
 		for( mapIter = itemMap.begin(); mapIter != itemMap.end(); ++mapIter ) {
-			typeItemList * itemList = (*mapIter).second;
+			ItemList * itemList = (*mapIter).second;
 			itemCount += itemList->size();
 		}
 		return itemCount;
 	}
 
-	int RoomInventory::getItemCountAtPosition( vec2 position ) {	
-		typeItemList * itemList = getItemListByPosition(position);
-		typeMapIterator it = itemMap.find( position );
+	int RoomInventory::getItemCountAtPosition( vec2 position ) {
+		ItemList * itemList = getItemListByPosition(position);
+		MapIterator it = itemMap.find( position );
 		if ( it != itemMap.end() ) {
 			return itemList->size();
 		}
@@ -104,10 +104,10 @@ namespace inventory {
 			return false;
 		}
 
-		typeMapIterator it = itemMap.find( position );
-		typeItemList * itemList = NULL;
+		MapIterator it = itemMap.find( position );
+		ItemList * itemList = NULL;
 		if ( it == itemMap.end() ) {
-			itemList = new typeItemList();
+			itemList = new ItemList();
 			itemMap[position] = itemList;
 		}
 		else {
@@ -123,9 +123,9 @@ namespace inventory {
 			return false;
 		}
 		bool deleted = false;
-		typeItemList * itemList = itemMap.find( position )->second;
+		ItemList * itemList = itemMap.find( position )->second;
 		if ( itemList ) {
-			typeItemIterator itemIter = itemList->begin();
+			ItemIterator itemIter = itemList->begin();
 			for( itemIter = itemList->begin(); itemIter != itemList->end(); ++itemIter ) {
 				if ( (*itemIter)->getId() == id ) {
 					itemList->erase( itemIter );

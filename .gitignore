@@ -29,6 +29,7 @@ ProjectIce.opensdf
 ProjectIce.sdf
 ProjectIce.sln
 *.suo
+ice.exe.lastcodeanalysissucceeded
 
 *.vcxproj.*
 
