@@ -10,24 +10,15 @@ namespace world {
 	bool WorldSystem::init(){
 		LOG_INFO("World init");
 
+		roomList = new RoomList();
+
 		age = 0; //The world is 0 turns old
-
-		//Init empty world
-		Room emptyRoom;
-
-		for(int x = 0;x < WORLD_WIDTH;++x){
-			for(int y = 0;y < WORLD_HEIGHT;++y){
-				for(int z = 0;z < WORLD_DEPTH;++z){
-					//getRoom(x,y,z) = emptyRoom;
-				}
-			}
-		}
 
 		return true;
 	}
 
 	void WorldSystem::uninit(){
-		return;
+		delete roomList;
 	}
 
 	void WorldSystem::update(){
@@ -178,13 +169,13 @@ namespace world {
 		posString += std::to_string(pos.z);
 
 		//Find the room from the hashmap
-		RoomList::iterator iter = roomList.find(posString);
+		RoomList::iterator iter = roomList->find(posString);
 
-		if(iter == roomList.end()){
+		if(iter == roomList->end()){
 			//Could not find the room, lets create it!
 			room = new Room();
 
-			roomList.insert(RoomList::value_type(posString,room));
+			roomList->insert(RoomList::value_type(posString,room));
 
 			LOG_INFO("room inserted!");
 		}else{

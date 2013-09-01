@@ -21,7 +21,7 @@ namespace world {
 		typedef boost::unordered_map<String,Room*> RoomList;
 
 	private:
-		RoomList roomList;
+		RoomList *roomList;
 
 		//worlds age
 		int age;
