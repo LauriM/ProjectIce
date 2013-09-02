@@ -13,16 +13,15 @@ namespace console {
 	/**
 	 * Console system keeps the CVars in memory and handles loading/saving of config files.
 	 *
+	 * Also keeps list of the recent message history in the memory.
+	 *
 	 * In future this could be expanded to support small command system
 	 */
 	class ConsoleSystem : public EngineSystem {
 	public:
 		typedef boost::unordered_map<String,CVarBase*> CVarList;
+		typedef std::vector<String> MsgHistory;
 
-	private:
-		CVarList cvarlist;
-
-	public:
 		bool init();
 		void uninit();
 		void update();
@@ -30,6 +29,11 @@ namespace console {
 		inline static CVarList& getCVarList(){
 			static CVarList staticCVarMap;
 			return staticCVarMap;
+		}
+
+		inline static MsgHistory& getMsgHistory(){
+			static MsgHistory staticMsgHistory;
+			return staticMsgHistory;
 		}
 
 		bool loadConfig(String filename);
