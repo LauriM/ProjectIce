@@ -43,6 +43,8 @@ namespace world {
 		void setTile(int x,int y,Tile tile);
 
 		void generate();
+
+		void printLayout();
 	};
 }
 }

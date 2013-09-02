@@ -101,5 +101,17 @@ namespace world {
 		return tiles;
 	}
 
+	/**
+	 * Prints the room layout to the cmd. Used for debugging.
+	 */
+	void Room::printLayout(){
+		for(int y = 0;y < ROOM_HEIGHT;++y){
+			for(int x = 0;x < ROOM_WIDTH;++x){
+				printf("%c",getTile(x,y)->visual);
+			}
+			printf("\n");
+		}
+	}
+
 }
 }

@@ -165,6 +165,8 @@ int main(int argc, char *argv[]){
 
 	scene->getActorManager()->insertActorToRoom(dummy);
 
+	worldSystem->getRoom( vec3(0,0,0) )->printLayout();
+
 	//printf("CvarCount: %lu\n",engine::console::ConsoleSystem::getCVarList().size());
 
 //	consoleSystem->saveConfig("config.cfg");
