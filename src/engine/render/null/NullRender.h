@@ -18,6 +18,9 @@
 //Should simulation wait for input before continuing after render
 #define NULLRENDER_PAUSE true
 
+//Should history be printed every tick
+#define NULLRENDER_HISTORY true
+
 namespace engine {
 namespace render {
 namespace null {
