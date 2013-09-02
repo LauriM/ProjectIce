@@ -80,7 +80,7 @@ namespace actor {
 				if(exp > (lvl * 10)){
 					exp = 0;
 					++lvl;
-					console::ConsoleSystem::getMsgHistory().push_back(getName() + " gained level!");
+					CONSOLE_HISTORY_INSERT(getName() + " gained level!");
 				}
 			}
 

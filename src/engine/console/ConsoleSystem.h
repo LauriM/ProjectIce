@@ -5,6 +5,9 @@
 
 #include "engine/EngineSystem.h"
 
+//Easily insert new lines to history
+#define CONSOLE_HISTORY_INSERT(p_msg) engine::console::ConsoleSystem::getMsgHistory().push_back(p_msg);
+
 namespace engine {
 namespace console {
 
