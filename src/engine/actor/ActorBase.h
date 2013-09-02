@@ -8,6 +8,7 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/actor/AIState.h"
 #include "engine/actor/Inventory.h"
+#include "engine/console/ConsoleSystem.h"
 
 namespace engine {
 namespace actor {
@@ -79,7 +80,7 @@ namespace actor {
 				if(exp > (lvl * 10)){
 					exp = 0;
 					++lvl;
-					LOG_INFO("LVL up for actor!");
+					console::ConsoleSystem::getMsgHistory().push_back(getName() + " gained level!");
 				}
 			}
 

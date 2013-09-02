@@ -17,6 +17,16 @@ namespace null {
 			uiSystem->windows.size(); //these are not unused
 			sceneSystem->getActorManager();
 
+#ifdef NULLRENDER_HISTORY
+			console::ConsoleSystem::MsgHistory hist = console::ConsoleSystem::getMsgHistory();
+
+			system("cls");
+
+			for(unsigned int i = 0; i < hist.size(); ++i){
+				printf("%s\n",hist[i].c_str() );
+			}
+#endif
+
 			//printf("Windows visible %ui \n", uiSystem->windows.size() );
 			//printf("Actors in room 0,0,0: %ui \n", sceneSystem->getActorManager()->getActorsInRoom(vec3(0,0,0)).size() );
 			printf("---\n");
