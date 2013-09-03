@@ -21,6 +21,9 @@
 //Should history be printed every tick
 #define NULLRENDER_HISTORY true
 
+//Should the cls be used on every tick or not
+#define NULLRENDER_CLS false
+
 namespace engine {
 namespace render {
 namespace null {
