@@ -1,5 +1,6 @@
 #include "engine/world/Room.h"
 #include "engine/math/random.h"
+#include "engine/math/AABB.h"
 
 namespace engine {
 namespace world {
@@ -80,14 +81,40 @@ namespace world {
 		case ROOM_TYPE_DUNGEON:
 			tempTile.setType(TILE_ROCK_FLOOR);
 
+			//reset room
 			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
 				tiles[i] = tempTile;
 			}
 
+			//Base with random amounts of rock
 			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
-				if(randomRange(0,1)){
+				if(randomRange(0,10) > 1){
 					tiles[i] = Tile(TILE_SOLID_ROCK);
 				}
+			}
+
+			//Insert the random rooms
+			int roomCount = randomRange(2,6);
+
+			while(roomCount > 0){
+				AABB room;
+				//first size, then position, so we are sure it wont go over the limits
+				LOG_INFO("Room");
+
+				room.size.x = randomRange(2,5);
+				room.size.y = randomRange(2,5);
+
+				room.pos.x = randomRange(0,(ROOM_WIDTH  - room.size.x));
+				room.pos.y = randomRange(0,(ROOM_HEIGHT - room.size.y));
+
+				//Room stuff is ok, lets draw it in
+				for(int x = room.pos.x;x < room.size.x;++x){
+					for(int y = room.pos.y;y < room.size.y;++y){
+						setTile(x,y,Tile(TILE_ROCK_FLOOR));
+					}
+				}
+
+				--roomCount;
 			}
 
 			break;
