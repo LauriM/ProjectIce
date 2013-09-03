@@ -10,7 +10,7 @@ namespace actor {
 		return itemList;
 	}
 
-	std::vector<item::ItemBase*> Inventory::getItemsByName(const String name) {
+	Inventory::ItemVector Inventory::getItemsByName(const String name) {
 		std::vector<item::ItemBase*> foundItems;
 
 		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
@@ -46,7 +46,7 @@ namespace actor {
 		return true;
 	}
 
-	std::vector<item::ItemBase*> Inventory::removeItemsByName(const String name) {
+	Inventory::ItemVector Inventory::removeItemsByName(const String name) {
 		std::vector<item::ItemBase*> foundItems;
 
 		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
