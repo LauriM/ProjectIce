@@ -42,6 +42,7 @@ namespace console {
 
 			if(it == getCVarList().end()){
 				LOG_ERROR("[ConfigLoader] Incorrect variable name");
+				continue;
 			}
 
 			if(args.size() > 1){
