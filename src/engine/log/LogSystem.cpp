@@ -1,16 +1,23 @@
 #include "precompiled.h"
 #include "engine/log/LogSystem.h"
+#include "engine/console/Cvar.h"
+
+namespace cvar {
+	CVAR(int, logtofile,1);
+}
 
 namespace engine {
 namespace log {
 
 	void insertLog(String logMsg){
 
-		FILE *logFile;
-		logFile = fopen("log.txt","a+");
-		fprintf(logFile,"%s\n",logMsg.c_str());
-		fflush(logFile);
-		fclose(logFile);
+		if(*cvar::logtofile){
+			FILE *logFile;
+			logFile = fopen("log.txt","a+");
+			fprintf(logFile,"%s\n",logMsg.c_str());
+			fflush(logFile);
+			fclose(logFile);
+		}
 
 //if nullrender is enabled, just add stuff there
 #ifdef NULLRENDER
