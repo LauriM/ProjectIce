@@ -54,6 +54,8 @@ int main(int argc, char *argv[]){
 	}
 
 	engine::console::ConsoleSystem *consoleSystem = new engine::console::ConsoleSystem();
+	consoleSystem->init();
+	consoleSystem->loadConfig("config.cfg");
 
 	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
 	playerActor->setName("Player");
@@ -82,8 +84,6 @@ int main(int argc, char *argv[]){
 	engine::render::RenderSystem *render = new engine::render::null::NullRender(scene,ui);
 #endif
 
-	consoleSystem->init();
-	consoleSystem->loadConfig("config.cfg");
 	render->init();
 	ui->init();
 	ai->init();
@@ -131,6 +131,11 @@ int main(int argc, char *argv[]){
 	 * Testing area for the NPCs
 	 */
 	engine::world::Tile voidTile;
+
+	//force it to dungeon also
+	LOG_INFO("Building testing area");
+	worldSystem->getRoom( vec3(0,0,0) )->roomType = engine::world::ROOM_TYPE_DUNGEON;
+	worldSystem->getRoom( vec3(0,0,0) )->generate();
 
 	voidTile.setType(engine::world::TILE_TREE);
 	for(int x = 7;x < 20;++x){
@@ -200,7 +205,7 @@ void handleArgs(int argc, char *argv[]){
 
 	if(std::strcmp(argv[1],"-help") == 0){
 		printf("/-(ProjectIce special commands)--------------\\\n");
-		printf("| -configcreate | create default configs     |\n");
+		printf("| -| create default configs     |\n");
 		printf("| -help         | show this help             |\n");
 		printf("| -version      | shows version information  |\n");
 		printf("\\--------------------------------------------/");
