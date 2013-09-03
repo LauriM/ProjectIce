@@ -7,7 +7,6 @@
 #include "engine/math/vec3.h"
 #include "engine/world/WorldSystem.h"
 #include "engine/actor/AIState.h"
-#include "engine/actor/Inventory.h"
 #include "engine/console/ConsoleSystem.h"
 #include "engine/actor/Inventory.h"
 
