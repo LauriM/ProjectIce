@@ -1,19 +1,19 @@
 #include "precompiled.h"
 
 #include "engine/actor/Inventory.h"
+#include "engine/item/ItemBase.h"
 
 namespace engine {
 namespace actor {
 
-	const itemVector Inventory::getItemList() {
+	const std::vector<item::ItemBase*> Inventory::getItemList() {
 		return itemList;
 	}
 
-	itemVector Inventory::getItemsByName(const String name) {
-		itemIterator iter;
-		itemVector foundItems;
+	Inventory::ItemVector Inventory::getItemsByName(const String name) {
+		std::vector<item::ItemBase*> foundItems;
 
-		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getName().compare(name) == 0 ) {
 				foundItems.push_back( (*iter) );
 			}
@@ -24,9 +24,8 @@ namespace actor {
 
 	item::ItemBase* Inventory::getItemByID(const int id) {
 		item::ItemBase* returnItem = NULL;
-		itemIterator iter;
 
-		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				returnItem = (*iter);
 				break;
@@ -47,8 +46,21 @@ namespace actor {
 		return true;
 	}
 
-	itemVector Inventory::removeItemsByName(const String name) {
-		return itemVector();
+	Inventory::ItemVector Inventory::removeItemsByName(const String name) {
+		std::vector<item::ItemBase*> foundItems;
+
+		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+			if ( (*iter)->getName().compare(name) == 0 ) {
+				item::ItemBase* item = (*iter);
+
+				item->setInInventory(false);
+				iter = itemList.erase(iter);
+
+				foundItems.push_back( item );
+			}
+		}
+
+		return foundItems;
 	}
 
 	item::ItemBase* Inventory::removeItemByID(const int id) {
@@ -56,9 +68,7 @@ namespace actor {
 			return NULL;
 		}
 
-		itemIterator iter;
-
-		for( iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				item::ItemBase* item = (*iter);
 

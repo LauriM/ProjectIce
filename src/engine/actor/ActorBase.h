@@ -8,6 +8,7 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/actor/AIState.h"
 #include "engine/console/ConsoleSystem.h"
+#include "engine/actor/Inventory.h"
 
 namespace engine {
 namespace actor {
@@ -40,6 +41,8 @@ namespace actor {
 			int dexterity;
 			int constitution;
 
+			Inventory inventory;
+
 		public:
 			ActorBase()
 				: hp(10)
@@ -49,7 +52,8 @@ namespace actor {
 				, strength(0)
 				, dexterity(0)
 				, constitution(0)
-			{}
+			{
+			}
 
 			/**
 			 *  This is used to handle stuff that should happen every tick. Like timers or stuff.
@@ -172,6 +176,14 @@ namespace actor {
 
 			void setConstitution(int constitution) {
 				this->constitution = constitution;
+			}
+
+			Inventory* getInventory() {
+				return &inventory;
+			}
+
+			void setInventory(Inventory* inventory) {
+				this->inventory = *inventory;
 			}
 
 			/**

@@ -3,9 +3,13 @@
 
 #include "precompiled.h"
 
-#include "engine/actor/ActorBase.h"
-
 namespace engine {
+namespace actor {
+
+	class ActorBase;
+
+}
+
 namespace item {
 
 	/**
