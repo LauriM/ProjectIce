@@ -19,6 +19,7 @@
 #include "game/UI/containers/StatsContainer.h"
 
 #include <cstring>
+//#include <boost/filesystem.hpp>
 
 #ifdef TERMRENDER
 #include "engine/render/term/TermRender.h"
@@ -55,7 +56,35 @@ int main(int argc, char *argv[]){
 
 	engine::console::ConsoleSystem *consoleSystem = new engine::console::ConsoleSystem();
 	consoleSystem->init();
-	consoleSystem->loadConfig("config.cfg");
+	//Config loader planner: First try to read from the same directory, after that try to read from cfg location (~/. or %appdata%)
+	if(!consoleSystem->loadConfig("config.cfg")){
+		//cfg loading from the run directory failed. Testing out the platform depended default directory
+
+
+#ifdef WINDOWS
+		char* cfgDirectory = getenv("APPDATA");
+		const String cfgFolder = "\\ProjectIce\\";
+		const String cfgFilename = "ProjectIce.cfg";
+#endif
+
+#ifdef LINUX
+		char* cfgDirectory = "~/";
+		const String cfgFolder = ".projectice/";
+		const String cfgFilename = "ProjectIce.cfg";
+#endif
+
+		if(!consoleSystem->loadConfig(cfgDirectory + cfgFolder + cfgFilename) ){
+			LOG_INFO("No config files found, creating one to default directory.");
+
+			//TODO: Create the folder here! Make sure it works on all platforms.
+
+			//if(boost::filesystem::create_directory(cfgDirectory + cfgFolder)){
+				consoleSystem->saveConfig(cfgDirectory + cfgFolder + cfgFilename);
+		//	}else{
+			//	LOG_ERROR("Could not create the directory! Your system permissions are fucked up.");
+		//	}
+		}
+	}
 
 	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
 	playerActor->setName("Player");

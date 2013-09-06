@@ -30,6 +30,7 @@ ProjectIce.sdf
 ProjectIce.sln
 *.suo
 ice.exe.lastcodeanalysissucceeded
+ipch/
 
 *.vcxproj.*
 
