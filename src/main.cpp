@@ -61,14 +61,16 @@ int main(int argc, char *argv[]){
 		//cfg loading from the run directory failed. Testing out the platform depended default directory
 
 
+	String cfgDirectory;
+
 #ifdef WINDOWS
-		char* cfgDirectory = getenv("APPDATA");
+		cfgDirectory = getenv("APPDATA");
 		const String cfgFolder = "\\ProjectIce\\";
 		const String cfgFilename = "ProjectIce.cfg";
 #endif
 
 #ifdef LINUX
-		char* cfgDirectory = "~/";
+		cfgDirectory = "~/";
 		const String cfgFolder = ".projectice/";
 		const String cfgFilename = "ProjectIce.cfg";
 #endif
