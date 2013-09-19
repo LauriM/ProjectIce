@@ -21,7 +21,9 @@
 #include <map>
 #include <vector>
 
+#ifdef TERMRENDER
 #include <termbox.h>
+#endif
 
 using namespace engine;
 
@@ -31,11 +33,13 @@ int testOks   = 0;
 int main(){
 	SCPPT_START;
 
+#ifdef TERMRENDER
 	PRINTLN("-> termbox")
 	{
 		SCPPT_COMPARE("tb init ok",tb_init(), == , 0);
 		tb_shutdown();
 	}
+#endif
 
 	PRINTLN("-> Vec2");
 	{

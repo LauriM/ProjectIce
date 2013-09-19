@@ -84,6 +84,9 @@ namespace console {
 		return true;
 	}
 
+	/**
+	 * Checks all variables for possible cheats that are enabled.
+	 */
 	bool ConsoleSystem::areCheatsUsed(){
 		for(ConsoleSystem::CVarList::iterator it = getCVarList().begin(); it != getCVarList().end(); it++){
 
