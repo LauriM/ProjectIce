@@ -4,7 +4,7 @@
 #include "engine/console/Cvar.h"
 
 namespace cvar {
-	CVAR(int, debug_heightmap,0);
+	CVAR(int, debug_heightmap,0,CVAR_CHEAT);
 }
 
 namespace engine {

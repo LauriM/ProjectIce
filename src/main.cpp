@@ -30,7 +30,7 @@
 #endif
 
 namespace cvar {
-	CVAR(int,developer,0);
+	CVAR(int,developer,0,CVAR_CHEAT);
 }
 
 void handleArgs(int argc,char *argv[]);
