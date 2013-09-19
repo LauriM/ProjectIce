@@ -107,7 +107,7 @@ int main(int argc, char *argv[]){
 	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,actorManager,playerActor);
 
 	game::item::PotionItem * pi = new game::item::PotionItem();
-	scene->addItem(pi);
+	worldSystem->getRoom(vec3(0,0,0))->getInventory()->addItem(pi);
 
 	engine::UI::UISystem *ui    = new engine::UI::UISystem();
 	engine::actor::AISystem *ai = new engine::actor::AISystem(actorManager,worldSystem);

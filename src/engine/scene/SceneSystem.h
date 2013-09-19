@@ -5,8 +5,7 @@
 
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
-#include "engine/actor/Inventory.h"
-#include "engine/inventory/RoomInventory.h"
+#include "engine/inventory/Inventory.h"
 #include "engine/actor/ActorManager.h"
 
 namespace engine {
@@ -23,12 +22,8 @@ namespace scene {
 
 			actor::ActorManager *actorManager;
 
-			//TODO: Create RoomIventoryManager
-			inventory::RoomInventory * roomInventory;
-
-			// player objects
+			// player related objects
 			actor::ActorBase * playerActor;
-			actor::Inventory * playerInventory;
 		public:
 
 			SceneSystem( world::WorldSystem * world, actor::ActorManager * actorMan, actor::ActorBase * player );
@@ -38,13 +33,9 @@ namespace scene {
 			void update();
 
 			/*getters & setters */
-			inventory::RoomInventory* getRoomInventoryByPos(vec3 pos);
 			actor::ActorManager* getActorManager();
 			actor::ActorBase* getPlayerActor();
 			world::WorldSystem* getWorld();
-
-			void addItem(item::ItemBase * item);
-
 	};
 
 }

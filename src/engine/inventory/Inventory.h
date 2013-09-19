@@ -11,10 +11,10 @@ namespace item {
 
 }
 
-namespace actor {
-	
+namespace inventory {
+
 	/**
-	 * Actor inventory class. Each inventory contains a list of items (and thus maybe also containers), together a reference to the owner of the inventory.
+	 * Generic inventory class used by actors and rooms.
 	 */
 	class Inventory {
 	public:
