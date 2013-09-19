@@ -9,7 +9,7 @@ solution "ProjectIce"
 		--libdirs     { "C:/codelibs/termbox/build/src/" }
 
 	configuration { "linux" }
-		defines { "LINUX", "NULLRENDER" }
+		defines { "LINUX", "TERMRENDER" }
 		links   { "m", "rt" }
 		flags   { }
 		buildoptions { "-std=c++11" }
