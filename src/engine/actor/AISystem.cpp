@@ -95,6 +95,9 @@ namespace actor {
 		for(unsigned int i = 0; i < actors.size();++i){
 			if(actors.at(i)->getPosition() == pos){
 				actor::ActorBase * target = actors.at(i);
+				if(actor == target){
+					return;
+				}
 				if(actor->attack(target)){
 					//Attack was issued! Lets spawn some blood!
 					worldSystem->getRoom( actor->getLocation() )->getTile( target->getPosition() )->setBgColor(render::C_RED);
