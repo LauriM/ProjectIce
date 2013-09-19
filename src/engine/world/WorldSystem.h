@@ -26,6 +26,7 @@ namespace world {
 		//worlds age
 		int age;
 
+		/* Check functions for the mountain "flow" downhill */
 		void checkNorth(int heightMap[][WORLD_HEIGHT], int x, int y);
 		void checkSouth(int heightMap[][WORLD_HEIGHT], int x, int y);
 		void checkEast(int heightMap[][WORLD_HEIGHT], int x, int y);

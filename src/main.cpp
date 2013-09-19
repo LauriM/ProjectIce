@@ -19,6 +19,7 @@
 #include "game/UI/containers/StatsContainer.h"
 
 #include <cstring>
+//#include <boost/filesystem.hpp>
 
 #ifdef TERMRENDER
 #include "engine/render/term/TermRender.h"
@@ -29,7 +30,7 @@
 #endif
 
 namespace cvar {
-	CVAR(int,developer,0);
+	CVAR(int,developer,0,CVAR_CHEAT);
 }
 
 void handleArgs(int argc,char *argv[]);
@@ -55,7 +56,41 @@ int main(int argc, char *argv[]){
 
 	engine::console::ConsoleSystem *consoleSystem = new engine::console::ConsoleSystem();
 	consoleSystem->init();
-	consoleSystem->loadConfig("config.cfg");
+	//Config loader planner: First try to read from the same directory, after that try to read from cfg location (~/. or %appdata%)
+	if(!consoleSystem->loadConfig("config.cfg")){
+		//cfg loading from the run directory failed. Testing out the platform depended default directory
+
+
+	String cfgDirectory;
+
+#ifdef WINDOWS
+		cfgDirectory = getenv("APPDATA");
+		const String cfgFolder = "\\ProjectIce\\";
+		const String cfgFilename = "ProjectIce.cfg";
+#endif
+
+#ifdef LINUX
+		cfgDirectory = "~/";
+		const String cfgFolder = ".projectice/";
+		const String cfgFilename = "ProjectIce.cfg";
+#endif
+
+		if(!consoleSystem->loadConfig(cfgDirectory + cfgFolder + cfgFilename) ){
+			LOG_INFO("No config files found, creating one to default directory.");
+
+			//TODO: Create the folder here! Make sure it works on all platforms.
+
+			//if(boost::filesystem::create_directory(cfgDirectory + cfgFolder)){
+				consoleSystem->saveConfig(cfgDirectory + cfgFolder + cfgFilename);
+		//	}else{
+			//	LOG_ERROR("Could not create the directory! Your system permissions are fucked up.");
+		//	}
+		}
+	}
+
+	if(consoleSystem->areCheatsUsed()){
+		LOG_INFO("! CHEATS IN USE !");
+	}
 
 	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
 	playerActor->setName("Player");
@@ -72,7 +107,7 @@ int main(int argc, char *argv[]){
 	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,actorManager,playerActor);
 
 	game::item::PotionItem * pi = new game::item::PotionItem();
-	scene->addItem(pi);
+	worldSystem->getRoom(vec3(0,0,0))->getInventory()->addItem(pi);
 
 	engine::UI::UISystem *ui    = new engine::UI::UISystem();
 	engine::actor::AISystem *ai = new engine::actor::AISystem(actorManager,worldSystem);
@@ -205,7 +240,7 @@ void handleArgs(int argc, char *argv[]){
 
 	if(std::strcmp(argv[1],"-help") == 0){
 		printf("/-(ProjectIce special commands)--------------\\\n");
-		printf("| -| create default configs     |\n");
+		printf("| -createconfig | create default configs     |\n");
 		printf("| -help         | show this help             |\n");
 		printf("| -version      | shows version information  |\n");
 		printf("\\--------------------------------------------/");

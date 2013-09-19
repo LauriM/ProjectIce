@@ -3,7 +3,7 @@
 #include "engine/console/Cvar.h"
 
 namespace cvar {
-	CVAR(int, logtofile,1);
+	CVAR(int, logtofile,1,CVAR_NORMAL);
 }
 
 namespace engine {

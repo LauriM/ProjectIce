@@ -1,10 +1,10 @@
 #include "precompiled.h"
 
-#include "engine/actor/Inventory.h"
+#include "engine/inventory/Inventory.h"
 #include "engine/item/ItemBase.h"
 
 namespace engine {
-namespace actor {
+namespace inventory {
 
 	const std::vector<item::ItemBase*> Inventory::getItemList() {
 		return itemList;

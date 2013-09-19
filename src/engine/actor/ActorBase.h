@@ -8,7 +8,7 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/actor/AIState.h"
 #include "engine/console/ConsoleSystem.h"
-#include "engine/actor/Inventory.h"
+#include "engine/inventory/Inventory.h"
 
 namespace engine {
 namespace actor {
@@ -41,7 +41,7 @@ namespace actor {
 			int dexterity;
 			int constitution;
 
-			Inventory inventory;
+			inventory::Inventory inventory;
 
 		public:
 			ActorBase()
@@ -178,11 +178,11 @@ namespace actor {
 				this->constitution = constitution;
 			}
 
-			Inventory* getInventory() {
+			inventory::Inventory* getInventory() {
 				return &inventory;
 			}
 
-			void setInventory(Inventory* inventory) {
+			void setInventory(inventory::Inventory* inventory) {
 				this->inventory = *inventory;
 			}
 

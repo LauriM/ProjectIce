@@ -10,8 +10,8 @@ solution "ProjectIce"
 
 	configuration { "linux" }
 		defines { "LINUX", "TERMRENDER" }
-		links   { "m", "rt" , "termbox" }
-		flags   { "ExtraWarnings", "FatalWarnings" }
+		links   { "m", "rt", "termbox" }
+		flags   { }
 		buildoptions { "-std=c++11" }
 
 	configuration "Debug"

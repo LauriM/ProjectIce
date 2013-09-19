@@ -11,6 +11,8 @@
 #define ASSERT_TILE_X(p_x) assert(p_x >= 0); assert(p_x < ROOM_WIDTH);
 #define ASSERT_TILE_Y(p_y) assert(p_y >= 0); assert(p_y < ROOM_HEIGHT);
 
+#include "engine/inventory/Inventory.h"
+
 namespace engine {
 namespace world {
 
@@ -31,6 +33,8 @@ namespace world {
 	private:
 		Tile tiles[ROOM_WIDTH * ROOM_HEIGHT];
 
+		inventory::Inventory inventory;
+
 	public:
 		//Roomtype also used as visual
 		ROOM_TYPES roomType;
@@ -45,6 +49,14 @@ namespace world {
 		void generate();
 
 		void printLayout();
+
+		inventory::Inventory* getInventory() {
+			return &inventory;
+		}
+
+		void setInventory(inventory::Inventory* inventory) {
+			this->inventory = *inventory;
+		}
 	};
 }
 }

@@ -18,11 +18,11 @@ namespace console {
 	void ConsoleSystem::uninit() {}
 
 	void ConsoleSystem::update() {}
-	
+
 	/**
 	 * Loads config file from disk with a specific filename.
 	 *
-	 * @return bool was the operation succesfull
+	 * @return bool was the operation succesful
 	 */
 	bool ConsoleSystem::loadConfig(String filename){
 		std::ifstream file;
@@ -61,16 +61,12 @@ namespace console {
 	/**
 	 * Saves current configs to disk with a specific filename.
 	 *
-	 * @return bool was the operation succesfull
+	 * The file is created if it doesn't exists.
+	 *
+	 * @return bool was the operation succesful
 	 */
 	bool ConsoleSystem::saveConfig(String filename){
-		std::ofstream file;
-		file.open( filename.c_str() );
-
-		if(!file.is_open()){
-			LOG_ERROR("Can't open config file for saving");
-			return false;
-		}
+		std::ofstream file( filename.c_str() );
 
 		for(ConsoleSystem::CVarList::iterator it = getCVarList().begin(); it != getCVarList().end(); it++){
 			String output = "";
@@ -86,6 +82,23 @@ namespace console {
 
 		LOG_INFO("Configs written to disk");
 		return true;
+	}
+
+	/**
+	 * Checks all variables for possible cheats that are enabled.
+	 */
+	bool ConsoleSystem::areCheatsUsed(){
+		for(ConsoleSystem::CVarList::iterator it = getCVarList().begin(); it != getCVarList().end(); it++){
+
+			if(it->second->isCheat()){
+				if(it->second->isCheat()){
+					//found cheat!
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 }
