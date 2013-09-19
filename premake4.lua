@@ -10,7 +10,7 @@ solution "ProjectIce"
 
 	configuration { "linux" }
 		defines { "LINUX", "TERMRENDER" }
-		links   { "m", "rt", "termbox" }
+		links   { "m", "rt", "termrender" }
 		flags   { }
 		buildoptions { "-std=c++11" }
 
