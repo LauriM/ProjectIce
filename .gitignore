@@ -37,3 +37,4 @@ ipch/
 ice.vcxproj
 test.vcxproj
 ClassDiagram*
+premake4

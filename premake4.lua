@@ -9,9 +9,9 @@ solution "ProjectIce"
 		--libdirs     { "C:/codelibs/termbox/build/src/" }
 
 	configuration { "linux" }
-		defines { "LINUX", "TERMRENDER" }
-		links   { "m", "rt" , "termbox" }
-		flags   { "ExtraWarnings", "FatalWarnings" }
+		defines { "LINUX", "NULLRENDER" }
+		links   { "m", "rt" }
+		flags   { }
 		buildoptions { "-std=c++11" }
 
 	configuration "Debug"

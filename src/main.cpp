@@ -236,7 +236,7 @@ void handleArgs(int argc, char *argv[]){
 
 	if(std::strcmp(argv[1],"-help") == 0){
 		printf("/-(ProjectIce special commands)--------------\\\n");
-		printf("| -| create default configs     |\n");
+		printf("| -createconfig | create default configs     |\n");
 		printf("| -help         | show this help             |\n");
 		printf("| -version      | shows version information  |\n");
 		printf("\\--------------------------------------------/");

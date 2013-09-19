@@ -1,6 +1,11 @@
 #include "engine/math/random.h"
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
+#include "engine/console/Cvar.h"
+
+namespace cvar {
+	CVAR(int, debug_heightmap,0);
+}
 
 namespace engine {
 namespace world {
@@ -78,11 +83,15 @@ namespace world {
 			}
 		}
 
-		for(int x = 0;x < WORLD_WIDTH;++x){
-			for(int y = 0;y < WORLD_HEIGHT;++y){
-				printf(",%i",heightMap[x][y]);
+		//Print height map if debugging for it is asked
+		if(*cvar::debug_heightmap){
+			printf("# HEIGHTMAP #\n");
+			for(int x = 0;x < WORLD_WIDTH;++x){
+				for(int y = 0;y < WORLD_HEIGHT;++y){
+					printf(",%i",heightMap[x][y]);
+				}
+				printf("\n");
 			}
-			printf("\n");
 		}
 
 
@@ -176,8 +185,6 @@ namespace world {
 			room = new Room();
 
 			roomList->insert(RoomList::value_type(posString,room));
-
-			LOG_INFO("room inserted!");
 		}else{
 			room = iter->second;
 		}

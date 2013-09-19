@@ -99,8 +99,6 @@ namespace world {
 			while(roomCount > 0){
 				AABB room;
 				//first size, then position, so we are sure it wont go over the limits
-				LOG_INFO("Room");
-
 				room.size.x = randomRange(2,5);
 				room.size.y = randomRange(2,5);
 
