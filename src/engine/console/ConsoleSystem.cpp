@@ -18,7 +18,7 @@ namespace console {
 	void ConsoleSystem::uninit() {}
 
 	void ConsoleSystem::update() {}
-	
+
 	/**
 	 * Loads config file from disk with a specific filename.
 	 *
@@ -82,6 +82,20 @@ namespace console {
 
 		LOG_INFO("Configs written to disk");
 		return true;
+	}
+
+	bool ConsoleSystem::areCheatsUsed(){
+		for(ConsoleSystem::CVarList::iterator it = getCVarList().begin(); it != getCVarList().end(); it++){
+
+			if(it->second->isCheat()){
+				if(it->second->isCheat()){
+					//found cheat!
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 }

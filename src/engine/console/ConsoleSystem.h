@@ -42,6 +42,8 @@ namespace console {
 		bool loadConfig(String filename);
 		bool saveConfig(String filename);
 
+		bool areCheatsUsed();
+
 	};
 
 }

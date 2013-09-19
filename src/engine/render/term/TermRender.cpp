@@ -7,7 +7,7 @@
 #include "engine/console/Cvar.h"
 
 namespace cvar {
-	CVAR(int,fastexit,0);
+	CVAR(int,fastexit,0,CVAR_NORMAL);
 }
 
 namespace engine {

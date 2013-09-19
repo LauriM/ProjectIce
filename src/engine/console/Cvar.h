@@ -27,6 +27,7 @@ namespace console {
 			virtual String get() const = 0;
 
 			virtual const String& getName() = 0;
+			virtual const bool isCheat() = 0;
 	};
 
 	template <typename T>
@@ -35,14 +36,14 @@ namespace console {
 			String name;
 			T data;
 			T defaultData;
-			bool isCheat;
+			bool cheat;
 
 		public:
-			CVar(String name,T data,bool isCheat)
+			CVar(String name,T data,bool cheat)
 				: name(name)
 				, data(data)
 				, defaultData(data)
-				, isCheat(isCheat)
+				, cheat(cheat)
 			{
 				ConsoleSystem::getCVarList().insert(ConsoleSystem::CVarList::value_type(name,this));
 			}
@@ -50,9 +51,10 @@ namespace console {
 			virtual bool set(String value){
 				data = boost::lexical_cast<T,String>(value);
 
-				if(isCheat){
+				if(cheat){
 					if(defaultData != data){ //Cheat has different value than default, so its activated.
 						LOG_INFO("[ConfigLoader] Cheats have been activated!");
+						//TODO: some kind of global cheat/not cheat status of the game
 					}
 				}
 
@@ -65,6 +67,21 @@ namespace console {
 
 			virtual const String& getName(){
 				return name;
+			}
+
+			virtual const bool isCheat(){
+				return cheat;
+			}
+
+			/*
+			 * Has the value been changed from the default one
+			 * */
+			virtual bool isChanged(){
+				if(data == defaultData){
+					return false;
+				}
+
+				return true;
 			}
 
 			inline T& operator * (){

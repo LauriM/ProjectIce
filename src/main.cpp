@@ -88,6 +88,10 @@ int main(int argc, char *argv[]){
 		}
 	}
 
+	if(consoleSystem->areCheatsUsed()){
+		LOG_INFO("! CHEATS IN USE !");
+	}
+
 	game::actor::player::PlayerActor * playerActor = new game::actor::player::PlayerActor();
 	playerActor->setName("Player");
 	playerActor->setPosition(vec2(10,10));
