@@ -193,5 +193,10 @@ int main(){
 
 	PRINTLN("Tests complete");
 
+#ifdef WINDOWS
+	//Dont quit on windows
+	system("PAUSE");
+#endif
+
 	SCPPT_END;
 }

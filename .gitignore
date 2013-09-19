@@ -24,6 +24,8 @@ premake4.exe
 ice.exe
 ice.ilk
 ice.pdb
+test.exe
+test.ilk
 test.pdb
 ProjectIce.opensdf
 ProjectIce.sdf
