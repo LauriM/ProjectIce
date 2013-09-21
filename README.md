@@ -9,6 +9,7 @@ ProjectIce is roguelike game/engine project. Currently its in very early develop
 Build requirements:
 
 * [Termbox](https://github.com/nsf/termbox) (This is used for Linux builds)
+* [SFML](http://www.sfml-dev.org/) (Used for graphical builds)
 * Boost `sudo apt-get install libboost-chrono1.48-dev`
 * premake4
 
@@ -20,11 +21,6 @@ Resources
 * [Wiki](https://github.com/LauriM/ProjectIce/wiki)
 * [Doxygen](http://protoman.net/PROJECTICE/index.html)
 * IRC: Freenode: #ProjectIce
-
-Contributing
-============
-
-Do you know c++ ? This project is open for new developers. Try to compile the project and feel free to create a pull request.
 
 License
 =======
