@@ -41,3 +41,5 @@ test.vcxproj
 ClassDiagram*
 desktop.ini
 premake4
+
+*.dll

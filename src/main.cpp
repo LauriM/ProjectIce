@@ -29,6 +29,10 @@
 #include "engine/render/null/NullRender.h"
 #endif
 
+#ifdef SFMLRENDER
+#include "engine/render/sfml/SfmlRender.h"
+#endif
+
 namespace cvar {
 	CVAR(int,developer,0,CVAR_CHEAT);
 }
@@ -117,6 +121,9 @@ int main(int argc, char *argv[]){
 #endif
 #ifdef NULLRENDER
 	engine::render::RenderSystem *render = new engine::render::null::NullRender(scene,ui);
+#endif
+#ifdef SFMLRENDER
+	engine::render::RenderSystem *render = new engine::render::sfml::SfmlRender(scene,ui);
 #endif
 
 	render->init();

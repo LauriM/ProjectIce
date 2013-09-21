@@ -3,10 +3,11 @@ solution "ProjectIce"
 	--startproject "ice" --enable this when we switch the new version of premake
 
 	configuration { "windows" }
-		defines     { "WINDOWS" , "NULLRENDER" }
-		includedirs { "C:/codelibs/termbox/src/", "C:/codelibs/boost_1_53_0/" }
-		--links       { "termbox" }
-		--libdirs     { "C:/codelibs/termbox/build/src/" }
+		defines     { "WINDOWS" , "SFMLRENDER" }
+		includedirs { "C:/codelibs/boost_1_53_0/" , "C:/codelibs/SFML-2.1/include/" }
+		links       { "sfml-main" }
+		links       { "sfml-graphics-d", "sfml-window-d", "sfml-system-d" }
+		libdirs     { "C:/codelibs/SFML-2.1/lib/" }
 
 	configuration { "linux" }
 		defines { "LINUX", "TERMRENDER" }

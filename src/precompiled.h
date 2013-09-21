@@ -34,6 +34,7 @@ typedef std::string String;
 
 #ifndef TERMRENDER
 #ifndef NULLRENDER
+#ifndef SFMLRENDER
 
 #ifdef WINDOWS
 #define NULLRENDER
@@ -41,6 +42,7 @@ typedef std::string String;
 #define TERMRENDER
 #endif
 
+#endif
 #endif
 #endif
 
