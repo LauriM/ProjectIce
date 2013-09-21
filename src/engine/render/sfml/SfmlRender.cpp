@@ -1,6 +1,8 @@
 #include "precompiled.h"
 #include "engine/render/sfml/SfmlRender.h"
 
+#ifdef SFMLRENDER
+
 namespace engine {
 namespace render {
 namespace sfml {
@@ -9,6 +11,8 @@ namespace sfml {
 		if(!window->isOpen()){
 			//Window has been closed! Close the application
 			LOG_INFO("[SfmlRender] Main window has been closed");
+			//TODO: Closing is not handled correctly!
+			return;
 		}
 
 		sf::Event event;
@@ -35,3 +39,5 @@ namespace sfml {
 }
 }
 }
+
+#endif
