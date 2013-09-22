@@ -23,14 +23,17 @@
 
 #ifdef TERMRENDER
 #include "engine/render/term/TermRender.h"
+#include "engine/input/null/NullInput.h"
 #endif
 
 #ifdef NULLRENDER
 #include "engine/render/null/NullRender.h"
+#include "engine/input/null/NullInput.h"
 #endif
 
 #ifdef SFMLRENDER
 #include "engine/render/sfml/SfmlRender.h"
+#include "engine/input/sfml/SfmlInput.h"
 #endif
 
 namespace cvar {
@@ -118,16 +121,20 @@ int main(int argc, char *argv[]){
 
 #ifdef TERMRENDER
 	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
+	engine::input::InputSystem   *input  = new engine::input::null::NullInput();
 #endif
 #ifdef NULLRENDER
 	engine::render::RenderSystem *render = new engine::render::null::NullRender(scene,ui);
+	engine::input::InputSystem   *input  = new engine::input::null::NullInput();
 #endif
 #ifdef SFMLRENDER
 	engine::render::RenderSystem *render = new engine::render::sfml::SfmlRender(scene,ui);
+	engine::input::InputSystem *input    = new engine::input::sfml::SfmlInput();
 #endif
 
 	render->init();
 	ui->init();
+	input->init();
 	ai->init();
 
 	engine::UI::Window welcomeWindow;
@@ -222,8 +229,9 @@ int main(int argc, char *argv[]){
 	while(quitStatus == false){
 		scene->update();
 		ai->update();
-		render->update();
 		ui->update();
+		render->update();
+		input->update();
 	}
 
 	ai->uninit();
