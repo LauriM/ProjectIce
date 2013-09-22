@@ -128,8 +128,10 @@ int main(int argc, char *argv[]){
 	engine::input::InputSystem   *input  = new engine::input::null::NullInput();
 #endif
 #ifdef SFMLRENDER
-	engine::render::RenderSystem *render = new engine::render::sfml::SfmlRender(scene,ui);
-	engine::input::InputSystem *input    = new engine::input::sfml::SfmlInput();
+	engine::render::sfml::SfmlRender *sfmlRender = new engine::render::sfml::SfmlRender(scene,ui);
+	engine::render::RenderSystem *render = sfmlRender;
+
+	engine::input::InputSystem *input = new engine::input::sfml::SfmlInput(sfmlRender->getWindow(), scene);
 #endif
 
 	render->init();

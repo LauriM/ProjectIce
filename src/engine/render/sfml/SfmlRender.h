@@ -54,11 +54,11 @@ namespace sfml {
 		SfmlRender(scene::SceneSystem *sceneSystem, UI::UISystem *uiSystem)
 			: sceneSystem(sceneSystem)
 			, uiSystem(uiSystem)
-		{}
+		{
+			window = new sf::RenderWindow(sf::VideoMode(800,600), "ProjectIce TODO: add version here");
+		}
 
 		bool init(){
-			window = new sf::RenderWindow(sf::VideoMode(800,600), "ProjectIce TODO: add version here");
-
 			setCameraPos( vec3(0, 0, 0) );
 
 			//Load textures
@@ -76,6 +76,10 @@ namespace sfml {
 		}
 
 		void update();
+
+		sf::Window* getWindow(){
+			return window;
+		}
 
 	};
 
