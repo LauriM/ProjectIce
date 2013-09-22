@@ -24,13 +24,38 @@ namespace sfml {
 
 		window->clear(sf::Color::Black);
 
-		sf::RectangleShape box(sf::Vector2f(10,10));
+		world::Room *currentRoom = sceneSystem->getWorld()->getRoom(cameraPos);
 
-		box.setFillColor(sf::Color::Blue);
+		vec2 pos;
 
-		box.setPosition(sf::Vector2f(50,50));
+		sf::Sprite sprite; //TODO: this may not be optimal
 
-		window->draw(box);
+		for(int x = 0;x < ROOM_WIDTH;++x){
+			for(int y = 0;y < ROOM_HEIGHT;++y){
+				pos.x = (x + 2);
+				pos.y = (y + 2);
+				//Changing the color
+				world::Tile *tile = currentRoom->getTile(x,y);
+
+				switch(tile->type){
+				case world::TILE_SOLID_ROCK:
+					sprite = solidRockSprite;
+					break;
+				case world::TILE_ROCK_FLOOR:
+					sprite = floorSprite;
+					break;
+				case world::TILE_VOID:
+					sprite = voidSprite;
+					break;
+				default:
+					sprite = errorSprite;
+				}
+
+				sprite.setPosition( (x * 10) , (y * 10) );
+				window->draw(sprite); 
+			}
+
+		}
 
 
 		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorsInRoom(cameraPos);

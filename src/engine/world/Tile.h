@@ -29,6 +29,7 @@ namespace world {
 			Tile();
 			Tile(TILE_TYPES type);
 
+			int type;
 			char visual;    //Visual displayed on the gameview
 			bool blocks;    //Does it block movement/visuals
 			int hp;         //How many hits it can take before getting destroyed

@@ -32,8 +32,20 @@ namespace sfml {
 
 		/* Textures used */
 		//TODO: somekind of texture manager would be nice
+		sf::Texture voidTexture;
+		sf::Sprite voidSprite;
+
 		sf::Texture dummyTexture;
 		sf::Sprite dummySprite;
+
+		sf::Texture errorTexture;
+		sf::Sprite errorSprite;
+
+		sf::Texture floorTexture;
+		sf::Sprite floorSprite;
+
+		sf::Texture solidRockTexture;
+		sf::Sprite solidRockSprite;
 
 	public:
 		SfmlRender(scene::SceneSystem *sceneSystem, UI::UISystem *uiSystem)
@@ -47,7 +59,11 @@ namespace sfml {
 			setCameraPos( vec3(0, 0, 0) );
 
 			//Load textures
-			LOADTEXTURE(dummyTexture,dummySprite,"./gfx/dummy.png");
+			LOADTEXTURE(voidTexture      , voidSprite      , "./gfx/void.png");
+			LOADTEXTURE(dummyTexture     , dummySprite     , "./gfx/dummy.png");
+			LOADTEXTURE(errorTexture     , errorSprite     , "./gfx/error.png");
+			LOADTEXTURE(floorTexture     , floorSprite     , "./gfx/floor.png");
+			LOADTEXTURE(solidRockTexture , solidRockSprite , "./gfx/solid_rock.png");
 
 			return true;
 		}

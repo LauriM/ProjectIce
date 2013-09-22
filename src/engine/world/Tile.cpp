@@ -4,6 +4,7 @@
 //Some fancy defines
 
 #define DEFINE_TILE(p_type,p_visual,p_blocks,p_hp,p_fgColor,p_bgColor) case p_type:\
+	type    = p_type;\
 	visual  = p_visual;\
 	blocks  = p_blocks;\
 	hp      = p_hp;\
@@ -15,6 +16,7 @@ namespace engine {
 namespace world {
 
 	Tile::Tile(){
+		type                   = 0;
 		visual                 = ' ';
 		blocks                 = false;
 		hp                     = 100;
@@ -28,11 +30,13 @@ namespace world {
 		setType(type);
 	}
 
-	void Tile::setType(TILE_TYPES type){
+	void Tile::setType(TILE_TYPES t){
 		//Good ol' big swith
 		//Maybe in future it will be some awesome piece of lua code that reads xml or some shit :D
 
-		switch(type){
+		type = t;
+
+		switch(t){
 			//p_type                    , p_visual , p_blocks , p_hp , fg color , bg color
 			DEFINE_TILE(TILE_VOID       , ' '      , false    , 0    , render::C_WHITE , render::C_BLACK);
 			DEFINE_TILE(TILE_GRASS      , '.'      , false    , 0    , render::C_GREEN , render::C_BLACK);
