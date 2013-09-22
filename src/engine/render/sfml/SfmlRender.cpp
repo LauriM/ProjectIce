@@ -47,6 +47,9 @@ namespace sfml {
 				case world::TILE_VOID:
 					sprite = voidSprite;
 					break;
+				case world::TILE_TREE:
+					sprite = treeSprite;
+					break;
 				default:
 					sprite = errorSprite;
 				}
