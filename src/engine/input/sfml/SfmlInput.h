@@ -9,9 +9,6 @@
 #ifndef ENGINE_INPUT_SFML_SFMLINPUT_H
 #define ENGINE_INPUT_SFML_SFMLINPUT_H
 
-//Dont leak this outside of non-sfml builds
-#include <SFML/Window/Keyboard.hpp>
-
 namespace engine {
 namespace input {
 namespace sfml {

@@ -1,6 +1,10 @@
 #include "precompiled.h"
 #include "engine/input/sfml/SfmlInput.h"
 
+#ifdef ENGINE_INPUT_SFML_SFMLINPUT_H
+
+#include <SFML/Window/Keyboard.hpp>
+
 namespace engine {
 namespace input {
 namespace sfml {
@@ -52,3 +56,5 @@ namespace sfml {
 }
 }
 }
+
+#endif

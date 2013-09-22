@@ -52,8 +52,7 @@ namespace actor {
 				, strength(0)
 				, dexterity(0)
 				, constitution(0)
-			{
-			}
+			{}
 
 			/**
 			 *  This is used to handle stuff that should happen every tick. Like timers or stuff.
