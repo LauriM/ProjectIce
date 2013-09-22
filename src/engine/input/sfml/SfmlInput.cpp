@@ -1,7 +1,7 @@
 #include "precompiled.h"
 #include "engine/input/sfml/SfmlInput.h"
 
-#ifdef ENGINE_INPUT_SFML_SFMLINPUT_H
+#ifdef SFMLINPUT
 
 #include <SFML/Window/Keyboard.hpp>
 

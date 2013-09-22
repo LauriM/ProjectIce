@@ -9,6 +9,8 @@
 #ifndef ENGINE_INPUT_SFML_SFMLINPUT_H
 #define ENGINE_INPUT_SFML_SFMLINPUT_H
 
+#define SFMLINPUT
+
 namespace engine {
 namespace input {
 namespace sfml {
