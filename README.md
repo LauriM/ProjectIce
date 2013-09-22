@@ -13,8 +13,6 @@ Build requirements:
 * Boost `sudo apt-get install libboost-chrono1.48-dev`
 * premake4
 
-Notes: Windows version compiles, but it doesn't have a real rendering system working.
-
 Resources
 =========
 
