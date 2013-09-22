@@ -31,7 +31,14 @@ namespace sfml {
 		box.setPosition(sf::Vector2f(50,50));
 
 		window->draw(box);
-		//TODO: do some rendering here
+
+
+		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorsInRoom(cameraPos);
+
+		for(unsigned int i = 0; i < actors.size();++i){
+			dummySprite.setPosition( (actors.at(i)->getPos()->x * 10) , (actors.at(i)->getPos()->y * 10) );
+			window->draw(dummySprite);
+		}
 
 		window->display();
 	}

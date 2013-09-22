@@ -18,6 +18,8 @@ namespace engine {
 namespace render {
 namespace sfml {
 
+#define LOADTEXTURE(p_var, p_sprite, p_file) if(! p_var.loadFromFile( p_file ) ){ LOG_ERROR("Failed to load texture: " p_file ) return false; } p_sprite.setTexture(p_var);
+
 	/**
 	 * SfmlRender provides 2D tile rendering on windows platform.
 	 */
@@ -27,6 +29,11 @@ namespace sfml {
 		UI::UISystem *uiSystem;
 
 		sf::RenderWindow *window;
+
+		/* Textures used */
+		//TODO: somekind of texture manager would be nice
+		sf::Texture dummyTexture;
+		sf::Sprite dummySprite;
 
 	public:
 		SfmlRender(scene::SceneSystem *sceneSystem, UI::UISystem *uiSystem)
@@ -38,6 +45,9 @@ namespace sfml {
 			window = new sf::RenderWindow(sf::VideoMode(800,600), "ProjectIce TODO: add version here");
 
 			setCameraPos( vec3(0, 0, 0) );
+
+			//Load textures
+			LOADTEXTURE(dummyTexture,dummySprite,"./gfx/dummy.png");
 
 			return true;
 		}
