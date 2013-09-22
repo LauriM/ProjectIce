@@ -19,9 +19,18 @@ namespace log {
 			fclose(logFile);
 		}
 
-//if nullrender is enabled, just add stuff there
 #ifdef NULLRENDER
+#define PRINT_ENABLED
+#endif
+
+#ifdef SFMLRENDER
+#define PRINT_ENABLED
+#endif
+
+#ifdef PRINT_ENABLED
 	printf("%s\n", logMsg.c_str() );
+
+#undef PRINT_ENABLED
 #endif
 
 		//TODO: Add some kind of ingame log reader thing or just parse with tail (2013-04-08)
