@@ -66,8 +66,15 @@ namespace sfml {
 		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorSystem()->getActorsInRoom(cameraPos);
 
 		for(unsigned int i = 0; i < actors.size();++i){
-			dummySprite.setPosition( (actors.at(i)->getPos()->x * 10) , (actors.at(i)->getPos()->y * 10) );
-			window->draw(dummySprite);
+			sprite = dummySprite; //default gfx if not found
+
+			//TODO: Add some kind of linking of player <-> resource on a text file.
+			if(actors.at(i)->getName() == "Player"){
+				sprite = playerSprite;
+			}
+
+			sprite.setPosition( (actors.at(i)->getPos()->x * 10) , (actors.at(i)->getPos()->y * 10) );
+			window->draw(sprite);
 		}
 
 		window->display();

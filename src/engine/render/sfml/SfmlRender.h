@@ -50,6 +50,9 @@ namespace sfml {
 		sf::Texture treeTexture;
 		sf::Sprite treeSprite;
 
+		sf::Texture playerTexture;
+		sf::Sprite playerSprite;
+
 	public:
 		SfmlRender(scene::SceneSystem *sceneSystem, UI::UISystem *uiSystem)
 			: sceneSystem(sceneSystem)
@@ -68,6 +71,7 @@ namespace sfml {
 			LOADTEXTURE(floorTexture     , floorSprite     , "./gfx/floor.png");
 			LOADTEXTURE(solidRockTexture , solidRockSprite , "./gfx/solid_rock.png");
 			LOADTEXTURE(treeTexture      , treeSprite      , "./gfx/tree.png");
+			LOADTEXTURE(playerTexture    , playerSprite    , "./gfx/player.png");
 
 			return true;
 		}
