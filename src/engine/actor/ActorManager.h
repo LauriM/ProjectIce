@@ -25,8 +25,8 @@ namespace actor {
 			, worldSystem(worldSystem)
 		{}
 
-		void ActorManager::moveActor(actor::ActorBase * actor,const vec2 pos);
-		void ActorManager::moveActorRel(actor::ActorBase * actor,const vec2 pos);
+		void moveActor(actor::ActorBase * actor,const vec2 pos);
+		void moveActorRel(actor::ActorBase * actor,const vec2 pos);
 
 		/* getters & setters */
 
