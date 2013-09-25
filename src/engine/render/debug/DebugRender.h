@@ -1,9 +1,9 @@
-#ifndef NULLRENDER
-#define ENGINE_RENDER_NULL_NULLRENDER_H
+#ifndef DEBUGRENDER
+#define ENGINE_RENDER_DEBUG_DEBUGRENDER_H
 #endif
 
-#ifndef ENGINE_RENDER_NULL_NULLRENDER_H
-#define ENGINE_RENDER_NULL_NULLRENDER_H
+#ifndef ENGINE_RENDER_DEBUG_DEBUGRENDER_H
+#define ENGINE_RENDER_DEBUG_DEBUGRENDER_H
 
 #include "engine/render/RenderSystem.h"
 
@@ -13,47 +13,47 @@
 /* HEADLESS TESTING SETTINGS */
 
 //How many steps are processed until a rendering is triggered
-#define NULLRENDER_STEP 1
+#define DEBUGRENDER_STEP 1
 
 //Should simulation wait for input before continuing after render
-#define NULLRENDER_PAUSE true
+#define DEBUGRENDER_PAUSE true
 
 //Should history be printed every tick
-#define NULLRENDER_HISTORY true
+#define DEBUGRENDER_HISTORY true
 
 //Should the cls be used on every tick or not
-#define NULLRENDER_CLS false
+#define DEBUGRENDER_CLS false
 
 namespace engine {
 namespace render {
-namespace null {
+namespace debug {
 
 	/**
-	 * NullRenderer is used for debugging/development purpose. It doesn't add any dependencies like other renderers.
+	 * DebugRenderer is used for debugging/development purpose. It doesn't add any dependencies like other renderers.
 	 * 
-	 * NullRenderer can also be used to print information from the world, useful for "headless" testing.
+	 * DebugRenderer can also be used to print information from the world, useful for "headless" testing.
 	 */
-	class NullRender : public RenderSystem {
+	class DebugRender : public RenderSystem {
 	private:
 		scene::SceneSystem *sceneSystem;
 		UI::UISystem *uiSystem;
 
 		int stepsLeft;
 	public:
-		NullRender(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem)
+		DebugRender(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem)
 			: sceneSystem(sceneSystem),
 			uiSystem(uiSystem),
 			stepsLeft(0)
 		{}
 
 		bool init(){
-			printf("NullRendering init!\n");
+			printf("DebugRendering init!\n");
 
 			return true;
 		}
 
 		void uninit(){
-			printf("NullRendering closing!\n");
+			printf("DebugRendering closing!\n");
 		}
 
 		void update();

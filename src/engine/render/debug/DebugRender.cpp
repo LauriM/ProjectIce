@@ -1,15 +1,15 @@
 #include "precompiled.h"
 
-#include "engine/render/null/NullRender.h"
+#include "engine/render/debug/DebugRender.h"
 
-//Only compile nullrender if its in use
-#ifdef NULLRENDER
+//Only compile debugrender if its in use
+#ifdef DEBUGRENDER
 
 namespace engine {
 namespace render {
-namespace null {
+namespace debug {
 
-	void NullRender::update(){
+	void DebugRender::update(){
 		stepsLeft--;
 
 		if(stepsLeft < 0){
@@ -17,10 +17,10 @@ namespace null {
 			uiSystem->windows.size(); //these are not unused
 			sceneSystem->getActorManager();
 
-			if(NULLRENDER_HISTORY == true){
+			if(DEBUGRENDER_HISTORY == true){
 				console::ConsoleSystem::MsgHistory hist = console::ConsoleSystem::getMsgHistory();
 
-				if(NULLRENDER_CLS == true){
+				if(DEBUGRENDER_CLS == true){
 					system("cls");
 				}
 
@@ -33,9 +33,9 @@ namespace null {
 			//printf("Actors in room 0,0,0: %ui \n", sceneSystem->getActorManager()->getActorsInRoom(vec3(0,0,0)).size() );
 			printf("---\n");
 
-			stepsLeft = NULLRENDER_STEP;
+			stepsLeft = DEBUGRENDER_STEP;
 
-			if(NULLRENDER_PAUSE == true){
+			if(DEBUGRENDER_PAUSE == true){
 				getchar();
 			}
 		}

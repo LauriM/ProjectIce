@@ -26,8 +26,8 @@
 #include "engine/input/null/NullInput.h"
 #endif
 
-#ifdef NULLRENDER
-#include "engine/render/null/NullRender.h"
+#ifdef DEBUGRENDER
+#include "engine/render/debug/DebugRender.h"
 #include "engine/input/null/NullInput.h"
 #endif
 
@@ -123,8 +123,8 @@ int main(int argc, char *argv[]){
 	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
 	engine::input::InputSystem   *input  = new engine::input::null::NullInput();
 #endif
-#ifdef NULLRENDER
-	engine::render::RenderSystem *render = new engine::render::null::NullRender(scene,ui);
+#ifdef DEBUGRENDER
+	engine::render::RenderSystem *render = new engine::render::debug::DebugRender(scene,ui);
 	engine::input::InputSystem   *input  = new engine::input::null::NullInput();
 #endif
 #ifdef SFMLRENDER
