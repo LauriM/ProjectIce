@@ -10,6 +10,7 @@
 #include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
 #include "engine/console/ConsoleSystem.h"
+#include "engine/actor/ActorSystem.h"
 #include "engine/actor/ActorManager.h"
 #include "engine/console/Cvar.h"
 
@@ -107,9 +108,10 @@ int main(int argc, char *argv[]){
 	engine::world::WorldSystem * worldSystem = new engine::world::WorldSystem();
 	worldSystem->init();
 	worldSystem->generate();
-	playerActor->setWorld(worldSystem);
 
-	engine::actor::ActorManager * actorManager = new engine::actor::ActorManager();
+	engine::actor::ActorSystem * actorSystem = new engine::actor::ActorSystem();
+
+	engine::actor::ActorManager * actorManager = new engine::actor::ActorManager(actorSystem,worldSystem);
 
 	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,actorManager,playerActor);
 
@@ -117,7 +119,7 @@ int main(int argc, char *argv[]){
 	worldSystem->getRoom(vec3(0,0,0))->getInventory()->addItem(pi);
 
 	engine::UI::UISystem *ui    = new engine::UI::UISystem();
-	engine::actor::AISystem *ai = new engine::actor::AISystem(actorManager,worldSystem);
+	engine::actor::AISystem *ai = new engine::actor::AISystem(actorManager);
 
 #ifdef TERMRENDER
 	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
@@ -206,20 +208,18 @@ int main(int argc, char *argv[]){
 
 	for(int i = 0;i < 5;++i){
 		game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();
-		dummy->setWorld( worldSystem );
 		dummy->setPosition( vec2(10+i,15) );
 		dummy->setLocation( vec3(0,0,0) );
 
-		scene->getActorManager()->insertActorToRoom(dummy);
+		scene->getActorManager()->getActorSystem()->insertActorToRoom(dummy);
 	}
 
 	game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();
-	dummy->setWorld( worldSystem );
 	dummy->setPosition( vec2(11,11) );
 	dummy->setLocation( vec3(0,0,0) );
 	dummy->setAIState(engine::actor::AISTATE_SLEEP);
 
-	scene->getActorManager()->insertActorToRoom(dummy);
+	scene->getActorManager()->getActorSystem()->insertActorToRoom(dummy);
 
 	worldSystem->getRoom( vec3(0,0,0) )->printLayout();
 

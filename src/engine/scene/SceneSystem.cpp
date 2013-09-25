@@ -8,7 +8,7 @@ namespace scene {
         actorManager = actorMan;
         playerActor = player; //TODO: WTF is player charachter handled this way !?!? FIX IT
 
-        actorManager->insertActorToRoom(playerActor);
+		actorManager->getActorSystem()->insertActorToRoom(playerActor);
     }
 
     bool SceneSystem::init( ){

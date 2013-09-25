@@ -1,7 +1,6 @@
 #ifndef ENGINE_ACTOR_AISYSTEM
 #define ENGINE_ACTOR_AISYSTEM
 
-#include "engine/world/WorldSystem.h"
 #include "engine/actor/ActorManager.h"
 
 namespace engine {
@@ -18,14 +17,13 @@ namespace actor {
 	 */
 	class AISystem : public EngineSystem {
 		private:
+			//TODO: consider just getting the pointers for the actorsystem and worldsystem... used lot in the code.
 			engine::actor::ActorManager *actorManager;
-			engine::world::WorldSystem *worldSystem;
 
 			void handleActor(actor::ActorBase * actor);
-			void moveActor(actor::ActorBase * actor,vec2 dir);
 
 		public:
-			AISystem(actor::ActorManager *actorManager, world::WorldSystem *worldSystem);
+			AISystem(actor::ActorManager *actorManager);
 			~AISystem() {};
 
 			virtual bool init();

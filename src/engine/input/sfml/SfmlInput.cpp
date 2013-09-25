@@ -45,8 +45,23 @@ namespace sfml {
 	 */
 	bool SfmlInput::handleKey(sf::Event *event){
 
-		if(event->key.code == sf::Keyboard::J){
+		if(event->key.code == sf::Keyboard::Up){
 			scene->getPlayerActor()->MoveActor(vec2(0,-1));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Down){
+			scene->getPlayerActor()->MoveActor(vec2(0,-1));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Left){
+			scene->getPlayerActor()->MoveActor(vec2(1,0));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Right){
+			scene->getPlayerActor()->MoveActor(vec2(-1,0));
 			return true;
 		}
 

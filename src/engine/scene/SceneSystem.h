@@ -19,7 +19,6 @@ namespace scene {
 	class SceneSystem : public EngineSystem {
 		private:
 			world::WorldSystem *worldSystem;
-
 			actor::ActorManager *actorManager;
 
 			// player related objects

@@ -63,7 +63,7 @@ namespace sfml {
 		}
 
 
-		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorsInRoom(cameraPos);
+		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorSystem()->getActorsInRoom(cameraPos);
 
 		for(unsigned int i = 0; i < actors.size();++i){
 			dummySprite.setPosition( (actors.at(i)->getPos()->x * 10) , (actors.at(i)->getPos()->y * 10) );

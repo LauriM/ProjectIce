@@ -5,7 +5,6 @@
 
 #include "engine/math/vec2.h"
 #include "engine/math/vec3.h"
-#include "engine/world/WorldSystem.h"
 #include "engine/actor/AIState.h"
 #include "engine/console/ConsoleSystem.h"
 #include "engine/inventory/Inventory.h"
@@ -20,7 +19,6 @@ namespace actor {
 	 */
 	class ActorBase {
 		protected:
-			engine::world::WorldSystem *world;
 			vec2 position; /* Position inside the room */
 			vec3 location; /* Room location where actor is */
 
@@ -61,13 +59,6 @@ namespace actor {
 			virtual void update() = 0;
 
 			virtual void onAttack( ActorBase * target ) = 0;
-
-			//Should be called for all the actors
-			//
-			//NOTE: IF THIS IS NOT SET, THE GAME WILL CRASH
-			void setWorld(engine::world::WorldSystem *newWorld){
-				world = newWorld;
-			}
 
 			/**
 			 * Give certain amount of EXP, calculate possible level ups.

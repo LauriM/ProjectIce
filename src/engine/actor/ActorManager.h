@@ -1,65 +1,39 @@
 #ifndef ENGINE_ACTOR_ACTORMANAGER_H
 #define ENGINE_ACTOR_ACTORMANAGER_H
 
-#include <vector>
-
-#include "engine/math/vec2.h"
-#include "engine/math/vec3.h"
-#include "engine/actor/ActorBase.h"
+#include "engine/actor/ActorSystem.h"
+#include "engine/world/WorldSystem.h"
 
 namespace engine {
 namespace actor {
 
 	/**
-	 * ActorManager contains all the actors in game.
+	 * ActorManager provides movement/manipulation commands for the actors.
+	 * 
+	 * These commands usually require access to both world and actor systems.
 	 *
-	 * The actors are organized so that they can be easily queried by the room.
-	 *
-	 * Actor position/location is stored inside the actorbase, here its splitted also just for faster queries.
-	 *
-	 * The system is not yet optimized, its just in the place to get the functions work. Internal stuff should be improved.
+	 * ActorManager also provides the pointers to the systems it depends on.
 	 */
 	class ActorManager {
-		private:
-			//TODO: Only one vector with all the actors! Should be higly optimized!
-			std::vector<ActorBase *> actors;
+	private:
+		actor::ActorSystem *actorSystem;
+		world::WorldSystem *worldSystem;
 
-		public:
+	public:
+		ActorManager(actor::ActorSystem *actorSystem, world::WorldSystem *worldSystem)
+			: actorSystem(actorSystem)
+			, worldSystem(worldSystem)
+		{}
 
-			//TODO: implement moving from container to another
+		void ActorManager::moveActor(actor::ActorBase * actor,const vec2 pos);
 
-			/**
-			 * Insert actor to the manager.
-			 * @param actor actor to be inserted
-			 */
-			void insertActorToRoom(ActorBase* actor){
-				actors.push_back(actor);
-			}
+		actor::ActorSystem * getActorSystem() {
+			return actorSystem;
+		}
 
-			/**
-			 * remove actor from the whole game.
-			 *
-			 * @param actor pointer to the actor to be removed.
-			 */
-			void removeActor(ActorBase* actor){
-				for(unsigned int i = 0;i < actors.size();++i){
-					if(actors.at(i) == actor){
-						actors.erase( actors.begin() + i);
-					}
-				}
-			}
-
-			std::vector<ActorBase *> getActorsInRoom(vec3 location){
-				std::vector<ActorBase *> output;
-
-				for(unsigned int i = 0;i < actors.size();++i){
-					if(actors.at(i)->getLocation() == location){
-						output.push_back(actors.at(i));
-					}
-				}
-
-				return output;
-			}
+		world::WorldSystem * getWorldSystem() {
+			return worldSystem;
+		}
 	};
 
 }
