@@ -1,30 +1,30 @@
 
-#ifndef BODY_MEMBER
-#define BODY_MEMBER
+#ifndef ENGINE_ACTOR_ACTORBODYLIMB_H
+#define ENGINE_ACTOR_ACTORBODYLIMB_H
 
 #include "precompiled.h"
 
 #include <vector>
 
 namespace engine {
-namespace body {
+namespace actor {
 	
-	class BodyMember {
+	class ActorBodyLimb {
 	private:
-		void attachToParent( BodyMember * parent );
+		void attachToParent( ActorBodyLimb * parent );
 	protected:
 		String name;
-		BodyMember * parent;
-		std::vector<BodyMember*> children;
+		ActorBodyLimb * parent;
+		std::vector<ActorBodyLimb*> children;
 	public:
 		/** The body part has come into existance!
 		 * @param parent the body part of which this body part is attached too (can be NULL as an indicator that it's the head)
 	  	 */
-		BodyMember( BodyMember * parent, String name );
+		ActorBodyLimb( ActorBodyLimb * parent, String name );
 
 		/** The body part was severed and so are all of the children underneath it. 
 		 */
-		~BodyMember( );
+		~ActorBodyLimb( );
 
 		/** Used for display purposes, you can give the limb a name like hand, feet, etc.
 		 * @return the name of the limb
@@ -34,17 +34,17 @@ namespace body {
 		/** Returns the reference to the limb of which this limb is attached too
 		 * @return the pointer to the top limb
 		 */
-		BodyMember * getParent();
+		ActorBodyLimb * getParent();
 
 		/** Returns a list of children in which this limb is directly attached too (1 level deep)
 		 * @return the pointer to the top limb
 		 */		
-		std::vector<BodyMember*> getDirectChildren();
+		std::vector<ActorBodyLimb*> getDirectChildren();
 
 		/** Returns the list of ALL of the children which are underneath this limb (for example head -> body -> arm -> hand)
 		 * @return the pointer to the top limb
 		 */
-		std::vector<BodyMember*> getAllChildren();
+		std::vector<ActorBodyLimb*> getAllChildren();
 	};
 
 }

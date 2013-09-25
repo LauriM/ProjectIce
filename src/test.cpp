@@ -15,7 +15,7 @@
 #include "game/item/container/QuiverItem.h"
 #include "engine/item/ItemManager.h"
 
-#include "engine/body/BodyMember.h"
+#include "engine/actor/ActorBodyLimb.h"
 
 #include <map>
 #include <vector>
@@ -176,9 +176,9 @@ int main(){
 
 	PRINTLN("-> Body Parts Flying Everywhere!");
 	{
-		body::BodyMember * head = new body::BodyMember( NULL, "Head" );
+		actor::ActorBodyLimb * head = new actor::ActorBodyLimb( NULL, "Head" );
 		SCPPT_COMPARE( "Body part is a head: ", head->getName(), ==, "Head" );
-		std::vector<body::BodyMember*> children = head->getDirectChildren();
+		std::vector<actor::ActorBodyLimb*> children = head->getDirectChildren();
 		SCPPT_COMPARE( "The head has no children: ", children.size(), ==, 0 );
 	}
 
