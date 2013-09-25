@@ -35,5 +35,16 @@ namespace actor {
 		actor->setPosition(pos);
 	}
 
+	/**
+	 * Calls the moveActor function, but uses relative positions instead of absolute.
+	 */
+	void ActorManager::moveActorRel(actor::ActorBase * actor,const vec2 pos){
+		vec2 absPos = actor->getPosition();
+
+		absPos += pos;
+
+		moveActor(actor,absPos);
+	}
+
 }
 }
