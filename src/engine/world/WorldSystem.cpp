@@ -1,3 +1,4 @@
+#include "precompiled.h"
 #include "engine/math/random.h"
 #include "engine/EngineSystem.h"
 #include "engine/world/WorldSystem.h"
@@ -173,9 +174,9 @@ namespace world {
 		//TODO: datastorage method for rooms should be optimized!
 
 		//Build the hash thing:
-		String posString = std::to_string(pos.x);
-		posString += std::to_string(pos.y);
-		posString += std::to_string(pos.z);
+		String posString = boost::lexical_cast<String,int>(pos.x);
+		posString += boost::lexical_cast<String,int>(pos.y);
+		posString += boost::lexical_cast<String,int>(pos.z);
 
 		//Find the room from the hashmap
 		RoomList::iterator iter = roomList->find(posString);

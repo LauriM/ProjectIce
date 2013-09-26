@@ -7,6 +7,7 @@
 #include <assert.h>
 
 #include <boost/unordered_map.hpp>
+#include <boost/lexical_cast.hpp>
 
 #include "stdio.h"
 

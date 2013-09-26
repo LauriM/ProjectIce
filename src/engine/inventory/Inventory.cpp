@@ -13,7 +13,7 @@ namespace inventory {
 	Inventory::ItemVector Inventory::getItemsByName(const String name) {
 		std::vector<item::ItemBase*> foundItems;
 
-		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( ItemIterator iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getName().compare(name) == 0 ) {
 				foundItems.push_back( (*iter) );
 			}
@@ -25,7 +25,7 @@ namespace inventory {
 	item::ItemBase* Inventory::getItemByID(const int id) {
 		item::ItemBase* returnItem = NULL;
 
-		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( ItemIterator iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				returnItem = (*iter);
 				break;
@@ -49,7 +49,7 @@ namespace inventory {
 	Inventory::ItemVector Inventory::removeItemsByName(const String name) {
 		std::vector<item::ItemBase*> foundItems;
 
-		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( ItemIterator iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getName().compare(name) == 0 ) {
 				item::ItemBase* item = (*iter);
 
@@ -68,7 +68,7 @@ namespace inventory {
 			return NULL;
 		}
 
-		for( auto iter = itemList.begin(); iter != itemList.end(); ++iter ) {
+		for( ItemIterator iter = itemList.begin(); iter != itemList.end(); ++iter ) {
 			if ( (*iter)->getId() == id ) {
 				item::ItemBase* item = (*iter);
 
