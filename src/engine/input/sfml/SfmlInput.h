@@ -3,11 +3,11 @@
 #define ENGINE_INPUT_SFML_SFMLINPUT_H
 #endif
 
-#include "engine/input/InputSystem.h"
-#include "engine/render/sfml/SfmlRender.h"
-
 #ifndef ENGINE_INPUT_SFML_SFMLINPUT_H
 #define ENGINE_INPUT_SFML_SFMLINPUT_H
+
+#include "engine/input/InputSystem.h"
+#include "engine/render/sfml/SfmlRender.h"
 
 #define SFMLINPUT
 
