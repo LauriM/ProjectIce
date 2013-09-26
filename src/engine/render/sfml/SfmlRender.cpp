@@ -56,7 +56,7 @@ namespace sfml {
 					sprite = errorSprite;
 				}
 
-				sprite.setPosition( (x * 10) , (y * 10) );
+				sprite.setPosition( (x * 10.f) , (y * 10.f) );
 				window->draw(sprite); 
 			}
 

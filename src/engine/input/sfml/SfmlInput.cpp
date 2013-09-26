@@ -18,7 +18,6 @@ namespace sfml {
 		//Loop as long as we get some real commands
 		for(;;){
 			while(window->pollEvent(event)){
-				LOG_INFO("Event");
 				switch(event.type){
 				case sf::Event::Closed:
 					window->close();
@@ -26,12 +25,8 @@ namespace sfml {
 
 				case sf::Event::KeyPressed:
 					if(handleKey(&event)){
-						LOG_INFO("valid key pressed");
 						return;
-					}else{
-						LOG_INFO("invalid key pressed");
 					}
-
 					break;
 				}
 			}
@@ -45,6 +40,7 @@ namespace sfml {
 	 */
 	bool SfmlInput::handleKey(sf::Event *event){
 
+		//Arrow-keys
 		if(event->key.code == sf::Keyboard::Up){
 			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(0,-1));
 			return true;
@@ -64,6 +60,54 @@ namespace sfml {
 			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(1,0));
 			return true;
 		}
+
+		//Numpad keys
+		if(event->key.code == sf::Keyboard::Numpad1){
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(-1,1));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Numpad2){
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(0,1));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Numpad3){
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(1,1));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Numpad4){
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(-1,0));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Numpad5){
+			//Wait by not moving!
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(0,0));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Numpad6){
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(1,0));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Numpad7){
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(-1,-1));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Numpad8){
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(0,-1));
+			return true;
+		}
+
+		if(event->key.code == sf::Keyboard::Numpad9){
+			scene->getActorManager()->moveActorRel(scene->getPlayerActor(),vec2(1,-1));
+			return true;
+		}
+
 
 		return false;
 	}
