@@ -13,7 +13,6 @@ solution "ProjectIce"
 		defines { "LINUX", "TERMRENDER" }
 		links   { "m", "rt", "termbox" }
 		flags   { }
-		buildoptions { "-std=c++11" }
 
 	configuration "Debug"
 		defines { "DEBUG" }
