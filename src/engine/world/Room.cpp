@@ -79,43 +79,50 @@ namespace world {
 
 			break;
 		case ROOM_TYPE_DUNGEON:
-			tempTile.setType(TILE_ROCK_FLOOR);
-
-			//Fill with rocks
-			for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
-				tiles[i] = Tile(TILE_SOLID_ROCK);
-			}
-
-			//Insert the random rooms
-			int roomCount = randomRange(5,18);
-
-			while(roomCount > 0){
-				AABB room;
-				//first size, then position, so we are sure it wont go over the limits
-				room.size.x = randomRange(5,10);
-				room.size.y = randomRange(2,10);
-
-				room.pos.x = randomRange(1,(ROOM_WIDTH  - room.size.x - 1));  //One is to make sure the collision AABB doesn't go out of bounds.
-				room.pos.y = randomRange(1,(ROOM_HEIGHT - room.size.y - 1)); 
-
-				AABB roomCollision = room;
-
-				--roomCollision.pos.x;
-				--roomCollision.pos.y;
-				++roomCollision.size.x;
-				++roomCollision.size.y;
-
-				//Only create room and tick the counter if the room is clear to be placed.
-				if(AABBBlockCheck(roomCollision,false) == false){
-					AABBSetTile(room,Tile(TILE_ROCK_FLOOR));
-
-					--roomCount;
-				}
-			}
-
+			generateDungeon();
 			break;
 		}
 	}
+
+	/**
+	 * This room is generated to be a dungeon.
+	 */
+	void Room::generateDungeon() {
+		Tile tempTile(TILE_ROCK_FLOOR);
+
+		//Fill with rocks
+		for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
+			tiles[i] = Tile(TILE_SOLID_ROCK);
+		}
+
+		//Insert the random rooms
+		int roomCount = randomRange(5,18);
+
+		while(roomCount > 0){
+			AABB room;
+			//first size, then position, so we are sure it wont go over the limits
+			room.size.x = randomRange(5,10);
+			room.size.y = randomRange(2,10);
+
+			room.pos.x = randomRange(1,(ROOM_WIDTH  - room.size.x - 1));  //One is to make sure the collision AABB doesn't go out of bounds.
+			room.pos.y = randomRange(1,(ROOM_HEIGHT - room.size.y - 1)); 
+
+			AABB roomCollision = room;
+
+			--roomCollision.pos.x;
+			--roomCollision.pos.y;
+			++roomCollision.size.x;
+			++roomCollision.size.y;
+
+			//Only create room and tick the counter if the room is clear to be placed.
+			if(AABBBlockCheck(roomCollision,false) == false){
+				AABBSetTile(room,Tile(TILE_ROCK_FLOOR));
+
+				--roomCount;
+			}
+		}
+	}
+
 
 	/**
 	 * Returns direct access to the tile array, useful when raw access needed to the array.

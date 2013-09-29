@@ -61,6 +61,10 @@ namespace world {
 		void setInventory(inventory::Inventory* inventory) {
 			this->inventory = *inventory;
 		}
+
+	private:
+		// [ Generate sub generators ]
+		void generateDungeon();
 	};
 }
 }
