@@ -1,3 +1,4 @@
+#include "precompiled.h"
 #include "engine/world/Room.h"
 #include "engine/math/random.h"
 #include "engine/math/AABB.h"
@@ -88,6 +89,8 @@ namespace world {
 	 * This room is generated to be a dungeon.
 	 */
 	void Room::generateDungeon() {
+		std::vector<vec2> roomMarkers; //Markers to point out where are the rooms, connections are drawn using this.
+
 		Tile tempTile(TILE_ROCK_FLOOR);
 
 		//Fill with rocks
@@ -109,14 +112,20 @@ namespace world {
 
 			AABB roomCollision = room;
 
+			//roomCollision is one larger than the room.
 			--roomCollision.pos.x;
 			--roomCollision.pos.y;
-			++roomCollision.size.x;
-			++roomCollision.size.y;
+			++++roomCollision.size.x; //Double because --roomCollision moves it back
+			++++roomCollision.size.y;
 
 			//Only create room and tick the counter if the room is clear to be placed.
 			if(AABBBlockCheck(roomCollision,false) == false){
 				AABBSetTile(room,Tile(TILE_ROCK_FLOOR));
+				roomMarkers.push_back(
+					vec2( 
+						randomRange(room.pos.x, (room.pos.x + room.size.x)) ,
+						randomRange(room.pos.y, (room.pos.y + room.size.x))
+					));
 
 				--roomCount;
 			}
