@@ -5,6 +5,7 @@
 
 #include "engine/world/Tile.h"
 #include "engine/math/vec2.h"
+#include "engine/math/AABB.h"
 
 #define ASSERT_TILE_XY(p_x,p_y) ASSERT_TILE_X(p_x) ASSERT_TILE_Y(p_y)
 
@@ -47,6 +48,8 @@ namespace world {
 		void setTile(int x,int y,Tile tile);
 
 		void generate();
+
+		bool AABBBlockCheck(AABB box,bool type);
 
 		void printLayout();
 

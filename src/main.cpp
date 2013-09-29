@@ -190,14 +190,7 @@ int main(int argc, char *argv[]){
 	worldSystem->getRoom( vec3(0,0,0) )->roomType = engine::world::ROOM_TYPE_DUNGEON;
 	worldSystem->getRoom( vec3(0,0,0) )->generate();
 
-	voidTile.setType(engine::world::TILE_TREE);
-	for(int x = 7;x < 20;++x){
-		for(int y = 7;y < 20;++y){
-			worldSystem->getRoom( vec3(0,0,0) )->setTile(x,y,voidTile);
-		}
-	}
-
-	voidTile.setType(engine::world::TILE_VOID);
+	voidTile.setType(engine::world::TILE_ROCK_FLOOR);
 	for(int x = 8;x < 19;++x){
 		for(int y = 8;y < 19;++y){
 			worldSystem->getRoom( vec3(0,0,0) )->setTile(x,y,voidTile);
