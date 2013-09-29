@@ -29,6 +29,8 @@ class vec2 {
 		double length() const;
 		bool operator < (const vec2 & rhs) const;
 		bool operator > (const vec2 & rhs) const;
+
+		void randomNSWE();
 };
 
 #endif

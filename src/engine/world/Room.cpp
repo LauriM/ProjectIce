@@ -89,7 +89,7 @@ namespace world {
 	 * This room is generated to be a dungeon.
 	 */
 	void Room::generateDungeon() {
-		std::vector<vec2> roomMarkers; //Markers to point out where are the rooms, connections are drawn using this.
+		std::vector<vec2> roomMarkers; //Markers to point out where are the rooms, used later on the generation.
 
 		Tile tempTile(TILE_ROCK_FLOOR);
 
@@ -99,13 +99,13 @@ namespace world {
 		}
 
 		//Insert the random rooms
-		int roomCount = randomRange(5,18);
+		int roomCount = randomRange(5,30);
 
 		while(roomCount > 0){
 			AABB room;
 			//first size, then position, so we are sure it wont go over the limits
 			room.size.x = randomRange(5,10);
-			room.size.y = randomRange(2,10);
+			room.size.y = randomRange(4,10);
 
 			room.pos.x = randomRange(1,(ROOM_WIDTH  - room.size.x - 1));  //One is to make sure the collision AABB doesn't go out of bounds.
 			room.pos.y = randomRange(1,(ROOM_HEIGHT - room.size.y - 1)); 
@@ -121,15 +121,62 @@ namespace world {
 			//Only create room and tick the counter if the room is clear to be placed.
 			if(AABBBlockCheck(roomCollision,false) == false){
 				AABBSetTile(room,Tile(TILE_ROCK_FLOOR));
+				/*
 				roomMarkers.push_back(
 					vec2( 
-						randomRange(room.pos.x, (room.pos.x + room.size.x)) ,
-						randomRange(room.pos.y, (room.pos.y + room.size.x))
+						randomRange(room.pos.x, (room.pos.x + room.size.x - 1)) ,
+						randomRange(room.pos.y, (room.pos.y + room.size.x - 1))
 					));
 
-				--roomCount;
+				*/
+
+				roomMarkers.push_back(room.pos);
 			}
+			--roomCount;
 		}
+
+		//Paths between the rooms
+		int pathCount = randomRange(25,50);
+		while (pathCount > 0) {
+			//TODO: Add change of disconnected room.
+			//Start from a marker, create a path until hits something
+
+			vec2 pos = vec2(randomRange(0,ROOM_WIDTH - 1), randomRange(0,ROOM_HEIGHT -1));
+			vec2 dir;
+			dir.randomNSWE();
+			int timer = -1;
+			int miss = 0;
+
+			for(;;){
+				--timer;
+				if(timer < 0){
+					dir.randomNSWE();
+					timer = randomRange(5,10);
+				}
+
+				if(miss > 5){
+					//5 misses, stop pathing!
+					break;
+				}
+
+				pos += dir;
+
+				if(pos.x < 0 || pos.x > (ROOM_WIDTH - 1)|| pos.y < 0 || pos.y > (ROOM_HEIGHT - 1)){
+					dir.randomNSWE();
+					++miss;
+					continue; //Hit a wall!
+				}
+
+				if(getTile(pos)->blocks == false){
+					break; //Found non-blocking place, not going there!
+				}
+
+				setTile(pos,Tile(TILE_ROCK_FLOOR));
+			}
+
+			--pathCount;
+		}
+
 	}
 
 

@@ -2,6 +2,8 @@
 
 #include "engine/math/vec2.h"
 
+#include "engine/math/random.h"
+
 vec2::vec2() {
 	x = 0;
 	y = 0;
@@ -90,5 +92,28 @@ bool vec2::operator > (const vec2 & rhs) const {
 		return true;
 	} else {
 		return false;
+	}
+}
+
+/**
+ * set vector to random n / s / e / w direction with speed 1
+ */
+void vec2::randomNSWE() {
+	switch(randomRange(0,3)){
+	case 0:
+		x = 1; y = 0;
+		break;
+	case 1:
+		x = -1; y = 0;
+		break;
+	case 2:
+		x = 0; y = -1;
+		break;
+	case 3:
+		x = 0; y = 1;
+		break;
+	default:
+		x = 1; y = 0;
+		break;
 	}
 }
