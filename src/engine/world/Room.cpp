@@ -87,7 +87,7 @@ namespace world {
 			}
 
 			//Insert the random rooms
-			int roomCount = randomRange(5,10);
+			int roomCount = randomRange(5,18);
 
 			while(roomCount > 0){
 				AABB room;
@@ -107,12 +107,7 @@ namespace world {
 
 				//Only create room and tick the counter if the room is clear to be placed.
 				if(AABBBlockCheck(roomCollision,false) == false){
-					//Room stuff is ok, lets draw it in
-					for(int x = room.pos.x;x < ( room.pos.x + room.size.x );++x){
-						for(int y = room.pos.y;y < ( room.pos.y + room.size.y );++y){
-							setTile(x,y,Tile(TILE_ROCK_FLOOR));
-						}
-					}
+					AABBSetTile(room,Tile(TILE_ROCK_FLOOR));
 
 					--roomCount;
 				}
@@ -155,6 +150,17 @@ namespace world {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Sets the AABB given to certain tile type.
+	 */
+	void Room::AABBSetTile(AABB area,Tile tile){
+		for(int x = area.pos.x; x < ( area.pos.x + area.size.x ); ++x){
+			for(int y = area.pos.y; y < ( area.pos.y + area.size.y ); ++y){
+				setTile(x,y,tile);
+			}
+		}
 	}
 
 }

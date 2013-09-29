@@ -50,6 +50,7 @@ namespace world {
 		void generate();
 
 		bool AABBBlockCheck(AABB box,bool type);
+		void AABBSetTile(AABB area,Tile tile);
 
 		void printLayout();
 

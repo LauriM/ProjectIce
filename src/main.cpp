@@ -190,13 +190,6 @@ int main(int argc, char *argv[]){
 	worldSystem->getRoom( vec3(0,0,0) )->roomType = engine::world::ROOM_TYPE_DUNGEON;
 	worldSystem->getRoom( vec3(0,0,0) )->generate();
 
-	voidTile.setType(engine::world::TILE_ROCK_FLOOR);
-	for(int x = 8;x < 19;++x){
-		for(int y = 8;y < 19;++y){
-			worldSystem->getRoom( vec3(0,0,0) )->setTile(x,y,voidTile);
-		}
-	}
-
 	//Add some Dummy Ai for testing.
 
 	for(int i = 0;i < 5;++i){
