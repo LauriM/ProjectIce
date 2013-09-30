@@ -207,5 +207,13 @@ namespace world {
 		LOG_WARNING("Writing to save file not implemented");
 	}
 
+
+	/**
+	 * Update visual data on the location/position given.
+	 */
+	void WorldSystem::updateVisualOnPosition(vec3 location, vec2 position){
+		getRoom(location)->applyVisual(position);
+	}
+
 }
 }

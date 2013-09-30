@@ -49,6 +49,8 @@ namespace world {
 
 		void loadFromFile(String filename);
 		void saveToFile(String filename);
+
+		void updateVisualOnPosition(vec3 location, vec2 position);
 	};
 
 

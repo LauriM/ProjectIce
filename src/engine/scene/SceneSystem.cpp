@@ -3,13 +3,13 @@
 namespace engine {
 namespace scene {
 
-    SceneSystem::SceneSystem( world::WorldSystem * world, actor::ActorManager * actorMan, actor::ActorBase * player ) {
-        worldSystem = world;
-        actorManager = actorMan;
-        playerActor = player; //TODO: WTF is player charachter handled this way !?!? FIX IT
-
-		actorManager->getActorSystem()->insertActorToRoom(playerActor);
-    }
+    SceneSystem::SceneSystem( world::WorldSystem * world, actor::ActorManager * actorMan, actor::ActorBase * player )
+		: worldSystem(world)
+		, actorManager(actorMan)
+		, playerActor(player)
+		{
+			actorManager->getActorSystem()->insertActorToRoom(playerActor);
+		}
 
     bool SceneSystem::init( ){
         return true;
@@ -20,6 +20,9 @@ namespace scene {
     }
 
     void SceneSystem::update(){
+		//Update the visible stuff for player
+		worldSystem->updateVisualOnPosition(playerActor->getLocation(), playerActor->getPosition());
+
         worldSystem->update();
     }
 
