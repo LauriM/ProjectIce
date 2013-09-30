@@ -15,11 +15,19 @@ namespace world {
 
 		for(int i = 0;i < (ROOM_WIDTH * ROOM_HEIGHT);++i){
 			tiles[i] = tempTile;
+			visual[i] = tempTile;
 		}
 	}
 
 	Tile* Room::getTile(const vec2 pos){
 		return getTile(pos.x,pos.y);
+	}
+
+	/**
+	 * Returns direct access to the tile array, useful when raw access needed to the array.
+	 */
+	Tile* Room::getTileArray(){
+		return tiles;
 	}
 
 	Tile* Room::getTile(const int x,const int y){
@@ -37,14 +45,28 @@ namespace world {
 		tiles[(x * ROOM_HEIGHT) + y] = tile;
 	}
 
-	/*
-	Tile* getVisual(const vec2 pos);
-	Tile* getVisual(const int x,const int y);
-	Tile* getVisualArray();
+	Tile* Room::getVisual(const vec2 pos){
+		return getTile(pos.x, pos.y);
+	}
 
-	void applyVisual(const vec2 pos);
-	void applyVisual(const int x,const int y);
-	*/
+	Tile* Room::getVisual(const int x,const int y){
+		ASSERT_TILE_XY(x,y);
+		return &visual[(x * ROOM_HEIGHT) + y];
+	}
+
+	Tile* Room::getVisualArray(){
+		return visual;
+	}
+
+	void Room::applyVisual(const vec2 pos){
+		applyVisual(pos.x, pos.y);
+	}
+
+	void Room::applyVisual(const int x,const int y){
+		ASSERT_TILE_XY(x,y);
+
+		visual[(x * ROOM_HEIGHT) + y] = tiles[(x * ROOM_HEIGHT) + y];
+	}
 
 	/**
 	 * Regenerate the room.
@@ -188,13 +210,6 @@ namespace world {
 
 	}
 
-
-	/**
-	 * Returns direct access to the tile array, useful when raw access needed to the array.
-	 */
-	Tile* Room::getTileArray(){
-		return tiles;
-	}
 
 	/**
 	 * Prints the room layout to the cmd. Used for debugging.
