@@ -34,18 +34,28 @@ namespace world {
 	private:
 		Tile tiles[ROOM_WIDTH * ROOM_HEIGHT];
 
+		//Players visual array of the room. Data from tiles is copied to this as player starts to see stuff
+		Tile visual[ROOM_WIDTH * ROOM_HEIGHT]; 
+
 		inventory::Inventory inventory;
 
 	public:
 		//Roomtype also used as visual
 		ROOM_TYPES roomType;
 
-		Tile* getTile(vec2 pos);
-		Tile* getTile(int x,int y);
+		Tile* getTile(const vec2 pos);
+		Tile* getTile(const int x,const int y);
 		Tile* getTileArray();
 
-		void setTile(vec2 pos,Tile tile);
-		void setTile(int x,int y,Tile tile);
+		Tile* getVisual(const vec2 pos);
+		Tile* getVisual(const int x,const int y);
+		Tile* getVisualArray();
+
+		void applyVisual(const vec2 pos);
+		void applyVisual(const int x,const int y);
+
+		void setTile(const vec2 pos,Tile tile);
+		void setTile(const int x,const int y,Tile tile);
 
 		void generate();
 

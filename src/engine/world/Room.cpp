@@ -18,24 +18,33 @@ namespace world {
 		}
 	}
 
-	Tile* Room::getTile(vec2 pos){
+	Tile* Room::getTile(const vec2 pos){
 		return getTile(pos.x,pos.y);
 	}
 
-	Tile* Room::getTile(int x,int y){
+	Tile* Room::getTile(const int x,const int y){
 		ASSERT_TILE_XY(x,y);
 
 		return &tiles[(x * ROOM_HEIGHT) + y];
 	}
 
-	void Room::setTile(vec2 pos,Tile tile){
+	void Room::setTile(const vec2 pos,const Tile tile){
 		setTile(pos.x,pos.y,tile);
 	}
 
-	void Room::setTile(int x,int y,Tile tile){
+	void Room::setTile(const int x,const int y,const Tile tile){
 		ASSERT_TILE_XY(x,y);
 		tiles[(x * ROOM_HEIGHT) + y] = tile;
 	}
+
+	/*
+	Tile* getVisual(const vec2 pos);
+	Tile* getVisual(const int x,const int y);
+	Tile* getVisualArray();
+
+	void applyVisual(const vec2 pos);
+	void applyVisual(const int x,const int y);
+	*/
 
 	/**
 	 * Regenerate the room.
