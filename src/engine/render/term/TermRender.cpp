@@ -1,5 +1,6 @@
 #include "precompiled.h"
 #include "engine/render/term/TermRender.h"
+#include "engine/console/Cvar.h"
 
 //Only compile if its in use
 #ifdef TERMRENDER
@@ -8,6 +9,7 @@
 
 namespace cvar {
 	CVAR(int,fastexit,0,CVAR_NORMAL);
+	CVAR(int,wallhack,0,CVAR_CHEAT);
 }
 
 namespace engine {
@@ -35,14 +37,21 @@ namespace term {
 
 		/* RENDER MAP */
 		world::Room *currentRoom = sceneSystem->getWorld()->getRoom(cameraPos);
+		vec2 currentPosition     = sceneSystem->getPlayerActor()->getPosition();
 
 		vec2 pos;
 		for(int x = 0;x < ROOM_WIDTH;++x){
 			for(int y = 0;y < ROOM_HEIGHT;++y){
 				pos.x = (x + 2);
 				pos.y = (y + 2);
-				//Changing the color
-				world::Tile *tile = currentRoom->getVisual(x,y);
+
+				world::Tile *tile;
+
+				if(*cvar::wallhack){
+					tile = currentRoom->getTile(x,y);
+				}else{
+					tile = currentRoom->getVisual(x,y);
+				}
 
 				cell.ch = tile->visual;
 				cell.fg = convertColor(tile->fgColor);
@@ -61,7 +70,10 @@ namespace term {
 		for(unsigned int i = 0; i < actors.size();++i){
 			cell.ch = actors.at(i)->getSymbol();
 			cell.bg = currentRoom->getVisual(actors.at(i)->getPos()->x,actors.at(i)->getPos()->y)->bgColor;
-			tb_put_cell(actors.at(i)->getPos()->x, actors.at(i)->getPos()->y, &cell);
+
+			if(currentRoom->lineOfSight(currentPosition,actors.at(i)->getPosition() ) ){
+				tb_put_cell(actors.at(i)->getPos()->x, actors.at(i)->getPos()->y, &cell);
+			}
 		}
 
 		/* "RENDER" UI */
