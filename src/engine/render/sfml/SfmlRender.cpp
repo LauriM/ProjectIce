@@ -1,7 +1,12 @@
 #include "precompiled.h"
 #include "engine/render/sfml/SfmlRender.h"
+#include "engine/console/Cvar.h"
 
 #ifdef SFMLRENDER
+
+namespace cvar {
+	CVAR(int,wallhack,0,CVAR_CHEAT);
+}
 
 namespace engine {
 namespace render {
@@ -38,7 +43,13 @@ namespace sfml {
 				pos.x = (x + 2);
 				pos.y = (y + 2);
 				//Changing the color
-				world::Tile *tile = currentRoom->getVisual(x,y);
+				world::Tile *tile;
+
+				if(*cvar::wallhack) {
+					 tile = currentRoom->getTile(x,y);
+				} else {
+					 tile = currentRoom->getVisual(x,y);
+				}
 
 				switch(tile->type){
 				case world::TILE_SOLID_ROCK:
