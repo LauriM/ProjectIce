@@ -27,6 +27,7 @@ namespace sfml {
 		window->clear(sf::Color::Black);
 
 		world::Room *currentRoom = sceneSystem->getWorld()->getRoom(cameraPos);
+		vec2 currentPosition     = sceneSystem->getPlayerActor()->getPosition();
 
 		vec2 pos;
 
@@ -67,14 +68,17 @@ namespace sfml {
 
 		for(unsigned int i = 0; i < actors.size();++i){
 			sprite = dummySprite; //default gfx if not found
+			actor::ActorBase *actor = actors.at(i);
 
 			//TODO: Add some kind of linking of player <-> resource on a text file.
-			if(actors.at(i)->getName() == "Player"){
+			if(actor->getName() == "Player"){
 				sprite = playerSprite;
 			}
 
-			sprite.setPosition( (actors.at(i)->getPos()->x * 10) , (actors.at(i)->getPos()->y * 10) );
-			window->draw(sprite);
+			if(currentRoom->lineOfSight(currentPosition,actor->getPosition() ) ){
+				sprite.setPosition( (actor->getPos()->x * 10) , (actor->getPos()->y * 10) );
+				window->draw(sprite);
+			}
 		}
 
 		window->display();
