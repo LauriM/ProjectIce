@@ -37,7 +37,7 @@ namespace sfml {
 				pos.x = (x + 2);
 				pos.y = (y + 2);
 				//Changing the color
-				world::Tile *tile = currentRoom->getTile(x,y);
+				world::Tile *tile = currentRoom->getVisual(x,y);
 
 				switch(tile->type){
 				case world::TILE_SOLID_ROCK:

@@ -208,7 +208,35 @@ namespace world {
 			--pathCount;
 		}
 
+		//Solid walls around the room to make debugging easier
+
+		//TODO: these are not working as expected.
+		AABB line;
+		line.pos.x = 0;
+		line.pos.y = 0;
+		line.size.y = 1;
+		line.size.x = ROOM_WIDTH;
+		AABBSetTile(line,Tile(TILE_SOLID_ROCK));
+
+		line.pos.x = 0;
+		line.pos.y = 0;
+		line.size.y = ROOM_HEIGHT;
+		line.size.x = 1;
+		AABBSetTile(line,Tile(TILE_SOLID_ROCK));
+
+		line.pos.x = 0;
+		line.pos.y = ROOM_HEIGHT-1;
+		line.size.y = 1;
+		line.size.x = ROOM_WIDTH;
+		AABBSetTile(line,Tile(TILE_SOLID_ROCK));
+
+		line.pos.x = ROOM_WIDTH-1;
+		line.pos.y = 0;
+		line.size.y = ROOM_HEIGHT;
+		line.size.x = 1;
+		AABBSetTile(line,Tile(TILE_SOLID_ROCK));
 	}
+
 
 
 	/**
@@ -248,6 +276,52 @@ namespace world {
 				setTile(x,y,tile);
 			}
 		}
+	}
+
+	/**
+	 * Checks los between two tiles
+	 *
+	 * Returns true if line is possible, false if not
+	 */
+	bool Room::lineOfSight(vec2 start, vec2 end) {
+		ASSERT_TILE_XY(start.x,start.y);
+		ASSERT_TILE_XY(end.x,end.y);
+
+		float xMul;
+		float yMul;
+		int len;
+
+		int dx = end.x - start.x;
+		int dy = end.y - start.y;
+
+		if(start == end){
+			return true;
+		}
+
+		//calculate ray multiplier stuffj
+		if(abs(dx) > abs(dy)) {
+			xMul = 1.0f;
+			yMul = dy/((float)dx);
+			len  = dx;
+		}else{
+			xMul = dx/((float)dy);
+			yMul = 1.0f;
+			len  = dy;
+		}
+
+		//raycast!
+		for(int i = 0; i != len; len < 0 ? --i : ++i){
+			vec2 pos;
+			pos.x = start.x + ((dx < 0) ? ceil(i * xMul) : i * xMul);
+			pos.y = start.y + ((dy < 0) ? ceil(i * yMul) : i * yMul);
+
+			if(getTile(pos)->blocks){
+				return false; //Hit a block on the way!
+			}
+		}
+
+		//ray didn't hit
+		return true;
 	}
 
 }

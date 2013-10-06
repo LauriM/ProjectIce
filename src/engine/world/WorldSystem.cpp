@@ -212,7 +212,16 @@ namespace world {
 	 * Update visual data on the location/position given.
 	 */
 	void WorldSystem::updateVisualOnPosition(vec3 location, vec2 position){
-		getRoom(location)->applyVisual(position);
+		Room *room = getRoom(location);
+
+		vec2 pos;
+		for(pos.x = 0; pos.x < (ROOM_WIDTH - 1); ++pos.x){
+			for(pos.y = 0; pos.y < (ROOM_HEIGHT - 1); ++pos.y){
+				if(room->lineOfSight(position,pos)){
+					room->applyVisual(pos);
+				}
+			}
+		}
 	}
 
 }

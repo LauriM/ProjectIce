@@ -62,6 +62,8 @@ namespace world {
 		bool AABBBlockCheck(AABB box,bool type);
 		void AABBSetTile(AABB area,Tile tile);
 
+		bool lineOfSight(vec2 start, vec2 end);
+
 		void printLayout();
 
 		inventory::Inventory* getInventory() {

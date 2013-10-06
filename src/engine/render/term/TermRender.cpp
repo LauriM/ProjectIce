@@ -42,7 +42,7 @@ namespace term {
 				pos.x = (x + 2);
 				pos.y = (y + 2);
 				//Changing the color
-				world::Tile *tile = currentRoom->getTile(x,y);
+				world::Tile *tile = currentRoom->getVisual(x,y);
 
 				cell.ch = tile->visual;
 				cell.fg = convertColor(tile->fgColor);
@@ -60,7 +60,7 @@ namespace term {
 		cell.bg = TB_BLACK;
 		for(unsigned int i = 0; i < actors.size();++i){
 			cell.ch = actors.at(i)->getSymbol();
-			cell.bg = currentRoom->getTile(actors.at(i)->getPos()->x,actors.at(i)->getPos()->y)->bgColor;
+			cell.bg = currentRoom->getVisual(actors.at(i)->getPos()->x,actors.at(i)->getPos()->y)->bgColor;
 			tb_put_cell(actors.at(i)->getPos()->x, actors.at(i)->getPos()->y, &cell);
 		}
 
