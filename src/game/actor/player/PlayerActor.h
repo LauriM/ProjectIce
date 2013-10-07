@@ -5,6 +5,9 @@
 
 #include "engine/actor/ActorBase.h"
 #include "engine/actor/body/Torso.h"
+#include "engine/actor/body/Head.h"
+#include "engine/actor/body/Arm.h"
+#include "engine/actor/body/Leg.h"
 
 #include <typeinfo>
 
@@ -27,7 +30,21 @@ namespace player {
 				symbol        = '@';
 				aiState       = engine::actor::AISTATE_PLAYER;
 
-				torso         = new engine::actor::body::Torso();
+				//Build the body
+				torso = new engine::actor::body::Torso();
+				torso->parent = torso;
+
+				engine::actor::body::BodyPart *head		= new engine::actor::body::Head();
+				engine::actor::body::BodyPart *rightArm = new engine::actor::body::Arm();
+				engine::actor::body::BodyPart *leftArm  = new engine::actor::body::Arm();
+				engine::actor::body::BodyPart *rightLeg = new engine::actor::body::Leg();
+				engine::actor::body::BodyPart *leftLeg  = new engine::actor::body::Leg();
+
+				torso->addChild(head);
+				torso->addChild(rightArm);
+				torso->addChild(leftArm);
+				torso->addChild(rightLeg);
+				torso->addChild(leftLeg);
 			}
 
 			void update() {}

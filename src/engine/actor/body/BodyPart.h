@@ -8,9 +8,10 @@ namespace actor {
 namespace body {
 
 	enum BodyPartType {
-		TYPE_TORSO = 0,
+		TYPE_INVALID = 0,
+		TYPE_TORSO,
 		TYPE_ARM,
-		TYPE_LEGS,
+		TYPE_LEG,
 		TYPE_HEAD,
 	};
 
@@ -31,16 +32,17 @@ namespace body {
 	};
 
 	class BodyPart {
-	private:
+	public:
 		BodyPart *parent;
 		std::vector<BodyPart*> childs;
 
-	public:
 		BodyPart()
-			: weight(25)
-			, type(TYPE_TORSO)
+			: parent(this) //default to itself, addchild should handle change of this correctly
+			, weight(25)
+			, type(TYPE_INVALID)
 			, blood(150)
-			, def(5)
+			, def(8)
+			//FIXME: Add rest of the attributes and stats here! All initialized by default!
 		{}
 
 		BodyPartType type;
@@ -51,6 +53,10 @@ namespace body {
 		int blood;
 		int def;
 
+		void addChild(BodyPart * part){
+			part->parent = this;
+			this->childs.push_back(part);
+		}
 	};
 
 }
