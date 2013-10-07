@@ -4,6 +4,7 @@
 #include "precompiled.h"
 
 #include "engine/actor/ActorBase.h"
+#include "engine/actor/body/Torso.h"
 
 #include <typeinfo>
 
@@ -25,6 +26,8 @@ namespace player {
 
 				symbol        = '@';
 				aiState       = engine::actor::AISTATE_PLAYER;
+
+				torso         = new engine::actor::body::Torso();
 			}
 
 			void update() {}

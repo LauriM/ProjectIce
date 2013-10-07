@@ -8,6 +8,7 @@
 #include "engine/actor/AIState.h"
 #include "engine/console/ConsoleSystem.h"
 #include "engine/inventory/Inventory.h"
+#include "engine/actor/body/BodyPart.h"
 
 namespace engine {
 namespace actor {
@@ -40,6 +41,8 @@ namespace actor {
 			int constitution;
 
 			inventory::Inventory inventory;
+
+			body::BodyPart *torso;
 
 		public:
 			ActorBase()
