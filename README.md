@@ -21,12 +21,12 @@ ProjectIce is compiled on both Windows and Linux, with both graphical and termin
 Sfml version:
 
 
-![Sfml](latestScreenshotSfml.png)
+![Sfml](doc/latestScreenshotSfml.png)
 
 Termbox version:
 
 
-![Termbox](latestScreenshotTerm.png)
+![Termbox](doc/latestScreenshotTerm.png)
 
 Resources
 =========
