@@ -15,8 +15,6 @@
 #include "game/item/container/QuiverItem.h"
 #include "engine/item/ItemManager.h"
 
-#include "engine/actor/ActorBodyLimb.h"
-
 #include <map>
 #include <vector>
 
@@ -172,14 +170,6 @@ int main(){
 		SCPPT_COMPARE( "ID 5 is in use", itemManager->isIDTracked(5), ==, true );
 		SCPPT_COMPARE( "ID -1 is crap", itemManager->isIDTracked(-1), ==, false );
 		SCPPT_COMPARE( "ID 100 is too large", itemManager->isIDTracked(100), ==, false );
-	}
-
-	PRINTLN("-> Body Parts Flying Everywhere!");
-	{
-		actor::ActorBodyLimb * head = new actor::ActorBodyLimb( NULL, "Head" );
-		SCPPT_COMPARE( "Body part is a head: ", head->getName(), ==, "Head" );
-		std::vector<actor::ActorBodyLimb*> children = head->getDirectChildren();
-		SCPPT_COMPARE( "The head has no children: ", children.size(), ==, 0 );
 	}
 
 	// **
