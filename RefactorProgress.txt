@@ -7,4 +7,3 @@ This is the progress of the major refactor caused by ncurses.
 * get travis building                         [done]
 * replace input with termbox and refactor it  [done]
 * create input system for the termbox
-* recreate the UI system
