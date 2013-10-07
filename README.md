@@ -13,6 +13,21 @@ Build requirements:
 * Boost `sudo apt-get install libboost-chrono1.48-dev`
 * premake4
 
+Screenshots
+===========
+
+ProjectIce is compiled on both Windows and Linux, with both graphical and terminal versions. Here are the latest screenshots from both of the versions.
+
+Sfml version:
+
+
+![Sfml](latestScreenshotSfml.png)
+
+Termbox version:
+
+
+![Termbox](latestScreenshotTerm.png)
+
 Resources
 =========
 
