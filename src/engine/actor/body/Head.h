@@ -14,7 +14,7 @@ namespace body {
 			, level(1)
 			, experience(0)
 		{
-			type   = BodyPartType::TYPE_HEAD;
+			type   = TYPE_HEAD;
 			blood  = 25;
 			weight = 10;
 			def	   = 5;

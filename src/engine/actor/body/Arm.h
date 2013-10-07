@@ -12,7 +12,7 @@ namespace body {
 		Arm()
 			: strength(5)
 		{
-			type   = BodyPartType::TYPE_ARM;
+			type   = TYPE_ARM;
 			blood  = 50;
 			weight = 10;
 		}

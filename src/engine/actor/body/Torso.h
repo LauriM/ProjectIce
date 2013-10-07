@@ -14,7 +14,7 @@ namespace body {
 		Torso()
 			: stamina(5)
 		{
-			type   = BodyPartType::TYPE_TORSO;
+			type   = TYPE_TORSO;
 			blood  = 150;
 			weight = 60;
 		}

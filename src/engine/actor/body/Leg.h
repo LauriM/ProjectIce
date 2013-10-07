@@ -12,7 +12,7 @@ namespace body {
 		Leg()
 			: speed(5)
 		{
-			type   = BodyPartType::TYPE_LEG;
+			type   = TYPE_LEG;
 			blood  = 70;
 			weight = 15;
 		}
