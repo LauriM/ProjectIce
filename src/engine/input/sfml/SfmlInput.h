@@ -34,7 +34,7 @@ namespace sfml {
 		void update();
 
 	private:
-		bool SfmlInput::handleKey(sf::Event *event);
+		bool handleKey(sf::Event *event);
 	};
 
 }

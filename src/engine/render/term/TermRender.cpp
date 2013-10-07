@@ -8,7 +8,6 @@
 #include "engine/console/Cvar.h"
 
 namespace cvar {
-	CVAR(int,fastexit,0,CVAR_NORMAL);
 	CVAR(int,wallhack,0,CVAR_CHEAT);
 }
 
@@ -83,22 +82,6 @@ namespace term {
 		/* RENDER THE ACTUAL STUFF */
 
 		tb_present();
-
-		tb_event event;
-
-		tb_poll_event(&event);
-
-		if(*cvar::fastexit == 1){
-			if(event.type == TB_EVENT_KEY){
-				if(event.key == TB_KEY_ESC){
-					LOG_INFO("User wants to quit the game");
-
-					//Dont fuck up the console while closing the game.
-					tb_shutdown();
-					exit(0);
-				}
-			}
-		}
 
 		return;
 	}

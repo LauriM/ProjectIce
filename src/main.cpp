@@ -24,7 +24,7 @@
 
 #ifdef TERMRENDER
 #include "engine/render/term/TermRender.h"
-#include "engine/input/null/NullInput.h"
+#include "engine/input/term/TermInput.h"
 #endif
 
 #ifdef DEBUGRENDER
@@ -123,7 +123,7 @@ int main(int argc, char *argv[]){
 
 #ifdef TERMRENDER
 	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
-	engine::input::InputSystem   *input  = new engine::input::null::NullInput();
+	engine::input::InputSystem   *input  = new engine::input::term::TermInput(scene);
 #endif
 #ifdef DEBUGRENDER
 	engine::render::RenderSystem *render = new engine::render::debug::DebugRender(scene,ui);

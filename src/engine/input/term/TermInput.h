@@ -10,6 +10,8 @@
 
 #define TERMINPUT
 
+#include <termbox.h>
+
 namespace engine {
 namespace input {
 namespace term {
@@ -30,6 +32,8 @@ namespace term {
 			void uninit() {}
 
 			void update();
+		private:
+			bool handleKey(tb_event *event);
 	};
 
 }
