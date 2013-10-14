@@ -126,6 +126,7 @@ int main(){
 
 		SCPPT_COMPARE("Player has positive HP",playerActor->getHp(),>,0);
 		SCPPT_COMPARE("Player has a name",playerActor->getName(),!=,"");
+		SCPPT_COMPARE("Player has a torso",playerActor->getTorso(),!=,NULL);
 	}
 
 	PRINTLN("-> DummyActor");
@@ -134,6 +135,7 @@ int main(){
 
 		SCPPT_COMPARE("Dummy is alive",dummy->getHp(),>,0);
 		SCPPT_COMPARE("Dummy is named dummy",dummy->getName(),==,"Dummy");
+		SCPPT_COMPARE("Dummy has a torso",dummy->getTorso(),!=,NULL);
 	}
 
 	PRINTLN("-> Inventory Manager");

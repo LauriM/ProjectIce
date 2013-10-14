@@ -179,6 +179,10 @@ namespace actor {
 				this->inventory = *inventory;
 			}
 
+			body::BodyPart * getTorso(){
+				return torso;
+			}
+
 			/**
 			 * Checks for melee attack from actor to different actor. Counts damage.
 			 *
