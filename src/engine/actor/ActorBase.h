@@ -74,6 +74,23 @@ namespace actor {
 				this->bodyParts.push_back(part);
 			}
 
+			BodyPartContainer * getBodyParts(){
+				return &bodyParts;
+			}
+
+			BodyPartContainer getBodyPartsByType(body::BodyPartType type){
+				//TODO: stub
+				BodyPartContainer container;
+
+				for(int i = 0; i < bodyParts.size(); ++i){
+					if(bodyParts.at(i)->type == type){
+						container.push_back(bodyParts.at(i));
+					}
+				}
+
+				return container;
+			}
+
 			/**
 			 * Give certain amount of EXP, calculate possible level ups.
 			 */
