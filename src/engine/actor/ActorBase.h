@@ -3,6 +3,8 @@
 
 #include "precompiled.h"
 
+#include <vector>
+
 #include "engine/math/vec2.h"
 #include "engine/math/vec3.h"
 #include "engine/actor/AIState.h"
@@ -12,6 +14,8 @@
 
 namespace engine {
 namespace actor {
+
+	typedef std::vector<body::BodyPart*> BodyPartContainer;
 
 	/**
 	 * Base class for all actors.
@@ -42,7 +46,7 @@ namespace actor {
 
 			inventory::Inventory inventory;
 
-			body::BodyPart *torso;
+			BodyPartContainer bodyParts;
 
 		public:
 			ActorBase()
@@ -62,6 +66,13 @@ namespace actor {
 			virtual void update() = 0;
 
 			virtual void onAttack( ActorBase * target ) = 0;
+
+			/**
+			 * Add a new bodypart.
+			 */
+			void addBodyPart(body::BodyPart * part){
+				this->bodyParts.push_back(part);
+			}
 
 			/**
 			 * Give certain amount of EXP, calculate possible level ups.
@@ -177,10 +188,6 @@ namespace actor {
 
 			void setInventory(inventory::Inventory* inventory) {
 				this->inventory = *inventory;
-			}
-
-			body::BodyPart * getTorso(){
-				return torso;
 			}
 
 			/**

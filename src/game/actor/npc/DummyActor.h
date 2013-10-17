@@ -23,20 +23,19 @@ namespace npc {
 				symbol       = 'D';
 				aiState      = engine::actor::AISTATE_PATROL;
 
-				torso = new engine::actor::body::Torso();
-				torso->parent = torso;
-
+				engine::actor::body::BodyPart *torso    = new engine::actor::body::Torso();
 				engine::actor::body::BodyPart *head     = new engine::actor::body::Head();
 				engine::actor::body::BodyPart *rightArm = new engine::actor::body::Arm();
 				engine::actor::body::BodyPart *leftArm  = new engine::actor::body::Arm();
 				engine::actor::body::BodyPart *rightLeg = new engine::actor::body::Leg();
 				engine::actor::body::BodyPart *leftLeg  = new engine::actor::body::Leg();
 
-				torso->addChild(head);
-				torso->addChild(rightArm);
-				torso->addChild(leftArm);
-				torso->addChild(rightLeg);
-				torso->addChild(leftLeg);
+				addBodyPart(torso);
+				addBodyPart(head);
+				addBodyPart(rightArm);
+				addBodyPart(leftArm);
+				addBodyPart(rightLeg);
+				addBodyPart(leftLeg);
 			}
 
 			void update(){
