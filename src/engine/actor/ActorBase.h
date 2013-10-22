@@ -12,6 +12,8 @@
 #include "engine/inventory/Inventory.h"
 #include "engine/actor/body/BodyPart.h"
 
+#include "engine/actor/body/Leg.h"
+
 namespace engine {
 namespace actor {
 
@@ -78,6 +80,7 @@ namespace actor {
 				return &bodyParts;
 			}
 
+			/*
 			BodyPartContainer getBodyPartsByType(body::BodyPartType type){
 				//TODO: stub
 				BodyPartContainer container;
@@ -90,6 +93,56 @@ namespace actor {
 
 				return container;
 			}
+			*/
+
+			template <typename T>
+			BodyPartContainer getBodyPartsByType(){
+				BodyPartContainer container;
+
+				T* part;
+
+				for(unsigned int i = 0;i < bodyParts.size(); ++i){
+					part = dynamic_cast<T*>(bodyParts.at(i));
+					if(part != NULL) {
+					//	container.push_back(part);
+					}
+				}
+				return container;
+			}
+
+			/*
+			 * Stats getters with counting limb status
+			 * These functions should be prefered over manual
+			 * searching, because these functions provide limb
+			 * status into the final value.
+			 */
+
+			/**
+			 * returns weight of all limbs combined;
+			 */
+			int getWeight() {
+				int weight = 0;
+
+				for(int i = 0; i < bodyParts.size(); ++i) {
+					weight += bodyParts.at(i)->weight;
+				}
+
+				return weight;
+			}
+
+			int getSpeed() {
+				int speed;
+
+				BodyPartContainer legs = getBodyPartsByType<body::Leg>();
+				for(int i = 0; i < legs.size(); ++i){
+				}
+			}
+
+			int getWisdom();
+			int getStrength() {
+				return 42;//TODO: THIS IS INVALID
+			}
+			int getStamina();
 
 			/**
 			 * Give certain amount of EXP, calculate possible level ups.
@@ -173,14 +226,6 @@ namespace actor {
 
 			void setMaxHp(int maxHp) {
 				this->maxHp = maxHp;
-			}
-
-			int getStrength() {
-				return strength;
-			}
-
-			void setStrength(int strength) {
-				this->strength = strength;
 			}
 
 			int getDexterity() {

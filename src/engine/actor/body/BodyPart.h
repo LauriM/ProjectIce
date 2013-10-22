@@ -39,6 +39,8 @@ namespace body {
 			//FIXME: Add rest of the attributes and stats here! All initialized by default!
 		{}
 
+		virtual ~BodyPart() {};
+
 		BodyPartType type;
 		BodyPartAttribute attributes; //Should be bitflags or something funny
 
