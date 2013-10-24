@@ -136,6 +136,8 @@ namespace actor {
 				BodyPartContainer legs = getBodyPartsByType<body::Leg>();
 				for(int i = 0; i < legs.size(); ++i){
 				}
+
+				return 0;
 			}
 
 			int getWisdom();
