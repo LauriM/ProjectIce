@@ -121,7 +121,7 @@ namespace actor {
 				BodyPartContainer legs = getBodyPartsByType<body::Leg>();
 				for(unsigned int i = 0; i < legs.size(); ++i){
 					body::Leg* leg = dynamic_cast<body::Leg*>(legs.at(i));
-					speed =+ leg->speed;
+					speed += leg->speed;
 				}
 
 				return speed;
@@ -133,7 +133,7 @@ namespace actor {
 				BodyPartContainer heads = getBodyPartsByType<body::Head>();
 				for(unsigned int i = 0; i < heads.size(); ++i){
 					body::Head* head = dynamic_cast<body::Head*>(heads.at(i));
-					wisdom =+ head->wisdom;
+					wisdom += head->wisdom;
 				}
 
 				return wisdom;
@@ -145,7 +145,7 @@ namespace actor {
 				BodyPartContainer arms = getBodyPartsByType<body::Head>();
 				for(unsigned int i = 0; i < arms.size(); ++i){
 					body::Arm* arm = dynamic_cast<body::Arm*>(arms.at(i));
-					str =+ arm->strength;
+					str += arm->strength;
 				}
 
 				return str;
@@ -157,7 +157,7 @@ namespace actor {
 				BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
 				for(unsigned int i = 0; i < torsos.size(); ++i){
 					body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
-					stamina =+ torso->stamina;
+					stamina += torso->stamina;
 				}
 
 				return stamina;
@@ -169,7 +169,7 @@ namespace actor {
 				BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
 				for(unsigned int i = 0; i < torsos.size(); ++i){
 					body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
-					nutrition =+ torso->nutrition;
+					nutrition += torso->nutrition;
 				}
 
 				return nutrition;
