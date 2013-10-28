@@ -123,7 +123,7 @@ namespace actor {
 			int getWeight() {
 				int weight = 0;
 
-				for(int i = 0; i < bodyParts.size(); ++i) {
+				for(unsigned int i = 0; i < bodyParts.size(); ++i) {
 					weight += bodyParts.at(i)->weight;
 				}
 
@@ -134,7 +134,7 @@ namespace actor {
 				int speed;
 
 				BodyPartContainer legs = getBodyPartsByType<body::Leg>();
-				for(int i = 0; i < legs.size(); ++i){
+				for(unsigned int i = 0; i < legs.size(); ++i){
 				}
 
 				return 0;

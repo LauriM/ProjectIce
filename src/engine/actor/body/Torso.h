@@ -10,9 +10,11 @@ namespace body {
 	class Torso : public BodyPart {
 	private:
 		int stamina;
+		int nutrition;
 	public:
 		Torso()
 			: stamina(5)
+			, nutrition(250)
 		{
 			type   = TYPE_TORSO;
 			blood  = 150;
