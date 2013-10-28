@@ -89,7 +89,7 @@ namespace actor {
 				for(unsigned int i = 0;i < bodyParts.size(); ++i){
 					part = dynamic_cast<T*>(bodyParts.at(i));
 					if(part != NULL) {
-					//	container.push_back(part);
+						container.push_back(part);
 					}
 				}
 				return container;

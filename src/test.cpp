@@ -127,6 +127,10 @@ int main(){
 		SCPPT_COMPARE("Player has a name",playerActor->getName(),!=,"");
 		SCPPT_COMPARE("Player has body parts",playerActor->getBodyParts()->size(),>,0);
 		SCPPT_COMPARE("Player has a head",playerActor->getBodyPartsByType<engine::actor::body::Head>().size(),==,1);
+		SCPPT_COMPARE("Player has some nutrition",playerActor->getNutrition(),>,0);
+		SCPPT_COMPARE("Player has wisdom",playerActor->getWisdom(),>,0);
+		SCPPT_COMPARE("Player has speed",playerActor->getSpeed(),>,0);
+		SCPPT_COMPARE("Player has stamina",playerActor->getStamina(),>,0);
 		/*
 		SCPPT_COMPARE("Player has a head",playerActor->getBodyPartsByType(engine::actor::body::TYPE_HEAD).size(),==,1);
 		SCPPT_COMPARE("Player has arms",playerActor->getBodyPartsByType(engine::actor::body::TYPE_ARM).size(),==,2);
@@ -141,6 +145,7 @@ int main(){
 		SCPPT_COMPARE("Dummy is named dummy",dummy->getName(),==,"Dummy");
 		SCPPT_COMPARE("Dummy has body parts",dummy->getBodyParts()->size(),>,0);
 		SCPPT_COMPARE("Dummy has a head",dummy->getBodyPartsByType<engine::actor::body::Head>().size(),==,1);
+		SCPPT_COMPARE("Dummy has some nutrition",dummy->getNutrition(),>,0);
 	}
 
 	PRINTLN("-> Inventory Manager");
