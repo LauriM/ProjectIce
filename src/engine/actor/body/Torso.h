@@ -8,9 +8,6 @@ namespace actor {
 namespace body {
 
 	class Torso : public BodyPart {
-	private:
-		int stamina;
-		int nutrition;
 	public:
 		Torso()
 			: stamina(5)
@@ -20,6 +17,9 @@ namespace body {
 			blood  = 150;
 			weight = 60;
 		}
+
+		int stamina;
+		int nutrition;
 	};
 
 }
