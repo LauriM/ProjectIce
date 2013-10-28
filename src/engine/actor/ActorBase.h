@@ -12,7 +12,10 @@
 #include "engine/inventory/Inventory.h"
 #include "engine/actor/body/BodyPart.h"
 
+#include "engine/actor/body/Torso.h"
 #include "engine/actor/body/Leg.h"
+#include "engine/actor/body/Head.h"
+#include "engine/actor/body/Arm.h"
 
 namespace engine {
 namespace actor {
@@ -113,20 +116,64 @@ namespace actor {
 			}
 
 			int getSpeed() {
-				int speed;
+				int speed = 0;
 
 				BodyPartContainer legs = getBodyPartsByType<body::Leg>();
 				for(unsigned int i = 0; i < legs.size(); ++i){
+					body::Leg* leg = dynamic_cast<body::Leg*>(legs.at(i));
+					speed =+ leg->speed;
 				}
 
-				return 0;
+				return speed;
 			}
 
-			int getWisdom();
-			int getStrength() {
-				return 42;//TODO: THIS IS INVALID
+			int getWisdom(){
+				int wisdom = 0;
+
+				BodyPartContainer heads = getBodyPartsByType<body::Head>();
+				for(unsigned int i = 0; i < heads.size(); ++i){
+					body::Head* head = dynamic_cast<body::Head*>(heads.at(i));
+					wisdom =+ head->wisdom;
+				}
+
+				return wisdom;
 			}
-			int getStamina();
+
+			int getStrength() {
+				int str = 0;
+
+				BodyPartContainer arms = getBodyPartsByType<body::Head>();
+				for(unsigned int i = 0; i < arms.size(); ++i){
+					body::Arm* arm = dynamic_cast<body::Arm*>(arms.at(i));
+					str =+ arm->strength;
+				}
+
+				return str;
+			}
+
+			int getStamina(){
+				int stamina = 0;
+
+				BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
+				for(unsigned int i = 0; i < torsos.size(); ++i){
+					body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
+					stamina =+ torso->stamina;
+				}
+
+				return stamina;
+			}
+
+			int getNutrition(){
+				int nutrition = 0;
+
+				BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
+				for(unsigned int i = 0; i < torsos.size(); ++i){
+					body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
+					nutrition =+ torso->nutrition;
+				}
+
+				return nutrition;
+			}
 
 			/**
 			 * Give certain amount of EXP, calculate possible level ups.
@@ -145,6 +192,18 @@ namespace actor {
 				}
 				*/
 			}
+
+			/**
+			 * Checks for melee attack from actor to different actor. Counts damage.
+			 *
+			 * If the target is friendly and attack has been cancelled, returns false.
+			 *
+			 * @param actor The actor that is attacking.
+			 * @param target The target that is under attack.
+			 *
+			 * @return If the attack was done or not.
+			 */
+			bool attack(actor::ActorBase * const target);
 
 			/**
 			 * Move actor to certain direction, check collisions and enemies.
@@ -207,18 +266,6 @@ namespace actor {
 			void setInventory(inventory::Inventory* inventory) {
 				this->inventory = *inventory;
 			}
-
-			/**
-			 * Checks for melee attack from actor to different actor. Counts damage.
-			 *
-			 * If the target is friendly and attack has been cancelled, returns false.
-			 *
-			 * @param actor The actor that is attacking.
-			 * @param target The target that is under attack.
-			 *
-			 * @return If the attack was done or not.
-			 */
-			bool attack(actor::ActorBase * const target);
 	};
 
 }
