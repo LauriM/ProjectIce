@@ -18,7 +18,9 @@ namespace item {
 		}
 
 		void onUse( engine::actor::ActorBase * user, engine::actor::ActorBase * target = 0 ) {
-			user->setHp( user->getHp() + 10 );
+			//TODO: This whole item needs a huge refactor!
+			// HP is removed from the game, so this should affect bodyparts attributes or something.
+			//user->setHp( user->getHp() + 10 );
 		}
 
 		void onPickup( engine::actor::ActorBase * actor ) {

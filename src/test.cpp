@@ -124,7 +124,6 @@ int main(){
 
 		playerActor->update();
 
-		SCPPT_COMPARE("Player has positive HP",playerActor->getHp(),>,0);
 		SCPPT_COMPARE("Player has a name",playerActor->getName(),!=,"");
 		SCPPT_COMPARE("Player has body parts",playerActor->getBodyParts()->size(),>,0);
 		SCPPT_COMPARE("Player has a head",playerActor->getBodyPartsByType<engine::actor::body::Head>().size(),==,1);
@@ -139,7 +138,6 @@ int main(){
 	{
 		game::actor::npc::DummyActor* dummy = new game::actor::npc::DummyActor();
 
-		SCPPT_COMPARE("Dummy is alive",dummy->getHp(),>,0);
 		SCPPT_COMPARE("Dummy is named dummy",dummy->getName(),==,"Dummy");
 		SCPPT_COMPARE("Dummy has body parts",dummy->getBodyParts()->size(),>,0);
 		SCPPT_COMPARE("Dummy has a head",dummy->getBodyPartsByType<engine::actor::body::Head>().size(),==,1);

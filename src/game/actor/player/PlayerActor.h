@@ -20,13 +20,6 @@ namespace player {
 			PlayerActor(){
 				name          = "Player";
 
-				hp            = 100;
-				maxHp         = 100;
-
-				strength      = 10;
-				dexterity     = 10;
-				constitution  = 10;
-
 				symbol        = '@';
 				aiState       = engine::actor::AISTATE_PLAYER;
 

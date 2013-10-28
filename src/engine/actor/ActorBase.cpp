@@ -10,13 +10,7 @@ namespace actor {
 
 		CONSOLE_HISTORY_INSERT(getName() + " attacks " + target->getName());
 
-        target->setHp(target->getHp() - dmg);
-
-        if(target->getHp() < 0){
-			CONSOLE_HISTORY_INSERT(getName() + " kills " + target->getName());
-			//Give exp the amount of the targets HP
-			giveExp(target->getMaxHp());
-        }
+		//TODO: The attack system should be reimplemented after the bodypart system has been implemented.
 
         return true;
     }

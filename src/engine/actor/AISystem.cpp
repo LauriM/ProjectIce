@@ -33,12 +33,7 @@ namespace actor {
 	void AISystem::handleActor(actor::ActorBase * actor){
 		//TODO: This whole function looks like shit, fix it
 
-		//check if the actor is dead
-		if(actor->getHp() < 0){
-			LOG_INFO("KILL!");
-			actorManager->getActorSystem()->removeActor(actor);
-			return;
-		}
+		//TODO: IMPLEMENT A DAMN DEATH/ALIVE CHECK HERE!
 
 		vec2 newPos;
 

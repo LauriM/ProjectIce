@@ -36,30 +36,12 @@ namespace actor {
 
 			AIState aiState;
 
-			int hp;
-			int maxHp;
-
-			int lvl;
-			int exp;
-
-			int strength;
-			int dexterity;
-			int constitution;
-
 			inventory::Inventory inventory;
 
 			BodyPartContainer bodyParts;
 
 		public:
-			ActorBase()
-				: hp(10)
-				, maxHp(10)
-				, lvl(1)
-				, exp(0)
-				, strength(0)
-				, dexterity(0)
-				, constitution(0)
-			{}
+			ActorBase() {}
 
 			/**
 			 *  This is used to handle stuff that should happen every tick. Like timers or stuff.
@@ -150,6 +132,9 @@ namespace actor {
 			 * Give certain amount of EXP, calculate possible level ups.
 			 */
 			void giveExp(int amount){
+				//TODO: Move the exp calculations to the HEAD bodypart!
+
+				/*
 				exp += amount;
 
 				//TODO: This is really shitty way to calculate level ups
@@ -158,6 +143,7 @@ namespace actor {
 					++lvl;
 					CONSOLE_HISTORY_INSERT(getName() + " gained level!");
 				}
+				*/
 			}
 
 			/**
@@ -212,38 +198,6 @@ namespace actor {
 
 			void setAIState(AIState state){
 				aiState = state;
-			}
-
-			int getHp() {
-				return hp;
-			}
-
-			void setHp(int hp) {
-				this->hp = hp;
-			}
-
-			int getMaxHp() {
-				return maxHp;
-			}
-
-			void setMaxHp(int maxHp) {
-				this->maxHp = maxHp;
-			}
-
-			int getDexterity() {
-				return dexterity;
-			}
-
-			void setDexterity(int dexterity) {
-				this->dexterity = dexterity;
-			}
-
-			int getConstitution() {
-				return constitution;
-			}
-
-			void setConstitution(int constitution) {
-				this->constitution = constitution;
 			}
 
 			inventory::Inventory* getInventory() {

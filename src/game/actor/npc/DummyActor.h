@@ -15,11 +15,7 @@ namespace npc {
 		public:
 			DummyActor(){
 				name         = "Dummy";
-				hp           = 50;
-				maxHp        = 50;
-				strength     = 5;
-				dexterity    = 5;
-				constitution = 1;
+
 				symbol       = 'D';
 				aiState      = engine::actor::AISTATE_PATROL;
 
