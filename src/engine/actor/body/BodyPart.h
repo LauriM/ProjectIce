@@ -1,8 +1,6 @@
 #ifndef ENGINE_ACTOR_BODY_BODYPART_H
 #define ENGINE_ACTOR_BODY_BODYPART_H
 
-#include <vector>
-
 namespace engine {
 namespace actor {
 namespace body {
@@ -33,16 +31,14 @@ namespace body {
 
 	class BodyPart {
 	public:
-		BodyPart *parent;
-		std::vector<BodyPart*> childs;
-
 		BodyPart()
-			: parent(this) //default to itself, addchild should handle change of this correctly
-			, weight(25)
+			: weight(25)
 			, type(TYPE_INVALID)
 			, blood(150)
 			, def(8)
 		{}
+
+		virtual ~BodyPart() {};
 
 		BodyPartType type;
 		BodyPartAttribute attributes; //Should be bitflags or something funny
@@ -51,11 +47,6 @@ namespace body {
 		int weight;
 		int blood;
 		int def;
-
-		void addChild(BodyPart * part){
-			part->parent = this;
-			this->childs.push_back(part);
-		}
 	};
 
 }
