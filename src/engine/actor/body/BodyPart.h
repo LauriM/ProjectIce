@@ -42,7 +42,6 @@ namespace body {
 			, type(TYPE_INVALID)
 			, blood(150)
 			, def(8)
-			//FIXME: Add rest of the attributes and stats here! All initialized by default!
 		{}
 
 		BodyPartType type;
