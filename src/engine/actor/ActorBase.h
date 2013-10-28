@@ -142,7 +142,7 @@ namespace actor {
 			int getStrength() {
 				int str = 0;
 
-				BodyPartContainer arms = getBodyPartsByType<body::Head>();
+				BodyPartContainer arms = getBodyPartsByType<body::Arm>();
 				for(unsigned int i = 0; i < arms.size(); ++i){
 					body::Arm* arm = dynamic_cast<body::Arm*>(arms.at(i));
 					str += arm->strength;
@@ -173,6 +173,20 @@ namespace actor {
 				}
 
 				return nutrition;
+			}
+
+			/**
+			 * Add nutrition, negative nutrition to remove.
+			 *
+			 * Currently removes from all torsos.
+			 */
+			void addNutrition(int value){
+				//TODO: Only take nutrition from one body.
+				BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
+				for(unsigned int i = 0; i < torsos.size(); ++i){
+					body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
+					torso->nutrition += value;
+				}
 			}
 
 			/**

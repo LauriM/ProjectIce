@@ -25,13 +25,19 @@ namespace player {
 
 				//Build the body
 
+				/*
+				// Super powerfull arm for testing!
+				engine::actor::body::Arm *arm = new engine::actor::body::Arm();
+				arm->strength = 100;
+				addBodyPart(arm);
+				*/
+
 				engine::actor::body::BodyPart *torso    = new engine::actor::body::Torso();
 				engine::actor::body::BodyPart *head     = new engine::actor::body::Head();
 				engine::actor::body::BodyPart *rightArm = new engine::actor::body::Arm();
 				engine::actor::body::BodyPart *leftArm  = new engine::actor::body::Arm();
 				engine::actor::body::BodyPart *rightLeg = new engine::actor::body::Leg();
 				engine::actor::body::BodyPart *leftLeg  = new engine::actor::body::Leg();
-
 
 				addBodyPart(torso);
 				addBodyPart(head);

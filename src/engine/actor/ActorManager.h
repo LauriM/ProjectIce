@@ -25,6 +25,8 @@ namespace actor {
 			, worldSystem(worldSystem)
 		{}
 
+		void actorTick(actor::ActorBase * actor);
+
 		void moveActor(actor::ActorBase * actor,const vec2 pos);
 		void moveActorRel(actor::ActorBase * actor,const vec2 pos);
 

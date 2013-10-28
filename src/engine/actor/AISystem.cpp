@@ -26,6 +26,10 @@ namespace actor {
 		std::vector<actor::ActorBase *> actors = actorManager->getActorSystem()->getActorsInRoom(vec3(0,0,0));
 
 		for(unsigned int i = 0; i < actors.size();++i){
+			//First handle the general stuff that each actor does
+			actorManager->actorTick(actors.at(i));
+
+			//then handle the AI
 			handleActor(actors.at(i));
 		}
 	}
