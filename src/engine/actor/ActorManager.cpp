@@ -33,7 +33,7 @@ namespace actor {
 		 */
 
 		//Search for a head(s)
-		bool alive;
+		bool alive = false;
 
 		BodyPartContainer heads = actor->getBodyPartsByType<body::Head>();
 		for(unsigned int i = 0; i < heads.size(); ++i){

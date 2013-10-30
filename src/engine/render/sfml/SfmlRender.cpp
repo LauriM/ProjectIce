@@ -74,8 +74,7 @@ namespace sfml {
 
 		}
 
-
-		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorSystem()->getActorsInRoom(cameraPos);
+		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorStorage()->getActorsInRoom(cameraPos);
 
 		for(unsigned int i = 0; i < actors.size();++i){
 			sprite = dummySprite; //default gfx if not found
