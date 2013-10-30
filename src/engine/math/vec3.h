@@ -7,25 +7,20 @@ class vec3 {
 		int y;
 		int z;
 
-		vec3(){
-			x = 0;
-			y = 0;
-			z = 0;
-		}
+		vec3()
+			:x(0)
+			,y(0)
+			,z(0)
+		{ }
 
-		vec3(int newX, int newY,int newZ){
-			x = newX;
-			y = newY;
-			z = newZ;
-		}
+		vec3(int x, int y,int z)
+			:x(x)
+			,y(y)
+			,z(z)
+		{ }
 
-		bool operator==(vec3 &vec){
-			if(vec.x == x && vec.y == y && vec.z == z){
-				return true;
-			}else{
-				return false;
-			}
-		}
+		bool operator==(const vec3 &vec);
+
 };
 
 #endif
