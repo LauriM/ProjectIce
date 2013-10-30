@@ -37,9 +37,6 @@ namespace actor {
 			}
 
 		public:
-
-			//TODO: implement moving from container to another
-
 			/**
 			 * Insert actor to the manager.
 			 * @param actor actor to be inserted

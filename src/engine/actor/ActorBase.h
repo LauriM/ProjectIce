@@ -61,24 +61,17 @@ namespace actor {
 				this->bodyParts.push_back(part);
 			}
 
+			void removeBodyPart(body::BodyPart * part){
+				for(unsigned int i = 0; i < bodyParts.size(); ++i) {
+					if(bodyParts.at(i) == part) {
+						bodyParts.erase(bodyParts.begin() + i);
+					}
+				}
+			}
+
 			BodyPartContainer * getBodyParts(){
 				return &bodyParts;
 			}
-
-			/*
-			BodyPartContainer getBodyPartsByType(body::BodyPartType type){
-				//TODO: stub
-				BodyPartContainer container;
-
-				for(int i = 0; i < bodyParts.size(); ++i){
-					if(bodyParts.at(i)->type == type){
-						container.push_back(bodyParts.at(i));
-					}
-				}
-
-				return container;
-			}
-			*/
 
 			template <typename T>
 			BodyPartContainer getBodyPartsByType(){
