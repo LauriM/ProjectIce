@@ -57,21 +57,9 @@ namespace actor {
 			/**
 			 * Add a new bodypart.
 			 */
-			void addBodyPart(body::BodyPart * part){
-				this->bodyParts.push_back(part);
-			}
+			void addBodyPart(body::BodyPart * part);
 
-			void removeBodyPart(body::BodyPart * part){
-				for(unsigned int i = 0; i < bodyParts.size(); ++i) {
-					if(bodyParts.at(i) == part) {
-						bodyParts.erase(bodyParts.begin() + i);
-					}
-				}
-			}
-
-			BodyPartContainer * getBodyParts(){
-				return &bodyParts;
-			}
+			void removeBodyPart(body::BodyPart * part);
 
 			template <typename T>
 			BodyPartContainer getBodyPartsByType(){
@@ -93,138 +81,28 @@ namespace actor {
 			 * These functions should be prefered over manual
 			 * searching, because these functions provide limb
 			 * status into the final value.
-			 */
-
-			/**
-			 * returns weight of all limbs combined;
-			 */
-			int getWeight() {
-				int weight = 0;
-
-				for(unsigned int i = 0; i < bodyParts.size(); ++i) {
-					weight += bodyParts.at(i)->weight;
-				}
-
-				return weight;
-			}
-
-			int getSpeed() {
-				int speed = 0;
-
-				BodyPartContainer legs = getBodyPartsByType<body::Leg>();
-				for(unsigned int i = 0; i < legs.size(); ++i){
-					body::Leg* leg = dynamic_cast<body::Leg*>(legs.at(i));
-					speed += leg->speed;
-				}
-
-				return speed;
-			}
-
-			int getWisdom(){
-				int wisdom = 0;
-
-				BodyPartContainer heads = getBodyPartsByType<body::Head>();
-				for(unsigned int i = 0; i < heads.size(); ++i){
-					body::Head* head = dynamic_cast<body::Head*>(heads.at(i));
-					wisdom += head->wisdom;
-				}
-
-				return wisdom;
-			}
-
-			int getStrength() {
-				int str = 0;
-
-				BodyPartContainer arms = getBodyPartsByType<body::Arm>();
-				for(unsigned int i = 0; i < arms.size(); ++i){
-					body::Arm* arm = dynamic_cast<body::Arm*>(arms.at(i));
-					str += arm->strength;
-				}
-
-				return str;
-			}
-
-			int getStamina(){
-				int stamina = 0;
-
-				BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
-				for(unsigned int i = 0; i < torsos.size(); ++i){
-					body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
-					stamina += torso->stamina;
-				}
-
-				return stamina;
-			}
-
-			int getNutrition(){
-				int nutrition = 0;
-
-				BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
-				for(unsigned int i = 0; i < torsos.size(); ++i){
-					body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
-					nutrition += torso->nutrition;
-				}
-
-				return nutrition;
-			}
-
-			/**
-			 * Add nutrition, negative nutrition to remove.
 			 *
-			 * Currently removes from all torsos.
+			 * All values of these are combined and attributes have been calculated.
 			 */
-			void addNutrition(int value){
-				//TODO: Only take nutrition from one body.
-				BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
-				for(unsigned int i = 0; i < torsos.size(); ++i){
-					body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
-					torso->nutrition += value;
-				}
-			}
+			int getWeight();
+			int getSpeed();
+			int getWisdom();
+			int getStrength();
+			int getStamina();
+			int getNutrition();
 
-			/**
-			 * Give certain amount of EXP, calculate possible level ups.
-			 */
-			void giveExp(int amount){
-				//TODO: Move the exp calculations to the HEAD bodypart!
+			/* modifiers */
 
-				/*
-				exp += amount;
-
-				//TODO: This is really shitty way to calculate level ups
-				if(exp > (lvl * 10)){
-					exp = 0;
-					++lvl;
-					CONSOLE_HISTORY_INSERT(getName() + " gained level!");
-				}
-				*/
-			}
-
-			/**
-			 * Checks for melee attack from actor to different actor. Counts damage.
-			 *
-			 * If the target is friendly and attack has been cancelled, returns false.
-			 *
-			 * @param actor The actor that is attacking.
-			 * @param target The target that is under attack.
-			 *
-			 * @return If the attack was done or not.
-			 */
+			void addNutrition(int value);
+			void giveExp(int amount);
 			bool attack(actor::ActorBase * const target);
 
-			/**
-			 * Move actor to certain direction, check collisions and enemies.
-			 *
-			 * Vec2 contains x/y movement changes that should be done.
-			 *
-			 * Returns if the move was valid.
-			 */
-			bool MoveActor(vec2 movement){
-				LOG_ERROR("MoveActor is DERECRATED");
-				return true;
+			/* getters / setters */
+
+			BodyPartContainer * getBodyParts(){
+				return &bodyParts;
 			}
 
-			/* getters / setters */
 			void setName(String newName){
 				name = newName;
 			}
