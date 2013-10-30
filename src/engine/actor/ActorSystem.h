@@ -23,8 +23,18 @@ namespace actor {
 		private:
 			//TODO: Only one vector with all the actors! Should be higly optimized!
 			std::vector<ActorBase *> actors;
+			std::vector<ActorBase *> removeQueue;
 
 			void moveActor(actor::ActorBase * actor,vec2 dir);
+
+			void removeActor(ActorBase* actor){
+				for(unsigned int i = 0;i < actors.size();++i){
+					if(actors.at(i) == actor){
+						actors.erase( actors.begin() + i);
+						LOG_INFO("actor removed!");
+					}
+				}
+			}
 
 		public:
 
@@ -39,15 +49,20 @@ namespace actor {
 			}
 
 			/**
-			 * remove actor from the whole game.
+			 * Adds actor to the remove queue.
 			 *
 			 * @param actor pointer to the actor to be removed.
 			 */
-			void removeActor(ActorBase* actor){
-				for(unsigned int i = 0;i < actors.size();++i){
-					if(actors.at(i) == actor){
-						actors.erase( actors.begin() + i);
-					}
+			void deleteActor(ActorBase* actor) {
+				removeQueue.push_back(actor);
+			}
+
+			/**
+			 * Remove actors queue for remove
+			 */
+			void handleRemoveQueue() {
+				for(unsigned int i = 0;i < removeQueue.size();++i){
+					removeActor(removeQueue.at(i));
 				}
 			}
 

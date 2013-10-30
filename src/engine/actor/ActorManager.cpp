@@ -26,7 +26,29 @@ namespace actor {
 		//Remove nutrition based on the str and weight.
 		actor->addNutrition( -abs( (actor->getWeight() + actor->getStrength()) / 50 ) );
 
-		printf("nutr: %i\n", actor->getNutrition());
+		/*
+		 * Following contidions must be true for actor to be alive.
+		 *
+		 * > Has head thats functioning
+		 */
+
+		//Search for a head(s)
+		bool alive;
+
+		BodyPartContainer heads = actor->getBodyPartsByType<body::Head>();
+		for(unsigned int i = 0; i < heads.size(); ++i){
+			body::Head* head = dynamic_cast<body::Head*>(heads.at(i));
+
+			//Some head has blood
+			if(head->blood > 0){
+				alive = true;
+			}
+		}
+
+		if(alive == false){
+			LOG_INFO("Actor killed");
+			actorSystem->deleteActor(actor);
+		}
 	}
 
 	/**

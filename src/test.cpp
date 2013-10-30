@@ -184,26 +184,6 @@ int main(){
 		SCPPT_COMPARE( "ID 100 is too large", itemManager->isIDTracked(100), ==, false );
 	}
 
-	// **
-	//TODO: Need tests for the generic inventory!
-	// **
-
-	/*
-	  Idea for unit tests about initting the systems
-
-	{
-		PRINTLN("-> Scene");
-		engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,NULL);
-
-		SCPPT_COMPARE("Scene init ok",scene->init(),==,true);
-
-		PRINTLN("-> AIsystem")
-		engine::AI::AISystem *ai = new engine::AI::AISystem(scene);
-
-		SCPPT_COMPARE("Aisystem init ok",ai->init(),==,true);
-	}
-	*/
-
 	PRINTLN("Tests complete");
 
 #ifdef WINDOWS
