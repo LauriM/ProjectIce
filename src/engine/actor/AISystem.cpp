@@ -40,8 +40,6 @@ namespace actor {
 	void AISystem::handleActor(actor::ActorBase * actor){
 		//TODO: This whole function looks like shit, fix it
 
-		//TODO: IMPLEMENT A DAMN DEATH/ALIVE CHECK HERE!
-
 		vec2 newPos;
 
 		switch( actor->getAIState() ){
