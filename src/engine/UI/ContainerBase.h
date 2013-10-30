@@ -16,6 +16,7 @@ namespace UI {
 		public:
 			virtual ~ContainerBase() {};
 
+			//TODO: Are these really needed ?!?
 			virtual void init()   = 0;
 			virtual void uninit() = 0;
 

@@ -16,7 +16,7 @@
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
 #include "game/actor/npc/DummyActor.h"
-#include "game/UI/containers/StatsContainer.h"
+#include "game/UI/containers/DisplayBodyContainer.h"
 
 #include <cstring>
 //#include <boost/filesystem.hpp>
@@ -140,44 +140,18 @@ int main(int argc, char *argv[]){
 	input->init();
 	ai->init();
 
-	engine::UI::Window welcomeWindow;
-	welcomeWindow.setPos(vec2(4,3));
-	welcomeWindow.setSize(vec2(35,15));
-	welcomeWindow.setName("Welcome to ProjectIce");
+	/* Create UI */
 
-	engine::UI::containers::TextContainer *textCont = new engine::UI::containers::TextContainer();
-	textCont->init();
-	textCont->setText("ProjectIce is an experimental roguelike project developed in C++. This is a early development build. And this string is useless and long to test the word wrapping feature on the textContainer. -- press anykey to continue --");
+	engine::UI::Window bodyWindow;
+	bodyWindow.setPos(vec2(84,3));
+	bodyWindow.setSize(vec2(15,15));
+	bodyWindow.setName("BodyState");
 
-	welcomeWindow.setContainer(textCont);
-	//	ui->addWindow(welcomeWindow);
+	game::UI::containers::DisplayBodyContainer *bodyContainer = new game::UI::containers::DisplayBodyContainer(playerActor);
 
-	/*
-	engine::UI::Window blob;
-	blob.setPos(vec2(84,3));
-	blob.setSize(vec2(15,15));
-	blob.setName("blob");
+	bodyWindow.setContainer(bodyContainer);
 
-	engine::UI::containers::SelectContainer *selectCont = new engine::UI::containers::SelectContainer();
-	selectCont->insertItem("0 zero");
-	selectCont->insertItem("& second");
-	selectCont->insertItem("# so on");
-
-	blob.setContainer(selectCont);
-	ui->addWindow(blob);
-	*/
-
-	engine::UI::Window statsWindow;
-	statsWindow.setPos(vec2(84,3));
-	statsWindow.setSize(vec2(15,15));
-	statsWindow.setName("Stats");
-
-	game::UI::containers::StatsContainer *statsUI = new game::UI::containers::StatsContainer();
-	statsUI->setPlayerActor(playerActor);
-
-	statsWindow.setContainer(statsUI);
-
-	ui->addWindow(statsWindow);
+	ui->addWindow(bodyWindow);
 
 	/*
 	 * Testing area for the NPCs
@@ -199,20 +173,7 @@ int main(int argc, char *argv[]){
 		scene->getActorManager()->getActorStorage()->insertActorToRoom(dummy);
 	}
 
-	/*
-	game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();
-	dummy->setPosition( vec2(11,11) );
-	dummy->setLocation( vec3(0,0,0) );
-	dummy->setAIState(engine::actor::AISTATE_SLEEP);
-
-	scene->getActorManager()->getActorStorage()->insertActorToRoom(dummy);
-	*/
-
 	worldSystem->getRoom( vec3(0,0,0) )->printLayout();
-
-	//printf("CvarCount: %lu\n",engine::console::ConsoleSystem::getCVarList().size());
-
-//	consoleSystem->saveConfig("config.cfg");
 
 	bool quitStatus = false;
 	while(quitStatus == false){
