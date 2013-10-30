@@ -7,7 +7,6 @@
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
 #include "engine/UI/containers/TextContainer.h"
-#include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
 #include "engine/console/ConsoleSystem.h"
 #include "engine/actor/ActorStorage.h"
