@@ -11,15 +11,13 @@ namespace engine {
 namespace actor {
 
 	/**
-	 * ActorManager contains all the actors in game. (Stores the actors, doesn't actually do anything with them)
+	 * ActorStorage contains all the actors in game. (Stores the actors, doesn't actually do anything with them)
 	 *
 	 * The actors are organized so that they can be easily queried by the room.
 	 *
 	 * Actor position/location is stored inside the actorbase, here its splitted also just for faster queries.
-	 *
-	 * The system is not yet optimized, its just in the place to get the functions work. Internal stuff should be improved.
 	 */
-	class ActorSystem {
+	class ActorStorage {
 		private:
 			//TODO: Only one vector with all the actors! Should be higly optimized!
 			std::vector<ActorBase *> actors;

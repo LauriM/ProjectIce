@@ -10,7 +10,7 @@
 #include "engine/UI/containers/SelectContainer.h"
 #include "engine/scene/SceneSystem.h"
 #include "engine/console/ConsoleSystem.h"
-#include "engine/actor/ActorSystem.h"
+#include "engine/actor/ActorStorage.h"
 #include "engine/actor/ActorManager.h"
 #include "engine/console/Cvar.h"
 
@@ -109,9 +109,9 @@ int main(int argc, char *argv[]){
 	worldSystem->init();
 	worldSystem->generate();
 
-	engine::actor::ActorSystem * actorSystem = new engine::actor::ActorSystem();
+	engine::actor::ActorStorage * actorStorage = new engine::actor::ActorStorage();
 
-	engine::actor::ActorManager * actorManager = new engine::actor::ActorManager(actorSystem,worldSystem);
+	engine::actor::ActorManager * actorManager = new engine::actor::ActorManager(actorStorage,worldSystem);
 
 	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,actorManager,playerActor);
 
@@ -197,15 +197,17 @@ int main(int argc, char *argv[]){
 		dummy->setPosition( vec2(10+i,15) );
 		dummy->setLocation( vec3(0,0,0) );
 
-		scene->getActorManager()->getActorSystem()->insertActorToRoom(dummy);
+		scene->getActorManager()->getActorStorage()->insertActorToRoom(dummy);
 	}
 
+	/*
 	game::actor::npc::DummyActor * dummy = new game::actor::npc::DummyActor();
 	dummy->setPosition( vec2(11,11) );
 	dummy->setLocation( vec3(0,0,0) );
 	dummy->setAIState(engine::actor::AISTATE_SLEEP);
 
-	scene->getActorManager()->getActorSystem()->insertActorToRoom(dummy);
+	scene->getActorManager()->getActorStorage()->insertActorToRoom(dummy);
+	*/
 
 	worldSystem->getRoom( vec3(0,0,0) )->printLayout();
 
@@ -223,6 +225,7 @@ int main(int argc, char *argv[]){
 	}
 
 	ai->uninit();
+	ui->uninit();
 	render->uninit();
 	scene->uninit();
 	consoleSystem->uninit();

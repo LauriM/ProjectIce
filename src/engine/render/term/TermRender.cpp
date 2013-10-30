@@ -62,7 +62,7 @@ namespace term {
 
 		/* RENDER ACTORS */
 
-		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorSystem()->getActorsInRoom(cameraPos);
+		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorStorage()->getActorsInRoom(cameraPos);
 
 		cell.fg = TB_WHITE;
 		cell.bg = TB_BLACK;

@@ -47,7 +47,7 @@ namespace actor {
 
 		if(alive == false){
 			LOG_INFO("Actor killed");
-			actorSystem->deleteActor(actor);
+			actorStorage->deleteActor(actor);
 		}
 	}
 
@@ -61,7 +61,7 @@ namespace actor {
 			return; //hits a wall
 		}
 
-		std::vector<actor::ActorBase *> actors = actorSystem->getActorsInRoom( actor->getLocation() );
+		std::vector<actor::ActorBase *> actors = actorStorage->getActorsInRoom( actor->getLocation() );
 		for(unsigned int i = 0; i < actors.size();++i){
 			if(actors.at(i)->getPosition() == pos){
 				actor::ActorBase * target = actors.at(i);

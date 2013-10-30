@@ -1,7 +1,7 @@
 #ifndef ENGINE_ACTOR_ACTORMANAGER_H
 #define ENGINE_ACTOR_ACTORMANAGER_H
 
-#include "engine/actor/ActorSystem.h"
+#include "engine/actor/ActorStorage.h"
 #include "engine/world/WorldSystem.h"
 
 namespace engine {
@@ -9,19 +9,19 @@ namespace actor {
 
 	/**
 	 * ActorManager provides movement/manipulation commands for the actors.
-	 * 
+	 *
 	 * These commands usually require access to both world and actor systems.
 	 *
 	 * ActorManager also provides the pointers to the systems it depends on.
 	 */
 	class ActorManager {
 	private:
-		actor::ActorSystem *actorSystem;
+		actor::ActorStorage *actorStorage;
 		world::WorldSystem *worldSystem;
 
 	public:
-		ActorManager(actor::ActorSystem *actorSystem, world::WorldSystem *worldSystem)
-			: actorSystem(actorSystem)
+		ActorManager(actor::ActorStorage *actorStorage, world::WorldSystem *worldSystem)
+			: actorStorage(actorStorage)
 			, worldSystem(worldSystem)
 		{}
 
@@ -32,8 +32,8 @@ namespace actor {
 
 		/* getters & setters */
 
-		actor::ActorSystem * getActorSystem() {
-			return actorSystem;
+		actor::ActorStorage * getActorStorage() {
+			return actorStorage;
 		}
 
 		world::WorldSystem * getWorldSystem() {

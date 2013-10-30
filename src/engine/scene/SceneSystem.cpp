@@ -8,7 +8,7 @@ namespace scene {
 		, actorManager(actorMan)
 		, playerActor(player)
 		{
-			actorManager->getActorSystem()->insertActorToRoom(playerActor);
+			actorManager->getActorStorage()->insertActorToRoom(playerActor);
 		}
 
     bool SceneSystem::init( ){

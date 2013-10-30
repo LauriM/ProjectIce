@@ -23,7 +23,7 @@ namespace actor {
 	}
 
 	void AISystem::update(){ //TODO: could this be moved to a better class!
-		std::vector<actor::ActorBase *> actors = actorManager->getActorSystem()->getActorsInRoom(vec3(0,0,0));
+		std::vector<actor::ActorBase *> actors = actorManager->getActorStorage()->getActorsInRoom(vec3(0,0,0));
 
 		for(unsigned int i = 0; i < actors.size();++i){
 			//First handle the general stuff that each actor does
@@ -34,7 +34,7 @@ namespace actor {
 		}
 
 		//remove useless
-		actorManager->getActorSystem()->handleRemoveQueue();
+		actorManager->getActorStorage()->handleRemoveQueue();
 	}
 
 	void AISystem::handleActor(actor::ActorBase * actor){
