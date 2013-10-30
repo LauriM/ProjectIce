@@ -46,7 +46,7 @@ namespace actor {
 		}
 	}
 
-	int ActorBase::getWeight() {
+	const int ActorBase::getWeight() {
 		int weight = 0;
 
 		for(unsigned int i = 0; i < bodyParts.size(); ++i) {
@@ -56,7 +56,7 @@ namespace actor {
 		return weight;
 	}
 
-	int ActorBase::getSpeed() {
+	const int ActorBase::getSpeed() {
 		int speed = 0;
 
 		BodyPartContainer legs = getBodyPartsByType<body::Leg>();
@@ -68,7 +68,7 @@ namespace actor {
 		return speed;
 	}
 
-	int ActorBase::getWisdom(){
+	const int ActorBase::getWisdom() {
 		int wisdom = 0;
 
 		BodyPartContainer heads = getBodyPartsByType<body::Head>();
@@ -80,7 +80,7 @@ namespace actor {
 		return wisdom;
 	}
 
-	int ActorBase::getStrength() {
+	const int ActorBase::getStrength() {
 		int str = 0;
 
 		BodyPartContainer arms = getBodyPartsByType<body::Arm>();
@@ -92,7 +92,7 @@ namespace actor {
 		return str;
 	}
 
-	int ActorBase::getStamina(){
+	const int ActorBase::getStamina() {
 		int stamina = 0;
 
 		BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
@@ -104,7 +104,7 @@ namespace actor {
 		return stamina;
 	}
 
-	int ActorBase::getNutrition(){
+	const int ActorBase::getNutrition() {
 		int nutrition = 0;
 
 		BodyPartContainer torsos = getBodyPartsByType<body::Torso>();

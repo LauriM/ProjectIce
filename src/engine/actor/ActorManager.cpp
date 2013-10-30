@@ -63,7 +63,8 @@ namespace actor {
 
 		std::vector<actor::ActorBase *> actors = actorStorage->getActorsInRoom( actor->getLocation() );
 		for(unsigned int i = 0; i < actors.size();++i){
-			if(actors.at(i)->getPosition() == pos){
+			vec2 position = actors.at(i)->getPosition();
+			if(position == pos){
 				actor::ActorBase * target = actors.at(i);
 				if(actor == target){
 					return;

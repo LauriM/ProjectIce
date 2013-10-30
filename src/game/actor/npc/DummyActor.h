@@ -36,7 +36,6 @@ namespace npc {
 
 			void update(){
 				LOG_DEBUG("Dummy AI tick");
-				MoveActor(vec2(randomRange(-1,1), randomRange(-1,1)));
 			}
 
 			void onAttack( engine::actor::ActorBase * target ) {

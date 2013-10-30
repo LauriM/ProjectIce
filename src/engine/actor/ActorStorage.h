@@ -61,11 +61,12 @@ namespace actor {
 				}
 			}
 
-			std::vector<ActorBase *> getActorsInRoom(vec3 location){
+			std::vector<ActorBase *> getActorsInRoom(const vec3 location){
 				std::vector<ActorBase *> output;
 
 				for(unsigned int i = 0;i < actors.size();++i){
-					if(actors.at(i)->getLocation() == location){
+					vec3 loc = actors.at(i)->getLocation();
+					if(loc == location){
 						output.push_back(actors.at(i));
 					}
 				}

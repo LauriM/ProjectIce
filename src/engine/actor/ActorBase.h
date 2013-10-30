@@ -84,12 +84,12 @@ namespace actor {
 			 *
 			 * All values of these are combined and attributes have been calculated.
 			 */
-			int getWeight();
-			int getSpeed();
-			int getWisdom();
-			int getStrength();
-			int getStamina();
-			int getNutrition();
+			const int getWeight();
+			const int getSpeed();
+			const int getWisdom();
+			const int getStrength();
+			const int getStamina();
+			const int getNutrition();
 
 			/* modifiers */
 
@@ -99,7 +99,7 @@ namespace actor {
 
 			/* getters / setters */
 
-			BodyPartContainer * getBodyParts(){
+			const BodyPartContainer * getBodyParts() const {
 				return &bodyParts;
 			}
 
@@ -107,20 +107,20 @@ namespace actor {
 				name = newName;
 			}
 
-			String getName(){
+			const String getName() const {
 				return name;
 			}
 
-			vec2 getPosition(){
+			const vec2 getPosition() const {
 				return position;
 			}
 
-			vec2* getPos(){
+			const vec2* getPos() const {
 				//TODO: this should be deprecrated, it allows modifying the position the "wrong" way.
 				return &position;
 			}
 
-			vec3 getLocation(){
+			const vec3 getLocation() const {
 				return location;
 			}
 
@@ -132,11 +132,11 @@ namespace actor {
 				location = loc;
 			}
 
-			char getSymbol(){
+			const char getSymbol() const{
 				return symbol;
 			}
 
-			AIState getAIState(){
+			const AIState getAIState() const {
 				return aiState;
 			}
 
@@ -144,7 +144,7 @@ namespace actor {
 				aiState = state;
 			}
 
-			inventory::Inventory* getInventory() {
+			const inventory::Inventory* getInventory() const {
 				return &inventory;
 			}
 
