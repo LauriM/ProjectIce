@@ -1,6 +1,7 @@
 #include "precompiled.h"
 #include "engine/render/sfml/SfmlRender.h"
 #include "engine/console/Cvar.h"
+#include "engine/UI/content/DisplayBodyContent.h"
 
 #ifdef SFMLRENDER
 
@@ -86,17 +87,27 @@ namespace sfml {
 			}
 
 			if(currentRoom->lineOfSight(currentPosition,actor->getPosition() ) ){
-				sprite.setPosition( (actor->getPos()->x * 10) , (actor->getPos()->y * 10) );
+				sprite.setPosition( (actor->getPos()->x * 10.f) , (actor->getPos()->y * 10.f) );
 				window->draw(sprite);
 			}
 		}
 
 		/* Render the UI */
 
-		UI::WindowContainer *winList = uiSystem->getWindowContainer();
+		const UI::WindowContainer *winList = uiSystem->getWindowContainer();
 
 		for (unsigned int i = 0; i < winList->size(); ++i) {
-			LOG_DEBUG("got a window");
+			//check the window type
+
+			//TODO: Draw window here
+
+			//TODO: draw content here
+
+			UI::content::DisplayBodyContent *content = dynamic_cast<UI::content::DisplayBodyContent*>( winList->at(i)->getContent() );
+			if (content != NULL) {
+				//its the correct container!
+				LOG_INFO("Got body container!"); //DEBUG!
+			}
 		}
 
 		//Not to be confused with the SFML window

@@ -4,14 +4,14 @@
 #include "precompiled.h"
 
 #include "engine/math/vec2.h"
-#include "engine/UI/ContainerBase.h"
+#include "engine/UI/ContentBase.h"
 
 namespace engine {
 namespace UI {
 
 	class Window {
 	protected:
-		ContainerBase *container;
+		ContentBase *content;
 		bool visible;
 		String name;
 		vec2 pos;
@@ -19,10 +19,11 @@ namespace UI {
 
 	public:
 		Window();
+
 		//TODO: Overloaded window with parameters
 
-		void setContainer(ContainerBase *cont){
-			container = cont;
+		void setContent(ContentBase *cont){
+			content = cont;
 		}
 
 		void setPos(vec2 newPos){
@@ -44,8 +45,8 @@ namespace UI {
 		}
 
 		/* get */
-		ContainerBase* getContainer(){
-			return container;
+		ContentBase * getContent(){
+			return content;
 		}
 
 		bool isVisible(){

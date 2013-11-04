@@ -19,7 +19,7 @@ namespace UI {
 	void UISystem::update(){
 	}
 
-	void UISystem::addWindow(Window window){
+	void UISystem::addWindow(Window *window){
 		windows.push_back(window);
 	}
 

@@ -6,7 +6,6 @@
 #include "engine/render/RenderSystem.h"
 #include "engine/UI/UISystem.h"
 #include "engine/UI/Window.h"
-#include "engine/UI/containers/TextContainer.h"
 #include "engine/scene/SceneSystem.h"
 #include "engine/console/ConsoleSystem.h"
 #include "engine/actor/ActorStorage.h"
@@ -16,7 +15,7 @@
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
 #include "game/actor/npc/DummyActor.h"
-#include "engine/UI/containers/DisplayBodyContainer.h"
+#include "engine/UI/content/DisplayBodyContent.h"
 
 #include <cstring>
 //#include <boost/filesystem.hpp>
@@ -142,14 +141,14 @@ int main(int argc, char *argv[]){
 
 	/* Create UI */
 
-	engine::UI::Window bodyWindow;
-	bodyWindow.setPos(vec2(84,3));
-	bodyWindow.setSize(vec2(15,15));
-	bodyWindow.setName("BodyState");
+	engine::UI::Window *bodyWindow = new engine::UI::Window();
+	bodyWindow->setPos(vec2(84,3));
+	bodyWindow->setSize(vec2(15,15));
+	bodyWindow->setName("BodyState");
 
-	engine::UI::containers::DisplayBodyContainer *bodyContainer = new engine::UI::containers::DisplayBodyContainer(playerActor);
+	engine::UI::content::DisplayBodyContent *bodyStatus = new engine::UI::content::DisplayBodyContent(playerActor);
 
-	bodyWindow.setContainer(bodyContainer);
+	bodyWindow->setContent(bodyStatus);
 
 	ui->addWindow(bodyWindow);
 
