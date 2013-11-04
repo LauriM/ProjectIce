@@ -19,8 +19,7 @@ class vec3 {
 			,z(z)
 		{ }
 
-		bool operator==(const vec3 &vec);
-
+		bool operator ==(const vec3 &vec);
 };
 
 #endif
