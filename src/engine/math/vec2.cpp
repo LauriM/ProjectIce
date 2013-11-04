@@ -16,55 +16,55 @@ vec2::vec2(const vec2& vec) : x(vec.x), y(vec.y) {
 
 }
 
-vec2& vec2::operator+=(const vec2 &rhs) {
+vec2& vec2::operator +=(const vec2 &rhs) {
 	this->x += rhs.x;
 	this->y += rhs.y;
 	return *this;
 }
 
-vec2& vec2::operator-=(const vec2 &rhs) {
+vec2& vec2::operator -=(const vec2 &rhs) {
 	this->x -= rhs.x;
 	this->y -= rhs.y;
 	return *this;
 }
 
-vec2& vec2::operator*=(int rhs) {
+vec2& vec2::operator *=(int rhs) {
 	this->x *= rhs;
 	this->y *= rhs;
 	return *this;
 }
 
-vec2& vec2::operator/=(int rhs) {
+vec2& vec2::operator /=(int rhs) {
 	this->x /= rhs;
 	this->y /= rhs;
 	return *this;
 }
 
-bool vec2::operator==(const vec2 &rhs) {
+bool vec2::operator ==(const vec2 &rhs) {
 	return this->x == rhs.x && this->y == rhs.y;
 }
 
-bool vec2::operator!=(const vec2 &rhs) {
+bool vec2::operator !=(const vec2 &rhs) {
 	return this->x != rhs.x || this->y != rhs.y;
 }
 
-vec2 vec2::operator+(const vec2 &rhs) {
+vec2 vec2::operator +(const vec2 &rhs) {
 	return vec2(*this) += rhs;
 }
 
-vec2 vec2::operator-(const vec2 &rhs) {
+vec2 vec2::operator -(const vec2 &rhs) {
 	return vec2(*this) -= rhs;
 }
 
-vec2 vec2::operator*(int rhs) {
+vec2 vec2::operator *(int rhs) {
 	return vec2(*this) *= rhs;
 }
 
-vec2 vec2::operator/(int rhs) {
+vec2 vec2::operator /(int rhs) {
 	return vec2(*this) /= rhs;
 }
 
-int vec2::operator*(const vec2 &rhs) {
+int vec2::operator *(const vec2 &rhs) {
 	return this->x * rhs.x + this->y * rhs.y;
 }
 
@@ -76,11 +76,11 @@ double vec2::length() const {
 	return sqrt((double) lengthSquared());
 }
 
-bool vec2::operator < (const vec2 & rhs) const {
+bool vec2::operator <(const vec2 & rhs) const {
 	return lengthSquared() < rhs.lengthSquared();
 }
 
-bool vec2::operator > (const vec2 & rhs) const {
+bool vec2::operator >(const vec2 & rhs) const {
 	return lengthSquared() > rhs.lengthSquared();
 }
 
