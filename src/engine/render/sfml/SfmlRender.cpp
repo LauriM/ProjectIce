@@ -76,7 +76,7 @@ namespace sfml {
 
 		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorStorage()->getActorsInRoom(cameraPos);
 
-		for(unsigned int i = 0; i < actors.size();++i){
+		for(unsigned int i = 0; i < actors.size(); ++i) {
 			sprite = dummySprite; //default gfx if not found
 			actor::ActorBase *actor = actors.at(i);
 
@@ -91,6 +91,15 @@ namespace sfml {
 			}
 		}
 
+		/* Render the UI */
+
+		UI::WindowContainer *winList = uiSystem->getWindowContainer();
+
+		for (unsigned int i = 0; i < winList->size(); ++i) {
+			LOG_DEBUG("got a window");
+		}
+
+		//Not to be confused with the SFML window
 		window->display();
 	}
 

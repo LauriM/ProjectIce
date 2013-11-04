@@ -8,9 +8,11 @@
 namespace engine {
 namespace UI {
 
+	typedef std::vector<UI::Window> WindowContainer;
+
 	class UISystem : public EngineSystem {
 		public:
-			std::vector<UI::Window> windows;
+			WindowContainer windows;
 
 			UISystem();
 
@@ -19,7 +21,12 @@ namespace UI {
 			virtual void update();
 
 			void addWindow(Window window);
-			void addWindow(Window window,bool setAsCurrentWindow);
+
+			/* Getters & setters */
+
+			WindowContainer *getWindowContainer() {
+				return &windows;
+			}
 	};
 
 }

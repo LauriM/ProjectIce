@@ -16,7 +16,7 @@
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
 #include "game/actor/npc/DummyActor.h"
-#include "game/UI/containers/DisplayBodyContainer.h"
+#include "engine/UI/containers/DisplayBodyContainer.h"
 
 #include <cstring>
 //#include <boost/filesystem.hpp>
@@ -147,7 +147,7 @@ int main(int argc, char *argv[]){
 	bodyWindow.setSize(vec2(15,15));
 	bodyWindow.setName("BodyState");
 
-	game::UI::containers::DisplayBodyContainer *bodyContainer = new game::UI::containers::DisplayBodyContainer(playerActor);
+	engine::UI::containers::DisplayBodyContainer *bodyContainer = new engine::UI::containers::DisplayBodyContainer(playerActor);
 
 	bodyWindow.setContainer(bodyContainer);
 
