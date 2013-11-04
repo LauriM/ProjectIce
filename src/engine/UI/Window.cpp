@@ -3,13 +3,13 @@
 namespace engine {
 namespace UI {
 
-	Window::Window(){
-		container   = NULL;
-		visible     = true;
-		pos         = vec2(0,0);
-		size        = vec2(10,10);
-		name        = "null";
-	}
+	Window::Window()
+		: container(NULL)
+		, visible(true)
+		, pos( vec2(0,0) )
+		, size( vec2(10,10) )
+		, name("null")
+	{}
 
 }
 }
