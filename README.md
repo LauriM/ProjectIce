@@ -3,6 +3,7 @@ ProjectIce
 
 * [![Build Status](https://travis-ci.org/LauriM/ProjectIce.png)](https://travis-ci.org/LauriM/ProjectIce)
 * [Ohloh](https://www.ohloh.net/p/ProjectIce)
+* [Gitstats](http://37.139.28.111/local/gitstat/projectice/index.html)
 
 ProjectIce is roguelike game/engine project. Currently its in very early development.
 
