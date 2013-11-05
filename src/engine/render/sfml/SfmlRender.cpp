@@ -69,7 +69,7 @@ namespace sfml {
 					sprite = errorSprite;
 				}
 
-				sprite.setPosition( (x * 10.f) , (y * 10.f) );
+				sprite.setPosition( (x * TILE_WIDTH) , (y * TILE_HEIGHT) );
 				window->draw(sprite); 
 			}
 
@@ -87,7 +87,7 @@ namespace sfml {
 			}
 
 			if(currentRoom->lineOfSight(currentPosition,actor->getPosition() ) ){
-				sprite.setPosition( (actor->getPos()->x * 10.f) , (actor->getPos()->y * 10.f) );
+				sprite.setPosition( (actor->getPos()->x * TILE_WIDTH) , (actor->getPos()->y * TILE_HEIGHT) );
 				window->draw(sprite);
 			}
 		}
@@ -95,18 +95,25 @@ namespace sfml {
 		/* Render the UI */
 
 		const UI::WindowContainer *winList = uiSystem->getWindowContainer();
+		UI::Window *win;
+		sf::RectangleShape box;
 
 		for (unsigned int i = 0; i < winList->size(); ++i) {
-			//check the window type
+			win = winList->at(i);
 
 			//TODO: Draw window here
+			box.setSize(sf::Vector2f(win->getSize().x * TILE_WIDTH, win->getSize().y * TILE_HEIGHT));
+			box.setOutlineColor(sf::Color::Cyan);
+			box.setOutlineThickness(3);
+			box.setPosition(sf::Vector2f(win->getPos().x * TILE_WIDTH, win->getPos().y * TILE_HEIGHT));
+
+			window->draw(box);
 
 			//TODO: draw content here
 
-			UI::content::DisplayBodyContent *content = dynamic_cast<UI::content::DisplayBodyContent*>( winList->at(i)->getContent() );
+			UI::content::DisplayBodyContent *content = dynamic_cast<UI::content::DisplayBodyContent*>( win->getContent() );
 			if (content != NULL) {
 				//its the correct container!
-				LOG_INFO("Got body container!"); //DEBUG!
 			}
 		}
 

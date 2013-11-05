@@ -14,6 +14,9 @@
 
 #include <SFML/Graphics.hpp>
 
+#define TILE_WIDTH 10
+#define TILE_HEIGHT 10
+
 namespace engine {
 namespace render {
 namespace sfml {
@@ -58,7 +61,7 @@ namespace sfml {
 			: sceneSystem(sceneSystem)
 			, uiSystem(uiSystem)
 		{
-			window = new sf::RenderWindow(sf::VideoMode(800,600), "ProjectIce TODO: add version here");
+			window = new sf::RenderWindow(sf::VideoMode(1200,800), "ProjectIce TODO: add version here");
 		}
 
 		bool init(){
