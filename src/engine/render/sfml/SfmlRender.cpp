@@ -134,10 +134,12 @@ namespace sfml {
 	}
 
 	void SfmlRender::handleWindowContent(UI::Window *win) {
+		vec2 basePosition(win->getPos().x * TILE_WIDTH, win->getPos().y * TILE_HEIGHT);
+
 		UI::content::DisplayBodyContent *content = dynamic_cast<UI::content::DisplayBodyContent*>( win->getContent() );
 
 		if (content != NULL) {
-			displayBodyRender(content, win->getPos() );
+			displayBodyRender(content,basePosition);
 			return;
 		}
 	}
@@ -147,15 +149,23 @@ namespace sfml {
 
 		const actor::BodyPartContainer *parts = actor->getBodyParts();
 
-//		for (unsigned int i = 0; i < parts->size(); ++i) {
-//		}
+		int count = 0;
+		for (unsigned int i = 0; i < parts->size(); ++i) {
+			++count;
+		}
 
-		sf::Text text("Count: ", font);
+		sf::Text text;
+		text.setFont(font);
 		text.setCharacterSize(15);
-		text.setColor(sf::Color::Black);
+		text.setColor(sf::Color::Red);
 		text.setStyle(sf::Text::Bold);
-		//text.setPosition( sf::Vector2f(basePosition.x + 15, basePosition.y + 15) );
-		text.setPosition(sf::Vector2f(15,15));
+
+		char numstr[21]; 
+		sprintf(numstr, "%d", parts->size());
+		text.setString(String("Parts") + numstr);
+
+		text.setPosition( sf::Vector2f(basePosition.x + 15, basePosition.y + 15) );
+		//text.setPosition(sf::Vector2f(15,15));
 
 		window->draw(text);
 	}
