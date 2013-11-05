@@ -24,6 +24,16 @@ namespace content {
 			void init() { }
 
 			void uninit() {  }
+
+			/* Getters & Setters*/
+
+			void setActor(actor::ActorBase* act) {
+				actor = act;
+			}
+
+			actor::ActorBase* getActor() {
+				return actor;
+			}
 	};
 
 }

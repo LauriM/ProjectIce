@@ -13,6 +13,23 @@ namespace engine {
 namespace render {
 namespace sfml {
 
+	bool SfmlRender::init() {
+		setCameraPos(vec3(0, 0, 0));
+
+		LOADFONT(font, "./gfx/arial.ttf");
+
+		//Load textures
+		LOADTEXTURE(voidTexture      , voidSprite      , "./gfx/void.png");
+		LOADTEXTURE(dummyTexture     , dummySprite     , "./gfx/dummy.png");
+		LOADTEXTURE(errorTexture     , errorSprite     , "./gfx/error.png");
+		LOADTEXTURE(floorTexture     , floorSprite     , "./gfx/floor.png");
+		LOADTEXTURE(solidRockTexture , solidRockSprite , "./gfx/solid_rock.png");
+		LOADTEXTURE(treeTexture      , treeSprite      , "./gfx/tree.png");
+		LOADTEXTURE(playerTexture    , playerSprite    , "./gfx/player.png");
+
+		return true;
+	}
+
 	void SfmlRender::update(){
 		if(!window->isOpen()){
 			//Window has been closed! Close the application
@@ -109,18 +126,39 @@ namespace sfml {
 
 			window->draw(box);
 
-			//TODO: draw content here
-
-			UI::content::DisplayBodyContent *content = dynamic_cast<UI::content::DisplayBodyContent*>( win->getContent() );
-			if (content != NULL) {
-				//its the correct container!
-			}
+			handleWindowContent(win);
 		}
 
 		//Not to be confused with the SFML window
 		window->display();
 	}
 
+	void SfmlRender::handleWindowContent(UI::Window *win) {
+		UI::content::DisplayBodyContent *content = dynamic_cast<UI::content::DisplayBodyContent*>( win->getContent() );
+
+		if (content != NULL) {
+			displayBodyRender(content, win->getPos() );
+			return;
+		}
+	}
+
+	void SfmlRender::displayBodyRender(UI::content::DisplayBodyContent *content, const vec2 basePosition) {
+		const actor::ActorBase *actor = content->getActor();
+
+		const actor::BodyPartContainer *parts = actor->getBodyParts();
+
+//		for (unsigned int i = 0; i < parts->size(); ++i) {
+//		}
+
+		sf::Text text("Count: ", font);
+		text.setCharacterSize(15);
+		text.setColor(sf::Color::Black);
+		text.setStyle(sf::Text::Bold);
+		//text.setPosition( sf::Vector2f(basePosition.x + 15, basePosition.y + 15) );
+		text.setPosition(sf::Vector2f(15,15));
+
+		window->draw(text);
+	}
 }
 }
 }

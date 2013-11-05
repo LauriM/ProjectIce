@@ -12,7 +12,10 @@
 #include "engine/scene/SceneSystem.h"
 #include "engine/UI/UISystem.h"
 
+#include "engine/UI/content/DisplayBodyContent.h"
+
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Text.hpp>
 
 #define TILE_WIDTH 10
 #define TILE_HEIGHT 10
@@ -21,7 +24,8 @@ namespace engine {
 namespace render {
 namespace sfml {
 
-#define LOADTEXTURE(p_var, p_sprite, p_file) if(! p_var.loadFromFile( p_file ) ){ LOG_ERROR("Failed to load texture: " p_file ) return false; } p_sprite.setTexture(p_var);
+#define LOADTEXTURE(p_var, p_sprite, p_file) if(! p_var.loadFromFile( p_file ) ){ LOG_ERROR("Failed to load texture: " p_file ) return false; } p_sprite.setTexture(p_var); LOG_INFO("[sfml] Loaded: " p_file);
+#define LOADFONT(p_var, p_file) if(! p_var.loadFromFile( p_file ) ){ LOG_ERROR("Failed to load font: " p_file ) return false; } LOG_INFO("[sfml] Loaded: " p_file);
 
 	/**
 	 * SfmlRender provides 2D tile rendering on windows platform.
@@ -56,6 +60,9 @@ namespace sfml {
 		sf::Texture playerTexture;
 		sf::Sprite playerSprite;
 
+		//Fonts
+		sf::Font font;
+
 	public:
 		SfmlRender(scene::SceneSystem *sceneSystem, UI::UISystem *uiSystem)
 			: sceneSystem(sceneSystem)
@@ -64,29 +71,23 @@ namespace sfml {
 			window = new sf::RenderWindow(sf::VideoMode(1200,800), "ProjectIce TODO: add version here");
 		}
 
-		bool init(){
-			setCameraPos( vec3(0, 0, 0) );
+		bool init();
 
-			//Load textures
-			LOADTEXTURE(voidTexture      , voidSprite      , "./gfx/void.png");
-			LOADTEXTURE(dummyTexture     , dummySprite     , "./gfx/dummy.png");
-			LOADTEXTURE(errorTexture     , errorSprite     , "./gfx/error.png");
-			LOADTEXTURE(floorTexture     , floorSprite     , "./gfx/floor.png");
-			LOADTEXTURE(solidRockTexture , solidRockSprite , "./gfx/solid_rock.png");
-			LOADTEXTURE(treeTexture      , treeSprite      , "./gfx/tree.png");
-			LOADTEXTURE(playerTexture    , playerSprite    , "./gfx/player.png");
-
-			return true;
-		}
-
-		void uninit(){
-		}
-
+		void uninit() {}
 		void update();
+
+		/* getters & setters*/
 
 		sf::Window* getWindow(){
 			return window;
 		}
+
+	private:
+		void handleWindowContent(UI::Window *win);
+
+		//Handlers for all the different UI content types
+
+		void displayBodyRender(UI::content::DisplayBodyContent *content, const vec2 basePosition);
 
 	};
 
