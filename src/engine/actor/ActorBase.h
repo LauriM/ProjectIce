@@ -45,6 +45,7 @@ namespace actor {
 
 		public:
 			ActorBase() {}
+			~ActorBase();
 
 			/**
 			 *  This is used to handle stuff that should happen every tick. Like timers or stuff.
@@ -58,8 +59,8 @@ namespace actor {
 			 * Add a new bodypart.
 			 */
 			void addBodyPart(body::BodyPart * part);
-
 			void removeBodyPart(body::BodyPart * part);
+			void removeAllBodyParts();
 
 			template <typename T>
 			BodyPartContainer getBodyPartsByType(){

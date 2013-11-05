@@ -7,6 +7,7 @@ namespace actor {
 		for(unsigned int i = 0;i < actors.size();++i){
 			if(actors.at(i) == actor){
 				actors.erase( actors.begin() + i);
+				delete actor;
 				LOG_INFO("actor removed!");
 			}
 		}

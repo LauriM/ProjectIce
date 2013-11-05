@@ -6,6 +6,24 @@ namespace engine {
 namespace actor {
 
 	/**
+	 * Clear up all stuff!
+	 */
+	ActorBase::~ActorBase() {
+		removeAllBodyParts();
+	}
+
+	/**
+	 * Remove all bodyparts that the actor may have.
+	 */
+	void ActorBase::removeAllBodyParts() {
+		for (unsigned int i = 0; i < bodyParts.size(); ++i) {
+			delete bodyParts.at(i);
+		}
+
+		bodyParts.clear();
+	}
+
+	/**
 	 * Checks for melee attack from actor to different actor. Counts damage.
 	 *
 	 * If the target is friendly and attack has been cancelled, returns false.
@@ -41,6 +59,7 @@ namespace actor {
 	void ActorBase::removeBodyPart(body::BodyPart * part){
 		for(unsigned int i = 0; i < bodyParts.size(); ++i) {
 			if(bodyParts.at(i) == part) {
+				delete bodyParts.at(i);
 				bodyParts.erase(bodyParts.begin() + i);
 			}
 		}
