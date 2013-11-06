@@ -312,8 +312,8 @@ namespace world {
 		//raycast!
 		for(int i = 0; i != len; len < 0 ? --i : ++i){
 			vec2 pos;
-			pos.x = start.x + ((dx < 0) ? ceil(i * xMul) : i * xMul);
-			pos.y = start.y + ((dy < 0) ? ceil(i * yMul) : i * yMul);
+			pos.x = start.x + (int)((dx < 0) ? (int)ceil((float)i * xMul) : (float)i * xMul);
+			pos.y = start.y + (int)((dy < 0) ? (int)ceil((float)i * yMul) : (float)i * yMul);
 
 			if(getTile(pos)->blocks){
 				return false; //Hit a block on the way!

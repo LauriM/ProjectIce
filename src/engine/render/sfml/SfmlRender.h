@@ -19,6 +19,8 @@
 
 #define TILE_WIDTH 10
 #define TILE_HEIGHT 10
+#define TILE_WIDTH_F 10.f
+#define TILE_HEIGHT_F 10.f
 
 namespace engine {
 namespace render {

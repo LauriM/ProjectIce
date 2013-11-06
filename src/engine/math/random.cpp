@@ -3,7 +3,7 @@
 #include "engine/math/random.h"
 
 void randomInit(){
-	srand(time(NULL));//TODO: Change seed (2013-04-01)
+	srand((unsigned int)time(NULL));//TODO: Change seed (2013-04-01)
 }
 
 int randomRange(int min,int max){

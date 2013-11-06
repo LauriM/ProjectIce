@@ -86,7 +86,7 @@ namespace sfml {
 					sprite = errorSprite;
 				}
 
-				sprite.setPosition( (x * TILE_WIDTH) , (y * TILE_HEIGHT) );
+				sprite.setPosition( (x * TILE_WIDTH_F) , (y * TILE_HEIGHT_F) );
 				window->draw(sprite); 
 			}
 
@@ -104,7 +104,7 @@ namespace sfml {
 			}
 
 			if(currentRoom->lineOfSight(currentPosition,actor->getPosition() ) ){
-				sprite.setPosition( (actor->getPos()->x * TILE_WIDTH) , (actor->getPos()->y * TILE_HEIGHT) );
+				sprite.setPosition( (actor->getPos()->x * TILE_WIDTH_F) , (actor->getPos()->y * TILE_HEIGHT_F) );
 				window->draw(sprite);
 			}
 		}
@@ -119,10 +119,10 @@ namespace sfml {
 			win = winList->at(i);
 
 			//TODO: Draw window here
-			box.setSize(sf::Vector2f(win->getSize().x * TILE_WIDTH, win->getSize().y * TILE_HEIGHT));
+			box.setSize(sf::Vector2f(win->getSize().x * TILE_WIDTH_F, win->getSize().y * TILE_HEIGHT_F));
 			box.setOutlineColor(sf::Color::Cyan);
 			box.setOutlineThickness(3);
-			box.setPosition(sf::Vector2f(win->getPos().x * TILE_WIDTH, win->getPos().y * TILE_HEIGHT));
+			box.setPosition(sf::Vector2f(win->getPos().x * TILE_WIDTH_F, win->getPos().y * TILE_HEIGHT_F));
 
 			window->draw(box);
 
@@ -161,10 +161,10 @@ namespace sfml {
 		text.setStyle(sf::Text::Bold);
 
 		char numstr[21]; 
-		sprintf(numstr, "%d", parts->size());
+		sprintf_s(numstr, "%d", parts->size());
 		text.setString(String("Parts") + numstr);
 
-		text.setPosition( sf::Vector2f(basePosition.x + 15, basePosition.y + 15) );
+		text.setPosition( sf::Vector2f( float(basePosition.x + 15), float(basePosition.y + 15)) );
 		//text.setPosition(sf::Vector2f(15,15));
 
 		window->draw(text);
