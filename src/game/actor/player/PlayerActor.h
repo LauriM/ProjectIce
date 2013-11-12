@@ -54,6 +54,7 @@ namespace player {
 
 			void onAttack( engine::actor::ActorBase * target ) {
 				//TODO: implement actor related attack stuff here.
+				//TODO: This method is never called!
 			}
 	};
 

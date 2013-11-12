@@ -54,8 +54,6 @@ namespace sfml {
 
 		renderHud();
 
-		//TODO: render the UI
-
 		//Not to be confused with the SFML window
 		window->display();
 	}

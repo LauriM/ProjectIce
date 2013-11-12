@@ -17,7 +17,6 @@ namespace actor {
 	 */
 	class AISystem : public EngineSystem {
 		private:
-			//TODO: consider just getting the pointers for the actorsystem and worldsystem... used lot in the code.
 			engine::actor::ActorManager *actorManager;
 
 			void handleActor(actor::ActorBase * actor);

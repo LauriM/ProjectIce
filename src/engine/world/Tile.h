@@ -16,8 +16,6 @@ namespace world {
 		TILE_WATER,
 	};
 
-	//TODO: CLEAN THIS UP ITS A MESS (2013-08-21)
-
 	/**
 	 * Single tile inside a room
 	 */
