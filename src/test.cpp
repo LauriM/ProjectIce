@@ -2,7 +2,6 @@
 #include "engine/world/WorldSystem.h"
 #include "engine/world/Room.h"
 #include "engine/world/Tile.h"
-#include "engine/UI/Window.h"
 #include "game/actor/player/PlayerActor.h"
 #include "game/actor/npc/DummyActor.h"
 #include "engine/scene/SceneSystem.h"
@@ -110,12 +109,6 @@ int main(){
 		}
 
 		SCPPT_COMPARE("Rooms generate something",testRoom.getTile(5,5)->visual,==,'.');
-	}
-
-	PRINTLN("-> Window");
-	{
-		UI::Window window;
-		window.setName("asdf");
 	}
 
 	PRINTLN("-> Player");

@@ -116,7 +116,7 @@ int main(int argc, char *argv[]){
 	engine::actor::AISystem *ai = new engine::actor::AISystem(actorManager);
 
 #ifdef TERMRENDER
-	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene,ui);
+	engine::render::RenderSystem *render = new engine::render::term::TermRender(scene);
 	engine::input::InputSystem   *input  = new engine::input::term::TermInput(scene);
 #endif
 #ifdef DEBUGRENDER

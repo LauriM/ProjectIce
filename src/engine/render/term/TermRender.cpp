@@ -77,8 +77,6 @@ namespace term {
 
 		/* "RENDER" UI */
 
-		uiSystem->windows.size();
-
 		/* RENDER THE ACTUAL STUFF */
 
 		tb_present();

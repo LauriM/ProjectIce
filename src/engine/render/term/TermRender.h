@@ -10,7 +10,6 @@
 #include "engine/render/Color.h"
 
 #include "engine/scene/SceneSystem.h"
-#include "engine/UI/UISystem.h"
 
 #include <termbox.h>
 
@@ -26,13 +25,11 @@ namespace term {
 	class TermRender : public RenderSystem {
 	private:
 		scene::SceneSystem *sceneSystem;
-		UI::UISystem *uiSystem;
 
 		uint16_t convertColor(render::Color color);
 	public:
-		TermRender(scene::SceneSystem *sceneSystem,UI::UISystem *uiSystem)
-			: sceneSystem(sceneSystem),
-			uiSystem(uiSystem)
+		TermRender(scene::SceneSystem *sceneSystem)
+			: sceneSystem(sceneSystem)
 		{}
 
 		bool init(){
