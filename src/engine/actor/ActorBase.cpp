@@ -141,12 +141,22 @@ namespace actor {
 	 * Currently removes from all torsos.
 	 */
 	void ActorBase::addNutrition(int value){
-		//TODO: Only take nutrition from one body.
 		BodyPartContainer torsos = getBodyPartsByType<body::Torso>();
+
+		if (torsos.size() == 1) {
+			//There is only one torso, no need to split anything
+			body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(0));
+			torso->nutrition += value;
+
+			return;
+		}
+
+		//Multiple torsos, lets split the nutrition added/spent
 		for(unsigned int i = 0; i < torsos.size(); ++i){
 			body::Torso* torso = dynamic_cast<body::Torso*>(torsos.at(i));
 			torso->nutrition += value;
 		}
+		LOG_WARNING("Nutrition on multiple torsos not implemented!");
 	}
 
 }
