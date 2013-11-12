@@ -48,6 +48,19 @@ namespace sfml {
 
 		window->clear(sf::Color::Black);
 
+		renderRoom();
+
+		/* Render the UI */
+
+		renderHud();
+
+		//TODO: render the UI
+
+		//Not to be confused with the SFML window
+		window->display();
+	}
+
+	void SfmlRender::renderRoom() {
 		world::Room *currentRoom = sceneSystem->getWorld()->getRoom(cameraPos);
 		vec2 currentPosition     = sceneSystem->getPlayerActor()->getPosition();
 
@@ -91,6 +104,10 @@ namespace sfml {
 
 		}
 
+		/* ################################## */
+		/* |Render the  contents to the room| */
+		/* ################################## */
+
 		std::vector<actor::ActorBase *> actors = sceneSystem->getActorManager()->getActorStorage()->getActorsInRoom(cameraPos);
 
 		for(unsigned int i = 0; i < actors.size(); ++i) {
@@ -108,14 +125,6 @@ namespace sfml {
 			}
 		}
 
-		/* Render the UI */
-
-		renderHud();
-
-		//TODO: render the UI
-
-		//Not to be confused with the SFML window
-		window->display();
 	}
 
 	void SfmlRender::renderHud() {
