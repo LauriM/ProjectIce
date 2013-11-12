@@ -19,7 +19,6 @@ namespace actor {
 	 */
 	class ActorStorage {
 		private:
-			//TODO: Only one vector with all the actors! Should be higly optimized!
 			std::vector<ActorBase *> actors;
 			std::vector<ActorBase *> removeQueue;
 

@@ -117,7 +117,6 @@ namespace actor {
 			}
 
 			const vec2* getPos() const {
-				//TODO: this should be deprecrated, it allows modifying the position the "wrong" way.
 				return &position;
 			}
 
