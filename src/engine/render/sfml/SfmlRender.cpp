@@ -110,10 +110,48 @@ namespace sfml {
 
 		/* Render the UI */
 
+		renderHud();
+
 		//TODO: render the UI
 
 		//Not to be confused with the SFML window
 		window->display();
+	}
+
+	void SfmlRender::renderHud() {
+		//Get the actor to get the information out from it.
+		const actor::ActorBase *actor = sceneSystem->getPlayerActor();
+
+		const actor::BodyPartContainer *parts = actor->getBodyParts();
+
+		//Background for the bodypart display screen
+		sf::RectangleShape box;
+
+		box.setSize(sf::Vector2f(150.f, 200.f));
+		box.setOutlineColor(sf::Color::Cyan);
+		box.setOutlineThickness(3);
+		box.setPosition(sf::Vector2f(750, 20));
+
+		window->draw(box);
+
+		int count = 0;
+		for (unsigned int i = 0; i < parts->size(); ++i) {
+			++count;
+		}
+
+		sf::Text text;
+		text.setFont(font);
+		text.setCharacterSize(15);
+		text.setColor(sf::Color::Red);
+		text.setStyle(sf::Text::Bold);
+
+		char numstr[21];
+		sprintf_s(numstr, "%d", parts->size());
+		text.setString(String("Parts") + numstr);
+
+		text.setPosition(sf::Vector2f(760, 30));
+
+		window->draw(text);
 	}
 
 }

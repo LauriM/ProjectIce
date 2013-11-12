@@ -81,6 +81,7 @@ namespace sfml {
 
 	private:
 
+		void renderHud();
 	};
 
 }
