@@ -23,6 +23,16 @@ namespace scene {
 		//Update the visible stuff for player
 		worldSystem->updateVisualOnPosition(playerActor->getLocation(), playerActor->getPosition());
 
+		//Handle actorTick for all actors in the same room with player
+		std::vector<actor::ActorBase *> actors = actorManager->getActorStorage()->getActorsInRoom(playerActor->getLocation());
+
+		for(unsigned int i = 0; i < actors.size();++i){
+			actorManager->actorTick(actors.at(i));
+		}
+
+		//remove killed actors
+		actorManager->getActorStorage()->handleRemoveQueue();
+
         worldSystem->update();
     }
 

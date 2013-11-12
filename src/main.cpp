@@ -106,7 +106,7 @@ int main(int argc, char *argv[]){
 
 	engine::actor::ActorStorage * actorStorage = new engine::actor::ActorStorage();
 
-	engine::actor::ActorManager * actorManager = new engine::actor::ActorManager(actorStorage,worldSystem);
+	engine::actor::ActorManager * actorManager = new engine::actor::ActorManager(actorStorage,worldSystem,playerActor);
 
 	engine::scene::SceneSystem *scene = new engine::scene::SceneSystem(worldSystem,actorManager,playerActor);
 
