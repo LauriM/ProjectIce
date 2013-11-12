@@ -1,7 +1,6 @@
 #include "precompiled.h"
 #include "engine/render/sfml/SfmlRender.h"
 #include "engine/console/Cvar.h"
-#include "engine/UI/content/DisplayBodyContent.h"
 
 #ifdef SFMLRENDER
 
@@ -111,64 +110,12 @@ namespace sfml {
 
 		/* Render the UI */
 
-		const UI::WindowContainer *winList = uiSystem->getWindowContainer();
-		UI::Window *win;
-		sf::RectangleShape box;
-
-		for (unsigned int i = 0; i < winList->size(); ++i) {
-			win = winList->at(i);
-
-			//TODO: Draw window here
-			box.setSize(sf::Vector2f(win->getSize().x * TILE_WIDTH_F, win->getSize().y * TILE_HEIGHT_F));
-			box.setOutlineColor(sf::Color::Cyan);
-			box.setOutlineThickness(3);
-			box.setPosition(sf::Vector2f(win->getPos().x * TILE_WIDTH_F, win->getPos().y * TILE_HEIGHT_F));
-
-			window->draw(box);
-
-			handleWindowContent(win);
-		}
+		//TODO: render the UI
 
 		//Not to be confused with the SFML window
 		window->display();
 	}
 
-	void SfmlRender::handleWindowContent(UI::Window *win) {
-		vec2 basePosition(win->getPos().x * TILE_WIDTH, win->getPos().y * TILE_HEIGHT);
-
-		UI::content::DisplayBodyContent *content = dynamic_cast<UI::content::DisplayBodyContent*>( win->getContent() );
-
-		if (content != NULL) {
-			displayBodyRender(content,basePosition);
-			return;
-		}
-	}
-
-	void SfmlRender::displayBodyRender(UI::content::DisplayBodyContent *content, const vec2 basePosition) {
-		const actor::ActorBase *actor = content->getActor();
-
-		const actor::BodyPartContainer *parts = actor->getBodyParts();
-
-		int count = 0;
-		for (unsigned int i = 0; i < parts->size(); ++i) {
-			++count;
-		}
-
-		sf::Text text;
-		text.setFont(font);
-		text.setCharacterSize(15);
-		text.setColor(sf::Color::Red);
-		text.setStyle(sf::Text::Bold);
-
-		char numstr[21]; 
-		sprintf_s(numstr, "%d", parts->size());
-		text.setString(String("Parts") + numstr);
-
-		text.setPosition( sf::Vector2f( float(basePosition.x + 15), float(basePosition.y + 15)) );
-		//text.setPosition(sf::Vector2f(15,15));
-
-		window->draw(text);
-	}
 }
 }
 }

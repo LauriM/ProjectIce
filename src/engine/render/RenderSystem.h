@@ -2,7 +2,6 @@
 #define ENGINE_RENDER_RENDERSYSTEM_H
 
 #include "engine/scene/SceneSystem.h"
-#include "engine/UI/UISystem.h"
 
 #include "engine/math/vec3.h"
 

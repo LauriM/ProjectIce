@@ -4,8 +4,6 @@
 #include "engine/actor/AISystem.h"
 #include "engine/EngineSystem.h"
 #include "engine/render/RenderSystem.h"
-#include "engine/UI/UISystem.h"
-#include "engine/UI/Window.h"
 #include "engine/scene/SceneSystem.h"
 #include "engine/console/ConsoleSystem.h"
 #include "engine/actor/ActorStorage.h"
@@ -15,7 +13,6 @@
 #include "game/actor/player/PlayerActor.h"
 #include "game/item/PotionItem.h"
 #include "game/actor/npc/DummyActor.h"
-#include "engine/UI/content/DisplayBodyContent.h"
 
 #include <cstring>
 //#include <boost/filesystem.hpp>
@@ -116,7 +113,6 @@ int main(int argc, char *argv[]){
 	game::item::PotionItem * pi = new game::item::PotionItem();
 	worldSystem->getRoom(vec3(0,0,0))->getInventory()->addItem(pi);
 
-	engine::UI::UISystem *ui    = new engine::UI::UISystem();
 	engine::actor::AISystem *ai = new engine::actor::AISystem(actorManager);
 
 #ifdef TERMRENDER
@@ -128,29 +124,15 @@ int main(int argc, char *argv[]){
 	engine::input::InputSystem   *input  = new engine::input::null::NullInput();
 #endif
 #ifdef SFMLRENDER
-	engine::render::sfml::SfmlRender *sfmlRender = new engine::render::sfml::SfmlRender(scene,ui);
+	engine::render::sfml::SfmlRender *sfmlRender = new engine::render::sfml::SfmlRender(scene);
 	engine::render::RenderSystem *render = sfmlRender;
 
 	engine::input::InputSystem *input = new engine::input::sfml::SfmlInput(sfmlRender->getWindow(), scene);
 #endif
 
 	render->init();
-	ui->init();
 	input->init();
 	ai->init();
-
-	/* Create UI */
-
-	engine::UI::Window *bodyWindow = new engine::UI::Window();
-	bodyWindow->setPos(vec2(84,3));
-	bodyWindow->setSize(vec2(15,15));
-	bodyWindow->setName("BodyState");
-
-	engine::UI::content::DisplayBodyContent *bodyStatus = new engine::UI::content::DisplayBodyContent(playerActor);
-
-	bodyWindow->setContent(bodyStatus);
-
-	ui->addWindow(bodyWindow);
 
 	/*
 	 * Testing area for the NPCs
@@ -178,13 +160,11 @@ int main(int argc, char *argv[]){
 	while(quitStatus == false){
 		scene->update();
 		ai->update();
-		ui->update();
 		render->update();
 		input->update();
 	}
 
 	ai->uninit();
-	ui->uninit();
 	render->uninit();
 	scene->uninit();
 	consoleSystem->uninit();

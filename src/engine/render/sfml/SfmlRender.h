@@ -10,9 +10,6 @@
 #include "engine/render/Color.h"
 
 #include "engine/scene/SceneSystem.h"
-#include "engine/UI/UISystem.h"
-
-#include "engine/UI/content/DisplayBodyContent.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Text.hpp>
@@ -35,7 +32,6 @@ namespace sfml {
 	class SfmlRender : public RenderSystem {
 	private:
 		scene::SceneSystem *sceneSystem;
-		UI::UISystem *uiSystem;
 
 		sf::RenderWindow *window;
 
@@ -66,9 +62,8 @@ namespace sfml {
 		sf::Font font;
 
 	public:
-		SfmlRender(scene::SceneSystem *sceneSystem, UI::UISystem *uiSystem)
+		SfmlRender(scene::SceneSystem *sceneSystem)
 			: sceneSystem(sceneSystem)
-			, uiSystem(uiSystem)
 		{
 			window = new sf::RenderWindow(sf::VideoMode(1200,800), "ProjectIce TODO: add version here");
 		}
@@ -85,11 +80,6 @@ namespace sfml {
 		}
 
 	private:
-		void handleWindowContent(UI::Window *win);
-
-		//Handlers for all the different UI content types
-
-		void displayBodyRender(UI::content::DisplayBodyContent *content, const vec2 basePosition);
 
 	};
 
