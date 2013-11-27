@@ -77,11 +77,33 @@ namespace term {
 
 		/* "RENDER" UI */
 
+		renderUI();
+
 		/* RENDER THE ACTUAL STUFF */
 
 		tb_present();
 
 		return;
+	}
+
+	void TermRender::renderUI() {
+		const actor::ActorBase *actor = sceneSystem->getPlayerActor();
+
+		const actor::BodyPartContainer *parts = actor->getBodyParts();
+
+		int count = 0;
+		for (unsigned int i = 0; i < parts->size(); ++i) {
+			++count;
+		}
+
+		tb_cell cell;
+
+		cell.ch = '%';
+		cell.fg = TB_WHITE;
+		cell.bg = TB_BLACK;
+
+		tb_put_cell(2,22,&cell);
+		//TODO: actually display something relevant.
 	}
 
 	/**

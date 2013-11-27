@@ -53,6 +53,8 @@ namespace term {
 
 		void update();
 
+		void renderUI();
+
 		/*
 		tb_cell test;
 		test.ch = '@';
