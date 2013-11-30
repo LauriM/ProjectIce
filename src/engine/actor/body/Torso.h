@@ -16,6 +16,7 @@ namespace body {
 			type   = TYPE_TORSO;
 			blood  = 150;
 			weight = 60;
+			name = "Torso";
 		}
 
 		int stamina;

@@ -15,6 +15,7 @@ namespace body {
 			type   = TYPE_ARM;
 			blood  = 50;
 			weight = 10;
+			name = "Arm";
 		}
 
 		int strength;

@@ -36,17 +36,21 @@ namespace body {
 			, type(TYPE_INVALID)
 			, blood(150)
 			, def(8)
+			, attributes(0)
+			, name("UndefinedBodyPart")
 		{}
 
 		virtual ~BodyPart() {};
 
 		BodyPartType type;
-		BodyPartAttribute attributes; //Should be bitflags or something funny
+		int attributes; //Should be bitflags or something funny
 
 		//attributes
 		int weight;
 		int blood;
 		int def;
+
+		String name;
 	};
 
 }

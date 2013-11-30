@@ -18,6 +18,7 @@ namespace body {
 			blood  = 25;
 			weight = 10;
 			def	   = 5;
+			name   = "head";
 		}
 
 		int wisdom;

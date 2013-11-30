@@ -15,6 +15,7 @@ namespace body {
 			type   = TYPE_LEG;
 			blood  = 70;
 			weight = 15;
+			name = "head";
 		}
 
 		int speed;

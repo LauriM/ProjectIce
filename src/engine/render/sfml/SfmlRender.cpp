@@ -141,16 +141,25 @@ namespace sfml {
 
 		window->draw(box);
 
-		int count = 0;
-		for (unsigned int i = 0; i < parts->size(); ++i) {
-			++count;
-		}
-
 		sf::Text text;
 		text.setFont(font);
 		text.setCharacterSize(15);
 		text.setColor(sf::Color::Red);
 		text.setStyle(sf::Text::Bold);
+
+		int count = 0;
+		for (unsigned int i = 0; i < parts->size(); ++i) {
+			++count;
+
+			if (parts->at(i)->attributes == 0) {
+				text.setString(String("> ") + parts->at(i)->name + String(" - ok"));
+			} else {
+				text.setString(String("> ") + parts->at(i)->name + String(" - Atribs true!"));
+			}
+			text.setPosition(sf::Vector2f((float)760, (float)45 + (i * 20)));
+
+			window->draw(text);
+		}
 
 		char numstr[21];
 		sprintf_s(numstr, "%d", parts->size());
