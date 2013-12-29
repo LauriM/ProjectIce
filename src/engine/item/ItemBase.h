@@ -27,10 +27,10 @@ namespace item {
 
 		char symbol;
 
-		ItemBase() {
-			id = -1;
-			inInventory = false;
-		}
+		ItemBase()
+			:id(-1)
+			,inInventory(false)
+		{ }
 
 	public:
 
